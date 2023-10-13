@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    " W ",
+    "#  "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:porkchop"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "modogs:bacon_treat",
+    "count": 3
+  }
+}

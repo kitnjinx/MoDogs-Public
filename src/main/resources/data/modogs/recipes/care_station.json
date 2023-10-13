@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " W "
+  ],
+  "key": {
+    "#": {
+      "tag": "modogs:dog_treat"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "modogs:care_station",
+    "count": 1
+  }
+}

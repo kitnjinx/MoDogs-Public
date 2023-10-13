@@ -1,0 +1,30 @@
+{
+  "name": "Labrador Retriever",
+  "icon": "modogs:lab_retriever_spawn_egg",
+  "category": "modogs:l_to_n_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "With their waterproof coats, Labradors were originally bred to retrieve fish and nets from the water for their fisherman.$(br2)Standing at just under a block tall, these steadfast dogs come in three colors."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/lab_retriever_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Labrador Retriever"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs can most commonly be found near various bodies of water in warm biomes. They can also be found near cold shorelines, and more rarely in swamps.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:salmon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Salmon Treat."
+    }
+  ]
+}

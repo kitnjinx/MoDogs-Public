@@ -1,0 +1,30 @@
+{
+  "name": "Saint Bernard",
+  "icon": "modogs:saint_bernard_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Saint Bernards were originally bred to guard and protect hospice patients, though this soon led them to becoming well-known rescue dogs in the mountains.$(br2)Standing at over a block tall, these large dogs come in five different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/saint_bernard_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Saint Bernard"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found in mountainous regions, and are more common in colder mountains. They can also rarely be found among ice spikes.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:salmon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Salmon Treat."
+    }
+  ]
+}

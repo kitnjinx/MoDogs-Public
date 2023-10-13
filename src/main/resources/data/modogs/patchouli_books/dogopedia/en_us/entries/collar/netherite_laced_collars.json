@@ -1,0 +1,30 @@
+{
+  "name": "Netherite-Laced Collars",
+  "icon": "modogs:black_netherite_laced_collar",
+  "category": "modogs:collar_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Netherite-laced collars might not look much different from normal collars, but they provide 24 Armor and 12 Armor Toughness for your dog!$(br2)To put a collar on a dog, simply interact with them with the collar in hand. To remove a collar, you'll need a pair of shears and to interact with the dog with the shears in hand."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:brown_netherite_laced_collar",
+      "recipe2": "modogs:white_netherite_laced_collar",
+      "title": "Crafting",
+      "text": "Any color of collar may be used."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In addition to being crafted in any color by using a regular collar of the desired color, any netherite-laced collar may be dyed to another color with another dye!",
+      "title": "Dying"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:dye_netherite_laced_collar_green",
+      "recipe2": "modogs:dye_netherite_laced_collar_yellow",
+      "title": "Dying"
+    }
+  ],
+  "sortnum": 5
+}

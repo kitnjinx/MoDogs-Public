@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:bernese_mountain_dog_spawn_egg"
+    },
+    "title": "Bernese Mountain Dog Trainer",
+    "description": "Tame a Bernese Mountain Dog",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:bernese_mountain_dog"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

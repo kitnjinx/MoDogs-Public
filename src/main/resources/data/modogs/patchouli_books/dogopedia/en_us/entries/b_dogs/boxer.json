@@ -1,0 +1,30 @@
+{
+  "name": "Boxer",
+  "icon": "modogs:boxer_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Boxers were originally bred as bull baiting dogs, though they later saw usage as companions to butchers.$(br2)Standing barely under a block tall and coming in four different coats, these dogs can make great companions!"
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/boxer_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Boxer"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Boxers are found most commonly in warm plains and sparse jungles. You can also find them in open windswept hills biomes and, more rarely, meadows.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:beef_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Beef Treat."
+    }
+  ]
+}

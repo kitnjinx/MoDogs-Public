@@ -1,0 +1,30 @@
+{
+  "name": "Dachshund",
+  "icon": "modogs:dachshund_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Dachshund are fast dogs best known for their long bodies and short legs. They were, however, originally bred to hunt badgers!$(br2)At less than half a block tall, these speedy little dogs come in six different colors and make great companions."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/dachshund_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Dachshund"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These little dogs are most commonly found in various taiga biomes. They can also be found in flower forests and meadows, and more rarely in savannas.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:rabbit_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Rabbit Treat."
+    }
+  ]
+}

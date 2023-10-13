@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modogs:white_collar",
+    "modogs:light_gray_collar",
+    "modogs:gray_collar",
+    "modogs:black_collar",
+    "modogs:brown_collar",
+    "modogs:red_collar",
+    "modogs:orange_collar",
+    "modogs:yellow_collar",
+    "modogs:lime_collar",
+    "modogs:green_collar",
+    "modogs:cyan_collar",
+    "modogs:light_blue_collar",
+    "modogs:blue_collar",
+    "modogs:purple_collar",
+    "modogs:magenta_collar",
+    "modogs:pink_collar"
+  ]
+}

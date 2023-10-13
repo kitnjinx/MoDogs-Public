@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NCN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "C": {
+      "item": "modogs:pink_collar"
+    }
+  },
+  "result": {
+    "item": "modogs:pink_netherite_laced_collar",
+    "count": 1
+  }
+}

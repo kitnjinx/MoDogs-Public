@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "modogs:item/blue_netherite_laced_collar"
+  }
+}

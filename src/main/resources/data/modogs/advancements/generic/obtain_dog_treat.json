@@ -1,0 +1,97 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:rabbit_treat"
+    },
+    "title": "New Dog Trainer",
+    "description": "Begin your dog training journey",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:root",
+  "criteria": {
+    "bacon_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:bacon_treat"
+            ]
+          }
+        ]
+      }
+    },
+    "beef_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:beef_treat"
+            ]
+          }
+        ]
+      }
+    },
+    "chicken_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:chicken_treat"
+            ]
+          }
+        ]
+      }
+    },
+    "mutton_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:mutton_treat"
+            ]
+          }
+        ]
+      }
+    },
+    "rabbit_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:rabbit_treat"
+            ]
+          }
+        ]
+      }
+    },
+    "salmon_treat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:salmon_treat"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bacon_treat",
+      "beef_treat",
+      "chicken_treat",
+      "mutton_treat",
+      "rabbit_treat",
+      "salmon_treat"
+    ]
+  ]
+}

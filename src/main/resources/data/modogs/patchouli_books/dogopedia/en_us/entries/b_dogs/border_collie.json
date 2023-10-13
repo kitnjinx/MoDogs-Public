@@ -1,0 +1,30 @@
+{
+  "name": "Border Collie",
+  "icon": "modogs:border_collie_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Border Collies are nimble dogs originally bred for herding sheep and other animals.$(br2)Standing just under a block tall and coming in six different coats, these dogs can make great companions!"
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/border_collie_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Black Border Collie"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Border Collies can be found most commonly in open fields, such as plains and meadows. You can also find them in birch forests, and more rarely in the taiga.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:mutton_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Mutton Treat."
+    }
+  ]
+}
