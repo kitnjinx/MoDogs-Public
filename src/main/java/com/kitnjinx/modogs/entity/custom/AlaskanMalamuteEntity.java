@@ -464,7 +464,7 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             } else {
                 message = new TextComponent("This Alaskan Malamute demonstrates two recessive traits.");
             }
-        } else if (this.isRed() && isPale()) {
+        } else if (this.isRed() && this.isPale()) {
             if (this.isSolidCarrier() && this.isSilver()) {
                 message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also carry the solid pattern and have alleles for silver fur.");
             } else if (this.isSolidCarrier()) {
