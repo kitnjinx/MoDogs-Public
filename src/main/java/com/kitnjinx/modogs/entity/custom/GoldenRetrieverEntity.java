@@ -7,6 +7,7 @@ import com.kitnjinx.modogs.entity.variant.GoldenRetrieverVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -98,7 +99,7 @@ public class GoldenRetrieverEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.golden_retriever.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -154,6 +155,25 @@ public class GoldenRetrieverEntity extends AbstractDog {
                 }
 
                 return InteractionResult.SUCCESS;
+            }
+        }
+
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.getVariant() == GoldenRetrieverVariant.LIGHT) {
+                    message = new TextComponent("This Golden Retriever has the alleles for light fur.");
+                } else if (this.getVariant() == GoldenRetrieverVariant.MEDIUM) {
+                    message = new TextComponent("This Golden Retriever has the alleles for medium fur.");
+                } else {
+                    message = new TextComponent("This Golden Retriever has the alleles for dark fur.");
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
             }
         }
 
@@ -216,29 +236,28 @@ public class GoldenRetrieverEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(GoldenRetrieverEntity baby, GoldenRetrieverEntity otherParent) {
-        boolean colorCheck;
-
-        if (this.getVariant() == GoldenRetrieverVariant.LIGHT && otherParent.getVariant() == GoldenRetrieverVariant.DARK) {
-            colorCheck = true;
-        } else if (this.getVariant() == GoldenRetrieverVariant.DARK && otherParent.getVariant() == GoldenRetrieverVariant.LIGHT) {
-            colorCheck = true;
-        } else {
-            colorCheck = false;
-        }
-
-        if (colorCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(3) + 1;
-
-            if (determine == 3) {
+        if (this.getVariant() == GoldenRetrieverVariant.MEDIUM &&
+                otherParent.getVariant() == GoldenRetrieverVariant.MEDIUM) {
+            // if both parents have a medium coat shade, baby has 25% chance to be light, 50% chance to be medium,
+            // and 25% chance to be dark
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setVariant(GoldenRetrieverVariant.LIGHT);
+            } else if (determine < 4) {
                 baby.setVariant(GoldenRetrieverVariant.MEDIUM);
-            } else if (determine == 2) {
-                baby.setVariant(this.getVariant());
             } else {
-                baby.setVariant(otherParent.getVariant());
+                baby.setVariant(GoldenRetrieverVariant.DARK);
             }
+        } else if (this.getVariant() == otherParent.getVariant()) {
+            // if both parents are light or both parents are dark, baby will match the parents
+            baby.setVariant(this.getVariant());
+        } else if ((this.getVariant() == GoldenRetrieverVariant.LIGHT && otherParent.getVariant() == GoldenRetrieverVariant.DARK) ||
+                (this.getVariant() == GoldenRetrieverVariant.DARK && otherParent.getVariant() == GoldenRetrieverVariant.LIGHT)) {
+            // if one parent is dark and one parent is light, baby will be medium
+            baby.setVariant(GoldenRetrieverVariant.MEDIUM);
         } else {
-            // Determines variant based on parents
+            // if one parent is medium and one parent is light/dark, baby will have 50/50 chance of matching
+            // either parent
             if (this.random.nextBoolean()) {
                 baby.setVariant(this.getVariant());
             } else {

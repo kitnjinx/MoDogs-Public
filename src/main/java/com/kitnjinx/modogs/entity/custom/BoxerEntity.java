@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.variant.BoxerVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -95,7 +96,7 @@ public class BoxerEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boxer.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -131,7 +132,7 @@ public class BoxerEntity extends AbstractDog {
 
         Item itemForTaming = ModItems.BEEF_TREAT.get();
 
-        if (item == itemForTaming) {
+        if (item == itemForTaming && !isTame()) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -151,6 +152,31 @@ public class BoxerEntity extends AbstractDog {
                 }
 
                 return InteractionResult.SUCCESS;
+            }
+        }
+
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.getVariant() == BoxerVariant.BLACK) {
+                    if (this.getShade() == 0) {
+                        message = new TextComponent("This Boxer demonstrates a recessive trait. They also have alleles for medium-colored fur.");
+                    } else if (this.getShade() == 1) {
+                        message = new TextComponent("This Boxer demonstrates a recessive trait. They also have alleles for light-colored fur.");
+                    } else {
+                        message = new TextComponent("This Boxer demonstrates a recessive trait. They also have alleles for dark-colored fur.");
+                    }
+                } else if (this.getCarrier()) {
+                    message = new TextComponent("This Boxer carries a recessive trait.");
+                } else {
+                    message = new TextComponent("This Boxer doesn't have any recessive traits.");
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
             }
         }
 
@@ -273,12 +299,12 @@ public class BoxerEntity extends AbstractDog {
         determineBabyShade(baby, otherParent);
 
         // if tree determines whether baby is Black, carries Black and shows its Shade, or just shows its Shade
-        if (this.getVariant() == BoxerVariant.BLACK & otherParent.getVariant() == BoxerVariant.BLACK) {
+        if (this.getVariant() == BoxerVariant.BLACK && otherParent.getVariant() == BoxerVariant.BLACK) {
             // if both parents are Black, baby will be black and marked as a carrier
             baby.setVariant(BoxerVariant.BLACK);
             baby.setCarrier(true);
-        } else if ((this.getVariant() == BoxerVariant.BLACK & otherParent.getCarrier()) ||
-                (this.getCarrier() & otherParent.getVariant() == BoxerVariant.BLACK)) {
+        } else if ((this.getVariant() == BoxerVariant.BLACK && otherParent.getCarrier()) ||
+                (this.getCarrier() && otherParent.getVariant() == BoxerVariant.BLACK)) {
             // if one parent is black and the other is a carrier, baby has 50% chance to be black and 50%
             // chance to be a carrier
             baby.setCarrier(true);
@@ -291,7 +317,7 @@ public class BoxerEntity extends AbstractDog {
             // if one parent is black and the other is not a carrier, baby will be a carrier
             baby.setVariant(BoxerVariant.byId(baby.getShade()));
             baby.setCarrier(true);
-        } else if (this.getCarrier() & otherParent.getCarrier()) {
+        } else if (this.getCarrier() && otherParent.getCarrier()) {
             // if both parents are carriers, baby has 25% not to carry, 50% chance to be a carrier, and 25%
             // chance to be Black
             int determine = this.random.nextInt(4) + 1;
@@ -317,7 +343,7 @@ public class BoxerEntity extends AbstractDog {
     }
 
     private void determineBabyShade(BoxerEntity baby, BoxerEntity otherParent) {
-        if (this.getShade() == 0 & otherParent.getShade() == 0) {
+        if (this.getShade() == 0 && otherParent.getShade() == 0) {
             // if both parents are Medium, baby has 25% chance to be Light, 50% chance to be Medium, and 25%
             // chance to be Dark
             int determine = this.random.nextInt(4) + 1;
@@ -331,8 +357,8 @@ public class BoxerEntity extends AbstractDog {
         } else if (this.getShade() == otherParent.getShade()) {
             // if both parents are Light or both are Dark, baby will match them
             baby.setShade(this.getShade());
-        } else if ((this.getShade() == 1 & otherParent.getShade() == 2) ||
-                (this.getShade() == 2 & otherParent.getShade() == 1)) {
+        } else if ((this.getShade() == 1 && otherParent.getShade() == 2) ||
+                (this.getShade() == 2 && otherParent.getShade() == 1)) {
             // if one parent is Light and the other is Dark, baby will be Medium
             baby.setShade(0);
         } else {

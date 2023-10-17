@@ -95,7 +95,7 @@ public class BloodhoundEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bloodhound.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -131,7 +131,7 @@ public class BloodhoundEntity extends AbstractDog {
 
         Item itemForTaming = ModItems.MUTTON_TREAT.get();
 
-        if (item == itemForTaming & !isTame()) {
+        if (item == itemForTaming && !isTame()) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -163,7 +163,7 @@ public class BloodhoundEntity extends AbstractDog {
                     if (this.getCarrier() == 0) {
                         message = new TextComponent("This Bloodhound demonstrates a trait that can be recessive.");
                     } else {
-                        message = new TextComponent("This Bloodhound demonstrates a trait that can be recessive, however it also carries a more recessive trait.");
+                        message = new TextComponent("This Bloodhound demonstrates a trait that can be recessive, however they also carry the more recessive liver and tan fur trait.");
                     }
                 } else {
                     if (this.getCarrier() == 0) {
@@ -286,7 +286,7 @@ public class BloodhoundEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(BloodhoundEntity baby, BloodhoundEntity otherParent) {
-        if (this.getVariant() == BloodhoundVariant.RED & otherParent.getVariant() == BloodhoundVariant.RED) {
+        if (this.getVariant() == BloodhoundVariant.RED && otherParent.getVariant() == BloodhoundVariant.RED) {
             determinePureRedBaby(baby, otherParent);
         } else if (this.getVariant() == BloodhoundVariant.RED || otherParent.getVariant() == BloodhoundVariant.RED) {
             if (this.getVariant() == BloodhoundVariant.RED) {
@@ -294,7 +294,7 @@ public class BloodhoundEntity extends AbstractDog {
             } else {
                 determineRedBaby(otherParent, this, baby);
             }
-        } else if (this.getVariant() == BloodhoundVariant.BLACK_TAN & otherParent.getVariant() == BloodhoundVariant.BLACK_TAN) {
+        } else if (this.getVariant() == BloodhoundVariant.BLACK_TAN && otherParent.getVariant() == BloodhoundVariant.BLACK_TAN) {
             determinePureBTBaby(baby, otherParent);
         } else if (this.getVariant() == BloodhoundVariant.BLACK_TAN || otherParent.getVariant() == BloodhoundVariant.BLACK_TAN) {
             if (this.getVariant() == BloodhoundVariant.BLACK_TAN) {
@@ -316,7 +316,7 @@ public class BloodhoundEntity extends AbstractDog {
 
         int determine = this.random.nextInt(4) + 1;
 
-        if (parACarry == 0 & parBCarry == 0) {
+        if (parACarry == 0 && parBCarry == 0) {
             // if neither parent carries another gene, pup will be red and carry nothing
             baby.setCarrier(0);
             baby.setVariant(BloodhoundVariant.RED);
@@ -380,7 +380,7 @@ public class BloodhoundEntity extends AbstractDog {
         if (parACarry == 0) {
             // if Red parent has no carried gene, baby will be Red and carry based on parB
             baby.setVariant(BloodhoundVariant.RED);
-            if (parB.getVariant() == BloodhoundVariant.BLACK_TAN & parBCarry == 0) {
+            if (parB.getVariant() == BloodhoundVariant.BLACK_TAN && parBCarry == 0) {
                 // if parB is Black_Tan and doesn't carry Liver_Tan, baby will carry Black_Tan
                 baby.setCarrier(1);
             } else if (parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
@@ -394,7 +394,7 @@ public class BloodhoundEntity extends AbstractDog {
                 // if parB is Liver_Tan, baby will carry Liver_Tan
                 baby.setCarrier(2);
             }
-        } else if (parACarry == 1 & parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
+        } else if (parACarry == 1 && parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
             // if parA carries Black_Tan and parB is Black_Tan, baby has 50/50 chance of being Red or Black_Tan
             if (parBCarry == 0) {
                 // if parB doesn't carry Liver_Tan, baby will either be Black_Tan with no carried gene or Red
@@ -424,7 +424,7 @@ public class BloodhoundEntity extends AbstractDog {
                     baby.setVariant(BloodhoundVariant.BLACK_TAN);
                 }
             }
-        } else if (parACarry == 1 & parB.getVariant() == BloodhoundVariant.LIVER_TAN) {
+        } else if (parACarry == 1 && parB.getVariant() == BloodhoundVariant.LIVER_TAN) {
             // if parA carries Black_Tan and parB is Liver_Tan, baby will carry Liver_Tan and have a 50/50
             // chance of being Red or Black_Tan
             baby.setCarrier(2);
@@ -433,7 +433,7 @@ public class BloodhoundEntity extends AbstractDog {
             } else {
                 baby.setVariant(BloodhoundVariant.BLACK_TAN);
             }
-        } else if (parACarry == 2 & parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
+        } else if (parACarry == 2 && parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
             // if parA carries Liver_Tan and parB is Black_Tan, the baby depends on parB's carrier status
             if (parBCarry == 0) {
                 // if parB does not carry Liver_Tan, baby has 50% chance to be Red and carry Black_Tan and a
@@ -478,7 +478,7 @@ public class BloodhoundEntity extends AbstractDog {
     
     // method used with two Black_Tan parents
     private void determinePureBTBaby(BloodhoundEntity baby, BloodhoundEntity otherParent) {
-        if (this.getCarrier() == 0 & otherParent.getCarrier() == 0) {
+        if (this.getCarrier() == 0 && otherParent.getCarrier() == 0) {
             // if neither parent carries Liver_Tan, baby will be Black_Tan and carry nothing
             baby.setCarrier(0);
             baby.setVariant(BloodhoundVariant.BLACK_TAN);

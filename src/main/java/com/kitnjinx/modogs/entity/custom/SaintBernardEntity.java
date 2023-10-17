@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.entity.variant.SaintBernardVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -43,8 +44,17 @@ public class SaintBernardEntity extends AbstractDog {
     // handles coat variant & collar barrel
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(SaintBernardEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> SHADE =
+            SynchedEntityData.defineId(SaintBernardEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> IS_GOLDEN =
+            SynchedEntityData.defineId(SaintBernardEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CARRIES_GOLDEN =
+            SynchedEntityData.defineId(SaintBernardEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> SHOW_BARREL =
             SynchedEntityData.defineId(SaintBernardEntity.class, EntityDataSerializers.BOOLEAN);
+
+    // SHADE explanation: how rich/true the color is. 0 = Brown, 1 = Red, 2 = Mahogany
+    // If dog's IS_GOLDEN is true, then Shade: 0/1 = Orange, 2 = Yellow_Brown
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -102,7 +112,7 @@ public class SaintBernardEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.saint_bernard.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -167,6 +177,37 @@ public class SaintBernardEntity extends AbstractDog {
             return InteractionResult.SUCCESS;
         }
 
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.isGolden() && this.getShade() == 2) {
+                    message = new TextComponent("This Saint Bernard demonstrates a recessive trait and \"true\" coloration.");
+                } else if (this.isGolden() && this.getShade() == 1) {
+                    message = new TextComponent("This Saint Bernard demonstrates a recessive trait. They have the potential to breed for \"true\" coloration.");
+                } else if (this.isGolden()) {
+                    message = new TextComponent("This Saint Bernard demonstrates a recessive trait and \"weak\" coloration.");
+                } else if (this.isGoldenCarrier() && this.getShade() == 2) {
+                    message = new TextComponent("This Saint Bernard demonstrates \"true\" coloration and carries a recessive trait.");
+                } else if (this.isGoldenCarrier() && this.getShade() == 1) {
+                    message = new TextComponent("This Saint Bernard demonstrates muddled coloration and carries a recessive trait.");
+                } else if (this.isGoldenCarrier()) {
+                    message = new TextComponent("This Saint Bernard carries a recessive trait. They have \"weak\" coloration.");
+                } else if (this.getShade() == 2) {
+                    message = new TextComponent("This Saint Bernard has \"true\" coloration.");
+                } else if (this.getShade() == 1) {
+                    message = new TextComponent("This Saint Bernard has muddled coloration.");
+                } else {
+                    message = new TextComponent("This Saint Bernard has \"weak\" coloration.");
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
+            }
+        }
+
         return super.mobInteract(player, hand);
     }
 
@@ -174,6 +215,9 @@ public class SaintBernardEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(SHADE, tag.getInt("Shade"));
+        this.entityData.set(IS_GOLDEN, tag.getBoolean("IsGolden"));
+        this.entityData.set(CARRIES_GOLDEN, tag.getBoolean("GoldenCarrier"));
         this.entityData.set(SHOW_BARREL, tag.getBoolean("Barrel"));
     }
 
@@ -181,6 +225,9 @@ public class SaintBernardEntity extends AbstractDog {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("Shade", this.getShade());
+        tag.putBoolean("IsGolden", this.isGolden());
+        tag.putBoolean("GoldenCarrier", this.isGoldenCarrier());
         tag.putBoolean("Barrel", this.getBarrel());
     }
 
@@ -188,6 +235,9 @@ public class SaintBernardEntity extends AbstractDog {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(SHADE, 0);
+        this.entityData.define(IS_GOLDEN, false);
+        this.entityData.define(CARRIES_GOLDEN, false);
         this.entityData.define(SHOW_BARREL, false);
     }
 
@@ -211,20 +261,35 @@ public class SaintBernardEntity extends AbstractDog {
                                         @Nullable CompoundTag tag) {
         // Variables for determining the variant
         Random r = new Random();
-        int determine = r.nextInt(19) + 1;
+        int determine = r.nextInt(17) + 1;
+        int carrier = r.nextInt(4) + 1;
         int var;
 
         // if statement gives weighted chances to different variants
         if (determine < 7) {
-            var = 0;
-        } else if (determine < 13) {
-            var = 1;
-        } else if (determine < 17) {
-            var = 2;
-        } else if (determine < 19) {
-            var = 3;
+            var = 0; // BROWN
+            setShade(0);
+            setGoldenStatus(carrier == 1, false);
+        } else if (determine < 11) {
+            var = 1; // RED
+            setShade(1);
+            setGoldenStatus(carrier == 1, false);
+        } else if (determine < 14) {
+            var = 2; // ORANGE
+            setGoldenStatus(true, true);
+            if (r.nextInt(5) + 1 < 4) {
+                setShade(0);
+            } else {
+                setShade(1);
+            }
+        } else if (determine < 16) {
+            var = 3; // YELLOW_BROWN
+            setShade(2);
+            setGoldenStatus(true, true);
         } else {
-            var = 4;
+            var = 4; // MAHOGANY
+            setShade(2);
+            setGoldenStatus(carrier == 1, false);
         }
 
         // assign chosen variant and finish the method
@@ -250,6 +315,27 @@ public class SaintBernardEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
+    public int getShade() {
+        return this.entityData.get(SHADE);
+    }
+
+    private void setShade(int shade) {
+        this.entityData.set(SHADE, shade);
+    }
+
+    public boolean isGolden() {
+        return this.entityData.get(IS_GOLDEN);
+    }
+
+    public boolean isGoldenCarrier() {
+        return this.entityData.get(CARRIES_GOLDEN);
+    }
+
+    private void setGoldenStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_GOLDEN, carrier);
+        this.entityData.set(IS_GOLDEN, is);
+    }
+
     public boolean getBarrel() {
         return this.entityData.get(SHOW_BARREL);
     }
@@ -259,62 +345,74 @@ public class SaintBernardEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(SaintBernardEntity baby, SaintBernardEntity otherParent) {
-        boolean orangeCheck;
-        boolean redCheck;
-
-        if (this.getVariant() == SaintBernardVariant.RED && otherParent.getVariant() == SaintBernardVariant.YELLOW_BROWN) {
-            orangeCheck = true;
-        } else if (this.getVariant() == SaintBernardVariant.YELLOW_BROWN && otherParent.getVariant() == SaintBernardVariant.RED) {
-            orangeCheck = true;
+        // if tree determines baby's shade
+        if (this.getShade() == 1 && otherParent.getShade() == 1) {
+            // if both parents are Shade 1, baby has 25% chance to be Shade 0, 50% chance to be 1, and 25% chance
+            // to be 2
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setShade(0);
+            } else if (determine < 4) {
+                baby.setShade(1);
+            } else {
+                baby.setShade(2);
+            }
+        } else if (this.getShade() == otherParent.getShade()) {
+            // if both parents are Shade 0 or both are 2, baby will match them
+            baby.setShade(this.getShade());
+        } else if ((this.getShade() == 0 && otherParent.getShade() == 2) ||
+                (this.getShade() == 2 && otherParent.getShade() == 0)) {
+            // if one parent is Shade 0 and one is Shade 2, baby will be Shade 1
+            baby.setShade(1);
         } else {
-            orangeCheck = false;
-        }
-
-        if (this.getVariant() == SaintBernardVariant.ORANGE) {
-            if (otherParent.getVariant() == SaintBernardVariant.BROWN || otherParent.getVariant() == SaintBernardVariant.MAHOGANY) {
-                redCheck = true;
-            } else {
-                redCheck = false;
-            }
-        } else if (otherParent.getVariant() == SaintBernardVariant.ORANGE) {
-            if (this.getVariant() == SaintBernardVariant.BROWN || this.getVariant() == SaintBernardVariant.MAHOGANY) {
-                redCheck = true;
-            } else {
-                redCheck = false;
-            }
-        } else {
-            redCheck = false;
-        }
-
-        if (orangeCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(5) + 1;
-
-            if (determine == 5) {
-                baby.setVariant(SaintBernardVariant.ORANGE);
-            } else if (determine > 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else if (redCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(5) + 1;
-
-            if (determine == 5) {
-                baby.setVariant(SaintBernardVariant.RED);
-            } else if (determine > 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else {
-            // Determines variant based on parents
+            // if one parent is Shade 1 and the other parent is Shade 0 or 2, baby will match one of the parents
             if (this.random.nextBoolean()) {
-                baby.setVariant(this.getVariant());
+                baby.setShade(this.getShade());
             } else {
-                baby.setVariant(otherParent.getVariant());
+                baby.setShade(otherParent.getShade());
             }
+        }
+
+        // if tree determines baby's golden status
+        if (this.isGolden() && otherParent.isGolden()) {
+            // if both parents are golden, baby will be golden
+            baby.setGoldenStatus(true, true);
+        } else if ((this.isGolden() && otherParent.isGoldenCarrier()) ||
+                (this.isGoldenCarrier() && otherParent.isGolden())) {
+            // if one parent is golden and the other is a carrier, baby has 50% chance to be a carrier and
+            // 50% chance to be golden
+            baby.setGoldenStatus(true, this.random.nextBoolean());
+        } else if (this.isGolden() || otherParent.isGolden()) {
+            // if one parent is golden and the other is not a carrier, baby will be a carrier
+            baby.setGoldenStatus(true, false);
+        } else if (this.isGoldenCarrier() && otherParent.isGoldenCarrier()) {
+            // if both parents are golden carriers, baby has 25% chance to not be a carrier, 50% chance to be
+            // a carrier, and 25% chance to be golden
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setGoldenStatus(false, false);
+            } else {
+                baby.setGoldenStatus(true, determine == 4);
+            }
+        } else if (this.isGoldenCarrier() || otherParent.isGoldenCarrier()) {
+            // if only one parent is a carrier, baby has 50% chance to be a carrier
+            baby.setGoldenStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a carrier, baby will not be a carrier
+            baby.setGoldenStatus(false, false);
+        }
+
+        // if tree determines baby's phenotype (TYPE_VARIANT)
+        if (baby.isGolden() && baby.getShade() == 2) {
+            baby.setVariant(SaintBernardVariant.YELLOW_BROWN);
+        } else if (baby.isGolden()) {
+            baby.setVariant(SaintBernardVariant.ORANGE);
+        } else if (baby.getShade() == 2) {
+            baby.setVariant(SaintBernardVariant.MAHOGANY);
+        } else if (baby.getShade() == 1) {
+            baby.setVariant(SaintBernardVariant.RED);
+        } else {
+            baby.setVariant(SaintBernardVariant.BROWN);
         }
     }
 

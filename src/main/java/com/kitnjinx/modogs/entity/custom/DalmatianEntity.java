@@ -94,7 +94,7 @@ public class DalmatianEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dalmatian.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -265,11 +265,11 @@ public class DalmatianEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(DalmatianEntity baby, DalmatianEntity otherParent) {
-        if (this.getVariant() == DalmatianVariant.BROWN & otherParent.getVariant() == DalmatianVariant.BROWN) {
+        if (this.getVariant() == DalmatianVariant.BROWN && otherParent.getVariant() == DalmatianVariant.BROWN) {
             // if both parents are brown, baby will be marked as a carrier and have the Brown variant
             baby.setCarrier(true);
             baby.setVariant(DalmatianVariant.BROWN);
-        } else if (this.getVariant() == DalmatianVariant.BROWN & otherParent.getCarrier()) {
+        } else if (this.getVariant() == DalmatianVariant.BROWN && otherParent.getCarrier()) {
             // if one parent is brown and the other a carrier, the baby will be marked as a carrier and have
             // a 50% chance of being Brown. Otherwise, they'll get their black parent's coat
             baby.setCarrier(true);
@@ -278,7 +278,7 @@ public class DalmatianEntity extends AbstractDog {
             } else {
                 baby.setVariant(otherParent.getVariant());
             }
-        } else if (this.getCarrier() & otherParent.getVariant() == DalmatianVariant.BROWN) {
+        } else if (this.getCarrier() && otherParent.getVariant() == DalmatianVariant.BROWN) {
             // if one parent is brown and the other a carrier, the baby will be marked as a carrier and have
             // a 50% chance of being Brown. Otherwise, they'll get their black parent's coat
             baby.setCarrier(true);
@@ -287,17 +287,17 @@ public class DalmatianEntity extends AbstractDog {
             } else {
                 baby.setVariant(this.getVariant());
             }
-        } else if (this.getVariant() == DalmatianVariant.BROWN & !otherParent.getCarrier()) {
+        } else if (this.getVariant() == DalmatianVariant.BROWN && !otherParent.getCarrier()) {
             // if one parent is brown and the other is not a carrier, the baby will be marked as a carrier and
             // have the black parent's variant
             baby.setCarrier(true);
             baby.setVariant(otherParent.getVariant());
-        } else if (!this.getCarrier() & otherParent.getVariant() == DalmatianVariant.BROWN) {
+        } else if (!this.getCarrier() && otherParent.getVariant() == DalmatianVariant.BROWN) {
             // if one parent is brown and the other is not a carrier, the baby will be marked as a carrier and
             // have the black parent's variant
             baby.setCarrier(true);
             baby.setVariant(this.getVariant());
-        } else if (this.getCarrier() & otherParent.getCarrier()) {
+        } else if (this.getCarrier() && otherParent.getCarrier()) {
             // if both parents are a carrier, baby has 25% chance not to be a carrier, 50% to be a carrier, and
             // 25% to be brown. If baby is not brown, baby will have a variant based on its parents
             Random r = new Random();

@@ -41,6 +41,18 @@ public class AlaskanMalamuteEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> IS_RED =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CARRIES_RED =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_SOLID =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CARRIES_SOLID =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_PALE =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_SILVER =
+            SynchedEntityData.defineId(AlaskanMalamuteEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -95,7 +107,7 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.alaskan_malamute.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -157,7 +169,8 @@ public class AlaskanMalamuteEntity extends AbstractDog {
 
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
-                player.sendMessage(new TextComponent("Alaskan Malamutes don't have any genes to look for."), player.getUUID());
+                TextComponent message = determineGeneTesterMessage();
+                player.sendMessage(message, player.getUUID());
 
                 return InteractionResult.SUCCESS;
             } else {
@@ -172,18 +185,36 @@ public class AlaskanMalamuteEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
+        this.entityData.set(CARRIES_RED, tag.getBoolean("RedCarrier"));
+        this.entityData.set(IS_SOLID, tag.getBoolean("IsSolid"));
+        this.entityData.set(CARRIES_SOLID, tag.getBoolean("SolidCarrier"));
+        this.entityData.set(IS_PALE, tag.getBoolean("IsPale"));
+        this.entityData.set(IS_SILVER, tag.getBoolean("IsSilver"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putBoolean("IsRed", this.isRed());
+        tag.putBoolean("RedCarrier", this.isRedCarrier());
+        tag.putBoolean("IsSolid", this.isSolid());
+        tag.putBoolean("SolidCarrier", this.isSolidCarrier());
+        tag.putBoolean("IsPale", this.isPale());
+        tag.putBoolean("IsSilver", this.isSilver());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(IS_RED, false);
+        this.entityData.define(CARRIES_RED, false);
+        this.entityData.define(IS_SOLID, false);
+        this.entityData.define(CARRIES_SOLID, false);
+        this.entityData.define(IS_PALE, false);
+        this.entityData.define(IS_SILVER, false);
     }
 
     @Override
@@ -207,23 +238,47 @@ public class AlaskanMalamuteEntity extends AbstractDog {
         // Variables for determining the variant
         Random r = new Random();
         int determine = r.nextInt(16);
+        int carrier = r.nextInt(8) + 1;
         int var;
 
         // if statement gives weighted chances to different variants
         if (getRandom().nextBoolean()) {
-            var = 0;
+            var = 0; // GRAY
+            setRedStatus(carrier == 1, false);
+            setSolidStatus(carrier == 2, false);
         } else {
             if (determine < 5) {
-                var = 1;
+                var = 1; // SABLE
+                setRedStatus(true, true);
+                setSolidStatus(carrier < 3, false);
             } else if (determine < 10) {
-                var = 2;
+                var = 2; // SEAL
+                setRedStatus(true, true);
+                setSolidStatus(carrier == 1, false);
             } else if (determine < 13) {
-                var = 3;
+                var = 3; // BLACK
+                setRedStatus(carrier < 3, false);
+                setSolidStatus(true, true);
             } else if (determine < 15) {
-                var = 4;
+                var = 4; // RED
+                setRedStatus(true, true);
+                setSolidStatus(true, true);
             } else {
-                var = 5;
+                var = 5; // SILVER
+                setRedStatus(carrier < 3, false);
+                setSolidStatus(true, true);
             }
+        }
+
+        if (var == 2) {
+            setPale(true);
+            setSilver(false);
+        } else if (var == 5) {
+            setPale(false);
+            setSilver(true);
+        } else {
+            setPale(false);
+            setSilver(false);
         }
 
         // assign chosen variant and finish the method
@@ -248,80 +303,227 @@ public class AlaskanMalamuteEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
+    public boolean isRed() {
+        return this.entityData.get(IS_RED);
+    }
+
+    public boolean isRedCarrier() {
+        return this.entityData.get(CARRIES_RED);
+    }
+
+    private void setRedStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_RED, carrier);
+        this.entityData.set(IS_RED, is);
+    }
+
+    public boolean isSolid() {
+        return this.entityData.get(IS_SOLID);
+    }
+
+    public boolean isSolidCarrier() {
+        return this.entityData.get(CARRIES_SOLID);
+    }
+
+    private void setSolidStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_SOLID, carrier);
+        this.entityData.set(IS_SOLID, is);
+    }
+
+    public boolean isPale() {
+        return this.entityData.get(IS_PALE);
+    }
+
+    private void setPale(boolean is) {
+        this.entityData.set(IS_PALE, is);
+    }
+
+    public boolean isSilver() {
+        return this.entityData.get(IS_SILVER);
+    }
+
+    private void setSilver(boolean is) {
+        this.entityData.set(IS_SILVER, is);
+    }
+
     private void determineBabyVariant(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
-        boolean blackParent;
-        boolean silverCheck;
-        boolean redCheck;
-        boolean sableCheck; // simplified name; triggers whenever there's a seal/sable parent and a black/silver parent
+        // method call determines if baby is black or red
+        determineBabyRed(baby, otherParent);
 
-        if (this.getVariant() == AlaskanMalamuteVariant.BLACK || otherParent.getVariant() == AlaskanMalamuteVariant.BLACK) {
-            blackParent = true;
+        // method call determines if baby has a saddle or is solid
+        determineBabySaddle(baby, otherParent);
+
+        // method call determines baby's pale and silver values
+        determineBabyDilutes(baby, otherParent);
+
+        // if tree determines baby's phenotype (TYPE_VARIANT)
+        if (baby.isRed() && baby.isSolid()) {
+            baby.setVariant(AlaskanMalamuteVariant.RED);
+        } else if (baby.isRed() && baby.isPale()) {
+            baby.setVariant(AlaskanMalamuteVariant.SEAL);
+        } else if (baby.isRed()) {
+            baby.setVariant(AlaskanMalamuteVariant.SABLE);
+        } else if (baby.isSolid() && isSilver()) {
+            baby.setVariant(AlaskanMalamuteVariant.SILVER);
+        } else if (baby.isSolid()) {
+            baby.setVariant(AlaskanMalamuteVariant.BLACK);
         } else {
-            blackParent = false;
+            baby.setVariant(AlaskanMalamuteVariant.GRAY);
+        }
+    }
+
+    private void determineBabyRed(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
+        if (this.isRed() && otherParent.isRed()) {
+            // if both parents are red, baby will be red
+            baby.setRedStatus(true, true);
+        } else if ((this.isRed() && otherParent.isRedCarrier()) || (this.isRedCarrier() && otherParent.isRed())) {
+            // if one parent is red and one parent is a carrier, baby will have 50% chance to be red and 50%
+            // chance to be a carrier
+            baby.setRedStatus(true, this.random.nextBoolean());
+        } else if (this.isRed() || otherParent.isRed()) {
+            // if one parent is red and the other is not a carrier, baby will be a carrier
+            baby.setRedStatus(true, false);
+        } else if (this.isRedCarrier() && otherParent.isRedCarrier()) {
+            // if both parents are carriers, baby will have 25% chance not to carry, 50% chance to be a carrier,
+            // and 25% chance to be red
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setRedStatus(false, false);
+            } else {
+                baby.setRedStatus(true, determine == 4);
+            }
+        } else if (this.isRedCarrier() || otherParent.isRedCarrier()) {
+            // if one parent is a carrier, baby will have 50/50 chance to be a carrier
+            baby.setRedStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a carrier, baby will not be a carrier
+            baby.setRedStatus(false, false);
+        }
+    }
+
+    private void determineBabySaddle(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
+        if (this.isSolid() && otherParent.isSolid()) {
+            // if both parents are solid, baby will be solid
+            baby.setSolidStatus(true, true);
+        } else if ((this.isSolid() && otherParent.isSolidCarrier()) ||
+                (this.isSolidCarrier() && otherParent.isSolid())) {
+            // if one parent is solid and one parent is a carrier, baby will have 50% chance to solid red and 50%
+            // chance to be a carrier
+            baby.setSolidStatus(true, this.random.nextBoolean());
+        } else if (this.isSolid() || otherParent.isSolid()) {
+            // if one parent is solid and the other is not a carrier, baby will be a carrier
+            baby.setSolidStatus(true, false);
+        } else if (this.isSolidCarrier() && otherParent.isSolidCarrier()) {
+            // if both parents are carriers, baby will have 25% chance not to carry, 50% chance to be a carrier,
+            // and 25% chance to be solid
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setSolidStatus(false, false);
+            } else {
+                baby.setSolidStatus(true, determine == 4);
+            }
+        } else if (this.isSolidCarrier() || otherParent.isSolidCarrier()) {
+            // if one parent is a carrier, baby will have 50/50 chance to be a carrier
+            baby.setSolidStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a carrier, baby will not be a carrier
+            baby.setSolidStatus(false, false);
+        }
+    }
+
+    private void determineBabyDilutes(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
+        // if tree determines if baby is pale
+        if (this.isPale() && otherParent.isPale()) {
+            // if both parents are pale, baby will be pale
+            baby.setPale(true);
+        } else if (this.isPale() || otherParent.isPale()) {
+            // if one parent is pale, baby has 50/50 chance to be pale
+            baby.setPale(this.random.nextBoolean());
+        } else {
+            // if neither parent is pale, baby will not be pale
+            baby.setPale(false);
         }
 
-        if (blackParent && (this.getVariant() == AlaskanMalamuteVariant.SILVER || otherParent.getVariant() == AlaskanMalamuteVariant.SILVER)) {
-            silverCheck = true;
-            redCheck = false;
-        } else if (blackParent && (this.getVariant() == AlaskanMalamuteVariant.RED || otherParent.getVariant() == AlaskanMalamuteVariant.RED)) {
-            silverCheck = false;
-            redCheck = true;
+        // if tree determines if baby is silver
+        if (this.isSilver() && otherParent.isSilver()) {
+            // if both parents are silver, baby will be silver
+            baby.setSilver(true);
+        } else if (this.isSilver() || otherParent.isSilver()) {
+            // if one parent is silver, baby has 50/50 chance to be silver
+            baby.setSilver(this.random.nextBoolean());
         } else {
-            silverCheck = false;
-            redCheck = false;
+            // if neither parent is silver, baby will not be silver
+            baby.setSilver(false);
         }
+    }
 
-        if (this.getVariant() != AlaskanMalamuteVariant.GRAY && this.getVariant() != AlaskanMalamuteVariant.RED &&
-                otherParent.getVariant() != AlaskanMalamuteVariant.GRAY && otherParent.getVariant() != AlaskanMalamuteVariant.RED) {
-            boolean blackSilver = this.getVariant() == AlaskanMalamuteVariant.BLACK || this.getVariant() == AlaskanMalamuteVariant.SILVER;
-            if (blackSilver) {
-                if (otherParent.getVariant() == AlaskanMalamuteVariant.BLACK || otherParent.getVariant() == AlaskanMalamuteVariant.SILVER) {
-                    sableCheck = false;
+    private TextComponent determineGeneTesterMessage() {
+        TextComponent message;
+        if (this.isRed() && this.isSolid()) {
+            if (this.isSilver()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates two recessive traits. They also have the alleles for silver fur.");
+            } else {
+                message = new TextComponent("This Alaskan Malamute demonstrates two recessive traits.");
+            }
+        } else if (this.isRed() && isPale()) {
+            if (this.isSolidCarrier() && this.isSilver()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also carry the solid pattern and have alleles for silver fur.");
+            } else if (this.isSolidCarrier()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also carry the solid pattern trait.");
+            } else if (this.isSilver()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also have the alleles for silver fur.");
+            } else {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene.");
+            }
+        } else if (this.isRed()) {
+            if (this.isSolidCarrier() && this.isSilver()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive red fur trait. They also carry the solid pattern trait and have the alleles for silver fur.");
+            } else if (this.isSolidCarrier()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive red fur trait. They also carry the solid pattern trait.");
+            } else if (this.isSilver()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive red fur trait. They also have the alleles for silver fur.");
+            } else {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive red fur trait.");
+            }
+        } else if (this.isSolid() && this.isSilver()) {
+            if (this.isRedCarrier()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare silver variant of the recessive solid pattern trait. They also carry the red fur trait.");
+            } else {
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare silver variant of the recessive solid pattern trait.");
+            }
+        } else if (this.isSolid()) {
+            if (this.isRedCarrier()) {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive solid pattern trait. They also carry the red fur trait.");
+            } else {
+                message = new TextComponent("This Alaskan Malamute demonstrates the recessive solid pattern trait.");
+            }
+        } else {
+            if (this.isRedCarrier() && this.isSolidCarrier()) {
+                if (this.isSilver()) {
+                    message = new TextComponent("This Alaskan Malamute carries two recessive traits. They also have the alleles for silver fur.");
                 } else {
-                    sableCheck = true;
+                    message = new TextComponent("This Alaskan Malamute carries two recessive traits.");
+                }
+            } else if (this.isRedCarrier()) {
+                if (this.isSilver()) {
+                    message = new TextComponent("This Alaskan Malamute carries the red fur trait. They also have the alleles for silver fur.");
+                } else {
+                    message = new TextComponent("This Alaskan Malamute carries the red fur trait.");
+                }
+            } else if (this.isSolidCarrier()) {
+                if (this.isSilver()) {
+                    message = new TextComponent("This Alaskan Malamute carries the solid pattern trait. They also have the alleles for silver fur.");
+                } else {
+                    message = new TextComponent("This Alaskan Malamute carries the solid pattern trait.");
                 }
             } else {
-                if (otherParent.getVariant() == AlaskanMalamuteVariant.BLACK || otherParent.getVariant() == AlaskanMalamuteVariant.SILVER) {
-                    sableCheck = true;
+                if  (this.isSilver()) {
+                    message = new TextComponent("This Alaskan Malamute has the alleles for silver fur.");
                 } else {
-                    sableCheck = false;
+                    message = new TextComponent("This Alaskan Malamute doesn't have any recessive traits.");
                 }
             }
-        } else {
-            sableCheck = false;
         }
 
-        if (silverCheck || sableCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(3) + 1;
-
-            if (determine == 3) {
-                baby.setVariant(AlaskanMalamuteVariant.GRAY);
-            } else if (determine == 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else if (redCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(6) + 1;
-
-            if (determine == 6) {
-                baby.setVariant(AlaskanMalamuteVariant.SEAL);
-            } else if (determine == 5) {
-                baby.setVariant(AlaskanMalamuteVariant.SABLE);
-            } else if (determine > 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else {
-            // Determines variant based on parents
-            if (this.random.nextBoolean()) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        }
+        return message;
     }
 }

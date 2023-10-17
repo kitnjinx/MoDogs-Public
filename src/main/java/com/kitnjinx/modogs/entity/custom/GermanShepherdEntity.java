@@ -37,7 +37,7 @@ import java.util.function.Predicate;
 
 public class GermanShepherdEntity extends AbstractDog {
 
-    // handles coat & collar variant
+    // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(GermanShepherdEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> BLACK_DEGREE =
@@ -96,7 +96,7 @@ public class GermanShepherdEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.germanshepherd.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -160,11 +160,11 @@ public class GermanShepherdEntity extends AbstractDog {
                 TextComponent message;
                 if (this.getVariant() == GermanShepherdVariant.WHITE) {
                     if (this.getBlackDegree() == 0) {
-                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have otherwise standard genes.");
+                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have otherwise standard traits.");
                     } else if (this.getBlackDegree() == 1) {
-                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have genes for high amounts of black fur.");
+                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have alleles for high amounts of black fur.");
                     } else {
-                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have genes for a purely black coat.");
+                        message = new TextComponent("This German Shepherd demonstrates a recessive trait. They have alleles for a purely black coat.");
                     }
                 } else if (this.getCarrier()) {
                     message = new TextComponent("This German Shepherd carries a recessive trait.");
@@ -301,8 +301,8 @@ public class GermanShepherdEntity extends AbstractDog {
             // if both parents are white, baby will be marked as a carrier and have the White variant
             baby.setCarrier(true);
             baby.setVariant(GermanShepherdVariant.WHITE);
-        } else if ((this.getVariant() == GermanShepherdVariant.WHITE & otherParent.getCarrier()) ||
-                (this.getCarrier() & otherParent.getVariant() == GermanShepherdVariant.WHITE)) {
+        } else if ((this.getVariant() == GermanShepherdVariant.WHITE && otherParent.getCarrier()) ||
+                (this.getCarrier() && otherParent.getVariant() == GermanShepherdVariant.WHITE)) {
             // if one parent is white and the other a carrier, the baby will be marked as a carrier and have
             // a 50/50 chance of being White or a normal coat based on the baby's BlackDegree
             baby.setCarrier(true);
@@ -311,13 +311,13 @@ public class GermanShepherdEntity extends AbstractDog {
             } else {
                 baby.setVariant(GermanShepherdVariant.byId(baby.getBlackDegree()));
             }
-        } else if ((this.getVariant() == GermanShepherdVariant.WHITE & !otherParent.getCarrier()) ||
-                (!this.getCarrier() & otherParent.getVariant() == GermanShepherdVariant.WHITE)) {
+        } else if ((this.getVariant() == GermanShepherdVariant.WHITE && !otherParent.getCarrier()) ||
+                (!this.getCarrier() && otherParent.getVariant() == GermanShepherdVariant.WHITE)) {
             // if one parent is white and the other is not a carrier, the baby will be marked as a carrier and
             // have a variant based on the baby's BlackDegree
             baby.setCarrier(true);
             baby.setVariant(GermanShepherdVariant.byId(baby.getBlackDegree()));
-        } else if (this.getCarrier() & otherParent.getCarrier()) {
+        } else if (this.getCarrier() && otherParent.getCarrier()) {
             // if both parents are a carrier, baby has 25% chance not to be a carrier, 50% to be a carrier, and
             // 25% to be white. If baby is not white, baby will have a variant based on its BlackDegree
             int determine = this.random.nextInt(4) + 1;

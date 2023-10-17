@@ -99,7 +99,7 @@ public class BerneseMountainDogEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bernese_mountain_dog.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -265,12 +265,12 @@ public class BerneseMountainDogEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(BerneseMountainDogEntity baby, BerneseMountainDogEntity otherParent) {
-        if (this.getVariant() == BerneseMountainDogVariant.TAN & otherParent.getVariant() == BerneseMountainDogVariant.TAN) {
+        if (this.getVariant() == BerneseMountainDogVariant.TAN && otherParent.getVariant() == BerneseMountainDogVariant.TAN) {
             // if both parents are tan, baby will be marked as a carrier and have the Tan variant
             baby.setCarrier(true);
             baby.setVariant(BerneseMountainDogVariant.TAN);
-        } else if ((this.getVariant() == BerneseMountainDogVariant.TAN & otherParent.getCarrier()) ||
-                (this.getCarrier() & otherParent.getVariant() == BerneseMountainDogVariant.TAN)) {
+        } else if ((this.getVariant() == BerneseMountainDogVariant.TAN && otherParent.getCarrier()) ||
+                (this.getCarrier() && otherParent.getVariant() == BerneseMountainDogVariant.TAN)) {
             // if one parent is tan and the other a carrier, the baby will be marked as a carrier and have
             // a 50/50% chance of being tan or rust
             baby.setCarrier(true);
@@ -279,13 +279,13 @@ public class BerneseMountainDogEntity extends AbstractDog {
             } else {
                 baby.setVariant(BerneseMountainDogVariant.RUST);
             }
-        } else if ((this.getVariant() == BerneseMountainDogVariant.TAN & !otherParent.getCarrier()) ||
-                (!this.getCarrier() & otherParent.getVariant() == BerneseMountainDogVariant.TAN)) {
+        } else if ((this.getVariant() == BerneseMountainDogVariant.TAN && !otherParent.getCarrier()) ||
+                (!this.getCarrier() && otherParent.getVariant() == BerneseMountainDogVariant.TAN)) {
             // if one parent is tan and the other is not a carrier, the baby will be marked as a carrier and
             // appear rust
             baby.setCarrier(true);
             baby.setVariant(BerneseMountainDogVariant.RUST);
-        } else if (this.getCarrier() & otherParent.getCarrier()) {
+        } else if (this.getCarrier() && otherParent.getCarrier()) {
             // if both parents are a carrier, baby has 25% chance not to be a carrier, 50% to be a carrier, and
             // 25% to be tan. If baby is not tan, it will be rust.
             Random r = new Random();

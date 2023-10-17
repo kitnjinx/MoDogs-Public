@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.entity.variant.PembrokeCorgiVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -39,6 +40,13 @@ public class PembrokeCorgiEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(PembrokeCorgiEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> BASE_COLOR =
+            SynchedEntityData.defineId(PembrokeCorgiEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> IS_FAWN =
+            SynchedEntityData.defineId(PembrokeCorgiEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> CARRIED_COLOR =
+            SynchedEntityData.defineId(PembrokeCorgiEntity.class, EntityDataSerializers.INT);
+    // CARRIED_COLOR + BASE_COLOR Value meanings: 0 = Red (or Fawn), 1 = Sable, 2 = Black_Tan
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -90,7 +98,7 @@ public class PembrokeCorgiEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pembroke_corgi.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -153,6 +161,43 @@ public class PembrokeCorgiEntity extends AbstractDog {
             }
         }
 
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.getBaseColor() == 2) {
+                    message = new TextComponent("This Pembroke Corgi demonstrates a recessive trait.");
+                } else if (this.getBaseColor() == 1) {
+                    if (this.getCarriedColor() == 2) {
+                        message = new TextComponent("This Pembroke Corgi demonstrates a trait that can be recessive, but also carries the more recessive black-headed tricolor trait.");
+                    } else {
+                        message = new TextComponent("This Pembroke Corgi demonstrates a trait that can be recessive.");
+                    }
+                } else if (this.isFawn()) {
+                    if (this.getCarriedColor() == 2) {
+                        message = new TextComponent("This Pembroke Corgi demonstrates a rare variant and carries the recessive black-headed tricolor trait.");
+                    } else if (this.getCarriedColor() == 1) {
+                        message = new TextComponent("This Pembroke Corgi demonstrates a rare variant and carries the red-headed tricolor, or sable, trait.");
+                    } else {
+                        message = new TextComponent("This Pembroke Corgi demonstrates a rare variant, but doesn't have any recessive traits.");
+                    }
+                } else {
+                    if (this.getCarriedColor() == 2) {
+                        message = new TextComponent("This Pembroke Corgi carries the recessive black-headed tricolor trait.");
+                    } else if (this.getCarriedColor() == 1) {
+                        message = new TextComponent("This Pembroke Corgi carries the red-headed tricolor, or sable, trait.");
+                    } else {
+                        message = new TextComponent("This Pembroke Corgi doesn't have any recessive traits.");
+                    }
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
+            }
+        }
+
         return super.mobInteract(player, hand);
     }
 
@@ -160,18 +205,27 @@ public class PembrokeCorgiEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(BASE_COLOR, tag.getInt("BaseColor"));
+        this.entityData.set(IS_FAWN, tag.getBoolean("IsFawn"));
+        this.entityData.set(CARRIED_COLOR, tag.getInt("CarriedColor"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("BaseColor", this.getBaseColor());
+        tag.putBoolean("IsFawn", this.isFawn());
+        tag.putInt("CarriedColor", this.getCarriedColor());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(BASE_COLOR, 0);
+        this.entityData.define(IS_FAWN, false);
+        this.entityData.define(CARRIED_COLOR, 0);
     }
 
     @Override
@@ -197,16 +251,41 @@ public class PembrokeCorgiEntity extends AbstractDog {
         // Variables for determining the variant
         Random r = new Random();
         int determine = r.nextInt(16) + 1;
+        int carrier = r.nextInt(8) + 1;
         int var;
 
         if (determine < 8) {
             var = 0;
+            setBaseColor(0);
+            setFawn(false);
+            if (carrier == 1 || carrier == 2) {
+                setCarriedColor(carrier);
+            } else {
+                setCarriedColor(0);
+            }
         } else if (determine < 13) {
             var = 1;
+            setBaseColor(2);
+            setCarriedColor(2);
+            setFawn(carrier == 1);
         } else if (determine < 16) {
             var = 2;
+            setBaseColor(0);
+            setFawn(true);
+            if (carrier == 1 || carrier == 2) {
+                setCarriedColor(carrier);
+            } else {
+                setCarriedColor(0);
+            }
         } else {
             var = 3;
+            setBaseColor(1);
+            setFawn(carrier == 1);
+            if (carrier == 2) {
+                setCarriedColor(2);
+            } else {
+                setCarriedColor(1);
+            }
         }
 
         // assign chosen variant and finish the method
@@ -229,55 +308,287 @@ public class PembrokeCorgiEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
+    public int getBaseColor() {
+        return this.entityData.get(BASE_COLOR);
+    }
+
+    private void setBaseColor(int color) {
+        this.entityData.set(BASE_COLOR, color);
+    }
+
+    public boolean isFawn() {
+        return this.entityData.get(IS_FAWN);
+    }
+
+    private void setFawn(boolean is) {
+        this.entityData.set(IS_FAWN, is);
+    }
+
+    public int getCarriedColor() {
+        return this.entityData.get(CARRIED_COLOR);
+    }
+
+    private void setCarriedColor(int color) {
+        this.entityData.set(CARRIED_COLOR, color);
+    }
+
     private void determineBabyVariant(PembrokeCorgiEntity baby, PembrokeCorgiEntity otherParent) {
-        boolean redBlackCombo;
-        boolean sableCheck;
-
-        if (this.getVariant() == PembrokeCorgiVariant.RED && otherParent.getVariant() == PembrokeCorgiVariant.BLACK_TAN) {
-            redBlackCombo = true;
-        } else if (this.getVariant() == PembrokeCorgiVariant.BLACK_TAN && otherParent.getVariant() == PembrokeCorgiVariant.RED) {
-            redBlackCombo = true;
+        // determine baby's base and carried color
+        if (this.getBaseColor() == 0 && otherParent.getBaseColor() == 0) {
+            // if both parents are Red, call the following method
+            this.determinePureRedBaby(baby, otherParent);
+        } else if (this.getBaseColor() == 0) {
+            // if this parent is Red, check whether otherParent is Sable or Black_Tan
+            if (otherParent.getBaseColor() == 1) {
+                // if otherParent is Sable, call the following method
+                this.determineRedSableBaby(baby, this, otherParent);
+            } else {
+                // if otherParent is Black_Tan, call the following method
+                this.determineRedBlackTanBaby(baby, this, otherParent);
+            }
+        } else if (otherParent.getBaseColor() == 0) {
+            // if otherParent is Red, check whether this parent is Sable or Black_Tan
+            if (this.getBaseColor() == 1) {
+                // if this is Sable, call the following method
+                this.determineRedSableBaby(baby, otherParent, this);
+            } else {
+                // if this is Black_Tan, call the following method
+                this.determineRedBlackTanBaby(baby, otherParent, this);
+            }
+        } else if (this.getBaseColor() == 1 && otherParent.getBaseColor() == 1) {
+            // if both parents are Sable, call the following method
+            this.determinePureSableBaby(baby, otherParent);
+        } else if (this.getBaseColor() == 1) {
+            // if this parent is Sable and otherParent is Black_Tan, call the following method
+            this.determineSableBlackTanBaby(baby, this);
+        } else if (otherParent.getBaseColor() == 1) {
+            // if otherParent is Sable and this is Black_Tan, call the following method
+            this.determineSableBlackTanBaby(baby, otherParent);
         } else {
-            redBlackCombo = false;
+            // if both parents are Black_Tan, set baby to be Black_Tan
+            baby.setBaseColor(2);
+            baby.setCarriedColor(2);
         }
 
-        if (this.getVariant() == PembrokeCorgiVariant.SABLE && otherParent.getVariant() == PembrokeCorgiVariant.SABLE) {
-            sableCheck = true;
+        // determine baby's fawn status (true or false)
+        if (this.isFawn() && otherParent.isFawn()) {
+            // if both parents are fawn, baby will be fawn
+            baby.setFawn(true);
+        } else if (this.isFawn() || otherParent.isFawn()) {
+            // if one parent is fawn, baby has 50% chance to be fawn
+            baby.setFawn(this.random.nextBoolean());
         } else {
-            sableCheck = false;
+            // if neither parent is fawn, baby will not be fawn
+            baby.setFawn(false);
         }
 
-        if (redBlackCombo) {
-            Random r = new Random();
-            int determine = r.nextInt(5) + 1;
-
-            if (determine == 5) {
-                baby.setVariant(PembrokeCorgiVariant.SABLE);
-            } else if (determine > 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else if (sableCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(10) + 1;
-
-            if (determine == 10) {
-                baby.setVariant(PembrokeCorgiVariant.BLACK_TAN);
-            } else if (determine == 9) {
-                baby.setVariant(PembrokeCorgiVariant.RED);
-            } else if (determine > 4) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
+        // determine baby's phenotype (TYPE_VARIANT)
+        if (baby.isFawn() && baby.getBaseColor() == 0) {
+            baby.setVariant(PembrokeCorgiVariant.FAWN);
+        } else if (baby.getBaseColor() == 0) {
+            baby.setVariant(PembrokeCorgiVariant.RED);
+        } else if (baby.getBaseColor() == 1) {
+            baby.setVariant(PembrokeCorgiVariant.SABLE);
         } else {
-            // Determines variant based on parents
+            baby.setVariant(PembrokeCorgiVariant.BLACK_TAN);
+        }
+    }
+
+    private void determinePureRedBaby(PembrokeCorgiEntity baby, PembrokeCorgiEntity otherParent) {
+        int determine = random.nextInt(4) + 1;
+
+        if (this.getCarriedColor() == 0 && otherParent.getCarriedColor() == 0) {
+            // if both parents are pure red (don't carry other colors), baby will be pure red
+            baby.setBaseColor(0);
+            baby.setCarriedColor(0);
+        } else if (this.getCarriedColor() == 0) {
+            // if one parent is pure red and the other carries another color, baby will appear red and have
+            // 50% chance to carry red and 50% chance to carry the other gene
+            baby.setBaseColor(0);
             if (this.random.nextBoolean()) {
-                baby.setVariant(this.getVariant());
+                baby.setCarriedColor(0);
             } else {
-                baby.setVariant(otherParent.getVariant());
+                baby.setCarriedColor(otherParent.getCarriedColor());
             }
+        } else if (otherParent.getCarriedColor() == 0) {
+            // if one parent is pure red and the other carries another color, baby will appear red and have
+            // 50% chance to carry red and 50% chance to carry the other gene
+            baby.setBaseColor(0);
+            if (this.random.nextBoolean()) {
+                baby.setCarriedColor(0);
+            } else {
+                baby.setCarriedColor(this.getCarriedColor());
+            }
+        } else if (this.getCarriedColor() == 1 && otherParent.getCarriedColor() == 1) {
+            // if both parents carry Sable, baby has 25% chance to be pure red, 50% to be red and carry sable,
+            // and 25% chance to be pure sable
+            if (determine == 1) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(0);
+            } else if (determine < 4) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(1);
+            } else {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(1);
+            }
+        } else if (this.getCarriedColor() == 1 || otherParent.getCarriedColor() == 1) {
+            // if one parent carries Sable and the other carries Black_Tan, baby has 25% chance to be pure red,
+            // 25% chance to be red and carry sable, 25% chance to be red and carry black_tan, and 25% chance to
+            // be sable and carry black_tan
+            if (determine == 1) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(0);
+            } else if (determine == 2) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(1);
+            } else if (determine == 3) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(2);
+            } else {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(2);
+            }
+        } else {
+            // if both parents carry Black_Tan, baby has 25% chance to be pure red, 50% chance to be red and
+            // carry black_tan, and 25% chance to be black_tan
+            if (determine == 1) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(0);
+            } else if (determine < 4) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(2);
+            } else {
+                baby.setBaseColor(2);
+                baby.setCarriedColor(2);
+            }
+        }
+    }
+
+    // method used when red parent is bred to a sable, where parA is red and parB is Sable
+    private void determineRedSableBaby(PembrokeCorgiEntity baby, PembrokeCorgiEntity parA, PembrokeCorgiEntity parB) {
+        int determine = this.random.nextInt(4) + 1;
+
+        if (parA.getCarriedColor() == 0 && parB.getCarriedColor() == 1) {
+            // if parA is pure red and parB is pure Sable, baby will be red and carry sable
+            baby.setBaseColor(0);
+            baby.setCarriedColor(1);
+        } else if (parA.getCarriedColor() == 0) {
+            // if parA is pure red and parB carries Black_Tan, baby will be red and carry either Sable or BT
+            baby.setBaseColor(0);
+            baby.setCarriedColor(this.random.nextInt(2) + 1);
+        } else if (parA.getCarriedColor() == 1 && parB.getCarriedColor() == 1) {
+            // if parA carries Sable and parB is pure sable, baby has 50% chance to be red and carry sable and
+            // 50% chance to be pure sable
+            baby.setBaseColor(this.random.nextInt(2));
+            baby.setCarriedColor(1);
+        } else if (parA.getCarriedColor() == 1) {
+            // if parA carries sable and parB carries Black_Tan, baby has 25% chance to be red and carry sable,
+            // 25% chance to be pure sable, 25% chance to be red and carry black_tan, and 25% to be sable and
+            // carry BT
+            if (determine == 1) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(1);
+            } else if (determine == 2) {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(1);
+            } else if (determine == 3) {
+                baby.setBaseColor(0);
+                baby.setBaseColor(2);
+            } else {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(2);
+            }
+        } else if (parA.getCarriedColor() == 2 && parB.getCarriedColor() == 1) {
+            // if parA carries Black_Tan and parB is pure Sable, baby has 50% chance to be red and carry sable
+            // and 50% chance to be sable and carry black_tan
+            if (this.random.nextBoolean()) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(1);
+            } else {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(2);
+            }
+        } else {
+            // if parA and parB carry Black_Tan, baby has 25% chance to be red and carry sable, 25% chance to be
+            // red and carry black_tan, 25% chance to be sable and carry BT, and 25% chance to be black_tan
+            if (determine == 1) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(1);
+            } else if (determine == 2) {
+                baby.setBaseColor(0);
+                baby.setCarriedColor(2);
+            } else if (determine == 3) {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(2);
+            } else {
+                baby.setBaseColor(2);
+                baby.setBaseColor(2);
+            }
+        }
+    }
+
+    // method used when red parent is bred to a black_tan, where parA is red and parB is black_tan
+    private void determineRedBlackTanBaby(PembrokeCorgiEntity baby, PembrokeCorgiEntity parA, PembrokeCorgiEntity parB) {
+        // parB will always be pure Black_Tan
+        if (parA.getCarriedColor() == 0) {
+            // if parA is pure red, baby will be red and carry black_tan
+            baby.setBaseColor(0);
+            baby.setCarriedColor(2);
+        } else if (parA.getCarriedColor() == 1) {
+            // if parA carries sable, baby has 50% chance to be red and carry black_tan and 50% chance to be
+            // sable and carry black_tan
+            baby.setBaseColor(this.random.nextInt(2));
+            baby.setCarriedColor(2);
+        } else {
+            // if parA carries black_tan, baby has 50% chance to be red and carry black_tan and 50% chance to be
+            // pure black_tan
+            baby.setCarriedColor(2);
+            if (this.random.nextBoolean()) {
+                baby.setBaseColor(0);
+            } else {
+                baby.setBaseColor(2);
+            }
+        }
+    }
+
+    private void determinePureSableBaby(PembrokeCorgiEntity baby, PembrokeCorgiEntity otherParent) {
+        if (this.getCarriedColor() == 1 && otherParent.getCarriedColor() == 1) {
+            // if both parents are pure sable, baby will be pure sable
+            baby.setBaseColor(1);
+            baby.setCarriedColor(1);
+        } else if (this.getCarriedColor() == 1 || otherParent.getCarriedColor() == 1) {
+            // if one parent is pure sable and the other carries black_tan, baby has 50% chance to be pure
+            // sable and 50% chance to be sable and carry black_tan
+            baby.setBaseColor(1);
+            baby.setCarriedColor(this.random.nextInt(2) + 1);
+        } else {
+            // if both parents carry black_tan, baby has 25% to be pure sable, 50% chance to be sable and carry
+            // black_tan, and 25% chance to be pure black_tan
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(1);
+            } else if (determine < 4) {
+                baby.setBaseColor(1);
+                baby.setCarriedColor(2);
+            } else {
+                baby.setBaseColor(2);
+                baby.setCarriedColor(2);
+            }
+        }
+    }
+
+    private void determineSableBlackTanBaby(PembrokeCorgiEntity baby, PembrokeCorgiEntity sablePar) {
+        if (sablePar.getCarriedColor() == 1) {
+            // if sablePar is pure sable, baby will be sable and carry black_tan
+            baby.setBaseColor(1);
+            baby.setCarriedColor(2);
+        } else {
+            // if parA carries black_tan, baby has 50% chance to be sable and carry black_tan and 50% chance to
+            // be black_tan
+            baby.setBaseColor(this.random.nextInt(2) + 1);
+            baby.setCarriedColor(2);
         }
     }
 }

@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.entity.variant.DachshundVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -39,6 +40,18 @@ public class DachshundEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> CARRIES_CHOCOLATE =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_CHOCOLATE =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CARRIES_FAWN =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_FAWN =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CARRIES_CREAM =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_CREAM =
+            SynchedEntityData.defineId(DachshundEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -90,7 +103,7 @@ public class DachshundEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dachshund.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -153,6 +166,89 @@ public class DachshundEntity extends AbstractDog {
             }
         }
 
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.isFawn() && this.isCream()) {
+                    if (this.isChocolate()) {
+                        message = new TextComponent("This Dachshund demonstrates two recessive traits, and has the alleles for chocolate fur.");
+                    } else if (this.getChocolateCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates two recessive traits, and carries the allele for chocolate fur.");
+                    } else {
+                        message = new TextComponent("This Dachshund demonstrates two recessive traits. They have otherwise standard traits.");
+                    }
+                } else if (this.isFawn()) {
+                    if (this.isChocolate() && this.getCreamCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also have the alleles for chocolate fur and carry a recessive trait.");
+                    } else if (this.isChocolate()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also have the alleles for chocolate fur.");
+                    } else if (this.getChocolateCarrier() && this.getCreamCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also carry two recessive traits.");
+                    } else if (this.getChocolateCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also carry the recessive chocolate fur trait.");
+                    } else if (this.getCreamCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also carry the recessive cream trait.");
+                    } else {
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They have otherwise standard genes.");
+                    }
+                } else if (this.isChocolate() && this.isCream()) {
+                    if (this.getFawnCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates two recessive traits. They also carries the dilution trait.");
+                    } else {
+                        message = new TextComponent("This Dachshund demonstrates two recessive traits.");
+                    }
+                } else if (this.isChocolate()) {
+                    if (this.getFawnCarrier() && this.getCreamCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive chocolate fur trait. They also carry two recessive traits.");
+                    } else if (this.getFawnCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive chocolate fur trait, and carries the recessive dilution trait.");
+                    } else if (this.getCreamCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive chocolate fur trait, and carries the recessive cream trait.");
+                    } else {
+                        message = new TextComponent("This Dachshund demonstrates the recessive chocolate fur trait.");
+                    }
+                } else if (this.isCream()) {
+                    if (this.getFawnCarrier() && this.getChocolateCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait. They also carry two recessive traits.");
+                    } else if (this.getFawnCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait, and carries the recessive dilution trait.");
+                    } else if (this.getChocolateCarrier()) {
+                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait, and carries the recessive chocolate fur gene.");
+                    } else {
+                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait.");
+                    }
+                } else {
+                    if (this.getCreamCarrier()) {
+                        if (this.getFawnCarrier() && this.getChocolateCarrier()) {
+                            message = new TextComponent("This Dachshund carries three recessive traits.");
+                        } else if (this.getFawnCarrier()) {
+                            message = new TextComponent("This Dachshund carries the recessive cream and dilution traits.");
+                        } else if (this.getChocolateCarrier()) {
+                            message = new TextComponent("This Dachshund carries the recessive cream and chocolate fur traits.");
+                        } else {
+                            message = new TextComponent("This Dachshund carries the recessive cream trait.");
+                        }
+                    } else {
+                        if (this.getFawnCarrier() && this.getChocolateCarrier()) {
+                            message = new TextComponent("This Dachshund carries the recessive dilution and chocolate fur traits.");
+                        } else if (this.getFawnCarrier()) {
+                            message = new TextComponent("This Dachshund carries the recessive dilution trait.");
+                        } else if (this.getChocolateCarrier()) {
+                            message = new TextComponent("This Dachshund carries the recessive chocolate fur trait.");
+                        } else {
+                            message = new TextComponent("This Dachshund doesn't carry any recessive traits.");
+                        }
+                    }
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
+            }
+        }
+
         return super.mobInteract(player, hand);
     }
 
@@ -160,18 +256,36 @@ public class DachshundEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(CARRIES_CHOCOLATE, tag.getBoolean("ChocolateCarrier"));
+        this.entityData.set(IS_CHOCOLATE, tag.getBoolean("IsChocolate"));
+        this.entityData.set(CARRIES_FAWN, tag.getBoolean("FawnCarrier"));
+        this.entityData.set(IS_FAWN, tag.getBoolean("IsFawn"));
+        this.entityData.set(CARRIES_CREAM, tag.getBoolean("CreamCarrier"));
+        this.entityData.set(IS_CREAM, tag.getBoolean("IsCream"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putBoolean("ChocolateCarrier", this.getChocolateCarrier());
+        tag.putBoolean("IsChocolate", this.isChocolate());
+        tag.putBoolean("FawnCarrier", this.getFawnCarrier());
+        tag.putBoolean("IsFawn", this.isFawn());
+        tag.putBoolean("CreamCarrier", this.getCreamCarrier());
+        tag.putBoolean("IsCream", this.isCream());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(CARRIES_CHOCOLATE, false);
+        this.entityData.define(IS_CHOCOLATE, false);
+        this.entityData.define(CARRIES_FAWN, false);
+        this.entityData.define(IS_FAWN, false);
+        this.entityData.define(CARRIES_CREAM, false);
+        this.entityData.define(IS_CREAM, false);
     }
 
     @Override
@@ -198,23 +312,46 @@ public class DachshundEntity extends AbstractDog {
         Random r = new Random();
         int determine = r.nextInt(9) + 1;
         int cream = r.nextInt(3) + 1;
+        int carrier = r.nextInt(8) + 1;
         int var;
 
         if (cream == 3) {
+            setCreamStatus(true, true);
             if (determine < 6) {
                 var = 3;
+                setChocolateStatus(carrier == 1, false);
+                setFawnStatus(carrier == 2, false);
             } else if (determine < 9) {
                 var = 4;
+                setChocolateStatus(true, true);
+                setFawnStatus(carrier == 2, false);
             } else {
                 var = 5;
+                setFawnStatus(true, true);
+                if (r.nextInt(8) + 1 < 6) {
+                    setChocolateStatus(carrier == 1, false);
+                } else {
+                    setChocolateStatus(true, true);
+                }
             }
         } else {
+            setCreamStatus(r.nextInt(4) == 0, false);
             if (determine < 6) {
                 var = 0;
+                setChocolateStatus(carrier == 1, false);
+                setFawnStatus(carrier == 2, false);
             } else if (determine < 9) {
                 var = 1;
+                setChocolateStatus(true, true);
+                setFawnStatus(carrier == 2, false);
             } else {
                 var = 2;
+                setFawnStatus(true, true);
+                if (r.nextInt(8) + 1 < 6) {
+                    setChocolateStatus(carrier == 1, false);
+                } else {
+                    setChocolateStatus(true, true);
+                }
             }
         }
 
@@ -238,88 +375,164 @@ public class DachshundEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
+
+    public boolean getChocolateCarrier() {
+        return this.entityData.get(CARRIES_CHOCOLATE);
+    }
+
+    public boolean isChocolate() {
+        return this.entityData.get(IS_CHOCOLATE);
+    }
+
+    private void setChocolateStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_CHOCOLATE, carrier);
+        this.entityData.set(IS_CHOCOLATE, is);
+    }
+
+    public boolean getFawnCarrier() {
+        return this.entityData.get(CARRIES_FAWN);
+    }
+
+    public boolean isFawn() {
+        return this.entityData.get(IS_FAWN);
+    }
+
+    private void setFawnStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_FAWN, carrier);
+        this.entityData.set(IS_FAWN, is);
+    }
+    public boolean getCreamCarrier() {
+        return this.entityData.get(CARRIES_CREAM);
+    }
+
+    public boolean isCream() {
+        return this.entityData.get(IS_CREAM);
+    }
+
+    private void setCreamStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_CREAM, carrier);
+        this.entityData.set(IS_CREAM, is);
+    }
+
     private void determineBabyVariant(DachshundEntity baby, DachshundEntity otherParent) {
-        boolean parentACream; // true if this entity is a _CREAM variant
-        boolean parentBCream; // true if this entity is a _CREAM variant
-        boolean colorCheck; // true if special coat color possible
+        // determine if baby is black or chocolate
+        determineBabyChocolate(baby, otherParent);
 
-        // checks parentA
-        if (this.getVariant() == DachshundVariant.byId(0) || this.getVariant() == DachshundVariant.byId(1) || this.getVariant() == DachshundVariant.byId(2)) {
-            parentACream = false;
-        } else {
-            parentACream = true;
-        }
+        // determine if baby is diluted (fawn) or not
+        determineBabyFawn(baby, otherParent);
 
-        // checks parentB
-        if (otherParent.getVariant() == DachshundVariant.byId(0) || otherParent.getVariant() == DachshundVariant.byId(1) || otherParent.getVariant() == DachshundVariant.byId(2)) {
-            parentBCream = false;
-        } else {
-            parentBCream = true;
-        }
+        // determine if baby is tan or cream
+        determineBabyCream(baby, otherParent);
 
-        // checks that one parent is a cream and one parent isn't; marks colorCheck true if true
-        if ((parentACream && !parentBCream) || (!parentACream && parentBCream)) {
-            colorCheck = true;
-        } else {
-            colorCheck = false;
-        }
-
-        // if potential special coat is possible, this runs
-        if (colorCheck) {
-            DachshundVariant parAVar = this.getVariant(); // gets this entity's exact variant
-            int variantA = parAVar.getId(); // gets variant ID of parent A
-            DachshundVariant parBVar = otherParent.getVariant(); // gets entity's exact variant
-            int variantB = parBVar.getId(); // gets variant ID of parent B
-            int variantDistance = Math.abs(variantA - variantB); // gets absolute value of the difference between the two variant ids
-            DachshundVariant babyVariant; // creates holder for the baby's variant
-
-            // ensures that the variants are more than three apart (IE: parent variants aren't X_TAN and X_CREAM
-            if (variantDistance != 3) {
-                // changes variantA to either the CREAM or TAN version of parentA ID number
-                if (variantA < 3) {
-                    variantA = variantA + 3;
-                } else {
-                    variantA = variantA - 3;
-                }
-
-                // changes variantB to either the CREAM or TAN version of parentB ID number
-                if (variantB < 3) {
-                    variantB = variantB + 3;
-                } else {
-                    variantB = variantB - 3;
-                }
-
-                // determines outcome of special coat check
-                Random r = new Random();
-                int determine = r.nextInt(10) + 1;
-
-                // assigns baby to either a special variant or one of its parents' variants
-                if (determine == 10) {
-                    babyVariant = DachshundVariant.byId(variantA);
-                    baby.setVariant(babyVariant);
-                } else if (determine == 9) {
-                    babyVariant = DachshundVariant.byId(variantB);
-                    baby.setVariant(babyVariant);
-                } else if (determine > 4) {
-                    baby.setVariant(this.getVariant());
-                } else {
-                    baby.setVariant(otherParent.getVariant());
-                }
+        // determine baby's final phenotype (TYPE_VARIANT)
+        if (baby.isFawn()) {
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.FAWN_CREAM);
             } else {
-                // assigns baby to one of its parents' variants
-                if (this.random.nextBoolean()) {
-                    baby.setVariant(this.getVariant());
-                } else {
-                    baby.setVariant( otherParent.getVariant());
-                }
+                baby.setVariant(DachshundVariant.FAWN_TAN);
+            }
+        } else if (baby.isChocolate()) {
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.CHOCOLATE_CREAM);
+            } else {
+                baby.setVariant(DachshundVariant.CHOCOLATE_TAN);
             }
         } else {
-            // assigns baby to one of its parents' variants
-            if (this.random.nextBoolean()) {
-                baby.setVariant(this.getVariant());
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.BLACK_CREAM);
             } else {
-                baby.setVariant( otherParent.getVariant());
+                baby.setVariant(DachshundVariant.BLACK_TAN);
             }
+        }
+    }
+
+    private void determineBabyChocolate(DachshundEntity baby, DachshundEntity otherParent) {
+        if (this.isChocolate() && otherParent.isChocolate()) {
+            // if both parents are chocolate, baby will be chocolate
+            baby.setChocolateStatus(true, true);
+        } else if ((this.isChocolate() && otherParent.getChocolateCarrier()) ||
+                (this.getChocolateCarrier() && otherParent.isChocolate())) {
+            // if one parent is chocolate and one parent is a carrier, baby has 50% chance to be chocolate and
+            // 50% chance to be a carrier
+            baby.setChocolateStatus(true, this.random.nextBoolean());
+        } else if (this.isChocolate() || otherParent.isChocolate()) {
+            // if one parent is chocolate and the other is not a carrier, baby will be black and carry chocolate
+            baby.setChocolateStatus(true, false);
+        } else if (this.getChocolateCarrier() && otherParent.getChocolateCarrier()) {
+            // if both parents are chocolate carriers, baby has 25% chance not to carry chocolate, 50% chance to
+            // be black and carry chocolate, and 25% chance to be chocolate
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setChocolateStatus(false, false);
+            } else {
+                baby.setChocolateStatus(true, determine == 4);
+            }
+        } else if (this.getChocolateCarrier() || otherParent.getChocolateCarrier()) {
+            // if only one parent is a chocolate carrier, baby will be black and has 50% chance to carry chocolate
+            baby.setChocolateStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a chocolate carrier, baby will be black and won't carry chocolate
+            baby.setChocolateStatus(false, false);
+        }
+    }
+
+    private void determineBabyFawn(DachshundEntity baby, DachshundEntity otherParent) {
+        if (this.isFawn() && otherParent.isFawn()) {
+            // if both parents are fawn, baby will be fawn
+            baby.setFawnStatus(true, true);
+        } else if ((this.isFawn() && otherParent.getFawnCarrier()) ||
+                (this.getFawnCarrier() && otherParent.isFawn())) {
+            // if one parent is fawn and one parent is a carrier, baby has 50% chance to be fawn and 50% chance to
+            // be a carrier
+            baby.setFawnStatus(true, this.random.nextBoolean());
+        } else if (this.isFawn() || otherParent.isFawn()) {
+            // if one parent is fawn and the other is not a carrier, baby will carry fawn
+            baby.setFawnStatus(true, false);
+        } else if (this.getFawnCarrier() && otherParent.getFawnCarrier()) {
+            // if both parents are fawn carriers, baby has 25% chance not to carry fawn, 50% chance to carry
+            // fawn, and 25% chance to be fawn
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setFawnStatus(false, false);
+            } else {
+                baby.setFawnStatus(true, determine == 4);
+            }
+        } else if (this.getFawnCarrier() || otherParent.getFawnCarrier()) {
+            // if only one parent is a fawn carrier, baby will have 50% chance to carry fawn
+            baby.setFawnStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a fawn carrier, baby won't carry fawn
+            baby.setFawnStatus(false, false);
+        }
+    }
+
+    private void determineBabyCream(DachshundEntity baby, DachshundEntity otherParent) {
+        if (this.isCream() && otherParent.isCream()) {
+            // if both parents are cream, baby will be cream
+            baby.setCreamStatus(true, true);
+        } else if ((this.isCream() && otherParent.getCreamCarrier()) ||
+                (this.getCreamCarrier() && otherParent.isCream())) {
+            // if one parent is cream and one parent is a carrier, baby has 50% chance to be cream and 50%
+            // chance to be a carrier
+            baby.setCreamStatus(true, this.random.nextBoolean());
+        } else if (this.isCream() || otherParent.isCream()) {
+            // if one parent is cream and the other is not a carrier, baby will carry cream
+            baby.setCreamStatus(true, false);
+        } else if (this.getCreamCarrier() && otherParent.getCreamCarrier()) {
+            // if both parents are cream carriers, baby has 25% chance not to carry cream, 50% chance to carry
+            // cream, and 25% chance to be cream
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setCreamStatus(false, false);
+            } else {
+                baby.setCreamStatus(true, determine == 4);
+            }
+        } else if (this.getCreamCarrier() || otherParent.getCreamCarrier()) {
+            // if only one parent is a cream carrier, baby will have 50% chance to carry cream
+            baby.setCreamStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a cream carrier, baby won't carry fawn
+            baby.setCreamStatus(false, false);
         }
     }
 }

@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.variant.CardiganCorgiVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -39,6 +40,10 @@ public class CardiganCorgiEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(CardiganCorgiEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> BASE_COLOR =
+            SynchedEntityData.defineId(CardiganCorgiEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> IS_MERLE =
+            SynchedEntityData.defineId(CardiganCorgiEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -90,7 +95,7 @@ public class CardiganCorgiEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cardigan_corgi.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -152,6 +157,35 @@ public class CardiganCorgiEntity extends AbstractDog {
                 return InteractionResult.SUCCESS;
             }
         }
+        
+        if (item == ModItems.GENE_TESTER.get()) {
+            if (this.level.isClientSide) {
+                TextComponent message;
+                if (this.getVariant() == CardiganCorgiVariant.SABLE) {
+                    if (this.isMerle()) {
+                        message = new TextComponent("This Cardigan Corgi demonstrates a recessive trait. They also carry the merle trait.");
+                    } else {
+                        message = new TextComponent("This Cardigan Corgi demonstrates a recessive trait.");
+                    }
+                } else if (this.getVariant() == CardiganCorgiVariant.RED) {
+                    if (this.isMerle()) {
+                        message = new TextComponent("This Cardigan Corgi demonstrates an incomplete dominant trait. They also carry the merle trait.");
+                    } else {
+                        message = new TextComponent("This Cardigan Corgi demonstrates an incomplete dominant trait.");
+                    }
+                } else if (this.getVariant() == CardiganCorgiVariant.BLACK) {
+                    message = new TextComponent("This Cardigan Corgi doesn't have any recessive traits.");
+                } else {
+                    message = new TextComponent("This Cardigan Corgi doesn't have any recessive traits, but does demonstrate the merle trait.");
+                }
+
+                player.sendMessage(message, player.getUUID());
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.PASS;
+            }
+        }
 
         return super.mobInteract(player, hand);
     }
@@ -160,18 +194,24 @@ public class CardiganCorgiEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(BASE_COLOR, tag.getInt("BaseColor"));
+        this.entityData.set(IS_MERLE, tag.getBoolean("IsMerle"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("BaseColor", this.getBaseColor());
+        tag.putBoolean("IsMerle", this.isMerle());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(BASE_COLOR, 0);
+        this.entityData.define(IS_MERLE, false);
     }
 
     @Override
@@ -199,13 +239,19 @@ public class CardiganCorgiEntity extends AbstractDog {
 
         if (determine < 8) {
             var = 0;
+            setBaseColor(0);
         } else if (determine < 13) {
             var = 1;
+            setBaseColor(1);
         } else if (determine < 16) {
             var = 2;
+            setBaseColor(2);
         } else {
             var = 3;
+            setBaseColor(1);
         }
+
+        setMerle(var == 3);
 
         // assign chosen variant and finish the method
         CardiganCorgiVariant variant = CardiganCorgiVariant.byId(var);
@@ -227,35 +273,76 @@ public class CardiganCorgiEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
-    private void determineBabyVariant(CardiganCorgiEntity baby, CardiganCorgiEntity otherParent) {
-        boolean colorCheck;
+    public int getBaseColor() {
+        return this.entityData.get(BASE_COLOR);
+    }
 
-        if (this.getVariant() == CardiganCorgiVariant.BLACK && otherParent.getVariant() == CardiganCorgiVariant.SABLE) {
-            colorCheck = true;
-        } else if (this.getVariant() == CardiganCorgiVariant.SABLE && otherParent.getVariant() == CardiganCorgiVariant.BLACK) {
-            colorCheck = true;
+    private void setBaseColor(int color) {
+        this.entityData.set(BASE_COLOR, color);
+    }
+
+    public boolean isMerle() {
+        return this.entityData.get(IS_MERLE);
+    }
+
+    private void setMerle(boolean merle) {
+        this.entityData.set(IS_MERLE, merle);
+    }
+
+    private void determineBabyVariant(CardiganCorgiEntity baby, CardiganCorgiEntity otherParent) {
+        // if tree determines if baby is Black, Red, or Sable
+        if (this.getBaseColor() == 0 && otherParent.getBaseColor() == 0) {
+            // if both parents are Red, baby has 25% chance to be Black, 50% chance to be Red, and 25% chance
+            // to be Sable
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setBaseColor(1);
+            } else if (determine < 4) {
+                baby.setBaseColor(0);
+            } else {
+                baby.setBaseColor(2);
+            }
+        } else if ((this.getBaseColor() == 1 && otherParent.getBaseColor() == 2) ||
+                (this.getBaseColor() == 2 && otherParent.getBaseColor() == 1)) {
+            // if one parent is Black and one parent is Sable, baby will be Red
+            baby.setBaseColor(0);
+        } else if (this.getBaseColor() == otherParent.getBaseColor()) {
+            // if both parents are Black or both parents are Sable, baby will match the parents
+            baby.setBaseColor(this.getBaseColor());
         } else {
-            colorCheck = false;
+            // if one parent is Red and the other is Black or Sable, baby will match one of their parents
+            if (this.random.nextBoolean()) {
+                baby.setBaseColor(this.getBaseColor());
+            } else {
+                baby.setBaseColor(otherParent.getBaseColor());
+            }
         }
 
-        if (colorCheck) {
-            Random r = new Random();
-            int determine = r.nextInt(5) + 1;
-
-            if (determine == 5) {
-                baby.setVariant(CardiganCorgiVariant.RED);
-            } else if (determine > 2) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
+        // if tree determines if baby has merle or not
+        if (this.isMerle() && otherParent.isMerle()) {
+            // if both parents are merle, baby will be merle
+            baby.setMerle(true);
+        } else if (this.isMerle() || otherParent.isMerle()) {
+            // if one parent is merle, baby has 50% chance to be merle and 50% chance not to be merle
+            baby.setMerle(this.random.nextBoolean());
         } else {
-            // Determines variant based on parents
-            if (this.random.nextBoolean()) {
-                baby.setVariant(this.getVariant());
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
+            // if neither parent is merle, baby will not be merle
+            baby.setMerle(false);
+        }
+
+        // if tree decides baby's visual variant
+        if (baby.getBaseColor() == 1 && baby.isMerle()) {
+            // if baby's base color is Black, and they have merle, baby will be Blue Merle
+            baby.setVariant(CardiganCorgiVariant.BLUE_MERLE);
+        } else if (baby.getBaseColor() == 0) {
+            // if baby's base color is Red, they will be Red
+            baby.setVariant(CardiganCorgiVariant.RED);
+        } else if (baby.getBaseColor() == 1) {
+            // if baby's base color is Black (and they don't have merle), baby will be Black
+            baby.setVariant(CardiganCorgiVariant.BLACK);
+        } else {
+            // if baby's base color is Sable, baby will be Sable
+            baby.setVariant(CardiganCorgiVariant.SABLE);
         }
     }
 }

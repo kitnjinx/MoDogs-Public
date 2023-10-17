@@ -112,7 +112,7 @@ public class BorderCollieEntity extends AbstractDog {
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
+        if (this.isAngry() || this.isAggressive() && event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.border_collie.angrywalk"));
             return PlayState.CONTINUE;
         }
@@ -177,43 +177,43 @@ public class BorderCollieEntity extends AbstractDog {
                 TextComponent part1;
                 if (this.getBaseColor() == 2) {
                     if (this.isMerle()) {
-                        part1 = new TextComponent("This Border Collie demonstrates a recessive trait, as well as the merle gene.");
+                        part1 = new TextComponent("This Border Collie demonstrates a recessive trait, as well as the merle trait.");
                     } else {
                         part1 = new TextComponent("This Border Collie demonstrates a recessive trait.");
                     }
 
                     if (this.isRed()) {
-                        message = new TextComponent(part1.getString() + " They also have the genes for red fur.");
+                        message = new TextComponent(part1.getString() + " They also have the alleles for red fur.");
                     } else if (this.getRedCarrier()) {
-                        message = new TextComponent(part1.getString() + " They also carry the gene for red fur.");
+                        message = new TextComponent(part1.getString() + " They also carry the red fur trait.");
                     } else {
                         message = new TextComponent(part1.getString() + " They have otherwise standard traits.");
                     }
                 } else if (this.getBaseColor() == 1) {
                     if (this.isMerle()) {
-                        part1 = new TextComponent("This Border Collie demonstrates a recessive trait, as well as the merle gene.");
+                        part1 = new TextComponent("This Border Collie demonstrates a recessive trait, as well as the merle trait.");
                     } else {
                         part1 = new TextComponent("This Border Collie demonstrates a recessive trait.");
                     }
 
                     if (this.getLilacCarrier()) {
-                        message = new TextComponent(part1.getString() + " They also carry a recessive dilution gene.");
+                        message = new TextComponent(part1.getString() + " They also carry the recessive dilution trait.");
                     } else {
                         message = part1;
                     }
                 } else {
-                    if (this.getRedCarrier() & this.getLilacCarrier()) {
-                        part1 = new TextComponent("This Border Collie carries recessive red fur and recessive dilution genes.");
+                    if (this.getRedCarrier() && this.getLilacCarrier()) {
+                        part1 = new TextComponent("This Border Collie carries two recessive traits.");
                     } else if (this.getRedCarrier()) {
-                        part1 = new TextComponent("This Border Collie carries a recessive red fur gene.");
+                        part1 = new TextComponent("This Border Collie carries the recessive red fur trait.");
                     } else if (this.getLilacCarrier()) {
-                        part1 = new TextComponent("This Border Collie carries a recessive dilution gene.");
+                        part1 = new TextComponent("This Border Collie carries the recessive dilution trait.");
                     } else {
                         part1 = new TextComponent("This Border Collie doesn't have any recessive traits.");
                     }
 
                     if (this.isMerle()) {
-                        message = new TextComponent(part1.getString() + " They demonstrate the merle gene.");
+                        message = new TextComponent(part1.getString() + " They demonstrate the merle trait.");
                     } else {
                         message = part1;
                     }
@@ -419,7 +419,7 @@ public class BorderCollieEntity extends AbstractDog {
         BorderCollieVariant babyVar;
 
         // this if tree determines the baby's base color (Black, Red, or Lilac)
-        if (this.getBaseColor() == 0 & otherParent.getBaseColor() == 0) {
+        if (this.getBaseColor() == 0 && otherParent.getBaseColor() == 0) {
             // if both parents are black-based, run the following method
             determinePureBlackBaby(baby, otherParent);
         } else if (this.getBaseColor() == 0) {
@@ -436,7 +436,7 @@ public class BorderCollieEntity extends AbstractDog {
             } else {
                 determineBlackLilacBaby(baby, otherParent, this);
             }
-        } else if (this.getBaseColor() == 1 & otherParent.getBaseColor() == 1) {
+        } else if (this.getBaseColor() == 1 && otherParent.getBaseColor() == 1) {
             // if both parents are red-based, run the following method
             determinePureRedBaby(baby, otherParent);
         } else if (this.getBaseColor() == 1) {
@@ -452,7 +452,7 @@ public class BorderCollieEntity extends AbstractDog {
         }
 
         // this if tree determines whether the baby is merle or not
-        if (this.isMerle() & otherParent.isMerle()) {
+        if (this.isMerle() && otherParent.isMerle()) {
             // if both parents are merle, baby is merle
             baby.setMerle(true);
         } else if (this.isMerle() || otherParent.isMerle()) {
@@ -493,7 +493,7 @@ public class BorderCollieEntity extends AbstractDog {
 
     private void determinePureBlackBaby(BorderCollieEntity baby, BorderCollieEntity otherParent) {
         // this if tree determines if baby will be black or red based on the parents
-        if (this.getRedCarrier() & otherParent.getRedCarrier()) {
+        if (this.getRedCarrier() && otherParent.getRedCarrier()) {
             // if both parents carry red, baby has 25% chance to be black and not carry red, 50% to be black
             // and carry red, and 25% to be red
             int determine = this.random.nextInt(4) + 1;
@@ -512,7 +512,7 @@ public class BorderCollieEntity extends AbstractDog {
 
         // this if tree determines if the baby will be lilac or not based on the parents
         boolean isLilac;
-        if (this.getLilacCarrier() & otherParent.getLilacCarrier()) {
+        if (this.getLilacCarrier() && otherParent.getLilacCarrier()) {
             // if both parents carry lilac, baby has 25% chance to not carry lilac, 50% chance to carry
             // lilac, and 25% chance to be lilac
             int determine = this.random.nextInt(4) + 1;
@@ -559,7 +559,7 @@ public class BorderCollieEntity extends AbstractDog {
 
         // this if tree determines if the baby will be lilac or not based on the parents
         boolean isLilac;
-        if (parA.getLilacCarrier() & parB.getLilacCarrier()) {
+        if (parA.getLilacCarrier() && parB.getLilacCarrier()) {
             // if both parents carry lilac, baby has 25% chance to not carry lilac, 50% chance to carry
             // lilac, and 25% chance to be lilac
             int determine = this.random.nextInt(4) + 1;
@@ -659,7 +659,7 @@ public class BorderCollieEntity extends AbstractDog {
 
         // determine if baby is lilac, a lilac carrier, or neither
         boolean isLilac;
-        if (this.getLilacCarrier() & otherParent.getLilacCarrier()) {
+        if (this.getLilacCarrier() && otherParent.getLilacCarrier()) {
             // if both parents are lilac carriers, baby has 25% chance not to carry lilac, 50% to carry lilac,
             // and 25% chance to be lilac
             int determine = this.random.nextInt(4) + 1;
@@ -733,17 +733,17 @@ public class BorderCollieEntity extends AbstractDog {
         baby.setBaseColor(2);
 
         // if tree determines baby's hidden red/black genetics
-        if (this.isRed() & otherParent.isRed()) {
+        if (this.isRed() && otherParent.isRed()) {
             // if both parents are red, baby will be red
             baby.setRedStatus(true, true);
-        } else if ((this.isRed() & otherParent.getRedCarrier()) || (this.getRedCarrier() & otherParent.isRed())) {
+        } else if ((this.isRed() && otherParent.getRedCarrier()) || (this.getRedCarrier() && otherParent.isRed())) {
             // if one parent is red and the other is a carrier, baby has 50% to be black and a red carrier and
             // 50% chance to be red
             baby.setRedStatus(true, this.random.nextBoolean());
         } else if (this.isRed() || otherParent.isRed()) {
             // if one parent is red and the other is not a carrier, baby will be a red carrier
             baby.setRedStatus(true, false);
-        } else if (this.getRedCarrier() & otherParent.getRedCarrier()) {
+        } else if (this.getRedCarrier() && otherParent.getRedCarrier()) {
             // if both parents are red carriers, baby will have 25% chance not to carry, 50% chance to be a red
             // carrier, and 25% chance to be red
             int determine = this.random.nextInt(4) + 1;
