@@ -1,0 +1,16 @@
+{
+  "name": "Breeder's Guide",
+  "icon": "modogs:breeders_guide",
+  "category": "modogs:miscellaneous",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This book provides detailed information about the genetics of the dogs within this world."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:breeders_guide",
+      "title": "Breeder's Guide"
+    }
+  ]
+}

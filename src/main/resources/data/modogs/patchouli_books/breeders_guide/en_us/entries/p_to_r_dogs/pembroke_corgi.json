@@ -1,0 +1,26 @@
+{
+  "name": "Pembroke Corgi",
+  "icon": "modogs:pembroke_corgi_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Pembroke Corgis only have one gene that has been witnessed to affect how they look, and this is the R Locus. This gene will determine whether they have pure red fur, are red-headed tricolor, or are black-headed tricolor."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The R Locus has three potential alleles, the dominant 'R' allele which creates red fur, the 'RH' allele which creates red-headed tricolor dogs, and the recessive 'BH' allele which creates black-headed tricolor dogs. The 'R' allele is dominant over both 'RH' and 'BH', while 'RH' is dominant over 'BH'.",
+      "title": "R Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with only one copy of 'R' will appear red and carry their other allele, providing the potential to breed different colored pups depending on the other parent. Dogs with one copy of 'RH' and one copy of 'BH' will appear as a red-headed tricolor, but have the potential to create black-headed tricolor pups depending on the other parent.",
+      "title": "R Locus Cont."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with two copies of the 'BH' gene will be black-headed tricolor, and all of their pups will either carry the black-headed tricolor trait or be black-headed tricolor.$(br2)Breakdown:$(br)R-: Red Fur$(br)RHRH/RHBH: Red-headed Tricolor$(br)BHBH: Black-headed Tricolor",
+      "title": "R Locus Cont."
+    }
+  ]
+}

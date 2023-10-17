@@ -1,0 +1,31 @@
+{
+  "name": "Saint Bernard",
+  "icon": "modogs:saint_bernard_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Saint Bernards have two genes that affect how they look. These are the G Locus and the S Locus. The G Locus determines whether a dog has more of a orange or yellow tint to their fur, while the S Locus determines how 'true' the fur's coloring is."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The G Locus has two potential alleles, the dominant 'G' and the recessive 'g'. The 'G' allele creates brown fur, while the 'g' allele creates more orange-gold fur. Dogs with one copy of 'g' will carry the golden trait and may pass it on to pups, providing the potential for golden pups depending on the other parent. Dogs with two copies of 'g' will always create either golden carriers or golden puppies.",
+      "title": "G Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The S Locus is the difference between a dull brown dog and a deep mahogany dog. It determines if the coat shows more of the desired color, such as a deep mahogany or closer to golden fur, versus other shades. It has two potential alleles, the incompletely dominant 'S' and 's' alleles.",
+      "title": "S Locus Intro"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "On brown dogs, the 'S' allele creates duller coloration, while the 's' allele creates richer coloration. Dogs with two copies of the 'S' allele have light brown fur, while dogs with two copies of the 's' allele have dark mahogany fur. Dogs with one copy of each have a rich, lighter red fur.",
+      "title": "S Locus on Brown"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "On golden dogs, the 'S' allele appears completely dominant and creates brighter, redder fur, while the 's' allele creates a more golden coloration. Dogs with one or two copies of the 'S' allele have vibrant orange fur, while dogs with two copies of the 's' allele have lighter, more golden fur.",
+      "title": "S Locus on Golden"
+    }
+  ]
+}
