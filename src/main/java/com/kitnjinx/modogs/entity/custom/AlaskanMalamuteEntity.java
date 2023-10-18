@@ -144,7 +144,7 @@ public class AlaskanMalamuteEntity extends AbstractDog {
         Item itemForTaming = ModItems.BEEF_TREAT.get();
         Item itemForTaming2 = ModItems.SALMON_TREAT.get();
 
-        if (item == itemForTaming || item == itemForTaming2 && !isTame()) {
+        if ((item == itemForTaming || item == itemForTaming2) && !isTame()) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {

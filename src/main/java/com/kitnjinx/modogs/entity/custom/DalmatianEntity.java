@@ -131,7 +131,7 @@ public class DalmatianEntity extends AbstractDog {
         Item itemForTaming = ModItems.RABBIT_TREAT.get();
         Item itemForTaming2 = ModItems.BACON_TREAT.get();
 
-        if (item == itemForTaming || item == itemForTaming2 && !isTame()) {
+        if ((item == itemForTaming || item == itemForTaming2) && !isTame()) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
