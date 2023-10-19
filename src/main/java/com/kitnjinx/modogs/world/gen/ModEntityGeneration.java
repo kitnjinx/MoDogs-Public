@@ -212,6 +212,20 @@ public class ModEntityGeneration {
                 10, 2, 2, MEADOW);
         addEntityToSpecificBiomes(event, ModEntityTypes.BOXER.get(),
                 30, 2, 2, SPARSE_JUNGLE);
+
+        // GREYHOUND SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                30, 1, 2, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                30, 1, 2, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                10, 1, 2, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                20, 1, 2, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                20, 1, 2, WOODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
+                10, 1, 2, SAVANNA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

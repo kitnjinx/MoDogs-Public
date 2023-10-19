@@ -27,5 +27,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.SAINT_BERNARD.get(), SaintBernardRenderer::new);
         EntityRenderers.register(ModEntityTypes.BLOODHOUND.get(), BloodhoundRenderer::new);
         EntityRenderers.register(ModEntityTypes.BOXER.get(), BoxerRenderer::new);
+        EntityRenderers.register(ModEntityTypes.GREYHOUND.get(), GreyhoundRenderer::new);
     }
 }
