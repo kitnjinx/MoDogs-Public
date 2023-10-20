@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:pit_bull_spawn_egg"
+    },
+    "title": "Pit Bull Breeder",
+    "description": "Breed a Pit Bull",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:tame/tame_pit_bull",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pit_bull"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

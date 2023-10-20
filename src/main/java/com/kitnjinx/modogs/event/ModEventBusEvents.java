@@ -26,5 +26,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.BLOODHOUND.get(), BloodhoundEntity.setAttributes());
         event.put(ModEntityTypes.BOXER.get(), BoxerEntity.setAttributes());
         event.put(ModEntityTypes.GREYHOUND.get(), GreyhoundEntity.setAttributes());
+        event.put(ModEntityTypes.PIT_BULL.get(), PitBullEntity.setAttributes());
     }
 }

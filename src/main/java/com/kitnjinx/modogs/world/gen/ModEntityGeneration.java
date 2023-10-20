@@ -226,6 +226,20 @@ public class ModEntityGeneration {
                 20, 1, 2, WOODED_BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.GREYHOUND.get(),
                 10, 1, 2, SAVANNA);
+
+        // PIT BULL SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                30, 1, 1, DARK_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                20, 1, 1, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                20, 1, 1, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                10, 1, 1, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                30, 1, 1, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
+                30, 1, 1, JUNGLE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

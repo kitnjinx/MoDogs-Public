@@ -133,6 +133,7 @@
   "item.modogs.bloodhound_spawn_egg": "Bloodhound Spawn Egg",
   "item.modogs.boxer_spawn_egg": "Boxer Spawn Egg",
   "item.modogs.greyhound_spawn_egg": "Greyhound Spawn Egg",
+  "item.modogs.pit_bull_spawn_egg": "Pit Bull Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -148,5 +149,6 @@
   "entity.modogs.saint_bernard": "Saint Bernard",
   "entity.modogs.bloodhound": "Bloodhound",
   "entity.modogs.boxer": "Boxer",
-  "entity.modogs.greyhound": "Greyhound"
+  "entity.modogs.greyhound": "Greyhound",
+  "entity.modogs.pit_bull": "Pit Bull"
 }
