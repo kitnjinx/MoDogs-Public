@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "modogs:gene_tester_from_wool",
+      "recipe": "modogs:gene_tester",
       "title": "Gene Tester"
     }
   ]
