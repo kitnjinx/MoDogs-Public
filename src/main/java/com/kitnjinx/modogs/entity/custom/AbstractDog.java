@@ -249,6 +249,10 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return super.mobInteract(player, hand);
         }
 
+        if (item == ModItems.GENO_READER.get()) {
+            return InteractionResult.PASS;
+        }
+
         if(isTame() && !this.level.isClientSide && hand == InteractionHand.MAIN_HAND && this.isOwnedBy(player)) {
             setSitting(!isSitting());
             return InteractionResult.SUCCESS;
