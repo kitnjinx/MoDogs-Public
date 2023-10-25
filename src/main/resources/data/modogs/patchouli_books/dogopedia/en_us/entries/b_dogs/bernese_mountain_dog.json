@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Bernese Mountain Dogs are large, fluffy dogs originally used for cattle herding.$(br2)Standing just over a block tall and coming in two different coats, these dogs can make great companions!"
+      "text": "Bernese Mountain Dogs are large, fluffy dogs originally used for cattle herding.$(br2)Standing just over a block tall, these steady dogs come in two coats."
     },
     {
       "type": "patchouli:image",

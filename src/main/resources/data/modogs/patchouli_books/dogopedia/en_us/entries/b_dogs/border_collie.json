@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Border Collies are nimble dogs originally bred for herding sheep and other animals.$(br2)Standing just under a block tall and coming in six different coats, these dogs can make great companions!"
+      "text": "Border Collies are nimble dogs originally bred for herding sheep and other animals.$(br2)Standing just under a block tall, these nimble dogs come in six coats."
     },
     {
       "type": "patchouli:image",
