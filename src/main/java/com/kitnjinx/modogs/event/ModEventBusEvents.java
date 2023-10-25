@@ -28,5 +28,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.GREYHOUND.get(), GreyhoundEntity.setAttributes());
         event.put(ModEntityTypes.PIT_BULL.get(), PitBullEntity.setAttributes());
         event.put(ModEntityTypes.GREAT_DANE.get(), GreatDaneEntity.setAttributes());
+        event.put(ModEntityTypes.MASTIFF.get(), MastiffEntity.setAttributes());
     }
 }

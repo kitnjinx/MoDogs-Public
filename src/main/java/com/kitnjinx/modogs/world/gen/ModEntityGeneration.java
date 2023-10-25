@@ -254,6 +254,20 @@ public class ModEntityGeneration {
                 20, 1, 1, ERODED_BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
                 10, 1, 1, MEADOW);
+
+        // GREAT DANE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                30, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                30, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                10, 1, 1, DARK_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                20, 1, 1, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                20, 1, 1, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
+                30, 1, 1, WINDSWEPT_SAVANNA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

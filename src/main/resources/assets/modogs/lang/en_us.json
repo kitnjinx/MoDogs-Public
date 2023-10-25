@@ -136,6 +136,7 @@
   "item.modogs.greyhound_spawn_egg": "Greyhound Spawn Egg",
   "item.modogs.pit_bull_spawn_egg": "Pit Bull Spawn Egg",
   "item.modogs.great_dane_spawn_egg": "Great Dane Spawn Egg",
+  "item.modogs.mastiff_spawn_egg": "Mastiff Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -153,5 +154,6 @@
   "entity.modogs.boxer": "Boxer",
   "entity.modogs.greyhound": "Greyhound",
   "entity.modogs.pit_bull": "Pit Bull",
-  "entity.modogs.great_dane": "Great Dane"
+  "entity.modogs.great_dane": "Great Dane",
+  "entity.modogs.mastiff": "Mastiff"
 }

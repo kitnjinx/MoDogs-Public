@@ -49,6 +49,8 @@ public class GenoReaderItem extends Item {
                 testResult = greyhoundGeno((GreyhoundEntity) target);
             } else if (target instanceof LabRetrieverEntity) {
                 testResult = labRetrieverGeno((LabRetrieverEntity) target);
+            } else if (target instanceof MastiffEntity) {
+                testResult = mastiffGeno((MastiffEntity) target);
             } else if (target instanceof PembrokeCorgiEntity) {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
@@ -528,6 +530,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB EE";
             }
+        }
+    }
+
+    private String mastiffGeno(MastiffEntity dog) {
+        if (dog.getVariant() == MastiffVariant.APRICOT) {
+            return "ss";
+        } else if (dog.isCarrier()) {
+            return "Ss";
+        } else {
+            return "SS";
         }
     }
 
