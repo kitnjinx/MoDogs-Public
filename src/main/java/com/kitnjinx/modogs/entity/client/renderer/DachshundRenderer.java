@@ -51,7 +51,7 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
     public RenderType getRenderType(DachshundEntity animatable, float partialTicks, PoseStack stack,
                                     MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
-        // Height ~8/10 inches
+        // Height ~10 inches
         if(animatable.isBaby()) {
             stack.scale(0.35f, 0.35f, 0.35f);
         } else {
