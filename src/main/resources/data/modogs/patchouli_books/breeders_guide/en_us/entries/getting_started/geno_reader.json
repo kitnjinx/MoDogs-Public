@@ -1,0 +1,16 @@
+{
+  "name": "Geno Reader",
+  "icon": "modogs:geno_readter",
+  "category": "modogs:getting_started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "If you'd rather see your dog's alleles directly instead of a summary, you'll want a Geno Reader! These handy little devices provide you with your dog's exact genes."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:geno_reader",
+      "title": "Geno Reader"
+    }
+  ]
+}
