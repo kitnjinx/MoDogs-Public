@@ -45,11 +45,11 @@ public class LabRetrieverRenderer extends GeoEntityRenderer<LabRetrieverEntity> 
     public RenderType getRenderType(LabRetrieverEntity animatable, float partialTicks, PoseStack stack,
                                     MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
-        // Height ~22 inches
+        // Height ~23 inches
         if(animatable.isBaby()) {
-            stack.scale(0.5f, 0.5f, 0.5f);
+            stack.scale(0.525f, 0.525f, 0.525f);
         } else {
-            stack.scale(1f, 1f, 1f);
+            stack.scale(1.05f, 1.05f, 1.05f);
         }
 
         return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
