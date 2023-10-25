@@ -399,6 +399,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.PIT_BULL,0x825a37, 0xeaeaea,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> GREAT_DANE_SPAWN_EGG = ITEMS.register("great_dane_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.GREAT_DANE,0xb28154, 0x221e1e,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

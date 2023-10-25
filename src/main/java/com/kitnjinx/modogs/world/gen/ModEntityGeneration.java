@@ -240,6 +240,20 @@ public class ModEntityGeneration {
                 30, 1, 1, WINDSWEPT_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.PIT_BULL.get(),
                 30, 1, 1, JUNGLE);
+
+        // GREAT DANE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                30, 1, 1, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                30, 1, 1, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                30, 1, 1, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                20, 1, 1, WOODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                20, 1, 1, ERODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
+                10, 1, 1, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

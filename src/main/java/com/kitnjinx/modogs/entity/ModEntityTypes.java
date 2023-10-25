@@ -110,6 +110,12 @@ public class ModEntityTypes {
                             .sized(0.55f, 0.8f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "pit_bull").toString()));
 
+    public static final RegistryObject<EntityType<GreatDaneEntity>> GREAT_DANE =
+            ENTITY_TYPES.register("great_dane",
+                    () -> EntityType.Builder.of(GreatDaneEntity::new, MobCategory.CREATURE)
+                            .sized(0.8f, 1.05f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "great_dane").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

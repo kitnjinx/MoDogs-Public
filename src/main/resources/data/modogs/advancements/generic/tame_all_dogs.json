@@ -234,6 +234,20 @@
           }
         ]
       }
+    },
+    "great_dane": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:great_dane"
+            }
+          }
+        ]
+      }
     }
   }
 }
