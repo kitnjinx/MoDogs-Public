@@ -47,11 +47,11 @@ public class DalmatianRenderer extends GeoEntityRenderer<DalmatianEntity> {
     public RenderType getRenderType(DalmatianEntity animatable, float partialTicks, PoseStack stack,
                                     MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
-        // Height ~24 inches
+        // Height ~22 inches
         if(animatable.isBaby()) {
-            stack.scale(0.55f, 0.55f, 0.55f);
+            stack.scale(0.5f, 0.5f, 0.5f);
         } else {
-            stack.scale(1.1f, 1.1f, 1.1f);
+            stack.scale(1f, 1f, 1f);
         }
 
         return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
