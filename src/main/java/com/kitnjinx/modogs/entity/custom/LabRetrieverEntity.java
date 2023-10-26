@@ -168,7 +168,7 @@ public class LabRetrieverEntity extends AbstractDog {
                     } else if (this.getChocolateCarrier()) {
                         message = new TextComponent("This Labrador Retriever demonstrates a recessive trait, and carries the trait for chocolate fur.");
                     } else {
-                        message = new TextComponent("This Labrador Retriever demonstrates a recessive trait. It has otherwise standard genes.");
+                        message = new TextComponent("This Labrador Retriever demonstrates a recessive trait. It has otherwise standard traits.");
                     }
                 } else if (this.getVariant() == LabRetrieverVariant.CHOCOLATE) {
                     if (this.getYellowCarrier()) {
@@ -274,8 +274,6 @@ public class LabRetrieverEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         LabRetrieverVariant variant = LabRetrieverVariant.byId(var);
-        // Basic variant setter, equal chance
-        // LabRetrieverVariant variant = Util.getRandom(LabRetrieverVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -317,7 +315,33 @@ public class LabRetrieverEntity extends AbstractDog {
 
     private void determineBabyVariant(LabRetrieverEntity baby, LabRetrieverEntity otherParent) {
         // determine if baby is black or chocolate
-        determineBabyChocolate(baby, otherParent);
+        if (this.isChocolate() && otherParent.isChocolate()) {
+            // if both parents are chocolate, baby will be chocolate
+            baby.setChocolateStatus(true, true);
+        } else if ((this.isChocolate() && otherParent.getChocolateCarrier()) ||
+                (this.getChocolateCarrier() && otherParent.isChocolate())) {
+            // if one parent is chocolate and the other is a chocolate carrier, baby has 50% chance to be
+            // chocolate and 50% chance to carry chocolate
+            baby.setChocolateStatus(true, this.random.nextBoolean());
+        } else if (this.isChocolate() || otherParent.isChocolate()) {
+            // if one parent is chocolate and the other is not a carrier, baby will be a carrier
+            baby.setChocolateStatus(true, false);
+        } else if (this.getChocolateCarrier() && otherParent.getChocolateCarrier()) {
+            // if both parents are carriers, baby has 25% chance not to carry chocolate, 50% chance to carry
+            // chocolate, and 25% chance to be chocolate
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setChocolateStatus(false, false);
+            } else {
+                baby.setChocolateStatus(true, determine == 4);
+            }
+        } else if (this.getChocolateCarrier() || otherParent.getChocolateCarrier()) {
+            //if only one parent is a carrier, baby has 50% chance to carry chocolate and 50% chance not to
+            baby.setChocolateStatus(this.random.nextBoolean(), false);
+        } else {
+            // if neither parent is a carrier, baby will be black and won't carry chocolate
+            baby.setChocolateStatus(false, false);
+        }
 
         // determine if baby is yellow, and if not set their phenotype (TYPE_VARIANT) to black or chocolate
         // as determined above
@@ -359,36 +383,6 @@ public class LabRetrieverEntity extends AbstractDog {
             // if neither parent is a carrier, baby won't carry yellow
             baby.setYellowCarrier(false);
             setBabyBlackChocolate(baby);
-        }
-    }
-
-    private void determineBabyChocolate(LabRetrieverEntity baby, LabRetrieverEntity otherParent) {
-        if (this.isChocolate() && otherParent.isChocolate()) {
-            // if both parents are chocolate, baby will be chocolate
-            baby.setChocolateStatus(true, true);
-        } else if ((this.isChocolate() && otherParent.getChocolateCarrier()) ||
-                (this.getChocolateCarrier() && otherParent.isChocolate())) {
-            // if one parent is chocolate and the other is a chocolate carrier, baby has 50% chance to be
-            // chocolate and 50% chance to carry chocolate
-            baby.setChocolateStatus(true, this.random.nextBoolean());
-        } else if (this.isChocolate() || otherParent.isChocolate()) {
-            // if one parent is chocolate and the other is not a carrier, baby will be a carrier
-            baby.setChocolateStatus(true, false);
-        } else if (this.getChocolateCarrier() && otherParent.getChocolateCarrier()) {
-            // if both parents are carriers, baby has 25% chance not to carry chocolate, 50% chance to carry
-            // chocolate, and 25% chance to be chocolate
-            int determine = this.random.nextInt(4) + 1;
-            if (determine == 1) {
-                baby.setChocolateStatus(false, false);
-            } else {
-                baby.setChocolateStatus(true, determine == 4);
-            }
-        } else if (this.getChocolateCarrier() || otherParent.getChocolateCarrier()) {
-            //if only one parent is a carrier, baby has 50% chance to carry chocolate and 50% chance not to
-            baby.setChocolateStatus(this.random.nextBoolean(), false);
-        } else {
-            // if neither parent is a carrier, baby will be black and won't carry chocolate
-            baby.setChocolateStatus(false, false);
         }
     }
 

@@ -257,8 +257,6 @@ public class GermanShepherdEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         GermanShepherdVariant variant = GermanShepherdVariant.byId(var);
-        // Basic variant setter, equal chance
-        // GermanShepherdVariant variant = Util.getRandom(GermanShepherdVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -294,8 +292,36 @@ public class GermanShepherdEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(GermanShepherdEntity baby, GermanShepherdEntity otherParent) {
-        determineBlackDegree(baby, otherParent);
+        // determine baby's BlackDegree (how much black they have)
+        if (this.getBlackDegree() == 1 && otherParent.getBlackDegree() == 1) {
+            // if both parents have a medium level of black (BROWN_POINTS variant), baby has a 25% chance to inherit
+            // low levels of black (STANDARD), 50% chance of medium levels, and 25% chance of high levels (BLACK)
+            int determine = this.random.nextInt(4) + 1;
 
+            if (determine == 1) {
+                baby.setBlackDegree(0);
+            } else if (determine < 4) {
+                baby.setBlackDegree(1);
+            } else {
+                baby.setBlackDegree(2);
+            }
+        } else if (this.getBlackDegree() == otherParent.getBlackDegree()) {
+            // if both parents have either low or high levels of black, baby will have the same BlackDegree as them
+            baby.setBlackDegree(this.getBlackDegree());
+        } else if ((this.getBlackDegree() == 0 && otherParent.getBlackDegree() == 2) ||
+                (this.getBlackDegree() == 2 && otherParent.getBlackDegree() == 0)) {
+            // if one parent has low levels of black and one parent has high levels, baby will have medium levels
+            baby.setBlackDegree(1);
+        } else {
+            // if no above conditions are triggered, baby will inherit its BlackDegree from a random parent
+            if (this.random.nextBoolean()) {
+                baby.setBlackDegree(this.getBlackDegree());
+            } else {
+                baby.setBlackDegree(otherParent.getBlackDegree());
+            }
+        }
+
+        // determine if baby is white, a carrier, or neither
         if (this.getVariant() == GermanShepherdVariant.WHITE &&
                 otherParent.getVariant() == GermanShepherdVariant.WHITE) {
             // if both parents are white, baby will be marked as a carrier and have the White variant
@@ -339,36 +365,6 @@ public class GermanShepherdEntity extends AbstractDog {
         } else {
             // if neither parent is a carrier, baby won't be a carrier and will have a variant based on its BlackDegree
             baby.setVariant(GermanShepherdVariant.byId(baby.getBlackDegree()));
-        }
-    }
-
-        private void determineBlackDegree(GermanShepherdEntity baby, GermanShepherdEntity otherParent) {
-        if (this.getBlackDegree() == 1 && otherParent.getBlackDegree() == 1) {
-            // if both parents have a medium level of black (BROWN_POINTS variant), baby has a 25% chance to inherit
-            // low levels of black (STANDARD), 50% chance of medium levels, and 25% chance of high levels (BLACK)
-            int determine = this.random.nextInt(4) + 1;
-            
-            if (determine == 1) {
-                baby.setBlackDegree(0);
-            } else if (determine < 4) {
-                baby.setBlackDegree(1);
-            } else {
-                baby.setBlackDegree(2);
-            }
-        } else if (this.getBlackDegree() == otherParent.getBlackDegree()) {
-            // if both parents have either low or high levels of black, baby will have the same BlackDegree as them
-            baby.setBlackDegree(this.getBlackDegree());
-        } else if ((this.getBlackDegree() == 0 && otherParent.getBlackDegree() == 2) ||
-                (this.getBlackDegree() == 2 && otherParent.getBlackDegree() == 0)) {
-            // if one parent has low levels of black and one parent has high levels, baby will have medium levels
-            baby.setBlackDegree(1);
-        } else {
-            // if no above conditions are triggered, baby will inherit its BlackDegree from a random parent
-            if (this.random.nextBoolean()) {
-                baby.setBlackDegree(this.getBlackDegree());
-            } else {
-                baby.setBlackDegree(otherParent.getBlackDegree());
-            }
         }
     }
 }

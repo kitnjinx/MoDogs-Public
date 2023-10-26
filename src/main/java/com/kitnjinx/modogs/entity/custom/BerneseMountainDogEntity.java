@@ -236,8 +236,6 @@ public class BerneseMountainDogEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         BerneseMountainDogVariant variant = BerneseMountainDogVariant.byId(var);
-        // Basic variant setter, equal chance
-        // BerneseMountainDogVariant variant = Util.getRandom(BerneseMountainDogVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -308,6 +306,7 @@ public class BerneseMountainDogEntity extends AbstractDog {
         } else {
             // if neither parent is a carrier, baby won't be a carrier and will be rust
             baby.setVariant(BerneseMountainDogVariant.RUST);
+            baby.setCarrier(false);
         }
     }
 }

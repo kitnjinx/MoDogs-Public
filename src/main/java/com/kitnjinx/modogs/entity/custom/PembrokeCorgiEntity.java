@@ -403,7 +403,7 @@ public class PembrokeCorgiEntity extends AbstractDog {
             baby.setCarriedColor(0);
         } else if (this.getCarriedColor() == 0) {
             // if one parent is pure red and the other carries another color, baby will appear red and have
-            // 50% chance to carry red and 50% chance to carry the other gene
+            // 50% chance to carry red and 50% chance to carry the other trait
             baby.setBaseColor(0);
             if (this.random.nextBoolean()) {
                 baby.setCarriedColor(0);
@@ -412,7 +412,7 @@ public class PembrokeCorgiEntity extends AbstractDog {
             }
         } else if (otherParent.getCarriedColor() == 0) {
             // if one parent is pure red and the other carries another color, baby will appear red and have
-            // 50% chance to carry red and 50% chance to carry the other gene
+            // 50% chance to carry red and 50% chance to carry the other trait
             baby.setBaseColor(0);
             if (this.random.nextBoolean()) {
                 baby.setCarriedColor(0);

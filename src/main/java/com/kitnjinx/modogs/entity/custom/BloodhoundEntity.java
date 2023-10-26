@@ -257,8 +257,6 @@ public class BloodhoundEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         BloodhoundVariant variant = BloodhoundVariant.byId(var);
-        // Basic variant setter, equal chance
-        // BloodhoundVariant variant = Util.getRandom(BloodhoundVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -317,12 +315,12 @@ public class BloodhoundEntity extends AbstractDog {
         int determine = this.random.nextInt(4) + 1;
 
         if (parACarry == 0 && parBCarry == 0) {
-            // if neither parent carries another gene, pup will be red and carry nothing
+            // if neither parent carries another trait, pup will be red and carry nothing
             baby.setCarrier(0);
             baby.setVariant(BloodhoundVariant.RED);
         } else if (parACarry == parBCarry) {
-            // if both parents carry the same gene, pup has 25% to be red and carry nothing, 50% to be red and
-            // carry the same gene as their parents, and 25% to be the recessive gene with nothing carried
+            // if both parents carry the same trait, pup has 25% to be red and carry nothing, 50% to be red and
+            // carry the same trait as their parents, and 25% to be the recessive trait with nothing carried
             if (determine == 1) {
                 baby.setCarrier(0);
                 baby.setVariant(BloodhoundVariant.RED);
@@ -334,8 +332,8 @@ public class BloodhoundEntity extends AbstractDog {
                 baby.setVariant(BloodhoundVariant.byId(parACarry - 1));
             }
         } else if (parACarry == 0) {
-            // if one parent carries a gene and the other doesn't, pup will be red and has a 50/50 chance of
-            // carrying the other gene
+            // if one parent carries a trait and the other doesn't, pup will be red and has a 50/50 chance of
+            // carrying the other trait
             baby.setVariant(BloodhoundVariant.RED);
             if (this.random.nextBoolean()) {
                 baby.setCarrier(0);
@@ -343,8 +341,8 @@ public class BloodhoundEntity extends AbstractDog {
                 baby.setCarrier(parBCarry);
             }
         } else if (parBCarry == 0) {
-            // if one parent carries a gene and the other doesn't, pup will be red and has a 50/50 chance of
-            // carrying the other gene
+            // if one parent carries a trait and the other doesn't, pup will be red and has a 50/50 chance of
+            // carrying the other trait
             baby.setVariant(BloodhoundVariant.RED);
             if (this.random.nextBoolean()) {
                 baby.setCarrier(0);
@@ -353,7 +351,7 @@ public class BloodhoundEntity extends AbstractDog {
             }
         } else {
             // if one parent carries Black_Tan and the other carries Liver_Tan, pup has 25% to be red with no
-            // carried gene, 25% chance to be red and carry Black_Tan, 25% chance to be red and carry liver tan,
+            // carried trait, 25% chance to be red and carry Black_Tan, 25% chance to be red and carry liver tan,
             // and 25% chance to be black tan and carry liver tan
             if (determine == 1) {
                 baby.setCarrier(0);
@@ -378,13 +376,13 @@ public class BloodhoundEntity extends AbstractDog {
         int determine = this.random.nextInt(4) + 1;
 
         if (parACarry == 0) {
-            // if Red parent has no carried gene, baby will be Red and carry based on parB
+            // if Red parent has no carried trait, baby will be Red and carry based on parB
             baby.setVariant(BloodhoundVariant.RED);
             if (parB.getVariant() == BloodhoundVariant.BLACK_TAN && parBCarry == 0) {
                 // if parB is Black_Tan and doesn't carry Liver_Tan, baby will carry Black_Tan
                 baby.setCarrier(1);
             } else if (parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
-                // if parB is Black_Tan and carries Liver_Tan, baby has 50/50 chance to carry either gene
+                // if parB is Black_Tan and carries Liver_Tan, baby has 50/50 chance to carry either trait
                 if (this.random.nextBoolean()) {
                     baby.setCarrier(1);
                 } else {
@@ -397,7 +395,7 @@ public class BloodhoundEntity extends AbstractDog {
         } else if (parACarry == 1 && parB.getVariant() == BloodhoundVariant.BLACK_TAN) {
             // if parA carries Black_Tan and parB is Black_Tan, baby has 50/50 chance of being Red or Black_Tan
             if (parBCarry == 0) {
-                // if parB doesn't carry Liver_Tan, baby will either be Black_Tan with no carried gene or Red
+                // if parB doesn't carry Liver_Tan, baby will either be Black_Tan with no carried trait or Red
                 // and carrying Black_Tan
                 if (this.random.nextBoolean()) {
                     baby.setCarrier(0);
@@ -408,7 +406,7 @@ public class BloodhoundEntity extends AbstractDog {
                 }
             } else {
                 // if parB carries Liver_Tan, baby has 25% chance of being red and carrying Black_Tan, 25%
-                // chance of Red and carrying Liver_Tan, 25% chance of being BT with no carried gene, and 25%
+                // chance of Red and carrying Liver_Tan, 25% chance of being BT with no carried trait, and 25%
                 // chance of BT and carrying LT
                 if (determine == 1) {
                     baby.setCarrier(1);
@@ -448,7 +446,7 @@ public class BloodhoundEntity extends AbstractDog {
             } else {
                 // if parB carries Liver_Tan, baby has 25% chance to be red and carry Black_Tan, 25% chance to
                 // be red and carry Liver_Tan, 25% chance to be Black_Tan and carry Liver_Tan, and 25% chance
-                // to be Liver_Tan with no carried gene
+                // to be Liver_Tan with no carried trait
                 if (determine == 1) {
                     baby.setCarrier(1);
                     baby.setVariant(BloodhoundVariant.RED);
@@ -465,7 +463,7 @@ public class BloodhoundEntity extends AbstractDog {
             }
         } else {
             // if parA carries Liver_Tan and parB is Liver_Tan, baby has 50% chance to be red and carry LT and
-            // 50% chance to be Liver_Tan with no carried gene
+            // 50% chance to be Liver_Tan with no carried trait
             if (this.random.nextBoolean()) {
                 baby.setCarrier(2);
                 baby.setVariant(BloodhoundVariant.RED);
@@ -515,7 +513,7 @@ public class BloodhoundEntity extends AbstractDog {
             baby.setVariant(BloodhoundVariant.BLACK_TAN);
         } else {
             // if parA carries Liver_Tan, baby has 50% chance to be Black_Tan and carry Liver_Tan and 50% chance
-            // to be Liver_Tan with no carried gene
+            // to be Liver_Tan with no carried trait
             if (this.random.nextBoolean()) {
                 baby.setCarrier(2);
                 baby.setVariant(BloodhoundVariant.BLACK_TAN);

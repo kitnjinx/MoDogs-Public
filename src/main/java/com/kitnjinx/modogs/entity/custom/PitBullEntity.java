@@ -174,7 +174,7 @@ public class PitBullEntity extends AbstractDog {
                     } else if (this.isBrownCarrier() && this.isBlue()) {
                         message = new TextComponent("This Pit Bull demonstrates a fully white coat. They also have the alleles for dilution, and carry the brown fur trait.");
                     } else if (this.isBrownCarrier() && this.isBlueCarrier()) {
-                        message = new TextComponent("This Pit Bull demonstrates a fully white coat. They also carry the dilution and brown fur genes.");
+                        message = new TextComponent("This Pit Bull demonstrates a fully white coat. They also carry the dilution and brown fur traits.");
                     } else if (this.isBlue()) {
                         message = new TextComponent("This Pit Bull demonstrates a fully white coat. They also have the alleles for diluted fur.");
                     } else if (this.isBrownCarrier()) {
@@ -341,8 +341,6 @@ public class PitBullEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         PitBullVariant variant = PitBullVariant.byId(var);
-        // Basic variant setter, equal chance
-        // PitBullVariant variant = Util.getRandom(PitBullVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);

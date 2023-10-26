@@ -93,6 +93,7 @@ public class BorderCollieEntity extends AbstractDog {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob otherParent) {
         BorderCollieEntity baby = ModEntityTypes.BORDER_COLLIE.get().create(serverLevel);
+
         determineBabyVariant(baby, (BorderCollieEntity) otherParent);
 
         if (this.isTame()) {
@@ -418,7 +419,7 @@ public class BorderCollieEntity extends AbstractDog {
     private void determineBabyVariant(BorderCollieEntity baby, BorderCollieEntity otherParent) {
         BorderCollieVariant babyVar;
 
-        // this if tree determines the baby's base color (Black, Red, or Lilac)
+        // determine the baby's base color (Black, Red, or Lilac)
         if (this.getBaseColor() == 0 && otherParent.getBaseColor() == 0) {
             // if both parents are black-based, run the following method
             determinePureBlackBaby(baby, otherParent);
@@ -451,7 +452,7 @@ public class BorderCollieEntity extends AbstractDog {
             determinePureLilacBaby(baby, otherParent);
         }
 
-        // this if tree determines whether the baby is merle or not
+        // determine if the baby is merle or not
         if (this.isMerle() && otherParent.isMerle()) {
             // if both parents are merle, baby is merle
             baby.setMerle(true);
@@ -463,7 +464,7 @@ public class BorderCollieEntity extends AbstractDog {
             baby.setMerle(false);
         }
 
-        // this if tree determines the baby's phenotype (TYPE_VARIANT, or the shown coat color)
+        // determine baby's phenotype (TYPE_VARIANT)
         if (baby.isMerle()) {
             if (baby.getBaseColor() == 0) {
                 // if baby is black-based and merle, baby is Black Merle
@@ -492,7 +493,7 @@ public class BorderCollieEntity extends AbstractDog {
     }
 
     private void determinePureBlackBaby(BorderCollieEntity baby, BorderCollieEntity otherParent) {
-        // this if tree determines if baby will be black or red based on the parents
+        // determine if baby will be black or red
         if (this.getRedCarrier() && otherParent.getRedCarrier()) {
             // if both parents carry red, baby has 25% chance to be black and not carry red, 50% to be black
             // and carry red, and 25% to be red
@@ -510,7 +511,7 @@ public class BorderCollieEntity extends AbstractDog {
             baby.setRedStatus(false, false);
         }
 
-        // this if tree determines if the baby will be lilac or not based on the parents
+        // determine if the baby will be lilac or not
         boolean isLilac;
         if (this.getLilacCarrier() && otherParent.getLilacCarrier()) {
             // if both parents carry lilac, baby has 25% chance to not carry lilac, 50% chance to carry
@@ -536,7 +537,7 @@ public class BorderCollieEntity extends AbstractDog {
             baby.setLilacCarrier(false);
         }
 
-        // this if tree determines the baby's actual base color based on it's genetics
+        // determine the baby's actual base color based on it's genetics
         if (isLilac) {
             baby.setBaseColor(2);
         } else if (baby.isRed()) {
@@ -548,7 +549,7 @@ public class BorderCollieEntity extends AbstractDog {
 
     // method used when a black dog is bred to a red dog, where parA is black-based and parB is red-based
     private void determineBlackRedBaby(BorderCollieEntity baby, BorderCollieEntity parA, BorderCollieEntity parB) {
-        // this if tree determines if the baby is black or red-based
+        // determine if the baby is black or red-based
         if (parA.getRedCarrier()) {
             // if parA carries red, baby has 50% chance to be black and carry red and 50% chance to be red
             baby.setRedStatus(true, this.random.nextBoolean());
@@ -557,7 +558,7 @@ public class BorderCollieEntity extends AbstractDog {
             baby.setRedStatus(true, false);
         }
 
-        // this if tree determines if the baby will be lilac or not based on the parents
+        // determine if the baby will be lilac or not
         boolean isLilac;
         if (parA.getLilacCarrier() && parB.getLilacCarrier()) {
             // if both parents carry lilac, baby has 25% chance to not carry lilac, 50% chance to carry
@@ -583,7 +584,7 @@ public class BorderCollieEntity extends AbstractDog {
             baby.setLilacCarrier(false);
         }
 
-        // this if tree determines the baby's actual base color based on it's genetics
+        // determine the baby's actual base color based on it's genetics
         if (isLilac) {
             baby.setBaseColor(2);
         } else if (baby.isRed()) {
@@ -595,7 +596,7 @@ public class BorderCollieEntity extends AbstractDog {
 
     // method used when a black dog is bred to a lilac dog, where parA is black-based and parB is lilac-based
     private void determineBlackLilacBaby(BorderCollieEntity baby, BorderCollieEntity parA, BorderCollieEntity parB) {
-        // this if tree determines if the baby would be black or red
+        // determine if the baby is black or red
         if (parB.isRed()) {
             // if the lilac parent would be red, then check the black parent's genetics
             if (parA.getRedCarrier()) {
@@ -631,8 +632,7 @@ public class BorderCollieEntity extends AbstractDog {
             }
         }
 
-        // this if tree determines if the baby is lilac or not. As the baby has a lilac parent, they will be
-        // a lilac carrier regardless
+        // determine if the baby is lilac or not. As the baby has a lilac parent, they will always carry lilac
         baby.setLilacCarrier(true);
         boolean isLilac;
         if (parA.getLilacCarrier()) {
@@ -643,7 +643,7 @@ public class BorderCollieEntity extends AbstractDog {
             isLilac = false;
         }
 
-        // this if tree determines the baby's actual base color based on it's genetics
+        // determine the baby's base color
         if (isLilac) {
             baby.setBaseColor(2);
         } else if (baby.isRed()) {
@@ -732,7 +732,7 @@ public class BorderCollieEntity extends AbstractDog {
         baby.setLilacCarrier(true);
         baby.setBaseColor(2);
 
-        // if tree determines baby's hidden red/black genetics
+        // determine baby's hidden red/black genetics
         if (this.isRed() && otherParent.isRed()) {
             // if both parents are red, baby will be red
             baby.setRedStatus(true, true);

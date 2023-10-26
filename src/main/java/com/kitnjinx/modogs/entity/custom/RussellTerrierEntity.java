@@ -199,11 +199,11 @@ public class RussellTerrierEntity extends AbstractDog {
                 }
 
                 if (this.getIntensity() == 1) {
-                    message = new TextComponent(part1.getString() + " They have genes for dark fur.");
+                    message = new TextComponent(part1.getString() + " They have the alleles for dark fur.");
                 } else if (this.getIntensity() == 2) {
-                    message = new TextComponent(part1.getString() + " They have genes for medium fur.");
+                    message = new TextComponent(part1.getString() + " They have the alleles for medium fur.");
                 } else {
-                    message = new TextComponent(part1.getString() + " They have genes for light fur.");
+                    message = new TextComponent(part1.getString() + " They have the alleles for light fur.");
                 }
 
                 player.sendMessage(message, player.getUUID());
@@ -324,8 +324,6 @@ public class RussellTerrierEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         RussellTerrierVariant variant = RussellTerrierVariant.byId(var);
-        // Basic variant setter, equal chance
-        // RussellTerrierVariant variant = Util.getRandom(RussellTerrierVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -379,7 +377,7 @@ public class RussellTerrierEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(RussellTerrierEntity baby, RussellTerrierEntity otherParent) {
-        // if tree determines whether baby is black or tan
+        // determine if baby is black or tan
         if (this.isTan() && otherParent.isTan()) {
             // if both parents are tan, baby will be tan
             baby.setTanStatus(true, true);
@@ -407,7 +405,7 @@ public class RussellTerrierEntity extends AbstractDog {
             baby.setTanStatus(false, false);
         }
 
-        // if tree determines whether baby is tricolor or not
+        // determine if baby is tricolor or not
         if (this.isTricolor() && otherParent.isTricolor()) {
             // if both parents are tricolor, baby will be tricolor
             baby.setTricolorStatus(true, true);
@@ -435,7 +433,7 @@ public class RussellTerrierEntity extends AbstractDog {
             baby.setTricolorStatus(false, false);
         }
 
-        // if tree determines the baby's intensity
+        // determine baby's intensity
         if (this.getIntensity() == 2 && otherParent.getIntensity() == 2) {
             // if both parents have Intensity 2 (tan), baby has 25% chance to have Intensity 1, 50% chance to
             // have intensity 2, and 25% chance to have intensity 3
@@ -463,7 +461,7 @@ public class RussellTerrierEntity extends AbstractDog {
             }
         }
 
-        // if tree determines baby's phenotype (TYPE_VARIANT)
+        // determine baby's phenotype (TYPE_VARIANT)
         if (baby.isTan() && baby.isTricolor()) {
             if (baby.getIntensity() == 1) {
                 baby.setVariant(RussellTerrierVariant.TRI_BROWN);

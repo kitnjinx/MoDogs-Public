@@ -349,8 +349,6 @@ public class GreyhoundEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         GreyhoundVariant variant = GreyhoundVariant.byId(var);
-        // Basic variant setter, equal chance
-        // GreyhoundVariant variant = Util.getRandom(GreyhoundVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -414,7 +412,7 @@ public class GreyhoundEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(GreyhoundEntity baby, GreyhoundEntity otherParent) {
-        // if tree determines whether baby is black or red
+        // determine if baby is black or red
         if (this.isRed() && otherParent.isRed()) {
             // if both parents are red, baby will be red
             baby.setRedStatus(true, true);
@@ -442,7 +440,7 @@ public class GreyhoundEntity extends AbstractDog {
             baby.setRedStatus(false, false);
         }
 
-        // if tree determines whether baby is diluted (blue) or not
+        // determine if baby is diluted (blue) or not
         if (this.isBlue() && otherParent.isBlue()) {
             // if both parents are blue, baby will be blue
             baby.setBlueStatus(true, true);
@@ -471,7 +469,7 @@ public class GreyhoundEntity extends AbstractDog {
             baby.setBlueStatus(false, false);
         }
 
-        // if tree determines if the baby is white, has white markings, or is solid colored
+        // determine if baby is white, has white markings, or is solid colored
         boolean isWhite;
         if (this.getVariant() == GreyhoundVariant.WHITE && otherParent.getVariant() == GreyhoundVariant.WHITE) {
             // if both parents are white, baby will be white
@@ -508,7 +506,7 @@ public class GreyhoundEntity extends AbstractDog {
             baby.setWhite(false);
         }
 
-        // if tree determines baby's final phenotype (TYPE_VARIANT)
+        // determine baby's phenotype (TYPE_VARIANT)
         if (isWhite) {
             baby.setVariant(GreyhoundVariant.WHITE);
         } else if (baby.hasWhite() && baby.isBlue()) {

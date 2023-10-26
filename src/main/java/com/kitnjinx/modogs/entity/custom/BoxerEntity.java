@@ -258,8 +258,6 @@ public class BoxerEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         BoxerVariant variant = BoxerVariant.byId(var);
-        // Basic variant setter, equal chance
-        // BoxerVariant variant = Util.getRandom(BoxerVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -296,9 +294,34 @@ public class BoxerEntity extends AbstractDog {
 
     private void determineBabyVariant(BoxerEntity baby, BoxerEntity otherParent) {
         // determine what shade (Light, Medium, or Dark) the baby has based on its parents
-        determineBabyShade(baby, otherParent);
+        if (this.getShade() == 0 && otherParent.getShade() == 0) {
+            // if both parents are Medium, baby has 25% chance to be Light, 50% chance to be Medium, and 25%
+            // chance to be Dark
+            int determine = this.random.nextInt(4) + 1;
+            if (determine == 1) {
+                baby.setShade(1);
+            } else if (determine < 4) {
+                baby.setShade(0);
+            } else {
+                baby.setShade(2);
+            }
+        } else if (this.getShade() == otherParent.getShade()) {
+            // if both parents are Light or both are Dark, baby will match them
+            baby.setShade(this.getShade());
+        } else if ((this.getShade() == 1 && otherParent.getShade() == 2) ||
+                (this.getShade() == 2 && otherParent.getShade() == 1)) {
+            // if one parent is Light and the other is Dark, baby will be Medium
+            baby.setShade(0);
+        } else {
+            // if none of hte conditions above are true, the baby will match one of its parents
+            if (this.random.nextBoolean()) {
+                baby.setShade(this.getShade());
+            } else {
+                baby.setShade(otherParent.getShade());
+            }
+        }
 
-        // if tree determines whether baby is Black, carries Black and shows its Shade, or just shows its Shade
+        // determine if baby is Black, carries Black and shows its Shade, or just shows its Shade
         if (this.getVariant() == BoxerVariant.BLACK && otherParent.getVariant() == BoxerVariant.BLACK) {
             // if both parents are Black, baby will be black and marked as a carrier
             baby.setVariant(BoxerVariant.BLACK);
@@ -339,35 +362,6 @@ public class BoxerEntity extends AbstractDog {
             // if neither parent is a carrier, baby will not be a carrier
             baby.setVariant(BoxerVariant.byId(baby.getShade()));
             baby.setCarrier(false);
-        }
-    }
-
-    private void determineBabyShade(BoxerEntity baby, BoxerEntity otherParent) {
-        if (this.getShade() == 0 && otherParent.getShade() == 0) {
-            // if both parents are Medium, baby has 25% chance to be Light, 50% chance to be Medium, and 25%
-            // chance to be Dark
-            int determine = this.random.nextInt(4) + 1;
-            if (determine == 1) {
-                baby.setShade(1);
-            } else if (determine < 4) {
-                baby.setShade(0);
-            } else {
-                baby.setShade(2);
-            }
-        } else if (this.getShade() == otherParent.getShade()) {
-            // if both parents are Light or both are Dark, baby will match them
-            baby.setShade(this.getShade());
-        } else if ((this.getShade() == 1 && otherParent.getShade() == 2) ||
-                (this.getShade() == 2 && otherParent.getShade() == 1)) {
-            // if one parent is Light and the other is Dark, baby will be Medium
-            baby.setShade(0);
-        } else {
-            // if none of hte conditions above are true, the baby will match one of its parents
-            if (this.random.nextBoolean()) {
-                baby.setShade(this.getShade());
-            } else {
-                baby.setShade(otherParent.getShade());
-            }
         }
     }
 }

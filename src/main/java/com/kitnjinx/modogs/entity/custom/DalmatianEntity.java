@@ -236,8 +236,6 @@ public class DalmatianEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         DalmatianVariant variant = DalmatianVariant.byId(var);
-        // Basic variant setter, equal chance
-        // DalmatianVariant variant = Util.getRandom(DalmatianVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -325,12 +323,9 @@ public class DalmatianEntity extends AbstractDog {
     }
 
     private void setBabyBlack(DalmatianEntity baby, DalmatianEntity otherParent) {
-        Random r = new Random();
-        int determine;
-
         if (this.getVariant() != otherParent.getVariant()) {
             // if parents are 2 different black patterns, baby can have any black pattern
-            determine = r.nextInt(3) + 1;
+            int determine = this.random.nextInt(3) + 1;
 
             if (determine == 1) {
                 baby.setVariant(DalmatianVariant.BLACK1);

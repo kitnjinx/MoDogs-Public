@@ -189,7 +189,7 @@ public class DachshundEntity extends AbstractDog {
                     } else if (this.getCreamCarrier()) {
                         message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They also carry the recessive cream trait.");
                     } else {
-                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They have otherwise standard genes.");
+                        message = new TextComponent("This Dachshund demonstrates the recessive dilution trait. They have otherwise standard traits.");
                     }
                 } else if (this.isChocolate() && this.isCream()) {
                     if (this.getFawnCarrier()) {
@@ -213,7 +213,7 @@ public class DachshundEntity extends AbstractDog {
                     } else if (this.getFawnCarrier()) {
                         message = new TextComponent("This Dachshund demonstrates the recessive cream trait, and carries the recessive dilution trait.");
                     } else if (this.getChocolateCarrier()) {
-                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait, and carries the recessive chocolate fur gene.");
+                        message = new TextComponent("This Dachshund demonstrates the recessive cream trait, and carries the recessive chocolate fur trait.");
                     } else {
                         message = new TextComponent("This Dachshund demonstrates the recessive cream trait.");
                     }
@@ -416,37 +416,6 @@ public class DachshundEntity extends AbstractDog {
 
     private void determineBabyVariant(DachshundEntity baby, DachshundEntity otherParent) {
         // determine if baby is black or chocolate
-        determineBabyChocolate(baby, otherParent);
-
-        // determine if baby is diluted (fawn) or not
-        determineBabyFawn(baby, otherParent);
-
-        // determine if baby is tan or cream
-        determineBabyCream(baby, otherParent);
-
-        // determine baby's final phenotype (TYPE_VARIANT)
-        if (baby.isFawn()) {
-            if (baby.isCream()) {
-                baby.setVariant(DachshundVariant.FAWN_CREAM);
-            } else {
-                baby.setVariant(DachshundVariant.FAWN_TAN);
-            }
-        } else if (baby.isChocolate()) {
-            if (baby.isCream()) {
-                baby.setVariant(DachshundVariant.CHOCOLATE_CREAM);
-            } else {
-                baby.setVariant(DachshundVariant.CHOCOLATE_TAN);
-            }
-        } else {
-            if (baby.isCream()) {
-                baby.setVariant(DachshundVariant.BLACK_CREAM);
-            } else {
-                baby.setVariant(DachshundVariant.BLACK_TAN);
-            }
-        }
-    }
-
-    private void determineBabyChocolate(DachshundEntity baby, DachshundEntity otherParent) {
         if (this.isChocolate() && otherParent.isChocolate()) {
             // if both parents are chocolate, baby will be chocolate
             baby.setChocolateStatus(true, true);
@@ -474,9 +443,8 @@ public class DachshundEntity extends AbstractDog {
             // if neither parent is a chocolate carrier, baby will be black and won't carry chocolate
             baby.setChocolateStatus(false, false);
         }
-    }
 
-    private void determineBabyFawn(DachshundEntity baby, DachshundEntity otherParent) {
+        // determine if baby is diluted (fawn) or not
         if (this.isFawn() && otherParent.isFawn()) {
             // if both parents are fawn, baby will be fawn
             baby.setFawnStatus(true, true);
@@ -504,9 +472,8 @@ public class DachshundEntity extends AbstractDog {
             // if neither parent is a fawn carrier, baby won't carry fawn
             baby.setFawnStatus(false, false);
         }
-    }
 
-    private void determineBabyCream(DachshundEntity baby, DachshundEntity otherParent) {
+        // determine if baby is tan or cream
         if (this.isCream() && otherParent.isCream()) {
             // if both parents are cream, baby will be cream
             baby.setCreamStatus(true, true);
@@ -533,6 +500,27 @@ public class DachshundEntity extends AbstractDog {
         } else {
             // if neither parent is a cream carrier, baby won't carry fawn
             baby.setCreamStatus(false, false);
+        }
+
+        // determine baby's phenotype (TYPE_VARIANT)
+        if (baby.isFawn()) {
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.FAWN_CREAM);
+            } else {
+                baby.setVariant(DachshundVariant.FAWN_TAN);
+            }
+        } else if (baby.isChocolate()) {
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.CHOCOLATE_CREAM);
+            } else {
+                baby.setVariant(DachshundVariant.CHOCOLATE_TAN);
+            }
+        } else {
+            if (baby.isCream()) {
+                baby.setVariant(DachshundVariant.BLACK_CREAM);
+            } else {
+                baby.setVariant(DachshundVariant.BLACK_TAN);
+            }
         }
     }
 }

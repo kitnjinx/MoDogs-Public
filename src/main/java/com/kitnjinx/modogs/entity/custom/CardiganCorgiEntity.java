@@ -290,7 +290,7 @@ public class CardiganCorgiEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(CardiganCorgiEntity baby, CardiganCorgiEntity otherParent) {
-        // if tree determines if baby is Black, Red, or Sable
+        // determine if baby is Black, Red, or Sable
         if (this.getBaseColor() == 0 && otherParent.getBaseColor() == 0) {
             // if both parents are Red, baby has 25% chance to be Black, 50% chance to be Red, and 25% chance
             // to be Sable
@@ -318,7 +318,7 @@ public class CardiganCorgiEntity extends AbstractDog {
             }
         }
 
-        // if tree determines if baby has merle or not
+        // determine if baby has merle or not
         if (this.isMerle() && otherParent.isMerle()) {
             // if both parents are merle, baby will be merle
             baby.setMerle(true);
@@ -330,7 +330,7 @@ public class CardiganCorgiEntity extends AbstractDog {
             baby.setMerle(false);
         }
 
-        // if tree decides baby's visual variant
+        // determine baby's phenotype (TYPE_VARIANT)
         if (baby.getBaseColor() == 1 && baby.isMerle()) {
             // if baby's base color is Black, and they have merle, baby will be Blue Merle
             baby.setVariant(CardiganCorgiVariant.BLUE_MERLE);

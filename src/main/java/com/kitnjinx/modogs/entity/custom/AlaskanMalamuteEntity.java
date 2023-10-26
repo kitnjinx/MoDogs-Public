@@ -283,8 +283,6 @@ public class AlaskanMalamuteEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         AlaskanMalamuteVariant variant = AlaskanMalamuteVariant.byId(var);
-        // Basic variant setter, equal chance
-        // AlaskanMalamuteVariant variant = Util.getRandom(AlaskanMalamuteVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -346,32 +344,7 @@ public class AlaskanMalamuteEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
-        // method call determines if baby is black or red
-        determineBabyRed(baby, otherParent);
-
-        // method call determines if baby has a saddle or is solid
-        determineBabySaddle(baby, otherParent);
-
-        // method call determines baby's pale and silver values
-        determineBabyDilutes(baby, otherParent);
-
-        // if tree determines baby's phenotype (TYPE_VARIANT)
-        if (baby.isRed() && baby.isSolid()) {
-            baby.setVariant(AlaskanMalamuteVariant.RED);
-        } else if (baby.isRed() && baby.isPale()) {
-            baby.setVariant(AlaskanMalamuteVariant.SEAL);
-        } else if (baby.isRed()) {
-            baby.setVariant(AlaskanMalamuteVariant.SABLE);
-        } else if (baby.isSolid() && isSilver()) {
-            baby.setVariant(AlaskanMalamuteVariant.SILVER);
-        } else if (baby.isSolid()) {
-            baby.setVariant(AlaskanMalamuteVariant.BLACK);
-        } else {
-            baby.setVariant(AlaskanMalamuteVariant.GRAY);
-        }
-    }
-
-    private void determineBabyRed(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
+        // determine if baby is red or black
         if (this.isRed() && otherParent.isRed()) {
             // if both parents are red, baby will be red
             baby.setRedStatus(true, true);
@@ -398,9 +371,8 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             // if neither parent is a carrier, baby will not be a carrier
             baby.setRedStatus(false, false);
         }
-    }
 
-    private void determineBabySaddle(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
+        // determine if baby is solid-colored or has the saddle marking
         if (this.isSolid() && otherParent.isSolid()) {
             // if both parents are solid, baby will be solid
             baby.setSolidStatus(true, true);
@@ -428,10 +400,8 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             // if neither parent is a carrier, baby will not be a carrier
             baby.setSolidStatus(false, false);
         }
-    }
 
-    private void determineBabyDilutes(AlaskanMalamuteEntity baby, AlaskanMalamuteEntity otherParent) {
-        // if tree determines if baby is pale
+        // determine if baby has pale variant
         if (this.isPale() && otherParent.isPale()) {
             // if both parents are pale, baby will be pale
             baby.setPale(true);
@@ -443,7 +413,7 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             baby.setPale(false);
         }
 
-        // if tree determines if baby is silver
+        // determine if baby has silver variant
         if (this.isSilver() && otherParent.isSilver()) {
             // if both parents are silver, baby will be silver
             baby.setSilver(true);
@@ -453,6 +423,21 @@ public class AlaskanMalamuteEntity extends AbstractDog {
         } else {
             // if neither parent is silver, baby will not be silver
             baby.setSilver(false);
+        }
+
+        // determine baby's phenotype (TYPE_VARIANT)
+        if (baby.isRed() && baby.isSolid()) {
+            baby.setVariant(AlaskanMalamuteVariant.RED);
+        } else if (baby.isRed() && baby.isPale()) {
+            baby.setVariant(AlaskanMalamuteVariant.SEAL);
+        } else if (baby.isRed()) {
+            baby.setVariant(AlaskanMalamuteVariant.SABLE);
+        } else if (baby.isSolid() && isSilver()) {
+            baby.setVariant(AlaskanMalamuteVariant.SILVER);
+        } else if (baby.isSolid()) {
+            baby.setVariant(AlaskanMalamuteVariant.BLACK);
+        } else {
+            baby.setVariant(AlaskanMalamuteVariant.GRAY);
         }
     }
 
@@ -466,13 +451,13 @@ public class AlaskanMalamuteEntity extends AbstractDog {
             }
         } else if (this.isRed() && this.isPale()) {
             if (this.isSolidCarrier() && this.isSilver()) {
-                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also carry the solid pattern and have alleles for silver fur.");
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur trait. They also carry the solid pattern and have alleles for silver fur.");
             } else if (this.isSolidCarrier()) {
-                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also carry the solid pattern trait.");
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur trait. They also carry the solid pattern trait.");
             } else if (this.isSilver()) {
-                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene. They also have the alleles for silver fur.");
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur trait. They also have the alleles for silver fur.");
             } else {
-                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur gene.");
+                message = new TextComponent("This Alaskan Malamute demonstrates the rare pale variant of the recessive red fur trait.");
             }
         } else if (this.isRed()) {
             if (this.isSolidCarrier() && this.isSilver()) {

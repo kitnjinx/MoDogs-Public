@@ -294,8 +294,6 @@ public class SaintBernardEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         SaintBernardVariant variant = SaintBernardVariant.byId(var);
-        // Basic variant setter, equal chance
-        // SaintBernardVariant variant = Util.getRandom(SaintBernardVariant.values(), this.random);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -345,7 +343,7 @@ public class SaintBernardEntity extends AbstractDog {
     }
 
     private void determineBabyVariant(SaintBernardEntity baby, SaintBernardEntity otherParent) {
-        // if tree determines baby's shade
+        // determine baby's shade
         if (this.getShade() == 1 && otherParent.getShade() == 1) {
             // if both parents are Shade 1, baby has 25% chance to be Shade 0, 50% chance to be 1, and 25% chance
             // to be 2
@@ -373,7 +371,7 @@ public class SaintBernardEntity extends AbstractDog {
             }
         }
 
-        // if tree determines baby's golden status
+        // determine baby's golden status
         if (this.isGolden() && otherParent.isGolden()) {
             // if both parents are golden, baby will be golden
             baby.setGoldenStatus(true, true);
@@ -402,7 +400,7 @@ public class SaintBernardEntity extends AbstractDog {
             baby.setGoldenStatus(false, false);
         }
 
-        // if tree determines baby's phenotype (TYPE_VARIANT)
+        // determine baby's phenotype (TYPE_VARIANT)
         if (baby.isGolden() && baby.getShade() == 2) {
             baby.setVariant(SaintBernardVariant.YELLOW_BROWN);
         } else if (baby.isGolden()) {
