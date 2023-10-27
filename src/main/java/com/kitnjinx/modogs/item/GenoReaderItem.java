@@ -59,6 +59,8 @@ public class GenoReaderItem extends Item {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
                 testResult = saintBernardGeno((SaintBernardEntity) target);
+            } else if (target instanceof ShibaInuEntity) {
+                testResult = shibaInuGeno((ShibaInuEntity) target);
             } else {
                 testResult = "This should not appear.";
             }
@@ -737,6 +739,34 @@ public class GenoReaderItem extends Item {
                 return "Gg ss";
             } else {
                 return "GG ss";
+            }
+        }
+    }
+
+    private String shibaInuGeno(ShibaInuEntity dog) {
+        if (dog.isCream()) {
+            if (dog.isBlack()) {
+                return "bb dd";
+            } else if (dog.carriesBlack()) {
+                return "Bb dd";
+            } else {
+                return "BB dd";
+            }
+        } else if (dog.carriesCream()) {
+            if (dog.isBlack()) {
+                return "bb Dd";
+            } else if (dog.carriesBlack()) {
+                return "Bb Dd";
+            } else {
+                return "BB Dd";
+            }
+        } else {
+            if (dog.isBlack()) {
+                return "bb DD";
+            } else if (dog.carriesBlack()) {
+                return "Bb DD";
+            } else {
+                return "BB DD";
             }
         }
     }

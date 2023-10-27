@@ -122,6 +122,12 @@ public class ModEntityTypes {
                             .sized(0.8f, 1.05f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mastiff").toString()));
 
+    public static final RegistryObject<EntityType<ShibaInuEntity>> SHIBA_INU =
+            ENTITY_TYPES.register("shiba_inu",
+                    () -> EntityType.Builder.of(ShibaInuEntity::new, MobCategory.CREATURE)
+                            .sized(0.45f, 0.45f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "shiba_inu").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

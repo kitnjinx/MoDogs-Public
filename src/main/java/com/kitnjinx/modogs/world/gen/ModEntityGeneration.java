@@ -268,6 +268,20 @@ public class ModEntityGeneration {
                 20, 1, 1, WINDSWEPT_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
                 30, 1, 1, WINDSWEPT_SAVANNA);
+
+        // SHIBA INU SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                10, 1, 2, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                20, 1, 2, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                20, 1, 2, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                30, 1, 2, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                30, 1, 2, BAMBOO_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
+                30, 1, 2, SPARSE_JUNGLE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

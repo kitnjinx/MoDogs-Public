@@ -31,5 +31,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.PIT_BULL.get(), PitBullRenderer::new);
         EntityRenderers.register(ModEntityTypes.GREAT_DANE.get(), GreatDaneRenderer::new);
         EntityRenderers.register(ModEntityTypes.MASTIFF.get(), MastiffRenderer::new);
+        EntityRenderers.register(ModEntityTypes.SHIBA_INU.get(), ShibaInuRenderer::new);
     }
 }
