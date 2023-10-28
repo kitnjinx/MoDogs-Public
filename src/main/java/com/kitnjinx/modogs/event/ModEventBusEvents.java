@@ -30,5 +30,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.GREAT_DANE.get(), GreatDaneEntity.setAttributes());
         event.put(ModEntityTypes.MASTIFF.get(), MastiffEntity.setAttributes());
         event.put(ModEntityTypes.SHIBA_INU.get(), ShibaInuEntity.setAttributes());
+        event.put(ModEntityTypes.SHETLAND_SHEEPDOG.get(), ShetlandSheepdogEntity.setAttributes());
     }
 }

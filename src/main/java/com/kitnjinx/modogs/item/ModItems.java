@@ -413,6 +413,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.SHIBA_INU,0xd49c61, 0xf6f7f2,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> SHETLAND_SHEEPDOG_SPAWN_EGG = ITEMS.register("shetland_sheepdog_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.SHETLAND_SHEEPDOG,0xce8c55, 0xf2f0ef,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

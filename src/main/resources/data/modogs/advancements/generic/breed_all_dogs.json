@@ -276,6 +276,20 @@
           }
         ]
       }
+    },
+    "shetland_sheepdog": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:shetland_sheepdog"
+            }
+          }
+        ]
+      }
     }
   }
 }

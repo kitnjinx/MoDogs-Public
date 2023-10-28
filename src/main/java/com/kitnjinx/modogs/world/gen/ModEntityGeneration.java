@@ -282,6 +282,20 @@ public class ModEntityGeneration {
                 30, 1, 2, BAMBOO_JUNGLE);
         addEntityToSpecificBiomes(event, ModEntityTypes.SHIBA_INU.get(),
                 30, 1, 2, SPARSE_JUNGLE);
+
+        // SHETLAND SHEEPDOG SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                20, 1, 2, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                20, 1, 2, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                30, 1, 2, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                30, 1, 2, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                10, 1, 2, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                20, 1, 2, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

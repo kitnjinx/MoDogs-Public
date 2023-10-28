@@ -59,6 +59,8 @@ public class GenoReaderItem extends Item {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
                 testResult = saintBernardGeno((SaintBernardEntity) target);
+            } else if (target instanceof ShetlandSheepdogEntity) {
+                testResult = shetlandSheepdogGeno((ShetlandSheepdogEntity) target);
             } else if (target instanceof ShibaInuEntity) {
                 testResult = shibaInuGeno((ShibaInuEntity) target);
             } else {
@@ -739,6 +741,64 @@ public class GenoReaderItem extends Item {
                 return "Gg ss";
             } else {
                 return "GG ss";
+            }
+        }
+    }
+
+    private String shetlandSheepdogGeno(ShetlandSheepdogEntity dog) {
+        if (dog.isSable() && dog.isTan()) {
+            if (dog.hasMerle()) {
+                return "bb pp - Merle Positive";
+            } else {
+                return "bb pp";
+            }
+        } else if (dog.isSable() && dog.carriesTan()) {
+            if (dog.hasMerle()) {
+                return "bb Pp - Merle Positive";
+            } else {
+                return "bb Pp";
+            }
+        } else if (dog.isSable()) {
+            if (dog.hasMerle()) {
+                return "bb PP - Merle Positive";
+            } else {
+                return "bb PP";
+            }
+        } else if (dog.isTan() && dog.carriesSable()) {
+            if (dog.hasMerle()) {
+                return "Bb pp - Merle Positive";
+            } else {
+                return "Bb pp";
+            }
+        } else if (dog.isTan()) {
+            if (dog.hasMerle()) {
+                return "BB pp - Merle Positive";
+            } else {
+                return "BB pp";
+            }
+        } else if (dog.carriesSable() && dog.carriesTan()) {
+            if (dog.hasMerle()) {
+                return "Bb Pp - Merle Positive";
+            } else {
+                return "Bb Pp";
+            }
+        } else if (dog.carriesSable()) {
+            if (dog.hasMerle()) {
+                return "Bb PP - Merle Positive";
+            } else {
+                return "Bb PP";
+            }
+        } else if (dog.carriesTan()) {
+            if (dog.hasMerle()) {
+                return "BB Pp - Merle Positive";
+            } else {
+                return "BB Pp";
+            }
+        } else {
+            if (dog.hasMerle()) {
+                return "BB PP - Merle Positive";
+            } else {
+                return "BB PP";
             }
         }
     }

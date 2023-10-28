@@ -128,6 +128,12 @@ public class ModEntityTypes {
                             .sized(0.45f, 0.45f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "shiba_inu").toString()));
 
+    public static final RegistryObject<EntityType<ShetlandSheepdogEntity>> SHETLAND_SHEEPDOG =
+            ENTITY_TYPES.register("shetland_sheepdog",
+                    () -> EntityType.Builder.of(ShetlandSheepdogEntity::new, MobCategory.CREATURE)
+                            .sized(0.4f, 0.6f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "shetland_sheepdog").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
