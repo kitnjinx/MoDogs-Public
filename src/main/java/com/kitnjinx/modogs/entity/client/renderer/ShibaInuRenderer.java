@@ -49,9 +49,9 @@ public class ShibaInuRenderer extends GeoEntityRenderer<ShibaInuEntity> {
                                     ResourceLocation textureLocation) {
         // Height ~15 inches
         if(animatable.isBaby()) {
-            stack.scale(0.475f, 0.475f, 0.475f);
+            stack.scale(0.375f, 0.375f, 0.375f);
         } else {
-            stack.scale(0.95f, 0.95f, 0.95f);
+            stack.scale(0.75f, 0.75f, 0.75f);
         }
 
         return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
