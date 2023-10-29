@@ -1,0 +1,16 @@
+{
+  "name": "Boston Terrier",
+  "icon": "modogs:boston_terrier_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Boston Terriers only have one gene that has been witnessed to affect how they look, and this is the B Locus. This gene will determine whether they have black or seal fur."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates black fur, while the 'b' allele creates brown, or seal, fur. Dogs with one copy of 'b' will carry the seal trait and may pass it on to pups, providing the potential for seal pups depending on the other parent. Dogs with two copies of 'b' will always create either seal carriers or seal puppies.",
+      "title": "B Locus"
+    }
+  ]
+}

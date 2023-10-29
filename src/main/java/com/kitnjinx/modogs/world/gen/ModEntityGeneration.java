@@ -296,6 +296,20 @@ public class ModEntityGeneration {
                 10, 1, 2, SAVANNA);
         addEntityToSpecificBiomes(event, ModEntityTypes.SHETLAND_SHEEPDOG.get(),
                 20, 1, 2, MEADOW);
+
+        // BOSTON TERRIER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                30, 2, 2, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                20, 2, 2, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                20, 2, 2, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                30, 2, 2, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                30, 2, 2, ERODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
+                10, 2, 2, WOODED_BADLANDS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

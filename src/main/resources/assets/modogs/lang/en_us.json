@@ -139,6 +139,7 @@
   "item.modogs.mastiff_spawn_egg": "Mastiff Spawn Egg",
   "item.modogs.shiba_inu_spawn_egg": "Shiba Inu Spawn Egg",
   "item.modogs.shetland_sheepdog_spawn_egg": "Shetland Sheepdog Spawn Egg",
+  "item.modogs.boston_terrier_spawn_egg": "Boston Terrier Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -159,5 +160,6 @@
   "entity.modogs.great_dane": "Great Dane",
   "entity.modogs.mastiff": "Mastiff",
   "entity.modogs.shiba_inu": "Shiba Inu",
-  "entity.modogs.shetland_sheepdog": "Shetland Sheepdog"
+  "entity.modogs.shetland_sheepdog": "Shetland Sheepdog",
+  "entity.modogs.boston_terrier": "Boston Terrier"
 }

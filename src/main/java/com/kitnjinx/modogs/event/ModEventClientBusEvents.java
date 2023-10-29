@@ -33,5 +33,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.MASTIFF.get(), MastiffRenderer::new);
         EntityRenderers.register(ModEntityTypes.SHIBA_INU.get(), ShibaInuRenderer::new);
         EntityRenderers.register(ModEntityTypes.SHETLAND_SHEEPDOG.get(), ShetlandSheepdogRenderer::new);
+        EntityRenderers.register(ModEntityTypes.BOSTON_TERRIER.get(), BostonTerrierRenderer::new);
     }
 }

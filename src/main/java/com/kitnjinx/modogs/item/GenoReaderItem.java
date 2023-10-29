@@ -31,6 +31,8 @@ public class GenoReaderItem extends Item {
                 testResult = bloodhoundGeno((BloodhoundEntity) target);
             } else if (target instanceof BorderCollieEntity) {
                 testResult = borderCollieGeno((BorderCollieEntity) target);
+            } else if (target instanceof BostonTerrierEntity) {
+                testResult = bostonTerrierGeno((BostonTerrierEntity) target);
             } else if (target instanceof BoxerEntity) {
                 testResult = boxerGeno((BoxerEntity) target);
             } else if (target instanceof CardiganCorgiEntity) {
@@ -228,6 +230,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB DD";
             }
+        }
+    }
+
+    private String bostonTerrierGeno(BostonTerrierEntity dog) {
+        if (dog.getVariant() == BostonTerrierVariant.SEAL) {
+            return "bb";
+        } else if (dog.isCarrier()) {
+            return "Bb";
+        } else {
+            return "BB";
         }
     }
 
