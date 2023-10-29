@@ -128,6 +128,10 @@ public class ShibaInuEntity extends AbstractDog {
         return 0.2F;
     }
 
+    public float getVoicePitch() {
+        return this.isBaby() ? (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.75F : (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.25F;
+    }
+
     /* Tamable */
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {

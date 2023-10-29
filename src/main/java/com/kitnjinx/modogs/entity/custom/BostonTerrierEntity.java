@@ -119,7 +119,11 @@ public class BostonTerrierEntity extends AbstractDog {
     }
 
     protected float getSoundVolume(){
-        return 0.2F;
+        return 0.1F;
+    }
+
+    public float getVoicePitch() {
+        return this.isBaby() ? (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.75F : (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.25F;
     }
 
     /* Tamable */
