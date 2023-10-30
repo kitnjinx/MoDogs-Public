@@ -310,6 +310,20 @@ public class ModEntityGeneration {
                 30, 2, 2, ERODED_BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.BOSTON_TERRIER.get(),
                 10, 2, 2, WOODED_BADLANDS);
+
+        // SCOTTISH TERRIER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                20, 1, 2, FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                20, 1, 2, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                30, 1, 2, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                30, 1, 2, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                30, 1, 2, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
+                10, 1, 2, BIRCH_FOREST);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

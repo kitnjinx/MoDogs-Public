@@ -61,6 +61,8 @@ public class GenoReaderItem extends Item {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
                 testResult = saintBernardGeno((SaintBernardEntity) target);
+            } else if (target instanceof ScottishTerrierEntity) {
+                testResult = scottishTerrierGeno((ScottishTerrierEntity) target);
             } else if (target instanceof ShetlandSheepdogEntity) {
                 testResult = shetlandSheepdogGeno((ShetlandSheepdogEntity) target);
             } else if (target instanceof ShibaInuEntity) {
@@ -754,6 +756,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "GG ss";
             }
+        }
+    }
+
+    private String scottishTerrierGeno(ScottishTerrierEntity dog) {
+        if (dog.getVariant() == ScottishTerrierVariant.WHEATEN) {
+            return "dd";
+        } else if (dog.isCarrier()) {
+            return "Dd";
+        } else {
+            return "DD";
         }
     }
 

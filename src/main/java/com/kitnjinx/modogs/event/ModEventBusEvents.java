@@ -32,5 +32,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.SHIBA_INU.get(), ShibaInuEntity.setAttributes());
         event.put(ModEntityTypes.SHETLAND_SHEEPDOG.get(), ShetlandSheepdogEntity.setAttributes());
         event.put(ModEntityTypes.BOSTON_TERRIER.get(), BostonTerrierEntity.setAttributes());
+        event.put(ModEntityTypes.SCOTTISH_TERRIER.get(), ScottishTerrierEntity.setAttributes());
     }
 }

@@ -304,6 +304,20 @@
           }
         ]
       }
+    },
+    "scottish_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:scottish_terrier"
+            }
+          }
+        ]
+      }
     }
   }
 }
