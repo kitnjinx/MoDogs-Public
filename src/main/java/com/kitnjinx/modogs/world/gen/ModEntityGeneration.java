@@ -324,6 +324,20 @@ public class ModEntityGeneration {
                 30, 1, 2, OLD_GROWTH_PINE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.SCOTTISH_TERRIER.get(),
                 10, 1, 2, BIRCH_FOREST);
+
+        // CAV. KING CHARLES SPANIEL SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                30, 1, 2, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                20, 1, 2, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                30, 1, 2, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                30, 1, 2, SNOWY_SLOPES);
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                10, 1, 2, MEADOW);
+        addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                20, 1, 2, ICE_SPIKES);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

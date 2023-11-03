@@ -1,0 +1,21 @@
+{
+  "name": "Cavalier King Charles Spaniel",
+  "icon": "modogs:ck_charles_spaniel_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cavalier King Charles Spaniels have two genes that affect how they look, the P Locus and White gene. The P Locus determines whether they have red-brown fur or primarily black fur with brown points, while the white gene can create white markings."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The P Locus has two potential alleles, the dominant 'P' and recessive 'p'. The 'P' allele creates solid-colored red-brown fur, while the 'p' allele restricts the red-brown color to the dog's points and creates a primarily black dog. Dogs with one copy of 'p' will carry the points trait and may pass it on to pups, providing the potential for point pups depending on the other parent. Dogs with two copies of 'p' will always create either point carriers or point puppies.",
+      "title": "P Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Understanding of white in this breed is limited, but from our understanding dogs will either be white-marked or they won't. Dogs that have the white trait have a distinctive white marks. Two marked parents will always produce a marked pup, while white markings bred to a solid can produce a pup with or without white markings.",
+      "title": "White"
+    }
+  ]
+}

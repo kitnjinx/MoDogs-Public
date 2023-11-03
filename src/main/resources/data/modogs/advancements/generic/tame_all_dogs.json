@@ -318,6 +318,20 @@
           }
         ]
       }
+    },
+    "ck_charles_spaniel": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:ck_charles_spaniel"
+            }
+          }
+        ]
+      }
     }
   }
 }
