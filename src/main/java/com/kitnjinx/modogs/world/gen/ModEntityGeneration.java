@@ -338,6 +338,20 @@ public class ModEntityGeneration {
                 10, 1, 2, MEADOW);
         addEntityToSpecificBiomes(event, ModEntityTypes.CK_CHARLES_SPANIEL.get(),
                 20, 1, 2, ICE_SPIKES);
+
+        // ITALIAN GREYHOUND SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                30, 1, 2, FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                30, 1, 2, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                10, 1, 2, BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                30, 1, 2, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                20, 1, 2, WOODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                20, 1, 2, ERODED_BADLANDS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

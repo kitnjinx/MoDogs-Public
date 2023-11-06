@@ -152,6 +152,12 @@ public class ModEntityTypes {
                             .sized(0.35f, 0.55f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "ck_charles_spaniel").toString()));
 
+    public static final RegistryObject<EntityType<ItalianGreyhoundEntity>> ITALIAN_GREYHOUND =
+            ENTITY_TYPES.register("italian_greyhound",
+                    () -> EntityType.Builder.of(ItalianGreyhoundEntity::new, MobCategory.CREATURE)
+                            .sized(0.4f, 0.6f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "italian_greyhound").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

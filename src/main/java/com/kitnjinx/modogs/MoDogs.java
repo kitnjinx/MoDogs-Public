@@ -174,6 +174,11 @@ public class MoDogs
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     AbstractDog::checkDogSpawnRules);
+
+            SpawnPlacements.register(ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                    SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    AbstractDog::checkDogSpawnRules);
         });
     }
 }

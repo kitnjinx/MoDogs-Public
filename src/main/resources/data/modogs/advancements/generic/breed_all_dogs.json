@@ -332,6 +332,20 @@
           }
         ]
       }
+    },
+    "italian_greyhound": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:italian_greyhound"
+            }
+          }
+        ]
+      }
     }
   }
 }

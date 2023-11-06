@@ -51,6 +51,8 @@ public class GenoReaderItem extends Item {
                 testResult = greatDaneGeno((GreatDaneEntity) target);
             } else if (target instanceof GreyhoundEntity) {
                 testResult = greyhoundGeno((GreyhoundEntity) target);
+            } else if (target instanceof ItalianGreyhoundEntity) {
+                testResult = italianGreyhoundGeno((ItalianGreyhoundEntity) target);
             } else if (target instanceof LabRetrieverEntity) {
                 testResult = labRetrieverGeno((LabRetrieverEntity) target);
             } else if (target instanceof MastiffEntity) {
@@ -543,6 +545,70 @@ public class GenoReaderItem extends Item {
                 return "Bb DD ww";
             } else {
                 return "BB DD ww";
+            }
+        }
+    }
+
+    private String italianGreyhoundGeno(ItalianGreyhoundEntity dog) {
+        if (dog.isBlue()) {
+            if (dog.isFawn()) {
+                if (dog.hasWhite()) {
+                    return "bb dd - White Positive";
+                } else {
+                    return "bb dd";
+                }
+            } else if (dog.carriesFawn()) {
+                if (dog.hasWhite()) {
+                    return "Bb dd - White Positive";
+                } else {
+                    return "Bb dd";
+                }
+            } else {
+                if (dog.hasWhite()) {
+                    return "BB dd - White Positive";
+                } else {
+                    return "BB dd";
+                }
+            }
+        } else if (dog.carriesBlue()) {
+            if (dog.isFawn()) {
+                if (dog.hasWhite()) {
+                    return "bb Dd - White Positive";
+                } else {
+                    return "bb Dd";
+                }
+            } else if (dog.carriesFawn()) {
+                if (dog.hasWhite()) {
+                    return "Bb Dd - White Positive";
+                } else {
+                    return "Bb Dd";
+                }
+            } else {
+                if (dog.hasWhite()) {
+                    return "BB Dd - White Positive";
+                } else {
+                    return "BB Dd";
+                }
+            }
+        } else {
+            if (dog.isFawn()) {
+                if (dog.hasWhite()) {
+                    return "bb DD - White Positive";
+                } else {
+                    return "bb DD";
+                }
+            } else if (dog.carriesFawn()) {
+                if (dog.hasWhite()) {
+                    return "Bb DD - White Positive";
+                } else {
+                    return "Bb DD";
+                }
+            } else {
+                if (dog.hasWhite()) {
+                    return "BB DD - White Positive";
+                } else {
+                    return "BB DD";
+                }
             }
         }
     }
