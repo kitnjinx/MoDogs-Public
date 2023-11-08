@@ -27,6 +27,8 @@ public class GenoReaderItem extends Item {
                 testResult = alaskanMalamuteGeno((AlaskanMalamuteEntity) target);
             } else if (target instanceof AustralianShepherdEntity) {
                 testResult = australianShepherdGeno((AustralianShepherdEntity) target);
+            } else if (target instanceof BasenjiEntity) {
+                testResult = basenjiGeno((BasenjiEntity) target);
             } else if (target instanceof BerneseMountainDogEntity) {
                 testResult = berneseMountainDogGeno((BerneseMountainDogEntity) target);
             } else if (target instanceof BloodhoundEntity) {
@@ -179,6 +181,26 @@ public class GenoReaderItem extends Item {
                 return "BB - Merle Positive";
             } else {
                 return "BB";
+            }
+        }
+    }
+
+    private String basenjiGeno(BasenjiEntity dog) {
+        if (dog.getVariant() == BasenjiVariant.TRICOLOR) {
+            return "TT";
+        } else if (dog.getVariant() == BasenjiVariant.BLACK) {
+            if (dog.getCarrier() == 0) {
+                return "BB";
+            } else {
+                return "BT";
+            }
+        } else {
+            if (dog.getCarrier() == 0) {
+                return "RR";
+            } else if (dog.getCarrier() == 1) {
+                return "RB";
+            } else {
+                return "RT";
             }
         }
     }

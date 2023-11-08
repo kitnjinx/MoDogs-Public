@@ -36,5 +36,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.CK_CHARLES_SPANIEL.get(), CKCharlesSpanielEntity.setAttributes());
         event.put(ModEntityTypes.ITALIAN_GREYHOUND.get(), ItalianGreyhoundEntity.setAttributes());
         event.put(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(), AustralianShepherdEntity.setAttributes());
+        event.put(ModEntityTypes.BASENJI.get(), BasenjiEntity.setAttributes());
     }
 }

@@ -366,6 +366,20 @@ public class ModEntityGeneration {
                 10, 1, 2, WINDSWEPT_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
                 30, 1, 2, MEADOW);
+
+        // BASENJI SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                30, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                30, 1, 1, SWAMP);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                30, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                20, 1, 1, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                20, 1, 1, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
+                10, 1, 1, BADLANDS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
