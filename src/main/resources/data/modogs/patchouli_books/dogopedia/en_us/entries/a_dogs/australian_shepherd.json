@@ -1,0 +1,30 @@
+{
+  "name": "Australian Shepherd",
+  "icon": "modogs:australian_shepherd_spawn_egg",
+  "category": "modogs:a_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Australian Shepherds were originally bred, and still are used, as herding dogs, particularly with sheep.$(br2)Standing just under a block tall, these steady dogs come in four different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/australian_shepherd_book.png"
+      ],
+      "border": true,
+      "text": "Example of an Australian Shepherd"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found most commonly in various plains biomes. They can also be found in various windswept biomes.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:mutton_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Mutton Treat."
+    }
+  ]
+}

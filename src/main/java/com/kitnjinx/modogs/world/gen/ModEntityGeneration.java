@@ -352,6 +352,20 @@ public class ModEntityGeneration {
                 20, 1, 2, WOODED_BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.ITALIAN_GREYHOUND.get(),
                 20, 1, 2, ERODED_BADLANDS);
+
+        // AUSTRALIAN SHEPHERD SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                30, 1, 2, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                30, 1, 2, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                20, 1, 2, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                20, 1, 2, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                10, 1, 2, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                30, 1, 2, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

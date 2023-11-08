@@ -25,6 +25,8 @@ public class GenoReaderItem extends Item {
             String testResult;
             if (target instanceof AlaskanMalamuteEntity) {
                 testResult = alaskanMalamuteGeno((AlaskanMalamuteEntity) target);
+            } else if (target instanceof AustralianShepherdEntity) {
+                testResult = australianShepherdGeno((AustralianShepherdEntity) target);
             } else if (target instanceof BerneseMountainDogEntity) {
                 testResult = berneseMountainDogGeno((BerneseMountainDogEntity) target);
             } else if (target instanceof BloodhoundEntity) {
@@ -155,6 +157,28 @@ public class GenoReaderItem extends Item {
                 } else {
                     return "BB SS";
                 }
+            }
+        }
+    }
+
+    private String australianShepherdGeno(AustralianShepherdEntity dog) {
+        if (dog.isRed()) {
+            if (dog.isMerle()) {
+                return "bb - Merle Positive";
+            } else {
+                return "bb";
+            }
+        } else if (dog.carriesRed()) {
+            if (dog.isMerle()) {
+                return "Bb - Merle Positive";
+            } else {
+                return "Bb";
+            }
+        } else {
+            if (dog.isMerle()) {
+                return "BB - Merle Positive";
+            } else {
+                return "BB";
             }
         }
     }

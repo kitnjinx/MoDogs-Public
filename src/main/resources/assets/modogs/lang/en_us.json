@@ -143,6 +143,7 @@
   "item.modogs.scottish_terrier_spawn_egg": "Scottish Terrier Spawn Egg",
   "item.modogs.ck_charles_spaniel_spawn_egg": "Cavalier King Charles Spaniel Spawn Egg",
   "item.modogs.italian_greyhound_spawn_egg": "Italian Greyhound Spawn Egg",
+  "item.modogs.australian_shepherd_spawn_egg": "Australian Shepherd Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -167,5 +168,6 @@
   "entity.modogs.boston_terrier": "Boston Terrier",
   "entity.modogs.scottish_terrier": "Scottish Terrier",
   "entity.modogs.ck_charles_spaniel": "Cavalier King Charles Spaniel",
-  "entity.modogs.italian_greyhound": "Italian Greyhound"
+  "entity.modogs.italian_greyhound": "Italian Greyhound",
+  "entity.modogs.australian_shepherd": "Australian Shepherd"
 }

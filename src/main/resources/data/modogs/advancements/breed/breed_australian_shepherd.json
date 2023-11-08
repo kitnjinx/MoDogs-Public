@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:australian_shepherd_spawn_egg"
+    },
+    "title": "Australian Shepherd Breeder",
+    "description": "Breed a Australian Shepherd",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:tame/tame_australian_shepherd",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:australian_shepherd"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
