@@ -65,6 +65,8 @@ public class GenoReaderItem extends Item {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
                 testResult = pitBullGeno((PitBullEntity) target);
+            } else if (target instanceof PugEntity) {
+                testResult = pugGeno((PugEntity) target);
             } else if (target instanceof RussellTerrierEntity) {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
@@ -788,6 +790,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB DD ww";
             }
+        }
+    }
+
+    private String pugGeno(PugEntity dog) {
+        if (dog.getVariant() == PugVariant.BLACK) {
+            return "bb";
+        } else if (dog.isCarrier()) {
+            return "Bb";
+        } else {
+            return "BB";
         }
     }
 

@@ -170,6 +170,12 @@ public class ModEntityTypes {
                             .sized(0.45f, 0.65f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "basenji").toString()));
 
+    public static final RegistryObject<EntityType<PugEntity>> PUG =
+            ENTITY_TYPES.register("pug",
+                    () -> EntityType.Builder.of(PugEntity::new, MobCategory.CREATURE)
+                            .sized(0.35f, 0.55f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "pug").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

@@ -380,6 +380,20 @@ public class ModEntityGeneration {
                 20, 1, 1, JUNGLE);
         addEntityToSpecificBiomes(event, ModEntityTypes.BASENJI.get(),
                 10, 1, 1, BADLANDS);
+
+        // PUG SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                10, 1, 1, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                30, 2, 2, BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                30, 2, 2, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                20, 2, 2, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                20, 2, 2, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
+                20, 2, 2, TAIGA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

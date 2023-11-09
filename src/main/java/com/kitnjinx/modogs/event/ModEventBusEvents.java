@@ -37,5 +37,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.ITALIAN_GREYHOUND.get(), ItalianGreyhoundEntity.setAttributes());
         event.put(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(), AustralianShepherdEntity.setAttributes());
         event.put(ModEntityTypes.BASENJI.get(), BasenjiEntity.setAttributes());
+        event.put(ModEntityTypes.PUG.get(), PugEntity.setAttributes());
     }
 }
