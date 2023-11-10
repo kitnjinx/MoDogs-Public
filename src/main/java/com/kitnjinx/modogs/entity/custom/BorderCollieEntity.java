@@ -300,25 +300,17 @@ public class BorderCollieEntity extends AbstractDog {
         if (merle == 3) {
             setMerle(true);
             if (determine < 6) {
-                var = 3;
+                var = 3; // BLACK_MERLE
                 setBaseColor(0);
-                if (carrier == 1) {
-                    setRedStatus(true, false);
-                    setLilacCarrier(false);
-                } else if (carrier == 2) {
-                    setRedStatus(false, false);
-                    setLilacCarrier(true);
-                } else {
-                    setRedStatus(false, false);
-                    setLilacCarrier(false);
-                }
+                setRedStatus(carrier == 1, false);
+                setLilacCarrier(carrier == 2);
             } else if (determine < 9) {
-                var = 4;
+                var = 4; // RED_MERLE
                 setBaseColor(1);
                 setRedStatus(true, true);
                 setLilacCarrier(carrier == 1);
             } else {
-                var = 5;
+                var = 5; // LILAC_MERLE
                 setBaseColor(2);
                 setLilacCarrier(true);
                 if ((r.nextInt(8) + 1) < 6) {
@@ -330,26 +322,18 @@ public class BorderCollieEntity extends AbstractDog {
         } else {
             setMerle(false);
             if (determine < 6) {
-                var = 0;
+                var = 0; // BLACK
                 setBaseColor(0);
-                if (carrier == 1) {
-                    setRedStatus(true, false);
-                    setLilacCarrier(false);
-                } else if (carrier == 2) {
-                    setRedStatus(false, false);
-                    setLilacCarrier(true);
-                } else {
-                    setRedStatus(false, false);
-                    setLilacCarrier(false);
-                }
+                setRedStatus(carrier == 1, false);
+                setLilacCarrier(carrier == 2);
             } else if (determine < 9) {
-                var = 1;
+                var = 1; // RED
                 setBaseColor(1);
                 setRedStatus(true, true);
                 setLilacCarrier(carrier == 1);
             } else {
                 var = 2;
-                setBaseColor(2);
+                setBaseColor(2); // LILAC
                 setLilacCarrier(true);
                 if ((r.nextInt(8) + 1) < 6) {
                     setRedStatus(true, true);
