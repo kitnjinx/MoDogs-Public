@@ -38,5 +38,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(), AustralianShepherdEntity.setAttributes());
         event.put(ModEntityTypes.BASENJI.get(), BasenjiEntity.setAttributes());
         event.put(ModEntityTypes.PUG.get(), PugEntity.setAttributes());
+        event.put(ModEntityTypes.COCKER_SPANIEL.get(), CockerSpanielEntity.setAttributes());
     }
 }

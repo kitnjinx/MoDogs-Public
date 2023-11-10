@@ -146,6 +146,7 @@
   "item.modogs.australian_shepherd_spawn_egg": "Australian Shepherd Spawn Egg",
   "item.modogs.basenji_spawn_egg": "Basenji Spawn Egg",
   "item.modogs.pug_spawn_egg": "Pug Spawn Egg",
+  "item.modogs.cocker_spaniel_spawn_egg": "Cocker Spaniel Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -173,5 +174,6 @@
   "entity.modogs.italian_greyhound": "Italian Greyhound",
   "entity.modogs.australian_shepherd": "Australian Shepherd",
   "entity.modogs.basenji": "Basenji",
-  "entity.modogs.pug": "Pug"
+  "entity.modogs.pug": "Pug",
+  "entity.modogs.cocker_spaniel": "Cocker Spaniel"
 }

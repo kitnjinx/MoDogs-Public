@@ -43,6 +43,8 @@ public class GenoReaderItem extends Item {
                 testResult = cardiganCorgiGeno((CardiganCorgiEntity) target);
             } else if (target instanceof CKCharlesSpanielEntity) {
                 testResult = cKCharlesSpanielGeno((CKCharlesSpanielEntity) target);
+            } else if (target instanceof CockerSpanielEntity) {
+                testResult = cockerSpanielGeno((CockerSpanielEntity) target);
             } else if (target instanceof DachshundEntity) {
                 testResult = dachshundGeno((DachshundEntity) target);
             } else if (target instanceof DalmatianEntity) {
@@ -365,6 +367,34 @@ public class GenoReaderItem extends Item {
                 return "PP - White Positive";
             } else {
                 return "PP";
+            }
+        }
+    }
+
+    private String cockerSpanielGeno(CockerSpanielEntity dog) {
+        if (dog.getVariant() == CockerSpanielVariant.BUFF || dog.getVariant() == CockerSpanielVariant.SILVER) {
+            if (dog.isBlack()) {
+                return "bb dd";
+            } else if (dog.carriesBlack()) {
+                return "Bb dd";
+            } else {
+                return "BB dd";
+            }
+        } else if (dog.carriesDilute()) {
+            if (dog.isBlack()) {
+                return "bb Dd";
+            } else if (dog.carriesBlack()) {
+                return "Bb Dd";
+            } else {
+                return "BB Dd";
+            }
+        } else {
+            if (dog.isBlack()) {
+                return "bb DD";
+            } else if (dog.carriesBlack()) {
+                return "Bb DD";
+            } else {
+                return "BB DD";
             }
         }
     }

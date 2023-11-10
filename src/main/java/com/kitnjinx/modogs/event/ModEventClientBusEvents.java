@@ -40,5 +40,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(), AustralianShepherdRenderer::new);
         EntityRenderers.register(ModEntityTypes.BASENJI.get(), BasenjiRenderer::new);
         EntityRenderers.register(ModEntityTypes.PUG.get(), PugRenderer::new);
+        EntityRenderers.register(ModEntityTypes.COCKER_SPANIEL.get(), CockerSpanielRenderer::new);
     }
 }

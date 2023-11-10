@@ -394,6 +394,20 @@ public class ModEntityGeneration {
                 20, 2, 2, OLD_GROWTH_SPRUCE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.PUG.get(),
                 20, 2, 2, TAIGA);
+
+        // COCKER SPANIEL SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                20, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                20, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                30, 1, 1, FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                30, 1, 1, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                30, 1, 1, BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
+                10, 1, 1, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
