@@ -235,17 +235,17 @@ public class BloodhoundEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 6) {
-            var = 0;
+            var = 0; // BLACK_TAN
             if (carrier < 3) {
                 setCarrier(2);
             } else {
                 setCarrier(0);
             }
         } else if (determine < 9) {
-            var = 1;
+            var = 1; // LIVER_TAN
             setCarrier(0);
         } else {
-            var = 2;
+            var = 2; // RED
             if (carrier == 1) {
                 setCarrier(1);
             } else if (carrier == 2) {

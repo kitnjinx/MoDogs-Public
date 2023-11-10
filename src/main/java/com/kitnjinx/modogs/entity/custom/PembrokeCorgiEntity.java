@@ -255,7 +255,7 @@ public class PembrokeCorgiEntity extends AbstractDog {
         int var;
 
         if (determine < 8) {
-            var = 0;
+            var = 0; // RED
             setBaseColor(0);
             setFawn(false);
             if (carrier == 1 || carrier == 2) {
@@ -264,12 +264,12 @@ public class PembrokeCorgiEntity extends AbstractDog {
                 setCarriedColor(0);
             }
         } else if (determine < 13) {
-            var = 1;
+            var = 1; // BLACK_TAN
             setBaseColor(2);
             setCarriedColor(2);
             setFawn(carrier == 1);
         } else if (determine < 16) {
-            var = 2;
+            var = 2; // FAWN
             setBaseColor(0);
             setFawn(true);
             if (carrier == 1 || carrier == 2) {
@@ -278,7 +278,7 @@ public class PembrokeCorgiEntity extends AbstractDog {
                 setCarriedColor(0);
             }
         } else {
-            var = 3;
+            var = 3; // SABLE
             setBaseColor(1);
             setFawn(carrier == 1);
             if (carrier == 2) {

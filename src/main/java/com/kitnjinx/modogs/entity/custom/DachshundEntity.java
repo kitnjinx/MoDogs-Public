@@ -318,15 +318,15 @@ public class DachshundEntity extends AbstractDog {
         if (cream == 3) {
             setCreamStatus(true, true);
             if (determine < 6) {
-                var = 3;
+                var = 3; // BLACK_CREAM
                 setChocolateStatus(carrier == 1, false);
                 setFawnStatus(carrier == 2, false);
             } else if (determine < 9) {
-                var = 4;
+                var = 4; // CHOCOLATE_CREAM
                 setChocolateStatus(true, true);
                 setFawnStatus(carrier == 2, false);
             } else {
-                var = 5;
+                var = 5; // FAWN_CREAM
                 setFawnStatus(true, true);
                 if (r.nextInt(8) + 1 < 6) {
                     setChocolateStatus(carrier == 1, false);
@@ -337,15 +337,15 @@ public class DachshundEntity extends AbstractDog {
         } else {
             setCreamStatus(r.nextInt(4) == 0, false);
             if (determine < 6) {
-                var = 0;
+                var = 0; // BLACK_TAN
                 setChocolateStatus(carrier == 1, false);
                 setFawnStatus(carrier == 2, false);
             } else if (determine < 9) {
-                var = 1;
+                var = 1; // CHOCOLATE_TAN
                 setChocolateStatus(true, true);
                 setFawnStatus(carrier == 2, false);
             } else {
-                var = 2;
+                var = 2; // FAWN_TAN
                 setFawnStatus(true, true);
                 if (r.nextInt(8) + 1 < 6) {
                     setChocolateStatus(carrier == 1, false);

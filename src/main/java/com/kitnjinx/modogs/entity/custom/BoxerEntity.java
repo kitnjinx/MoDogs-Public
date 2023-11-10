@@ -233,18 +233,18 @@ public class BoxerEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 7) {
-            var = 0;
+            var = 0; // MEDIUM
             setShade(0);
         } else if (determine < 10) {
             if (random.nextBoolean()) {
-                var = 1;
+                var = 1; // LIGHT
                 setShade(1);
             } else {
-                var = 2;
+                var = 2; // DARK
                 setShade(2);
             }
         } else {
-            var = 3;
+            var = 3; // BLACK
             if (random.nextInt(9) + 1 < 7) {
                 setShade(0);
             } else if (random.nextBoolean()) {

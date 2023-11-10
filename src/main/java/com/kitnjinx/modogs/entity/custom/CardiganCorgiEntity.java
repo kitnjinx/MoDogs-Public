@@ -238,16 +238,16 @@ public class CardiganCorgiEntity extends AbstractDog {
         int var;
 
         if (determine < 8) {
-            var = 0;
+            var = 0; // RED
             setBaseColor(0);
         } else if (determine < 13) {
-            var = 1;
+            var = 1; // BLACK
             setBaseColor(1);
         } else if (determine < 16) {
-            var = 2;
+            var = 2; // SABLE
             setBaseColor(2);
         } else {
-            var = 3;
+            var = 3; // BLUE_MERLE
             setBaseColor(1);
         }
 

@@ -255,15 +255,15 @@ public class LabRetrieverEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 6) {
-            var = 0;
+            var = 0; // BLACK
             setChocolateStatus(carrier == 1, false);
             setYellowCarrier(carrier == 2);
         } else if (determine < 9) {
-            var = 1;
+            var = 1; // CHOCOLATE
             setChocolateStatus(true, true);
             setYellowCarrier(carrier == 1);
         } else {
-            var = 2;
+            var = 2; // YELLOW
             setYellowCarrier(true);
             if (r.nextInt(8) + 1 < 6) {
                 setChocolateStatus(carrier == 1, false);

@@ -223,13 +223,13 @@ public class DalmatianEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 5) {
-            var = 0;
+            var = 0; // BLACK1
         } else if (determine < 9) {
-            var = 1;
+            var = 1; // BLACK2
         } else if (determine < 13) {
-            var = 2;
+            var = 2; // BLACK3
         } else {
-            var = 3;
+            var = 3; // BROWN
         }
 
         setCarrier(var == 3 || carrier == 4); // if dog is brown or rolled to be a carrier, boolean is true

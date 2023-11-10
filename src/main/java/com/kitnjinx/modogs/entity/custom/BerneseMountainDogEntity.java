@@ -227,9 +227,9 @@ public class BerneseMountainDogEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine == 5) {
-            var = 1;
+            var = 1; // TAN
         } else {
-            var = 0;
+            var = 0; // RUST
         }
 
         setCarrier(var == 1 || carrier == 4); // if dog is tan or rolled to be a carrier, boolean is true

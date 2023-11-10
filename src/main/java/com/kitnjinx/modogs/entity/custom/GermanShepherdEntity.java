@@ -233,16 +233,16 @@ public class GermanShepherdEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 9) {
-            var = 0;
+            var = 0; // STANDARD
             setBlackDegree(0);
         } else if (determine < 13) {
-            var = 1;
+            var = 1; // BROWN_POINTS
             setBlackDegree(1);
         } else if (determine < 16) {
-            var = 2;
+            var = 2; // BLACK
             setBlackDegree(2);
         } else {
-            var = 3;
+            var = 3; // WHITE
             int rand = r.nextInt(15) + 1;
             if (rand < 9) {
                 setBlackDegree(0);
