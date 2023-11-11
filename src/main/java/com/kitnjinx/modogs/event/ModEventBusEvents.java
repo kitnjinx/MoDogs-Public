@@ -40,5 +40,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.PUG.get(), PugEntity.setAttributes());
         event.put(ModEntityTypes.COCKER_SPANIEL.get(), CockerSpanielEntity.setAttributes());
         event.put(ModEntityTypes.BULL_TERRIER.get(), BullTerrierEntity.setAttributes());
+        event.put(ModEntityTypes.MINI_BULL_TERRIER.get(), MiniBullTerrierEntity.setAttributes());
     }
 }

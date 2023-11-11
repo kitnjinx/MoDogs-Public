@@ -42,5 +42,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.PUG.get(), PugRenderer::new);
         EntityRenderers.register(ModEntityTypes.COCKER_SPANIEL.get(), CockerSpanielRenderer::new);
         EntityRenderers.register(ModEntityTypes.BULL_TERRIER.get(), BullTerrierRenderer::new);
+        EntityRenderers.register(ModEntityTypes.MINI_BULL_TERRIER.get(), MiniBullTerrierRenderer::new);
     }
 }

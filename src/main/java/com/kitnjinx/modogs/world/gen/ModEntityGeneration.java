@@ -409,7 +409,7 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
                 10, 1, 1, MEADOW);
 
-        // BULL TERRIER SPANIEL SPAWNING AREAS
+        // BULL TERRIER SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
                 30, 1, 1, DARK_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
@@ -422,6 +422,20 @@ public class ModEntityGeneration {
                 20, 1, 1, SAVANNA);
         addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
                 20, 1, 1, SAVANNA_PLATEAU);
+
+        // MINI BULL TERRIER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                10, 1, 1, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                20, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                20, 1, 1, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                30, 1, 1, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                30, 1, 1, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
+                30, 1, 1, WINDSWEPT_SAVANNA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

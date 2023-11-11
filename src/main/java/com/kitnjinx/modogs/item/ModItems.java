@@ -452,6 +452,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.BULL_TERRIER,0xebebeb, 0x1c1b1a,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> MINI_BULL_TERRIER_SPAWN_EGG = ITEMS.register("mini_bull_terrier_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.MINI_BULL_TERRIER,0xf1f1f1, 0x9b612b,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

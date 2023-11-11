@@ -416,6 +416,20 @@
           }
         ]
       }
+    },
+    "mini_bull_terrier": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mini_bull_terrier"
+            }
+          }
+        ]
+      }
     }
   }
 }
