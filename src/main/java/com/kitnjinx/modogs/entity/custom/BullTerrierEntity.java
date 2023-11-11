@@ -421,7 +421,7 @@ public class BullTerrierEntity extends AbstractDog {
             // if both parents have high white, baby has 25% chance to have low white, 50% chance to have high
             // white, and 25% chance to be white
             int determine = this.random.nextInt(4) + 1;
-            baby.setTarget(determine > 1);
+            baby.setHighWhite(determine > 1);
             pureWhite = determine == 4;
         } else if (this.hasHighWhite() || otherParent.hasHighWhite()) {
             // if only one parent has high white, baby will have 50/50 chance to have high white
