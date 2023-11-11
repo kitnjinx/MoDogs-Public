@@ -32,7 +32,7 @@ public class PugRenderer extends GeoEntityRenderer<PugEntity> {
 
         addLayer(new PugCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override
