@@ -182,6 +182,12 @@ public class ModEntityTypes {
                             .sized(0.4f, 0.6f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "cocker_spaniel").toString()));
 
+    public static final RegistryObject<EntityType<BullTerrierEntity>> BULL_TERRIER =
+            ENTITY_TYPES.register("bull_terrier",
+                    () -> EntityType.Builder.of(BullTerrierEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 0.85f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "bull_terrier").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

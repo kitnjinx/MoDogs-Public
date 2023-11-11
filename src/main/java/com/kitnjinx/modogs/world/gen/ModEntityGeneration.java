@@ -408,6 +408,20 @@ public class ModEntityGeneration {
                 30, 1, 1, BIRCH_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.COCKER_SPANIEL.get(),
                 10, 1, 1, MEADOW);
+
+        // BULL TERRIER SPANIEL SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                30, 1, 1, DARK_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                30, 1, 1, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                30, 1, 1, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                10, 1, 1, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                20, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULL_TERRIER.get(),
+                20, 1, 1, SAVANNA_PLATEAU);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

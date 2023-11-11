@@ -39,6 +39,8 @@ public class GenoReaderItem extends Item {
                 testResult = bostonTerrierGeno((BostonTerrierEntity) target);
             } else if (target instanceof BoxerEntity) {
                 testResult = boxerGeno((BoxerEntity) target);
+            } else if (target instanceof BullTerrierEntity) {
+                testResult = bullTerrierGeno((BullTerrierEntity) target);
             } else if (target instanceof CardiganCorgiEntity) {
                 testResult = cardiganCorgiGeno((CardiganCorgiEntity) target);
             } else if (target instanceof CKCharlesSpanielEntity) {
@@ -323,6 +325,34 @@ public class GenoReaderItem extends Item {
                 return "BB Ss";
             } else {
                 return "BB ss";
+            }
+        }
+    }
+
+    private String bullTerrierGeno(BullTerrierEntity dog) {
+        if (dog.getVariant() == BullTerrierVariant.WHITE) {
+            if (dog.isRed()) {
+                return "bb WW";
+            } else if (dog.carriesRed()) {
+                return "Bb WW";
+            } else {
+                return "BB WW";
+            }
+        } else if (dog.hasHighWhite()) {
+            if (dog.isRed()) {
+                return "bb Ww";
+            } else if (dog.carriesRed()) {
+                return "Bb Ww";
+            } else {
+                return "BB Ww";
+            }
+        } else {
+            if (dog.isRed()) {
+                return "bb ww";
+            } else if (dog.carriesRed()) {
+                return "Bb ww";
+            } else {
+                return "BB ww";
             }
         }
     }
