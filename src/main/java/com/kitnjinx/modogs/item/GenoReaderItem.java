@@ -66,7 +66,9 @@ public class GenoReaderItem extends Item {
             } else if (target instanceof MastiffEntity) {
                 testResult = mastiffGeno((MastiffEntity) target);
             } else if (target instanceof MiniBullTerrierEntity) {
-                testResult = miniBullTerrier((MiniBullTerrierEntity) target);
+                testResult = miniBullTerrierGeno((MiniBullTerrierEntity) target);
+            } else if (target instanceof  MiniSchnauzerEntity) {
+                testResult = miniSchnauzerGeno((MiniSchnauzerEntity) target);
             } else if (target instanceof PembrokeCorgiEntity) {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
@@ -763,7 +765,7 @@ public class GenoReaderItem extends Item {
         }
     }
 
-    private String miniBullTerrier(MiniBullTerrierEntity dog) {
+    private String miniBullTerrierGeno(MiniBullTerrierEntity dog) {
         if (dog.getVariant() == BullTerrierVariant.WHITE) {
             if (dog.isRed()) {
                 return "bb WW";
@@ -788,6 +790,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB ww";
             }
+        }
+    }
+
+    private String miniSchnauzerGeno(MiniSchnauzerEntity dog) {
+        if (dog.getVariant() == MiniSchnauzerVariant.PEPPER_SALT) {
+            return "dd";
+        } else if (dog.getVariant() == MiniSchnauzerVariant.BLACK_SILVER) {
+            return "Dd";
+        } else {
+            return "DD";
         }
     }
 

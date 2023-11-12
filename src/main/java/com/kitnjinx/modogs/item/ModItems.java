@@ -459,6 +459,9 @@ public class ModItems {
     public static final RegistryObject<Item> SCHNAUZER_TERRIER_SPAWN_EGG = ITEMS.register("schnauzer_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.SCHNAUZER,0x616161, 0xc1c1c1,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+    public static final RegistryObject<Item> MINI_SCHNAUZER_TERRIER_SPAWN_EGG = ITEMS.register("mini_schnauzer_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.MINI_SCHNAUZER,0x252121, 0xc1c1c1,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     // Register items
     public static void register(IEventBus eventBus) {

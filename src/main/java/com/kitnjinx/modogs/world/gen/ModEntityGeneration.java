@@ -450,6 +450,20 @@ public class ModEntityGeneration {
                 20, 1, 1, JUNGLE);
         addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
                 30, 1, 1, MEADOW);
+
+        // MINI SCHNAUZER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_SCHNAUZER.get(),
+                30, 1, 1, BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_SCHNAUZER.get(),
+                30, 1, 1, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                10, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_SCHNAUZER.get(),
+                20, 1, 1, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                20, 1, 1, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_SCHNAUZER.get(),
+                30, 1, 1, FLOWER_FOREST);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
