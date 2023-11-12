@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Schnauzers were originally bred for herding livestock and guarding farms, though were later used as police and military dogs.$(br2)Standing at roughly three quarters of a black tall, these hard-working dogs come in two different coats."
+      "text": "Schnauzers were originally bred for herding livestock and guarding farms, though were later used as police and military dogs.$(br2)Standing at roughly three quarters of a block tall, these hard-working dogs come in two different coats."
     },
     {
       "type": "patchouli:image",
@@ -22,9 +22,9 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "modogs:chicken_treat",
+      "item": "modogs:beef_treat",
       "title": "Taming",
-      "text": "These dogs can be tamed with a Chicken or Rabbit Treat."
+      "text": "These dogs can be tamed with a Beef or Mutton Treat."
     }
   ]
 }
