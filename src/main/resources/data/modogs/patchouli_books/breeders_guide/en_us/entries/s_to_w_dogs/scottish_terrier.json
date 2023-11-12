@@ -1,11 +1,11 @@
 {
-  "name": "Shiba Inu",
-  "icon": "modogs:shiba_inu_spawn_egg",
+  "name": "Scottish Terrier",
+  "icon": "modogs:scottish_terrier_spawn_egg",
   "category": "modogs:s_to_w_dogs",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Scottish Terriers only have one gene that has been witnessed to affect how they look, and this is the D Locus. The D Locus is a dilution that turns the fur from back to a pale, cream color known as wheaten."
+      "text": "Scottish Terriers only have one gene that has been witnessed to affect how they look, and this is the D Locus. The D Locus is a dilution that turns the fur from black to a pale, cream color known as wheaten."
     },
     {
       "type": "patchouli:text",
