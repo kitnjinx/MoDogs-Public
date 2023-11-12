@@ -436,6 +436,20 @@ public class ModEntityGeneration {
                 30, 1, 1, WINDSWEPT_HILLS);
         addEntityToSpecificBiomes(event, ModEntityTypes.MINI_BULL_TERRIER.get(),
                 30, 1, 1, WINDSWEPT_SAVANNA);
+
+        // SCHNAUZER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                30, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                30, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                10, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                20, 1, 1, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                20, 1, 1, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.SCHNAUZER.get(),
+                30, 1, 1, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
