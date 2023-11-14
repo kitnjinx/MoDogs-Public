@@ -212,6 +212,12 @@ public class ModEntityTypes {
                             .sized(0.5f, 0.75f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "poodle").toString()));
 
+    public static final RegistryObject<EntityType<ToyPoodleEntity>> TOY_POODLE =
+            ENTITY_TYPES.register("toy_poodle",
+                    () -> EntityType.Builder.of(ToyPoodleEntity::new, MobCategory.CREATURE)
+                            .sized(0.35f, 0.55f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "toy_poodle").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

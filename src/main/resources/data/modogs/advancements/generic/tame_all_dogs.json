@@ -472,6 +472,20 @@
           }
         ]
       }
+    },
+    "toy_poodle": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:toy_poodle"
+            }
+          }
+        ]
+      }
     }
   }
 }

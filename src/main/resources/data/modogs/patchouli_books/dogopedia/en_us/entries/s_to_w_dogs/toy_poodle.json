@@ -1,0 +1,30 @@
+{
+  "name": "Toy Poodle",
+  "icon": "modogs:toy_poodle_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Toy Poodles were originally bred for circus and entertainment purposes, as well as serving as family dogs.$(br2)At less than half a block tall, these graceful dogs come in five different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/toy_poodle_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Toy Poodle"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in around warm water. They can also be found in plains biomes.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:salmon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Salmon Treat."
+    }
+  ]
+}

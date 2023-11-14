@@ -478,6 +478,20 @@ public class ModEntityGeneration {
                 20, 1, 2, SNOWY_BEACH);
         addEntityToSpecificBiomes(event, ModEntityTypes.POODLE.get(),
                 20, 1, 2, STONY_SHORE);
+
+        // TOY POODLE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                30, 2, 2, SWAMP);
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                30, 2, 2, RIVER);
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                10, 2, 2, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                30, 2, 2, BEACH);
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                20, 2, 2, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
+                20, 2, 2, STONY_SHORE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
