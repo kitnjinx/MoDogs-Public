@@ -456,11 +456,15 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.MINI_BULL_TERRIER,0xf1f1f1, 0x9b612b,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
-    public static final RegistryObject<Item> SCHNAUZER_TERRIER_SPAWN_EGG = ITEMS.register("schnauzer_spawn_egg",
+    public static final RegistryObject<Item> SCHNAUZER_SPAWN_EGG = ITEMS.register("schnauzer_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.SCHNAUZER,0x616161, 0xc1c1c1,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
-    public static final RegistryObject<Item> MINI_SCHNAUZER_TERRIER_SPAWN_EGG = ITEMS.register("mini_schnauzer_spawn_egg",
+    public static final RegistryObject<Item> MINI_SCHNAUZER_SPAWN_EGG = ITEMS.register("mini_schnauzer_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.MINI_SCHNAUZER,0x252121, 0xc1c1c1,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
+    public static final RegistryObject<Item> POODLE_SPAWN_EGG = ITEMS.register("poodle_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.POODLE,0x1c1b1a, 0x311f16,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     // Register items

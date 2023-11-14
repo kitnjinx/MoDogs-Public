@@ -73,6 +73,8 @@ public class GenoReaderItem extends Item {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
                 testResult = pitBullGeno((PitBullEntity) target);
+            } else if (target instanceof PoodleEntity) {
+                testResult = "place";
             } else if (target instanceof PugEntity) {
                 testResult = pugGeno((PugEntity) target);
             } else if (target instanceof RussellTerrierEntity) {
@@ -893,6 +895,88 @@ public class GenoReaderItem extends Item {
                 return "Bb DD ww";
             } else {
                 return "BB DD ww";
+            }
+        }
+    }
+
+    private String poodleGeno(PoodleEntity dog) {
+        if (dog.getVariant() == PoodleVariant.WHITE) {
+            if (dog.isBrown()) {
+                if (dog.isDilute()) {
+                    return "bb dd ww";
+                } else if (dog.carriesDilute()) {
+                    return "bb Dd ww";
+                } else {
+                    return "bb DD ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isDilute()) {
+                    return "Bb dd ww";
+                } else if (dog.carriesDilute()) {
+                    return "Bb Dd ww";
+                } else {
+                    return "Bb DD ww";
+                }
+            } else {
+                if (dog.isDilute()) {
+                    return "BB dd ww";
+                } else if (dog.carriesDilute()) {
+                    return "BB Dd ww";
+                } else {
+                    return "BB DD ww";
+                }
+            }
+        } else if (dog.carriesWhite()) {
+            if (dog.isBrown()) {
+                if (dog.isDilute()) {
+                    return "bb dd Ww";
+                } else if (dog.carriesDilute()) {
+                    return "bb Dd Ww";
+                } else {
+                    return "bb DD Ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isDilute()) {
+                    return "Bb dd Ww";
+                } else if (dog.carriesDilute()) {
+                    return "Bb Dd Ww";
+                } else {
+                    return "Bb DD Ww";
+                }
+            } else {
+                if (dog.isDilute()) {
+                    return "BB dd Ww";
+                } else if (dog.carriesDilute()) {
+                    return "BB Dd Ww";
+                } else {
+                    return "BB DD Ww";
+                }
+            }
+        } else {
+            if (dog.isBrown()) {
+                if (dog.isDilute()) {
+                    return "bb dd WW";
+                } else if (dog.carriesDilute()) {
+                    return "bb Dd WW";
+                } else {
+                    return "bb DD WW";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isDilute()) {
+                    return "Bb dd WW";
+                } else if (dog.carriesDilute()) {
+                    return "Bb Dd WW";
+                } else {
+                    return "Bb DD WW";
+                }
+            } else {
+                if (dog.isDilute()) {
+                    return "BB dd WW";
+                } else if (dog.carriesDilute()) {
+                    return "BB Dd WW";
+                } else {
+                    return "BB DD WW";
+                }
             }
         }
     }
