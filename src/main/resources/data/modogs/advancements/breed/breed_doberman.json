@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:doberman_spawn_egg"
+    },
+    "title": "Doberman Breeder",
+    "description": "Breed a Doberman",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:tame/tame_doberman",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:doberman"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

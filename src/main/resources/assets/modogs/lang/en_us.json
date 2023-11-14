@@ -153,6 +153,7 @@
   "item.modogs.mini_schnauzer_spawn_egg": "Miniature Schnauzer Spawn Egg",
   "item.modogs.poodle_spawn_egg": "Poodle Spawn Egg",
   "item.modogs.toy_poodle_spawn_egg": "Toy Poodle Spawn Egg",
+  "item.modogs.doberman_spawn_egg": "Doberman Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -187,5 +188,6 @@
   "entity.modogs.schnauzer": "Schnauzer",
   "entity.modogs.mini_schnauzer": "Miniature Schnauzer",
   "entity.modogs.poodle": "Poodle",
-  "entity.modogs.toy_poodle": "Toy Poodle"
+  "entity.modogs.toy_poodle": "Toy Poodle",
+  "entity.modogs.doberman": "Doberman"
 }

@@ -51,6 +51,8 @@ public class GenoReaderItem extends Item {
                 testResult = dachshundGeno((DachshundEntity) target);
             } else if (target instanceof DalmatianEntity) {
                 testResult = dalmatianGeno((DalmatianEntity) target);
+            } else if (target instanceof DobermanEntity) {
+                testResult = dobermanGeno((DobermanEntity) target);
             } else if (target instanceof GermanShepherdEntity) {
                 testResult = germanShepherdGeno((GermanShepherdEntity) target);
             } else if (target instanceof GoldenRetrieverEntity) {
@@ -522,6 +524,34 @@ public class GenoReaderItem extends Item {
             return "Bb";
         } else {
             return "BB";
+        }
+    }
+
+    private String dobermanGeno(DobermanEntity dog) {
+        if (dog.isRed()) {
+            if (dog.isDilute()) {
+                return "bb dd";
+            } else if (dog.carriesDilute()) {
+                return "bb Dd";
+            } else {
+                return "bb DD";
+            }
+        } else if (dog.carriesRed()) {
+            if (dog.isDilute()) {
+                return "Bb dd";
+            } else if (dog.carriesDilute()) {
+                return "Bb Dd";
+            } else {
+                return "Bb DD";
+            }
+        } else {
+            if (dog.isDilute()) {
+                return "BB dd";
+            } else if (dog.carriesDilute()) {
+                return "BB Dd";
+            } else {
+                return "BB DD";
+            }
         }
     }
 

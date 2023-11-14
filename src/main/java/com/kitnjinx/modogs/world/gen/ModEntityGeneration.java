@@ -492,6 +492,20 @@ public class ModEntityGeneration {
                 20, 2, 2, PLAINS);
         addEntityToSpecificBiomes(event, ModEntityTypes.TOY_POODLE.get(),
                 20, 2, 2, STONY_SHORE);
+
+        // DOBERMAN SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                30, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                20, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                20, 1, 1, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                30, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                10, 1, 1, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
+                30, 1, 1, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
