@@ -45,9 +45,9 @@ public class ScottishTerrierRenderer extends GeoEntityRenderer<ScottishTerrierEn
                                     ResourceLocation textureLocation) {
         // Height ~10 inches
         if(animatable.isBaby()) {
-            stack.scale(0.35f, 0.35f, 0.35f);
+            stack.scale(0.3f, 0.3f, 0.3f);
         } else {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            stack.scale(0.6f, 0.6f, 0.6f);
         }
 
         return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
