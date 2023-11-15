@@ -506,6 +506,20 @@ public class ModEntityGeneration {
                 10, 1, 1, SNOWY_PLAINS);
         addEntityToSpecificBiomes(event, ModEntityTypes.DOBERMAN.get(),
                 30, 1, 1, MEADOW);
+
+        // MINI PINSCHER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                30, 1, 1, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                20, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                20, 1, 1, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                30, 1, 1, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                10, 1, 1, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
+                30, 1, 1, BAMBOO_JUNGLE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

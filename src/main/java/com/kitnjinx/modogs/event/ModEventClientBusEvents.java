@@ -48,5 +48,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.POODLE.get(), PoodleRenderer::new);
         EntityRenderers.register(ModEntityTypes.TOY_POODLE.get(), ToyPoodleRenderer::new);
         EntityRenderers.register(ModEntityTypes.DOBERMAN.get(), DobermanRenderer::new);
+        EntityRenderers.register(ModEntityTypes.MINI_PINSCHER.get(), MiniPinscherRenderer::new);
     }
 }

@@ -46,5 +46,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.POODLE.get(), PoodleEntity.setAttributes());
         event.put(ModEntityTypes.TOY_POODLE.get(), ToyPoodleEntity.setAttributes());
         event.put(ModEntityTypes.DOBERMAN.get(), DobermanEntity.setAttributes());
+        event.put(ModEntityTypes.MINI_PINSCHER.get(), MiniPinscherEntity.setAttributes());
     }
 }

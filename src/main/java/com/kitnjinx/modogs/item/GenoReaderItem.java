@@ -69,6 +69,8 @@ public class GenoReaderItem extends Item {
                 testResult = mastiffGeno((MastiffEntity) target);
             } else if (target instanceof MiniBullTerrierEntity) {
                 testResult = miniBullTerrierGeno((MiniBullTerrierEntity) target);
+            } else if (target instanceof MiniPinscherEntity) {
+                testResult = miniPinscherGeno((MiniPinscherEntity) target);
             } else if (target instanceof  MiniSchnauzerEntity) {
                 testResult = miniSchnauzerGeno((MiniSchnauzerEntity) target);
             } else if (target instanceof PembrokeCorgiEntity) {
@@ -823,6 +825,34 @@ public class GenoReaderItem extends Item {
                 return "Bb ww";
             } else {
                 return "BB ww";
+            }
+        }
+    }
+
+    private String miniPinscherGeno(MiniPinscherEntity dog) {
+        if (dog.isBlack()) {
+            if (dog.isDilute()) {
+                return "bb dd";
+            } else if (dog.carriesDilute()) {
+                return "bb Dd";
+            } else {
+                return "bb DD";
+            }
+        } else if (dog.carriesBlack()) {
+            if (dog.isDilute()) {
+                return "Bb dd";
+            } else if (dog.carriesDilute()) {
+                return "Bb Dd";
+            } else {
+                return "Bb DD";
+            }
+        } else {
+            if (dog.isDilute()) {
+                return "BB dd";
+            } else if (dog.carriesDilute()) {
+                return "BB Dd";
+            } else {
+                return "BB DD";
             }
         }
     }
