@@ -236,6 +236,12 @@ public class ModEntityTypes {
                             .sized(0.6f, 0.85f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "husky").toString()));
 
+    public static final RegistryObject<EntityType<RedboneCoonhoundEntity>> REDBONE_COONHOUND =
+            ENTITY_TYPES.register("redbone_coonhound",
+                    () -> EntityType.Builder.of(RedboneCoonhoundEntity::new, MobCategory.CREATURE)
+                            .sized(0.65f, 0.9f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "redbone_coonhound").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

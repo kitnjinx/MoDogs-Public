@@ -83,6 +83,8 @@ public class GenoReaderItem extends Item {
                 testResult = poodleGeno((PoodleEntity) target);
             } else if (target instanceof PugEntity) {
                 testResult = pugGeno((PugEntity) target);
+            } else if (target instanceof RedboneCoonhoundEntity) {
+                testResult = redboneCoonhoundGeno((RedboneCoonhoundEntity) target);
             } else if (target instanceof RussellTerrierEntity) {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
@@ -1134,6 +1136,16 @@ public class GenoReaderItem extends Item {
             return "Bb";
         } else {
             return "BB";
+        }
+    }
+
+    private String redboneCoonhoundGeno(RedboneCoonhoundEntity dog) {
+        if (dog.getVariant() == RedboneCoonhoundVariant.BROWN) {
+            return "SS";
+        } else if (dog.getVariant() == RedboneCoonhoundVariant.RED) {
+            return "Ss";
+        } else {
+            return "ss";
         }
     }
 
