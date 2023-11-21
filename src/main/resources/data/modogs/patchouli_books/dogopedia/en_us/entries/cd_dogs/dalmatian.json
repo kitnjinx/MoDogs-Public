@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Easily recognized by their spotted coats, Dalmatians were originally bred as both hunting and guard dogs.$(br2)Standing at just under a block tall, these fierce and loyal dogs come in four different spot patterns."
+      "text": "Easily recognized by their spotted coats, Dalmatians were originally bred as both hunting and guard dogs.$(br2)Standing just under a block tall, these fierce and loyal dogs come in four different spot patterns."
     },
     {
       "type": "patchouli:image",
