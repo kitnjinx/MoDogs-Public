@@ -230,6 +230,12 @@ public class ModEntityTypes {
                             .sized(0.35f, 0.55f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mini_pinscher").toString()));
 
+    public static final RegistryObject<EntityType<HuskyEntity>> HUSKY =
+            ENTITY_TYPES.register("husky",
+                    () -> EntityType.Builder.of(HuskyEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 0.85f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "husky").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

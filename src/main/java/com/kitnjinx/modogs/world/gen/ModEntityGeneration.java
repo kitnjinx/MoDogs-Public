@@ -520,6 +520,20 @@ public class ModEntityGeneration {
                 10, 1, 1, SNOWY_PLAINS);
         addEntityToSpecificBiomes(event, ModEntityTypes.MINI_PINSCHER.get(),
                 30, 1, 1, BAMBOO_JUNGLE);
+
+        // HUSKY SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                30, 2, 2, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                20, 2, 2, ICE_SPIKES);
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                20, 2, 2, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                10, 2, 2, GROVE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                30, 2, 2, SNOWY_SLOPES);
+        addEntityToSpecificBiomes(event, ModEntityTypes.HUSKY.get(),
+                30, 2, 2, SNOWY_BEACH);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
