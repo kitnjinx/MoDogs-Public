@@ -1,0 +1,30 @@
+{
+  "name": "Treeing Walker Coonhound",
+  "icon": "modogs:tree_walk_hound_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Treeing Walker Coonhounds were originally bred for hunting raccoons and other small game animals.$(br2)Standing at roughly a block tall, these sharp-nosed dogs come in two different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/tree_walk_hound_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Treeing Walker Coonhound"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in forests, dark forests, and old growth birch forests. They can also be found in various taigas.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:rabbit_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Rabbit Treat."
+    }
+  ]
+}

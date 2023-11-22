@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:tree_walk_hound_spawn_egg"
+    },
+    "title": "Treeing Walker Coonhound Breeder",
+    "description": "Breed a Treeing Walker Coonhound",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:tame/tame_tree_walk_hound",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:tree_walk_hound"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -487,6 +487,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.REDBONE_COONHOUND,0x583028, 0x864b2f,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> TREE_WALK_HOUND_SPAWN_EGG = ITEMS.register("tree_walk_hound_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.TREE_WALK_HOUND,0x885434, 0x222423,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

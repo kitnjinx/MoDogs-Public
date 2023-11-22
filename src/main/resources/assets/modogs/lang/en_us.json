@@ -157,6 +157,7 @@
   "item.modogs.mini_pinscher_spawn_egg": "Miniature Pinscher Spawn Egg",
   "item.modogs.husky_spawn_egg": "Husky Spawn Egg",
   "item.modogs.redbone_coonhound_spawn_egg": "Redbone Coonhound Spawn Egg",
+  "item.modogs.tree_walk_hound_spawn_egg": "Treeing Walker Coonhound Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -195,5 +196,6 @@
   "entity.modogs.doberman": "Doberman",
   "entity.modogs.mini_pinscher": "Miniature Pinscher",
   "entity.modogs.husky": "Husky",
-  "entity.modogs.redbone_coonhound": "Redbone Coonhound"
+  "entity.modogs.redbone_coonhound": "Redbone Coonhound",
+  "entity.modogs.tree_walk_hound": "Treeing Walker Coonhound"
 }

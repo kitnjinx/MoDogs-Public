@@ -548,6 +548,20 @@ public class ModEntityGeneration {
                 30, 2, 2, TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
                 20, 2, 2, SNOWY_TAIGA);
+
+        // TREE WALK HOUND SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                30, 2, 2, DARK_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                30, 2, 2, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                20, 2, 2, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                20, 2, 2, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                10, 2, 2, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+                30, 2, 2, FOREST);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

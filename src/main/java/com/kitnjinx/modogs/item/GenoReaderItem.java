@@ -99,6 +99,8 @@ public class GenoReaderItem extends Item {
                 testResult = shibaInuGeno((ShibaInuEntity) target);
             } else if (target instanceof ToyPoodleEntity) {
                 testResult = toyPoodleGeno((ToyPoodleEntity) target);
+            } else if (target instanceof TreeWalkHoundEntity) {
+                testResult = treeWalkHoundGeno((TreeWalkHoundEntity) target);
             } else {
                 testResult = "This should not appear.";
             }
@@ -1438,6 +1440,16 @@ public class GenoReaderItem extends Item {
                     return "BB DD WW";
                 }
             }
+        }
+    }
+
+    private String treeWalkHoundGeno(TreeWalkHoundEntity dog) {
+        if (dog.getVariant() == TreeWalkHoundVariant.TRICOLOR) {
+            return "bb";
+        } else if (dog.isCarrier()) {
+            return "Bb";
+        } else {
+            return "BB";
         }
     }
 }

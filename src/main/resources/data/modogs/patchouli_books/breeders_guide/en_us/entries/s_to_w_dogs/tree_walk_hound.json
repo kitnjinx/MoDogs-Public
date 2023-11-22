@@ -1,0 +1,16 @@
+{
+  "name": "Treeing Walker Coonhound",
+  "icon": "modogs:tree_walk_hound_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "reeing Walker Coonhounds only have one gene that has been witnessed to affect how they look, and this is the B Locus. The B Locus controls if the dog has a tan trim, creating tricolor dogs, or not, creating black and white dogs."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates black fur, while the 'b' allele creates black fur with a tan trim. Dogs with one copy of 'b' will carry the tricolor trait and may pass it on to pups, providing the potential for tricolor pups depending on the other parent. Dogs with two copies of 'b' will always create either tricolor carriers or tricolor puppies.",
+      "title": "B Locus"
+    }
+  ]
+}
