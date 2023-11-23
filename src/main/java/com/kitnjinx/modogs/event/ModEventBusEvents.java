@@ -51,5 +51,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.REDBONE_COONHOUND.get(), RedboneCoonhoundEntity.setAttributes());
         event.put(ModEntityTypes.TREE_WALK_HOUND.get(), TreeWalkHoundEntity.setAttributes());
         event.put(ModEntityTypes.AIREDALE_TERRIER.get(), AiredaleTerrierEntity.setAttributes());
+        event.put(ModEntityTypes.AMERICAN_FOXHOUND.get(), AmericanFoxhoundEntity.setAttributes());
     }
 }

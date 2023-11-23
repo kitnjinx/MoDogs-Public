@@ -576,6 +576,20 @@ public class ModEntityGeneration {
                 30, 1, 1, WINDSWEPT_HILLS);
         addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
                 20, 1, 1, WINDSWEPT_GRAVELLY_HILLS);
+
+        // AMERICAN FOXHOUND SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                10, 1, 2, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                20, 1, 2, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                20, 1, 2, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                30, 1, 2, OLD_GROWTH_SPRUCE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                30, 1, 2, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                30, 1, 2, TAIGA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

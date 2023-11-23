@@ -24,9 +24,11 @@ public class GenoReaderItem extends Item {
         if (player.level.isClientSide && target instanceof AbstractDog) {
             String testResult;
             if (target instanceof AiredaleTerrierEntity) {
-                testResult = "place";
+                testResult = airedaleTerrierGeno((AiredaleTerrierEntity) target);
             } else if (target instanceof AlaskanMalamuteEntity) {
                 testResult = alaskanMalamuteGeno((AlaskanMalamuteEntity) target);
+            } else if (target instanceof AmericanFoxhoundEntity) {
+                testResult = americanFoxhoundGeno((AmericanFoxhoundEntity) target);
             } else if (target instanceof AustralianShepherdEntity) {
                 testResult = australianShepherdGeno((AustralianShepherdEntity) target);
             } else if (target instanceof BasenjiEntity) {
@@ -198,6 +200,16 @@ public class GenoReaderItem extends Item {
                     return "BB SS";
                 }
             }
+        }
+    }
+
+    private String americanFoxhoundGeno(AmericanFoxhoundEntity dog) {
+        if (dog.getVariant() == AmericanFoxhoundVariant.LIGHT) {
+            return "SS";
+        } else if (dog.getVariant() == AmericanFoxhoundVariant.MEDIUM) {
+            return "Ss";
+        } else {
+            return "ss";
         }
     }
 

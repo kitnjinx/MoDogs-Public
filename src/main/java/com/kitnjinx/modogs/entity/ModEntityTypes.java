@@ -254,6 +254,12 @@ public class ModEntityTypes {
                             .sized(0.6f, 0.85f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "airedale_terrier").toString()));
 
+    public static final RegistryObject<EntityType<AmericanFoxhoundEntity>> AMERICAN_FOXHOUND =
+            ENTITY_TYPES.register("american_foxhound",
+                    () -> EntityType.Builder.of(AmericanFoxhoundEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 0.85f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "american_foxhound").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
