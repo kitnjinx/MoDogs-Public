@@ -160,11 +160,11 @@ public class AiredaleTerrierEntity extends AbstractDog {
             if (this.level.isClientSide) {
                 TextComponent message;
                 if (this.getVariant() == AiredaleTerrierVariant.LIGHT) {
-                    message = new TextComponent("This Golden Retriever has the alleles for light fur.");
+                    message = new TextComponent("This Airedale Terrier has the alleles for light fur.");
                 } else if (this.getVariant() == AiredaleTerrierVariant.MEDIUM) {
-                    message = new TextComponent("This Golden Retriever has the alleles for medium fur.");
+                    message = new TextComponent("This Airedale Terrier has the alleles for medium fur.");
                 } else {
-                    message = new TextComponent("This Golden Retriever has the alleles for dark fur.");
+                    message = new TextComponent("This Airedale Terrier has the alleles for dark fur.");
                 }
 
                 player.sendMessage(message, player.getUUID());
