@@ -248,6 +248,12 @@ public class ModEntityTypes {
                             .sized(0.65f, 0.9f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "tree_walk_hound").toString()));
 
+    public static final RegistryObject<EntityType<AiredaleTerrierEntity>> AIREDALE_TERRIER =
+            ENTITY_TYPES.register("airedale_terrier",
+                    () -> EntityType.Builder.of(AiredaleTerrierEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 0.85f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "airedale_terrier").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

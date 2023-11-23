@@ -23,7 +23,9 @@ public class GenoReaderItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (player.level.isClientSide && target instanceof AbstractDog) {
             String testResult;
-            if (target instanceof AlaskanMalamuteEntity) {
+            if (target instanceof AiredaleTerrierEntity) {
+                testResult = "place";
+            } else if (target instanceof AlaskanMalamuteEntity) {
                 testResult = alaskanMalamuteGeno((AlaskanMalamuteEntity) target);
             } else if (target instanceof AustralianShepherdEntity) {
                 testResult = australianShepherdGeno((AustralianShepherdEntity) target);
@@ -131,6 +133,16 @@ public class GenoReaderItem extends Item {
     }
     
     /* METHODS FOR READING A DOG'S GENO */
+    private String airedaleTerrierGeno(AiredaleTerrierEntity dog) {
+        if (dog.getVariant() == AiredaleTerrierVariant.LIGHT) {
+            return "SS";
+        } else if (dog.getVariant() == AiredaleTerrierVariant.MEDIUM) {
+            return "Ss";
+        } else {
+            return "ss";
+        }
+    }
+
     private String alaskanMalamuteGeno(AlaskanMalamuteEntity dog) {
         if (dog.isRed() && dog.isSolid()) {
             if (dog.isSilver()) {

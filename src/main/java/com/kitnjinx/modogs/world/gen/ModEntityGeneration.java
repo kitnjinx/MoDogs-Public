@@ -562,6 +562,20 @@ public class ModEntityGeneration {
                 10, 2, 2, TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
                 30, 2, 2, FOREST);
+
+        // AIREDALE TERRIER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                30, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                30, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                20, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                10, 1, 1, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                30, 1, 1, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.AIREDALE_TERRIER.get(),
+                20, 1, 1, WINDSWEPT_GRAVELLY_HILLS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
