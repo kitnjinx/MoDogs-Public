@@ -590,6 +590,20 @@ public class ModEntityGeneration {
                 30, 1, 2, OLD_GROWTH_PINE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.AMERICAN_FOXHOUND.get(),
                 30, 1, 2, TAIGA);
+
+        // BULLDOG SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                30, 1, 2, FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                30, 1, 2, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                10, 1, 2, BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                20, 1, 2, OLD_GROWTH_BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                20, 1, 2, DARK_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
+                30, 1, 2, SPARSE_JUNGLE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
