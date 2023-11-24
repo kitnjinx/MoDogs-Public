@@ -53,6 +53,8 @@ public class GenoReaderItem extends Item {
                 testResult = cKCharlesSpanielGeno((CKCharlesSpanielEntity) target);
             } else if (target instanceof CockerSpanielEntity) {
                 testResult = cockerSpanielGeno((CockerSpanielEntity) target);
+            } else if (target instanceof CollieEntity) {
+                testResult = collieGeno((CollieEntity) target);
             } else if (target instanceof DachshundEntity) {
                 testResult = dachshundGeno((DachshundEntity) target);
             } else if (target instanceof DalmatianEntity) {
@@ -499,6 +501,28 @@ public class GenoReaderItem extends Item {
                 return "Bb DD";
             } else {
                 return "BB DD";
+            }
+        }
+    }
+
+    private String collieGeno(CollieEntity dog) {
+        if (dog.isBlack()) {
+            if (dog.isMerle()) {
+                return "bb - Merle Positive";
+            } else {
+                return "bb";
+            }
+        } else if (dog.carriesBlack()) {
+            if (dog.isMerle()) {
+                return "Bb - Merle Positive";
+            } else {
+                return "Bb";
+            }
+        } else {
+            if (dog.isMerle()) {
+                return "BB - Merle Positive";
+            } else {
+                return "BB";
             }
         }
     }

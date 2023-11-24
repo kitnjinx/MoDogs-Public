@@ -266,6 +266,12 @@ public class ModEntityTypes {
                             .sized(0.45f, 0.45f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "bulldog").toString()));
 
+    public static final RegistryObject<EntityType<CollieEntity>> COLLIE =
+            ENTITY_TYPES.register("collie",
+                    () -> EntityType.Builder.of(CollieEntity::new, MobCategory.CREATURE)
+                            .sized(0.65f, 0.9f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "collie").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

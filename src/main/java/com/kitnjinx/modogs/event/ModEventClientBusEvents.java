@@ -55,5 +55,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.AIREDALE_TERRIER.get(), AiredaleTerrierRenderer::new);
         EntityRenderers.register(ModEntityTypes.AMERICAN_FOXHOUND.get(), AmericanFoxhoundRenderer::new);
         EntityRenderers.register(ModEntityTypes.BULLDOG.get(), BulldogRenderer::new);
+        EntityRenderers.register(ModEntityTypes.COLLIE.get(), CollieRenderer::new);
     }
 }

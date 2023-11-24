@@ -604,6 +604,20 @@ public class ModEntityGeneration {
                 20, 1, 2, DARK_FOREST);
         addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
                 30, 1, 2, SPARSE_JUNGLE);
+
+        // COLLIE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                20, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                20, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                10, 1, 1, MEADOW);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

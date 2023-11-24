@@ -161,6 +161,7 @@
   "item.modogs.airedale_terrier_spawn_egg": "Airedale Terrier Spawn Egg",
   "item.modogs.american_foxhound_spawn_egg": "American Foxhound Spawn Egg",
   "item.modogs.bulldog_spawn_egg": "Bulldog Spawn Egg",
+  "item.modogs.collie_spawn_egg": "Collie Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -203,5 +204,6 @@
   "entity.modogs.tree_walk_hound": "Treeing Walker Coonhound",
   "entity.modogs.airedale_terrier": "Airedale Terrier",
   "entity.modogs.american_foxhound": "American Foxhound",
-  "entity.modogs.bulldog": "Bulldog"
+  "entity.modogs.bulldog": "Bulldog",
+  "entity.modogs.collie": "Collie"
 }
