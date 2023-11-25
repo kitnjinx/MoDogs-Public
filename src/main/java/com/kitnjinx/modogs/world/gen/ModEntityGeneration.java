@@ -605,6 +605,20 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
                 30, 1, 2, SPARSE_JUNGLE);
 
+        // MUDI SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                30, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                30, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                10, 1, 1, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                20, 1, 1, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                20, 1, 1, WOODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
+                30, 1, 1, MEADOW);
+
         // COLLIE SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
                 20, 1, 1, PLAINS);

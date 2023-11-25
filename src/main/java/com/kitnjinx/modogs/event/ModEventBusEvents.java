@@ -54,5 +54,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.AMERICAN_FOXHOUND.get(), AmericanFoxhoundEntity.setAttributes());
         event.put(ModEntityTypes.BULLDOG.get(), BulldogEntity.setAttributes());
         event.put(ModEntityTypes.COLLIE.get(), CollieEntity.setAttributes());
+        event.put(ModEntityTypes.MUDI.get(), MudiEntity.setAttributes());
     }
 }

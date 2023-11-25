@@ -83,6 +83,8 @@ public class GenoReaderItem extends Item {
                 testResult = miniPinscherGeno((MiniPinscherEntity) target);
             } else if (target instanceof  MiniSchnauzerEntity) {
                 testResult = miniSchnauzerGeno((MiniSchnauzerEntity) target);
+            } else if (target instanceof MudiEntity) {
+                testResult = mudiGeno((MudiEntity) target);
             } else if (target instanceof PembrokeCorgiEntity) {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
@@ -1030,6 +1032,70 @@ public class GenoReaderItem extends Item {
             return "Dd";
         } else {
             return "DD";
+        }
+    }
+
+    private String mudiGeno(MudiEntity dog) {
+        if (dog.getVariant() == MudiVariant.WHITE) {
+            if (dog.isBrown()) {
+                if (dog.hasMerle()) {
+                    return "bb ww - Merle Positive";
+                } else {
+                    return "bb ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.hasMerle()) {
+                    return "Bb ww - Merle Positive";
+                } else {
+                    return "Bb ww";
+                }
+            } else {
+                if (dog.hasMerle()) {
+                    return "BB ww - Merle Positive";
+                } else {
+                    return "BB ww";
+                }
+            }
+        } else if (dog.carriesWhite()) {
+            if (dog.isBrown()) {
+                if (dog.hasMerle()) {
+                    return "bb Ww - Merle Positive";
+                } else {
+                    return "bb Ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.hasMerle()) {
+                    return "Bb Ww - Merle Positive";
+                } else {
+                    return "Bb Ww";
+                }
+            } else {
+                if (dog.hasMerle()) {
+                    return "BB Ww - Merle Positive";
+                } else {
+                    return "BB Ww";
+                }
+            }
+        } else {
+            if (dog.isBrown()) {
+                if (dog.hasMerle()) {
+                    return "bb WW - Merle Positive";
+                } else {
+                    return "bb WW";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.hasMerle()) {
+                    return "Bb WW - Merle Positive";
+                } else {
+                    return "Bb WW";
+                }
+            } else {
+                if (dog.hasMerle()) {
+                    return "BB WW - Merle Positive";
+                } else {
+                    return "BB WW";
+                }
+            }
         }
     }
 

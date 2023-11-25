@@ -272,6 +272,12 @@ public class ModEntityTypes {
                             .sized(0.65f, 0.9f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "collie").toString()));
 
+    public static final RegistryObject<EntityType<MudiEntity>> MUDI =
+            ENTITY_TYPES.register("mudi",
+                    () -> EntityType.Builder.of(MudiEntity::new, MobCategory.CREATURE)
+                            .sized(0.5f, 0.75f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "mudi").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
