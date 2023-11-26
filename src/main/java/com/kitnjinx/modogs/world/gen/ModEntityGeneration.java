@@ -646,6 +646,20 @@ public class ModEntityGeneration {
                 20, 1, 1, BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
                 10, 1, 1, ERODED_BADLANDS);
+
+        // BEAGLE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                10, 2, 3, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                20, 2, 3, FLOWER_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                30, 2, 3, TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                20, 2, 3, MEADOW);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                30, 2, 3, OLD_GROWTH_PINE_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
+                30, 2, 3, OLD_GROWTH_SPRUCE_TAIGA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

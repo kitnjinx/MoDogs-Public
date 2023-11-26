@@ -284,6 +284,11 @@ public class MoDogs
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     AbstractDog::checkDogSpawnRules);
+
+            SpawnPlacements.register(ModEntityTypes.BEAGLE.get(),
+                    SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    AbstractDog::checkDogSpawnRules);
         });
     }
 }

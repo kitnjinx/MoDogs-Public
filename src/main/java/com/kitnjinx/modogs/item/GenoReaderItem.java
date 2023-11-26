@@ -33,6 +33,8 @@ public class GenoReaderItem extends Item {
                 testResult = australianShepherdGeno((AustralianShepherdEntity) target);
             } else if (target instanceof BasenjiEntity) {
                 testResult = basenjiGeno((BasenjiEntity) target);
+            } else if (target instanceof BeagleEntity) {
+                testResult = beagleGeno((BeagleEntity) target);
             } else if (target instanceof BerneseMountainDogEntity) {
                 testResult = berneseMountainDogGeno((BerneseMountainDogEntity) target);
             } else if (target instanceof BloodhoundEntity) {
@@ -260,6 +262,16 @@ public class GenoReaderItem extends Item {
             } else {
                 return "RT";
             }
+        }
+    }
+
+    private String beagleGeno(BeagleEntity dog) {
+        if (dog.isTan()) {
+            return "bb";
+        } else if (dog.carriesTan()) {
+            return "Bb";
+        } else {
+            return "BB";
         }
     }
 
