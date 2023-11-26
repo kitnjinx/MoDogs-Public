@@ -163,6 +163,7 @@
   "item.modogs.bulldog_spawn_egg": "Bulldog Spawn Egg",
   "item.modogs.collie_spawn_egg": "Collie Spawn Egg",
   "item.modogs.mudi_spawn_egg": "Mudi Spawn Egg",
+  "item.modogs.norwegian_elkhound_spawn_egg": "Norwegian Elkhound Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -207,5 +208,6 @@
   "entity.modogs.american_foxhound": "American Foxhound",
   "entity.modogs.bulldog": "Bulldog",
   "entity.modogs.collie": "Collie",
-  "entity.modogs.mudi": "Mudi"
+  "entity.modogs.mudi": "Mudi",
+  "entity.modogs.norwegian_elkhound": "Norwegian Elkhound"
 }

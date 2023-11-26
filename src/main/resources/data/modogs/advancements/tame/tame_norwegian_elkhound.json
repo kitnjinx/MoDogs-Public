@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:norwegian_elkhound_spawn_egg"
+    },
+    "title": "Norwegian Elkhound Trainer",
+    "description": "Tame a Norwegian Elkhound",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:norwegian_elkhound"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

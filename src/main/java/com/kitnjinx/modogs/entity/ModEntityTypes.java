@@ -278,6 +278,12 @@ public class ModEntityTypes {
                             .sized(0.5f, 0.75f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mudi").toString()));
 
+    public static final RegistryObject<EntityType<NorwegianElkhoundEntity>> NORWEGIAN_ELKHOUND =
+            ENTITY_TYPES.register("norwegian_elkhound",
+                    () -> EntityType.Builder.of(NorwegianElkhoundEntity::new, MobCategory.CREATURE)
+                            .sized(0.55f, 0.8f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "norwegian_elkhound").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

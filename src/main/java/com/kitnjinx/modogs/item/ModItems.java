@@ -511,6 +511,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.MUDI,0xa6a8aa, 0x222426,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> NORWEGIAN_ELKHOUND_SPAWN_EGG = ITEMS.register("norwegian_elkhound_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.NORWEGIAN_ELKHOUND,0x959391, 0xcdc8c3,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

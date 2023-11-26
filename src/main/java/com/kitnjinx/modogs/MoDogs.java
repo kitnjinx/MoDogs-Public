@@ -279,6 +279,11 @@ public class MoDogs
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     AbstractDog::checkDogSpawnRules);
+
+            SpawnPlacements.register(ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                    SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    AbstractDog::checkDogSpawnRules);
         });
     }
 }

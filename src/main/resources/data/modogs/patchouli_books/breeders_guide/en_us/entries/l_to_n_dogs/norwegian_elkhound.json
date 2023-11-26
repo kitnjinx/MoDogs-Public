@@ -1,0 +1,16 @@
+{
+  "name": "Norwegian Elkhound",
+  "icon": "modogs:norwegian_elkhound_spawn_egg",
+  "category": "modogs:l_to_n_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Norwegian Elkhounds only have one gene that has been witnessed to affect how they look, and this is the S Locus. This gene will determine how dark their fur is."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The S Locus has two potential alleles, the incompletely dominant 'S' and 's' alleles. The 'S' allele creates lighter fur, while the 's' allele creates darker fur. Dogs with two copies of the 'S' allele have light fur, while dogs with two copies of the 's' allele have dark fur. Dogs with one copy of each have a more medium coloration to their fur.",
+      "title": "S Locus"
+    }
+  ]
+}

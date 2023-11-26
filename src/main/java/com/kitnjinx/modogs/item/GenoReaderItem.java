@@ -85,6 +85,8 @@ public class GenoReaderItem extends Item {
                 testResult = miniSchnauzerGeno((MiniSchnauzerEntity) target);
             } else if (target instanceof MudiEntity) {
                 testResult = mudiGeno((MudiEntity) target);
+            } else if (target instanceof NorwegianElkhoundEntity) {
+                testResult = norwegianElkhoundGeno((NorwegianElkhoundEntity) target);
             } else if (target instanceof PembrokeCorgiEntity) {
                 testResult = pembrokeCorgiGeno((PembrokeCorgiEntity) target);
             } else if (target instanceof PitBullEntity) {
@@ -1096,6 +1098,16 @@ public class GenoReaderItem extends Item {
                     return "BB WW";
                 }
             }
+        }
+    }
+
+    private String norwegianElkhoundGeno(NorwegianElkhoundEntity dog) {
+        if (dog.getVariant() == NorwegianElkhoundVariant.LIGHT) {
+            return "SS";
+        } else if (dog.getVariant() == NorwegianElkhoundVariant.MEDIUM) {
+            return "Ss";
+        } else {
+            return "ss";
         }
     }
 

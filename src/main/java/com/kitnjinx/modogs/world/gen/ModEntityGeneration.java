@@ -605,6 +605,20 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event, ModEntityTypes.BULLDOG.get(),
                 30, 1, 2, SPARSE_JUNGLE);
 
+        // COLLIE SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                20, 1, 1, PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                20, 1, 1, SUNFLOWER_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                30, 1, 1, WINDSWEPT_FOREST);
+        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
+                10, 1, 1, MEADOW);
+
         // MUDI SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
                 30, 1, 1, PLAINS);
@@ -619,19 +633,19 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event, ModEntityTypes.MUDI.get(),
                 30, 1, 1, MEADOW);
 
-        // COLLIE SPAWNING AREAS
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                20, 1, 1, PLAINS);
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                20, 1, 1, SUNFLOWER_PLAINS);
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                30, 1, 1, WINDSWEPT_HILLS);
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                30, 1, 1, WINDSWEPT_GRAVELLY_HILLS);
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                30, 1, 1, WINDSWEPT_FOREST);
-        addEntityToSpecificBiomes(event, ModEntityTypes.COLLIE.get(),
-                10, 1, 1, MEADOW);
+        // NORWEGIAN ELKHOUND SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                30, 1, 1, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                30, 1, 1, ICE_SPIKES);
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                20, 1, 1, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                30, 1, 1, FROZEN_RIVER);
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                20, 1, 1, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                10, 1, 1, ERODED_BADLANDS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
