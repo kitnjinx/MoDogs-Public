@@ -99,6 +99,8 @@ public class GenoReaderItem extends Item {
                 testResult = pugGeno((PugEntity) target);
             } else if (target instanceof RedboneCoonhoundEntity) {
                 testResult = redboneCoonhoundGeno((RedboneCoonhoundEntity) target);
+            } else if (target instanceof RottweilerEntity) {
+                testResult = rottweilerGeno((RottweilerEntity) target);
             } else if (target instanceof RussellTerrierEntity) {
                 testResult = russellTerrierGeno((RussellTerrierEntity) target);
             } else if (target instanceof SaintBernardEntity) {
@@ -1316,6 +1318,28 @@ public class GenoReaderItem extends Item {
             return "Ss";
         } else {
             return "ss";
+        }
+    }
+
+    private String rottweilerGeno(RottweilerEntity dog) {
+        if (dog.isTan()) {
+            if (dog.isMahogany()) {
+                return "bb - Mahogany Positive";
+            } else {
+                return "bb";
+            }
+        } else if (dog.carriesTan()) {
+            if (dog.isMahogany()) {
+                return "Bb - Mahogany Positive";
+            } else {
+                return "Bb";
+            }
+        } else {
+            if (dog.isMahogany()) {
+                return "BB - Mahogany Positive";
+            } else {
+                return "BB";
+            }
         }
     }
 

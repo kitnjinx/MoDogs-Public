@@ -165,6 +165,7 @@
   "item.modogs.mudi_spawn_egg": "Mudi Spawn Egg",
   "item.modogs.norwegian_elkhound_spawn_egg": "Norwegian Elkhound Spawn Egg",
   "item.modogs.beagle_spawn_egg": "Beagle Spawn Egg",
+  "item.modogs.rottweiler_spawn_egg": "Rottweiler Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -211,5 +212,6 @@
   "entity.modogs.collie": "Collie",
   "entity.modogs.mudi": "Mudi",
   "entity.modogs.norwegian_elkhound": "Norwegian Elkhound",
-  "entity.modogs.beagle": "Beagle"
+  "entity.modogs.beagle": "Beagle",
+  "entity.modogs.rottweiler": "Rottweiler"
 }

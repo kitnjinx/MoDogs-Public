@@ -660,6 +660,20 @@ public class ModEntityGeneration {
                 30, 2, 3, OLD_GROWTH_PINE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.BEAGLE.get(),
                 30, 2, 3, OLD_GROWTH_SPRUCE_TAIGA);
+
+        // ROTTWEILER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                20, 1, 1, DESERT);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                20, 1, 1, SAVANNA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                10, 1, 1, SAVANNA_PLATEAU);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                30, 1, 1, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                30, 1, 1, ERODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
+                30, 1, 1, WOODED_BADLANDS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

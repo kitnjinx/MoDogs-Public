@@ -59,5 +59,6 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.MUDI.get(), MudiRenderer::new);
         EntityRenderers.register(ModEntityTypes.NORWEGIAN_ELKHOUND.get(), NorwegianElkhoundRenderer::new);
         EntityRenderers.register(ModEntityTypes.BEAGLE.get(), BeagleRenderer::new);
+        EntityRenderers.register(ModEntityTypes.ROTTWEILER.get(), RottweilerRenderer::new);
     }
 }
