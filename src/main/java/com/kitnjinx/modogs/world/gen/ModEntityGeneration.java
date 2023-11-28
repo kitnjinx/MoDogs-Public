@@ -674,6 +674,20 @@ public class ModEntityGeneration {
                 30, 1, 1, ERODED_BADLANDS);
         addEntityToSpecificBiomes(event, ModEntityTypes.ROTTWEILER.get(),
                 30, 1, 1, WOODED_BADLANDS);
+
+        // IRISH SETTER SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                30, 1, 1, SWAMP);
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                20, 1, 1, JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                20, 1, 1, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                10, 1, 1, RIVER);
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                30, 1, 1, BEACH);
+        addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
+                30, 1, 1, STONY_SHORE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

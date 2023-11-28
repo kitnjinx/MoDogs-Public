@@ -296,6 +296,12 @@ public class ModEntityTypes {
                             .sized(0.65f, 0.9f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "rottweiler").toString()));
 
+    public static final RegistryObject<EntityType<IrishSetterEntity>> IRISH_SETTER =
+            ENTITY_TYPES.register("irish_setter",
+                    () -> EntityType.Builder.of(IrishSetterEntity::new, MobCategory.CREATURE)
+                            .sized(0.7f, 0.95f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "irish_setter").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

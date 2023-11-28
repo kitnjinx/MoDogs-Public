@@ -73,6 +73,8 @@ public class GenoReaderItem extends Item {
                 testResult = greyhoundGeno((GreyhoundEntity) target);
             } else if (target instanceof HuskyEntity) {
                 testResult = huskyGeno((HuskyEntity) target);
+            } else if (target instanceof IrishSetterEntity) {
+                testResult = irishSetterGeno((IrishSetterEntity) target);
             } else if (target instanceof ItalianGreyhoundEntity) {
                 testResult = italianGreyhoundGeno((ItalianGreyhoundEntity) target);
             } else if (target instanceof LabRetrieverEntity) {
@@ -880,6 +882,16 @@ public class GenoReaderItem extends Item {
                     return "BB SS WW";
                 }
             }
+        }
+    }
+
+    private String irishSetterGeno(IrishSetterEntity dog) {
+        if (dog.getVariant() == IrishSetterVariant.LIGHT) {
+            return "SS";
+        } else if (dog.getVariant() == IrishSetterVariant.MEDIUM) {
+            return "Ss";
+        } else {
+            return "ss";
         }
     }
 

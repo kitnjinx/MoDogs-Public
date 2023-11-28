@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:irish_setter_spawn_egg"
+    },
+    "title": "Irish Setter Breeder",
+    "description": "Breed a Irish Setter",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:tame/tame_irish_setter",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:irish_setter"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
