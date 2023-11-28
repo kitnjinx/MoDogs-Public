@@ -59,5 +59,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.BEAGLE.get(), BeagleEntity.setAttributes());
         event.put(ModEntityTypes.ROTTWEILER.get(), RottweilerEntity.setAttributes());
         event.put(ModEntityTypes.IRISH_SETTER.get(), IrishSetterEntity.setAttributes());
+        event.put(ModEntityTypes.GERMAN_SPITZ.get(), GermanSpitzEntity.setAttributes());
     }
 }

@@ -527,6 +527,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.IRISH_SETTER,0xa36b41, 0x713c25,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
+    public static final RegistryObject<Item> GERMAN_SPITZ_SPAWN_EGG = ITEMS.register("german_spitz_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.GERMAN_SPITZ,0xebebeb, 0xa96833,
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
+
     // Register items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

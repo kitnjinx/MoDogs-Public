@@ -688,6 +688,20 @@ public class ModEntityGeneration {
                 30, 1, 1, BEACH);
         addEntityToSpecificBiomes(event, ModEntityTypes.IRISH_SETTER.get(),
                 30, 1, 1, STONY_SHORE);
+
+        // GERMAN SPITZ SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                30, 1, 1, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                30, 1, 1, ICE_SPIKES);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                30, 1, 1, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                20, 1, 1, MEADOW);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                20, 1, 1, SNOWY_BEACH);
+        addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
+                10, 1, 1, JUNGLE);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

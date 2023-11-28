@@ -65,6 +65,8 @@ public class GenoReaderItem extends Item {
                 testResult = dobermanGeno((DobermanEntity) target);
             } else if (target instanceof GermanShepherdEntity) {
                 testResult = germanShepherdGeno((GermanShepherdEntity) target);
+            } else if (target instanceof GermanSpitzEntity) {
+                testResult = germanSpitzGeno((GermanSpitzEntity) target);
             } else if (target instanceof GoldenRetrieverEntity) {
                 testResult = goldenRetrieverGeno((GoldenRetrieverEntity) target);
             } else if (target instanceof GreatDaneEntity) {
@@ -685,6 +687,88 @@ public class GenoReaderItem extends Item {
                 return "BB Ss";
             } else {
                 return "BB ss";
+            }
+        }
+    }
+
+    private String germanSpitzGeno(GermanSpitzEntity dog) {
+        if (dog.getVariant() == GermanSpitzVariant.WHITE) {
+            if (dog.isBrown()) {
+                if (dog.isRed()) {
+                    return "bb ee ww";
+                } else if (dog.carriesRed()) {
+                    return "bb Ee ww";
+                } else {
+                    return "bb EE ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isRed()) {
+                    return "Bb ee ww";
+                } else if (dog.carriesRed()) {
+                    return "Bb Ee ww";
+                } else {
+                    return "Bb EE ww";
+                }
+            } else {
+                if (dog.isRed()) {
+                    return "BB ee ww";
+                } else if (dog.carriesRed()) {
+                    return "BB Ee ww";
+                } else {
+                    return "BB EE ww";
+                }
+            }
+        } else if (dog.carriesWhite()) {
+            if (dog.isBrown()) {
+                if (dog.isRed()) {
+                    return "bb ee Ww";
+                } else if (dog.carriesRed()) {
+                    return "bb Ee Ww";
+                } else {
+                    return "bb EE Ww";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isRed()) {
+                    return "Bb ee Ww";
+                } else if (dog.carriesRed()) {
+                    return "Bb Ee Ww";
+                } else {
+                    return "Bb EE Ww";
+                }
+            } else {
+                if (dog.isRed()) {
+                    return "BB ee Ww";
+                } else if (dog.carriesRed()) {
+                    return "BB Ee Ww";
+                } else {
+                    return "BB EE Ww";
+                }
+            }
+        } else {
+            if (dog.isBrown()) {
+                if (dog.isRed()) {
+                    return "bb ee WW";
+                } else if (dog.carriesRed()) {
+                    return "bb Ee WW";
+                } else {
+                    return "bb EE WW";
+                }
+            } else if (dog.carriesBrown()) {
+                if (dog.isRed()) {
+                    return "Bb ee WW";
+                } else if (dog.carriesRed()) {
+                    return "Bb Ee WW";
+                } else {
+                    return "Bb EE WW";
+                }
+            } else {
+                if (dog.isRed()) {
+                    return "BB ee WW";
+                } else if (dog.carriesRed()) {
+                    return "BB Ee WW";
+                } else {
+                    return "BB EE WW";
+                }
             }
         }
     }
