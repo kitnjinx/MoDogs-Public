@@ -424,10 +424,10 @@
 				},
 				"tail": {
 					"rotation": {
-						"vector": [26.5, 0, 0]
+						"vector": [24, 0, 0]
 					},
 					"position": {
-						"vector": [0, -8.3, -1.6]
+						"vector": [0, -8.4, -0.9]
 					}
 				},
 				"neck": {
