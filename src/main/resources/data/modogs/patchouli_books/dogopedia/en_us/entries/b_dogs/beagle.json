@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Beagles were originally bred as hunting dogs, specifically hunting hares.$(br2)Standing at just over half a block tall, these sharp-nosed dogs come in three coats."
+      "text": "Beagles were originally bred as hunting dogs, specifically for hunting hares.$(br2)Standing at just over half a block tall, these sharp-nosed dogs come in three coats."
     },
     {
       "type": "patchouli:image",

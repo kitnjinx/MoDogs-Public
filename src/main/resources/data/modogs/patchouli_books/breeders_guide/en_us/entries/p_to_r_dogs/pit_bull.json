@@ -14,7 +14,12 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The D Locus has two potential alleles, the dominant 'D' and the recessive 'd'. The 'D' allele does not affect the coat's color, while the 'd' allele is a dilute that creates blue-gray fur if the dog has black fur. Dogs with one copy of 'd' will carry the dilution trait and may pass it on to pups, providing the potential for diluted pups depending on the other parent. Dogs with two copies of 'd' will always create either dilute carriers or blue puppies.",
+      "text": "The D Locus has two potential alleles, the dominant 'D' and the recessive 'd'. The 'D' allele does not affect the coat's color, while the 'd' allele is a dilute that creates blue-gray fur if the dog has black fur.",
+      "title": "D Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with one copy of 'd' will carry the dilution trait and may pass it on to pups, providing the potential for diluted pups depending on the other parent. Dogs with two copies of 'd' will always create either dilute carriers or blue puppies.",
       "title": "D Locus"
     },
     {

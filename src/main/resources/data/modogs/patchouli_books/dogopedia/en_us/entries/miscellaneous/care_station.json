@@ -9,7 +9,8 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "modogs:care_station"
+      "recipe": "modogs:care_station",
+      "text": "Any combination of planks and treats may be used."
     }
   ]
 }

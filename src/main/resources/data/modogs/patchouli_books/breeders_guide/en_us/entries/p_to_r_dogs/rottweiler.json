@@ -1,7 +1,7 @@
 {
   "name": "Rottweiler",
   "icon": "modogs:rottweiler_spawn_egg",
-  "category": "modogs:b_dogs",
+  "category": "modogs:p_to_r_dogs",
   "pages": [
     {
       "type": "patchouli:text",
