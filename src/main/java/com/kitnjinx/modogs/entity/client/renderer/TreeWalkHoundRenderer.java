@@ -32,7 +32,7 @@ public class TreeWalkHoundRenderer extends GeoEntityRenderer<TreeWalkHoundEntity
 
         addLayer(new TreeWalkHoundCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.525f;
     }
 
     @Override

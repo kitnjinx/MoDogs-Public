@@ -38,7 +38,7 @@ public class MiniBullTerrierRenderer extends GeoEntityRenderer<MiniBullTerrierEn
 
         addLayer(new MiniBullTerrierCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.3f;
     }
 
     @Override

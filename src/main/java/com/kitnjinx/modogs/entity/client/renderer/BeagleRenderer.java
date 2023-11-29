@@ -34,7 +34,7 @@ public class BeagleRenderer extends GeoEntityRenderer<BeagleEntity> {
 
         addLayer(new BeagleCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

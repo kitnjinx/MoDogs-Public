@@ -38,7 +38,7 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
 
         addLayer(new BulldogCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.375f;
     }
 
     @Override

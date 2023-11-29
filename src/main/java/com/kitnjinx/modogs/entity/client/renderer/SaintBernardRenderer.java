@@ -40,7 +40,7 @@ public class SaintBernardRenderer extends GeoEntityRenderer<SaintBernardEntity> 
         addLayer(new SaintBernardCollarLayer(this));
         addLayer(new SaintBernardBarrelLayer(this));
 
-        this.shadowRadius = 0.55f;
+        this.shadowRadius = 0.6f;
     }
 
     @Override

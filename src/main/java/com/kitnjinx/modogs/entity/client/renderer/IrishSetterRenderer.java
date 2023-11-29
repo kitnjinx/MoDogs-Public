@@ -34,7 +34,7 @@ public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
 
         addLayer(new IrishSetterCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.575f;
     }
 
     @Override

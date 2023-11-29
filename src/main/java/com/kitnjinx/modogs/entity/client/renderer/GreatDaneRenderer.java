@@ -34,7 +34,7 @@ public class GreatDaneRenderer extends GeoEntityRenderer<GreatDaneEntity> {
 
         addLayer(new GreatDaneCollarLayer(this));
 
-        this.shadowRadius = 0.55f;
+        this.shadowRadius = 0.65f;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class DobermanRenderer extends GeoEntityRenderer<DobermanEntity> {
 
         addLayer(new DobermanCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.575f;
     }
 
     @Override

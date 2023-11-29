@@ -38,7 +38,7 @@ public class PoodleRenderer extends GeoEntityRenderer<PoodleEntity> {
 
         addLayer(new PoodleCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
 
         addLayer(new CollieCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.525f;
     }
 
     @Override

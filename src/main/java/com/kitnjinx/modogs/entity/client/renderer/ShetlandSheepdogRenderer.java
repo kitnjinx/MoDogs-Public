@@ -40,7 +40,7 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
 
         addLayer(new ShetlandSheepdogCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

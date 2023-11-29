@@ -36,7 +36,7 @@ public class GermanShepherdRenderer extends GeoEntityRenderer<GermanShepherdEnti
 
         addLayer(new GermanShepherdCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.525f;
     }
 
     @Override

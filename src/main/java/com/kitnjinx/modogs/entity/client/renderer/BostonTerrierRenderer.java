@@ -32,7 +32,7 @@ public class BostonTerrierRenderer extends GeoEntityRenderer<BostonTerrierEntity
 
         addLayer(new BostonTerrierCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.3f;
     }
 
     @Override

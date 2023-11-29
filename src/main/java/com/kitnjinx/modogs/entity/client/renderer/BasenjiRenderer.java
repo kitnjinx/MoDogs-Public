@@ -34,7 +34,7 @@ public class BasenjiRenderer extends GeoEntityRenderer<BasenjiEntity> {
 
         addLayer(new BasenjiCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override

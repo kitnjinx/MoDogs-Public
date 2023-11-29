@@ -40,7 +40,7 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
 
         addLayer(new RussellTerrierCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.3f;
     }
 
     @Override

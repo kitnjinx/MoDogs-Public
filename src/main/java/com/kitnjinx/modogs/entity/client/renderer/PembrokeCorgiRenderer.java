@@ -36,7 +36,7 @@ public class PembrokeCorgiRenderer extends GeoEntityRenderer<PembrokeCorgiEntity
 
         addLayer(new PembrokeCorgiCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

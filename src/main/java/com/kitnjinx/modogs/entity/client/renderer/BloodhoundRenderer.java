@@ -34,7 +34,7 @@ public class BloodhoundRenderer extends GeoEntityRenderer<BloodhoundEntity> {
 
         addLayer(new BloodhoundCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.55f;
     }
 
     @Override

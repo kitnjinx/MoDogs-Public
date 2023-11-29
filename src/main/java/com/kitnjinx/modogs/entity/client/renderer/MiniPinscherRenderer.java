@@ -34,7 +34,7 @@ public class MiniPinscherRenderer extends GeoEntityRenderer<MiniPinscherEntity> 
 
         addLayer(new MiniPinscherCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.3f;
     }
 
     @Override

@@ -34,7 +34,7 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
 
         addLayer(new NorwegianElkhoundCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.45f;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
 
         addLayer(new DachshundCollarLayer(this));
 
-        this.shadowRadius = 0.35f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override

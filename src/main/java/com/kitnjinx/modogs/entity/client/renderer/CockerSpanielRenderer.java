@@ -38,7 +38,7 @@ public class CockerSpanielRenderer extends GeoEntityRenderer<CockerSpanielEntity
 
         addLayer(new CockerSpanielCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

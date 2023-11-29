@@ -32,7 +32,7 @@ public class ScottishTerrierRenderer extends GeoEntityRenderer<ScottishTerrierEn
 
         addLayer(new ScottishTerrierCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.3f;
     }
 
     @Override

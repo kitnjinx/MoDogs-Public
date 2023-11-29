@@ -36,7 +36,7 @@ public class CardiganCorgiRenderer extends GeoEntityRenderer<CardiganCorgiEntity
 
         addLayer(new CardiganCorgiCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

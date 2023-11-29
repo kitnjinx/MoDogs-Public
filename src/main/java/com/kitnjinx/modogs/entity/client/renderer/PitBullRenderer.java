@@ -42,7 +42,7 @@ public class PitBullRenderer extends GeoEntityRenderer<PitBullEntity> {
 
         addLayer(new PitBullCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.45f;
     }
 
     @Override

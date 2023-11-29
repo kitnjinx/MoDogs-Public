@@ -33,7 +33,7 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
 
         addLayer(new MastiffCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.65f;
     }
 
     @Override

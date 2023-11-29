@@ -36,7 +36,7 @@ public class GermanSpitzRenderer extends GeoEntityRenderer<GermanSpitzEntity> {
 
         addLayer(new GermanSpitzCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

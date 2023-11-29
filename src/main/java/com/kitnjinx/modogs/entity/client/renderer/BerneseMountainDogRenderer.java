@@ -32,7 +32,7 @@ public class BerneseMountainDogRenderer extends GeoEntityRenderer<BerneseMountai
 
         addLayer(new BerneseMountainDogCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.575f;
     }
 
     @Override

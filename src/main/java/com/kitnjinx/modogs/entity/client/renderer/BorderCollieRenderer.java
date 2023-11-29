@@ -40,7 +40,7 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
 
         addLayer(new BorderCollieCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.45f;
     }
 
     @Override

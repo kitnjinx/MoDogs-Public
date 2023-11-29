@@ -40,7 +40,7 @@ public class ItalianGreyhoundRenderer extends GeoEntityRenderer<ItalianGreyhound
 
         addLayer(new ItalianGreyhoundCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.35f;
     }
 
     @Override

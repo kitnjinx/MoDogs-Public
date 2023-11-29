@@ -36,7 +36,7 @@ public class CKCharlesSpanielRenderer extends GeoEntityRenderer<CKCharlesSpaniel
 
         addLayer(new CKCharlesSpanielCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.375f;
     }
 
     @Override

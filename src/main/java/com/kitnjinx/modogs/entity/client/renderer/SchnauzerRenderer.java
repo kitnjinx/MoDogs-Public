@@ -32,7 +32,7 @@ public class SchnauzerRenderer extends GeoEntityRenderer<SchnauzerEntity> {
 
         addLayer(new SchnauzerCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override

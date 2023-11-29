@@ -38,7 +38,7 @@ public class ToyPoodleRenderer extends GeoEntityRenderer<ToyPoodleEntity> {
 
         addLayer(new ToyPoodleCollarLayer(this));
 
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 0.25f;
     }
 
     @Override

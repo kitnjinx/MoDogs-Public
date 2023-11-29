@@ -43,7 +43,7 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
 
         addLayer(new GreyhoundCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.6f;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class AlaskanMalamuteRenderer extends GeoEntityRenderer<AlaskanMalamuteEn
 
         addLayer(new AlaskanMalamuteCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.525f;
     }
 
     @Override

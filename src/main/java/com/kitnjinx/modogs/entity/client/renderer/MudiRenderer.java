@@ -38,7 +38,7 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
 
         addLayer(new MudiCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.4f;
     }
 
     @Override

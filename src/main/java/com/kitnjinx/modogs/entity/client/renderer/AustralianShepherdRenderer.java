@@ -36,7 +36,7 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
 
         addLayer(new AustralianShepherdCollarLayer(this));
 
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 0.45f;
     }
 
     @Override
