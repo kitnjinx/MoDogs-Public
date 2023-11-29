@@ -350,7 +350,7 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     public static final RegistryObject<Item> LAB_RETRIEVER_SPAWN_EGG = ITEMS.register("lab_retriever_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.LAB_RETRIEVER,0x161616, 0x1a1a1a,
+            () -> new ForgeSpawnEggItem(ModEntityTypes.LAB_RETRIEVER,0x2a2a2a, 0x4d2b16,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     public static final RegistryObject<Item> DACHSHUND_SPAWN_EGG = ITEMS.register("dachshund_spawn_egg",
@@ -464,7 +464,7 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     public static final RegistryObject<Item> POODLE_SPAWN_EGG = ITEMS.register("poodle_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.POODLE,0x1c1b1a, 0x332117,
+            () -> new ForgeSpawnEggItem(ModEntityTypes.POODLE,0x222120, 0x38251a,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     public static final RegistryObject<Item> TOY_POODLE_SPAWN_EGG = ITEMS.register("toy_poodle_spawn_egg",
