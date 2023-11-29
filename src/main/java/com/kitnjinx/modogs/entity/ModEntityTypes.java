@@ -41,7 +41,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<DachshundEntity>> DACHSHUND =
             ENTITY_TYPES.register("dachshund",
                     () -> EntityType.Builder.of(DachshundEntity::new, MobCategory.CREATURE)
-                            .sized(0.3f, 0.5f)
+                            .sized(0.35f, 0.5f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "dachshund").toString()));
 
     public static final RegistryObject<EntityType<DalmatianEntity>> DALMATIAN =
@@ -65,7 +65,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<RussellTerrierEntity>> RUSSELL_TERRIER =
             ENTITY_TYPES.register("russell_terrier",
                     () -> EntityType.Builder.of(RussellTerrierEntity::new, MobCategory.CREATURE)
-                            .sized(0.35f, 0.55f)
+                            .sized(0.35f, 0.5f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "russell_terrier").toString()));
 
     public static final RegistryObject<EntityType<AlaskanMalamuteEntity>> ALASKAN_MALAMUTE =
@@ -83,7 +83,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<SaintBernardEntity>> SAINT_BERNARD =
             ENTITY_TYPES.register("saint_bernard",
                     () -> EntityType.Builder.of(SaintBernardEntity::new, MobCategory.CREATURE)
-                            .sized(0.75f, 1.0f)
+                            .sized(0.75f, 1.05f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "saint_bernard").toString()));
 
     public static final RegistryObject<EntityType<BloodhoundEntity>> BLOODHOUND =
@@ -101,7 +101,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<GreyhoundEntity>> GREYHOUND =
             ENTITY_TYPES.register("greyhound",
                     () -> EntityType.Builder.of(GreyhoundEntity::new, MobCategory.CREATURE)
-                            .sized(0.75f, 1.0f)
+                            .sized(0.75f, 1.1f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "greyhound").toString()));
 
     public static final RegistryObject<EntityType<PitBullEntity>> PIT_BULL =
@@ -113,19 +113,19 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<GreatDaneEntity>> GREAT_DANE =
             ENTITY_TYPES.register("great_dane",
                     () -> EntityType.Builder.of(GreatDaneEntity::new, MobCategory.CREATURE)
-                            .sized(0.8f, 1.05f)
+                            .sized(0.8f, 1.15f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "great_dane").toString()));
 
     public static final RegistryObject<EntityType<MastiffEntity>> MASTIFF =
             ENTITY_TYPES.register("mastiff",
                     () -> EntityType.Builder.of(MastiffEntity::new, MobCategory.CREATURE)
-                            .sized(0.8f, 1.05f)
+                            .sized(0.8f, 1.15f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mastiff").toString()));
 
     public static final RegistryObject<EntityType<ShibaInuEntity>> SHIBA_INU =
             ENTITY_TYPES.register("shiba_inu",
                     () -> EntityType.Builder.of(ShibaInuEntity::new, MobCategory.CREATURE)
-                            .sized(0.45f, 0.45f)
+                            .sized(0.45f, 0.65f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "shiba_inu").toString()));
 
     public static final RegistryObject<EntityType<ShetlandSheepdogEntity>> SHETLAND_SHEEPDOG =
@@ -143,13 +143,13 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<ScottishTerrierEntity>> SCOTTISH_TERRIER =
             ENTITY_TYPES.register("scottish_terrier",
                     () -> EntityType.Builder.of(ScottishTerrierEntity::new, MobCategory.CREATURE)
-                            .sized(0.3f, 0.5f)
+                            .sized(0.3f, 0.4f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "scottish_terrier").toString()));
 
     public static final RegistryObject<EntityType<CKCharlesSpanielEntity>> CK_CHARLES_SPANIEL =
             ENTITY_TYPES.register("ck_charles_spaniel",
                     () -> EntityType.Builder.of(CKCharlesSpanielEntity::new, MobCategory.CREATURE)
-                            .sized(0.35f, 0.55f)
+                            .sized(0.4f, 0.55f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "ck_charles_spaniel").toString()));
 
     public static final RegistryObject<EntityType<ItalianGreyhoundEntity>> ITALIAN_GREYHOUND =
@@ -161,7 +161,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<AustralianShepherdEntity>> AUSTRALIAN_SHEPHERD =
             ENTITY_TYPES.register("australian_shepherd",
                     () -> EntityType.Builder.of(AustralianShepherdEntity::new, MobCategory.CREATURE)
-                            .sized(0.55f, 0.8f)
+                            .sized(0.55f, 0.75f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "australian_shepherd").toString()));
 
     public static final RegistryObject<EntityType<BasenjiEntity>> BASENJI =
@@ -173,7 +173,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<PugEntity>> PUG =
             ENTITY_TYPES.register("pug",
                     () -> EntityType.Builder.of(PugEntity::new, MobCategory.CREATURE)
-                            .sized(0.35f, 0.55f)
+                            .sized(0.35f, 0.5f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "pug").toString()));
 
     public static final RegistryObject<EntityType<CockerSpanielEntity>> COCKER_SPANIEL =
@@ -185,19 +185,19 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<BullTerrierEntity>> BULL_TERRIER =
             ENTITY_TYPES.register("bull_terrier",
                     () -> EntityType.Builder.of(BullTerrierEntity::new, MobCategory.CREATURE)
-                            .sized(0.6f, 0.85f)
+                            .sized(0.6f, 0.75f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "bull_terrier").toString()));
 
     public static final RegistryObject<EntityType<MiniBullTerrierEntity>> MINI_BULL_TERRIER =
             ENTITY_TYPES.register("mini_bull_terrier",
                     () -> EntityType.Builder.of(MiniBullTerrierEntity::new, MobCategory.CREATURE)
-                            .sized(0.35f, 0.55f)
+                            .sized(0.35f, 0.45f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mini_bull_terrier").toString()));
 
     public static final RegistryObject<EntityType<SchnauzerEntity>> SCHNAUZER =
             ENTITY_TYPES.register("schnauzer",
                     () -> EntityType.Builder.of(SchnauzerEntity::new, MobCategory.CREATURE)
-                            .sized(0.5f, 0.75f)
+                            .sized(0.5f, 0.7f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "schnauzer").toString()));
 
     public static final RegistryObject<EntityType<MiniSchnauzerEntity>> MINI_SCHNAUZER =
@@ -209,19 +209,19 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<PoodleEntity>> POODLE =
             ENTITY_TYPES.register("poodle",
                     () -> EntityType.Builder.of(PoodleEntity::new, MobCategory.CREATURE)
-                            .sized(0.5f, 0.75f)
+                            .sized(0.5f, 0.65f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "poodle").toString()));
 
     public static final RegistryObject<EntityType<ToyPoodleEntity>> TOY_POODLE =
             ENTITY_TYPES.register("toy_poodle",
                     () -> EntityType.Builder.of(ToyPoodleEntity::new, MobCategory.CREATURE)
-                            .sized(0.35f, 0.55f)
+                            .sized(0.35f, 0.4f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "toy_poodle").toString()));
 
     public static final RegistryObject<EntityType<DobermanEntity>> DOBERMAN =
             ENTITY_TYPES.register("doberman",
                     () -> EntityType.Builder.of(DobermanEntity::new, MobCategory.CREATURE)
-                            .sized(0.7f, 0.95f)
+                            .sized(0.7f, 1.0f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "doberman").toString()));
 
     public static final RegistryObject<EntityType<MiniPinscherEntity>> MINI_PINSCHER =
@@ -263,7 +263,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<BulldogEntity>> BULLDOG =
             ENTITY_TYPES.register("bulldog",
                     () -> EntityType.Builder.of(BulldogEntity::new, MobCategory.CREATURE)
-                            .sized(0.45f, 0.45f)
+                            .sized(0.45f, 0.55f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "bulldog").toString()));
 
     public static final RegistryObject<EntityType<CollieEntity>> COLLIE =
@@ -275,13 +275,13 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<MudiEntity>> MUDI =
             ENTITY_TYPES.register("mudi",
                     () -> EntityType.Builder.of(MudiEntity::new, MobCategory.CREATURE)
-                            .sized(0.5f, 0.75f)
+                            .sized(0.5f, 0.7f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "mudi").toString()));
 
     public static final RegistryObject<EntityType<NorwegianElkhoundEntity>> NORWEGIAN_ELKHOUND =
             ENTITY_TYPES.register("norwegian_elkhound",
                     () -> EntityType.Builder.of(NorwegianElkhoundEntity::new, MobCategory.CREATURE)
-                            .sized(0.55f, 0.8f)
+                            .sized(0.55f, 0.78f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "norwegian_elkhound").toString()));
 
     public static final RegistryObject<EntityType<BeagleEntity>> BEAGLE =
@@ -299,7 +299,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<IrishSetterEntity>> IRISH_SETTER =
             ENTITY_TYPES.register("irish_setter",
                     () -> EntityType.Builder.of(IrishSetterEntity::new, MobCategory.CREATURE)
-                            .sized(0.7f, 0.95f)
+                            .sized(0.7f, 1.0f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "irish_setter").toString()));
 
     public static final RegistryObject<EntityType<GermanSpitzEntity>> GERMAN_SPITZ =
