@@ -308,6 +308,12 @@ public class ModEntityTypes {
                             .sized(0.4f, 0.6f)
                             .build(new ResourceLocation(MoDogs.MOD_ID, "german_spitz").toString()));
 
+    public static final RegistryObject<EntityType<WhippetEntity>> WHIPPET =
+            ENTITY_TYPES.register("whippet",
+                    () -> EntityType.Builder.of(WhippetEntity::new, MobCategory.CREATURE)
+                            .sized(0.55f, 0.8f)
+                            .build(new ResourceLocation(MoDogs.MOD_ID, "whippet").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

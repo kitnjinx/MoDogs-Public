@@ -168,6 +168,7 @@
   "item.modogs.rottweiler_spawn_egg": "Rottweiler Spawn Egg",
   "item.modogs.irish_setter_spawn_egg": "Irish Setter Spawn Egg",
   "item.modogs.german_spitz_spawn_egg": "German Spitz Spawn Egg",
+  "item.modogs.whippet_spawn_egg": "Whippet Spawn Egg",
 
   "entity.modogs.german_shepherd": "German Shepherd",
   "entity.modogs.border_collie": "Border Collie",
@@ -217,5 +218,6 @@
   "entity.modogs.beagle": "Beagle",
   "entity.modogs.rottweiler": "Rottweiler",
   "entity.modogs.irish_setter": "Irish Setter",
-  "entity.modogs.german_spitz": "German Spitz"
+  "entity.modogs.german_spitz": "German Spitz",
+  "entity.modogs.whippet": "Whippet"
 }

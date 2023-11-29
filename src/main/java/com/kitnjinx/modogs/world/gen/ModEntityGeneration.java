@@ -702,6 +702,20 @@ public class ModEntityGeneration {
                 20, 1, 1, SNOWY_BEACH);
         addEntityToSpecificBiomes(event, ModEntityTypes.GERMAN_SPITZ.get(),
                 10, 1, 1, JUNGLE);
+
+        // WHIPPET SPAWNING AREAS
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                20, 1, 2, WINDSWEPT_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                20, 1, 2, WINDSWEPT_GRAVELLY_HILLS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                10, 1, 2, SPARSE_JUNGLE);
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                30, 1, 2, BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                30, 1, 2, WOODED_BADLANDS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.WHIPPET.get(),
+                30, 1, 2, SAVANNA);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
