@@ -20,39 +20,39 @@ public class NorwegianElkhoundCollarLayer extends GeoLayerRenderer {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_none.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_none.png"));
                 col.put(CollarVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_white.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_white.png"));
                 col.put(CollarVariant.LIGHT_GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_light_gray.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_light_gray.png"));
                 col.put(CollarVariant.GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_gray.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_gray.png"));
                 col.put(CollarVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_black.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_black.png"));
                 col.put(CollarVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_brown.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_brown.png"));
                 col.put(CollarVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_red.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_red.png"));
                 col.put(CollarVariant.ORANGE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_orange.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_orange.png"));
                 col.put(CollarVariant.YELLOW,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_yellow.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_yellow.png"));
                 col.put(CollarVariant.LIME,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_lime.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_lime.png"));
                 col.put(CollarVariant.GREEN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_green.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_green.png"));
                 col.put(CollarVariant.CYAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_cyan.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_cyan.png"));
                 col.put(CollarVariant.LIGHT_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_light_blue.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_light_blue.png"));
                 col.put(CollarVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_blue.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_blue.png"));
                 col.put(CollarVariant.PURPLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_purple.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_purple.png"));
                 col.put(CollarVariant.MAGENTA,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_magenta.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_magenta.png"));
                 col.put(CollarVariant.PINK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/collar/collar_pink.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x38/collar_pink.png"));
             });
 
     private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/norwegian_elkhound.geo.json");

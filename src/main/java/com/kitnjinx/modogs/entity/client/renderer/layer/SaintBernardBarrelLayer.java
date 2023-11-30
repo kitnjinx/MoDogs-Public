@@ -17,8 +17,8 @@ import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 import java.util.Map;
 
 public class SaintBernardBarrelLayer extends GeoLayerRenderer {
-    public static final ResourceLocation NO_BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/collar/collar_none.png");
-    public static final ResourceLocation BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/collar/barrel.png");
+    public static final ResourceLocation NO_BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png");
+    public static final ResourceLocation BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/barrel.png");
 
     private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/saint_bernard.geo.json");
 
