@@ -1,11 +1,11 @@
 {
-  "name": "Golden Retriever",
-  "icon": "modogs:golden_retriever_spawn_egg",
-  "category": "modogs:g_to_k_dogs",
+  "name": "Irish Setter",
+  "icon": "modogs:irish_setter_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Golden Retrievers only have one gene that has been witnessed to affect how they look, and this is the S Locus. This gene will determine how dark their fur is."
+      "text": "Irish Setters only have one gene that has been witnessed to affect how they look, and this is the S Locus. This gene will determine how dark their fur is."
     },
     {
       "type": "patchouli:text",

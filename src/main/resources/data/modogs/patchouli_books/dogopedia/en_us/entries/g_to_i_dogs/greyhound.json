@@ -1,7 +1,7 @@
 {
   "name": "Greyhound",
   "icon": "modogs:greyhound_spawn_egg",
-  "category": "modogs:g_to_k_dogs",
+  "category": "modogs:g_to_i_dogs",
   "pages": [
     {
       "type": "patchouli:text",
