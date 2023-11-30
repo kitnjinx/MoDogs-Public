@@ -2,7 +2,7 @@ package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
-import com.kitnjinx.modogs.entity.variant.RedboneCoonhoundVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
@@ -155,9 +155,9 @@ public class RedboneCoonhoundEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 TextComponent message;
-                if (this.getVariant() == RedboneCoonhoundVariant.BROWN) {
+                if (this.getVariant() == ShadeVariant.LIGHT) {
                     message = new TextComponent("This Redbone Coonhound has the alleles for light, desaturated fur.");
-                } else if (this.getVariant() == RedboneCoonhoundVariant.RED) {
+                } else if (this.getVariant() == ShadeVariant.MEDIUM) {
                     message = new TextComponent("This Redbone Coonhound has the alleles for medium, red fur.");
                 } else {
                     message = new TextComponent("This Redbone Coonhound has the alleles for dark, richly colored fur.");
@@ -211,7 +211,7 @@ public class RedboneCoonhoundEntity extends AbstractDog {
                                         MobSpawnType spawn, @Nullable SpawnGroupData group,
                                         @Nullable CompoundTag tag) {
         // Basic variant setter, equal chance
-        RedboneCoonhoundVariant variant = Util.getRandom(RedboneCoonhoundVariant.values(), this.random);
+        ShadeVariant variant = Util.getRandom(ShadeVariant.values(), this.random);
         
         setVariant(variant);
         setCollar(CollarVariant.NONE);
@@ -219,38 +219,38 @@ public class RedboneCoonhoundEntity extends AbstractDog {
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
     }
 
-    public RedboneCoonhoundVariant getVariant() {
-        return RedboneCoonhoundVariant.byId(this.getTypeVariant() & 255);
+    public ShadeVariant getVariant() {
+        return ShadeVariant.byId(this.getTypeVariant() & 255);
     }
 
     private int getTypeVariant() {
         return this.entityData.get(DATA_ID_TYPE_VARIANT);
     }
 
-    private void setVariant(RedboneCoonhoundVariant variant) {
+    private void setVariant(ShadeVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
     private void determineBabyVariant(RedboneCoonhoundEntity baby, RedboneCoonhoundEntity otherParent) {
-        if (this.getVariant() == RedboneCoonhoundVariant.RED &&
-                otherParent.getVariant() == RedboneCoonhoundVariant.RED) {
+        if (this.getVariant() == ShadeVariant.MEDIUM &&
+                otherParent.getVariant() == ShadeVariant.MEDIUM) {
             // if both parents are red, baby has 25% chance to be brown, 50% chance to be red, and 25% chance
             // to be dark red
             int determine = this.random.nextInt(4) + 1;
             if (determine == 1) {
-                baby.setVariant(RedboneCoonhoundVariant.BROWN);
+                baby.setVariant(ShadeVariant.LIGHT);
             } else if (determine < 4) {
-                baby.setVariant(RedboneCoonhoundVariant.RED);
+                baby.setVariant(ShadeVariant.MEDIUM);
             } else {
-                baby.setVariant(RedboneCoonhoundVariant.DARK_RED);
+                baby.setVariant(ShadeVariant.DARK);
             }
         } else if (this.getVariant() == otherParent.getVariant()) {
             // if both parents are brown or both parents are dark red, baby will match the parents
             baby.setVariant(this.getVariant());
-        } else if ((this.getVariant() == RedboneCoonhoundVariant.BROWN && otherParent.getVariant() == RedboneCoonhoundVariant.DARK_RED) ||
-                (this.getVariant() == RedboneCoonhoundVariant.DARK_RED && otherParent.getVariant() == RedboneCoonhoundVariant.BROWN)) {
+        } else if ((this.getVariant() == ShadeVariant.LIGHT && otherParent.getVariant() == ShadeVariant.DARK) ||
+                (this.getVariant() == ShadeVariant.DARK && otherParent.getVariant() == ShadeVariant.LIGHT)) {
             // if one parent is brown and the other is dark red, baby will be red
-            baby.setVariant(RedboneCoonhoundVariant.RED);
+            baby.setVariant(ShadeVariant.MEDIUM);
         } else {
             // if one parent is red and the other is dark red or brown, baby has 50/50 chance to match either parent
             if (this.random.nextBoolean()) {

@@ -154,9 +154,9 @@ public class GenoReaderItem extends Item {
     
     /* METHODS FOR READING A DOG'S GENO */
     private String airedaleTerrierGeno(AiredaleTerrierEntity dog) {
-        if (dog.getVariant() == AiredaleTerrierVariant.LIGHT) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == AiredaleTerrierVariant.MEDIUM) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";
@@ -222,9 +222,9 @@ public class GenoReaderItem extends Item {
     }
 
     private String americanFoxhoundGeno(AmericanFoxhoundEntity dog) {
-        if (dog.getVariant() == AmericanFoxhoundVariant.LIGHT) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == AmericanFoxhoundVariant.MEDIUM) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";
@@ -776,9 +776,9 @@ public class GenoReaderItem extends Item {
     }
 
     private String goldenRetrieverGeno(GoldenRetrieverEntity dog) {
-        if (dog.getVariant() == GoldenRetrieverVariant.LIGHT) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == GoldenRetrieverVariant.MEDIUM) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";
@@ -972,9 +972,9 @@ public class GenoReaderItem extends Item {
     }
 
     private String irishSetterGeno(IrishSetterEntity dog) {
-        if (dog.getVariant() == IrishSetterVariant.LIGHT) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == IrishSetterVariant.MEDIUM) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";
@@ -1214,9 +1214,9 @@ public class GenoReaderItem extends Item {
     }
 
     private String norwegianElkhoundGeno(NorwegianElkhoundEntity dog) {
-        if (dog.getVariant() == NorwegianElkhoundVariant.LIGHT) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == NorwegianElkhoundVariant.MEDIUM) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";
@@ -1410,9 +1410,9 @@ public class GenoReaderItem extends Item {
     }
 
     private String redboneCoonhoundGeno(RedboneCoonhoundEntity dog) {
-        if (dog.getVariant() == RedboneCoonhoundVariant.BROWN) {
+        if (dog.getVariant() == ShadeVariant.LIGHT) {
             return "SS";
-        } else if (dog.getVariant() == RedboneCoonhoundVariant.RED) {
+        } else if (dog.getVariant() == ShadeVariant.MEDIUM) {
             return "Ss";
         } else {
             return "ss";

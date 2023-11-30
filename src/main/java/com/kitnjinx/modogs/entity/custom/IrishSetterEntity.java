@@ -1,7 +1,7 @@
 package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
-import com.kitnjinx.modogs.entity.variant.IrishSetterVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
@@ -156,9 +156,9 @@ public class IrishSetterEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 TextComponent message;
-                if (this.getVariant() == IrishSetterVariant.LIGHT) {
+                if (this.getVariant() == ShadeVariant.LIGHT) {
                     message = new TextComponent("This Irish Setter has the alleles for light fur.");
-                } else if (this.getVariant() == IrishSetterVariant.MEDIUM) {
+                } else if (this.getVariant() == ShadeVariant.MEDIUM) {
                     message = new TextComponent("This Irish Setter has the alleles for medium fur.");
                 } else {
                     message = new TextComponent("This Irish Setter has the alleles for dark fur.");
@@ -211,16 +211,16 @@ public class IrishSetterEntity extends AbstractDog {
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
                                         MobSpawnType spawn, @Nullable SpawnGroupData group,
                                         @Nullable CompoundTag tag) {
-        IrishSetterVariant variant;
+        ShadeVariant variant;
         Random r = new Random();
         int determine = r.nextInt(4) + 1;
 
         if (determine == 1) {
-            variant = IrishSetterVariant.LIGHT;
+            variant = ShadeVariant.LIGHT;
         } else if (determine < 4) {
-            variant = IrishSetterVariant.MEDIUM;
+            variant = ShadeVariant.MEDIUM;
         } else {
-            variant = IrishSetterVariant.DARK;
+            variant = ShadeVariant.DARK;
         }
 
         setVariant(variant);
@@ -229,38 +229,38 @@ public class IrishSetterEntity extends AbstractDog {
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
     }
 
-    public IrishSetterVariant getVariant() {
-        return IrishSetterVariant.byId(this.getTypeVariant() & 255);
+    public ShadeVariant getVariant() {
+        return ShadeVariant.byId(this.getTypeVariant() & 255);
     }
 
     private int getTypeVariant() {
         return this.entityData.get(DATA_ID_TYPE_VARIANT);
     }
 
-    private void setVariant(IrishSetterVariant variant) {
+    private void setVariant(ShadeVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
     private void determineBabyVariant(IrishSetterEntity baby, IrishSetterEntity otherParent) {
-        if (this.getVariant() == IrishSetterVariant.MEDIUM &&
-                otherParent.getVariant() == IrishSetterVariant.MEDIUM) {
+        if (this.getVariant() == ShadeVariant.MEDIUM &&
+                otherParent.getVariant() == ShadeVariant.MEDIUM) {
             // if both parents have a medium coat shade, baby has 25% chance to be light, 50% chance to be medium,
             // and 25% chance to be dark
             int determine = this.random.nextInt(4) + 1;
             if (determine == 1) {
-                baby.setVariant(IrishSetterVariant.LIGHT);
+                baby.setVariant(ShadeVariant.LIGHT);
             } else if (determine < 4) {
-                baby.setVariant(IrishSetterVariant.MEDIUM);
+                baby.setVariant(ShadeVariant.MEDIUM);
             } else {
-                baby.setVariant(IrishSetterVariant.DARK);
+                baby.setVariant(ShadeVariant.DARK);
             }
         } else if (this.getVariant() == otherParent.getVariant()) {
             // if both parents are light or both parents are dark, baby will match the parents
             baby.setVariant(this.getVariant());
-        } else if ((this.getVariant() == IrishSetterVariant.LIGHT && otherParent.getVariant() == IrishSetterVariant.DARK) ||
-                (this.getVariant() == IrishSetterVariant.DARK && otherParent.getVariant() == IrishSetterVariant.LIGHT)) {
+        } else if ((this.getVariant() == ShadeVariant.LIGHT && otherParent.getVariant() == ShadeVariant.DARK) ||
+                (this.getVariant() == ShadeVariant.DARK && otherParent.getVariant() == ShadeVariant.LIGHT)) {
             // if one parent is dark and one parent is light, baby will be medium
-            baby.setVariant(IrishSetterVariant.MEDIUM);
+            baby.setVariant(ShadeVariant.MEDIUM);
         } else {
             // if one parent is medium and one parent is light/dark, baby will have 50/50 chance of matching
             // either parent

@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GoldenRetrieverModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.GoldenRetrieverCollarLayer;
 import com.kitnjinx.modogs.entity.custom.GoldenRetrieverEntity;
-import com.kitnjinx.modogs.entity.variant.GoldenRetrieverVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class GoldenRetrieverRenderer extends GeoEntityRenderer<GoldenRetrieverEntity> {
 
-    public static final Map<GoldenRetrieverVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(GoldenRetrieverVariant.class), (var) -> {
-                var.put(GoldenRetrieverVariant.LIGHT,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_light.png"));
-                var.put(GoldenRetrieverVariant.MEDIUM,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_medium.png"));
-                var.put(GoldenRetrieverVariant.DARK,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_dark.png"));
             });
 

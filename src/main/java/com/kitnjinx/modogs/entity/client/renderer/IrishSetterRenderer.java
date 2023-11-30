@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.IrishSetterModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.IrishSetterCollarLayer;
 import com.kitnjinx.modogs.entity.custom.IrishSetterEntity;
-import com.kitnjinx.modogs.entity.variant.IrishSetterVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
 
-    public static final Map<IrishSetterVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(IrishSetterVariant.class), (var) -> {
-                var.put(IrishSetterVariant.LIGHT,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_light.png"));
-                var.put(IrishSetterVariant.MEDIUM,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_medium.png"));
-                var.put(IrishSetterVariant.DARK,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_dark.png"));
             });
 

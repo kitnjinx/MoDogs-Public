@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AmericanFoxhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AmericanFoxhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
-import com.kitnjinx.modogs.entity.variant.AmericanFoxhoundVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class AmericanFoxhoundRenderer extends GeoEntityRenderer<AmericanFoxhoundEntity> {
 
-    public static final Map<AmericanFoxhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(AmericanFoxhoundVariant.class), (var) -> {
-                var.put(AmericanFoxhoundVariant.LIGHT,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/american_foxhound/american_foxhound_light.png"));
-                var.put(AmericanFoxhoundVariant.MEDIUM,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/american_foxhound/american_foxhound_medium.png"));
-                var.put(AmericanFoxhoundVariant.DARK,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/american_foxhound/american_foxhound_dark.png"));
             });
 

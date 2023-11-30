@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RedboneCoonhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.RedboneCoonhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.RedboneCoonhoundEntity;
-import com.kitnjinx.modogs.entity.variant.RedboneCoonhoundVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class RedboneCoonhoundRenderer extends GeoEntityRenderer<RedboneCoonhoundEntity> {
 
-    public static final Map<RedboneCoonhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(RedboneCoonhoundVariant.class), (var) -> {
-                var.put(RedboneCoonhoundVariant.BROWN,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_brown.png"));
-                var.put(RedboneCoonhoundVariant.RED,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_red.png"));
-                var.put(RedboneCoonhoundVariant.DARK_RED,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_dark_red.png"));
             });
 

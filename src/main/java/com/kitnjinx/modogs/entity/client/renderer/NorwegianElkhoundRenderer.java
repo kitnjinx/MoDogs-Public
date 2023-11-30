@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.NorwegianElkhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.NorwegianElkhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
-import com.kitnjinx.modogs.entity.variant.NorwegianElkhoundVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhoundEntity> {
 
-    public static final Map<NorwegianElkhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(NorwegianElkhoundVariant.class), (var) -> {
-                var.put(NorwegianElkhoundVariant.LIGHT,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_light.png"));
-                var.put(NorwegianElkhoundVariant.MEDIUM,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_medium.png"));
-                var.put(NorwegianElkhoundVariant.DARK,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_dark.png"));
             });
 

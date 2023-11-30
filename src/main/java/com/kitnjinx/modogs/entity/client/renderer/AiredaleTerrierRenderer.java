@@ -5,7 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AiredaleTerrierModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AiredaleTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
-import com.kitnjinx.modogs.entity.variant.AiredaleTerrierVariant;
+import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEntity> {
 
-    public static final Map<AiredaleTerrierVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(AiredaleTerrierVariant.class), (var) -> {
-                var.put(AiredaleTerrierVariant.LIGHT,
+    public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
+                var.put(ShadeVariant.LIGHT,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_light.png"));
-                var.put(AiredaleTerrierVariant.MEDIUM,
+                var.put(ShadeVariant.MEDIUM,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_medium.png"));
-                var.put(AiredaleTerrierVariant.DARK,
+                var.put(ShadeVariant.DARK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_dark.png"));
             });
 
