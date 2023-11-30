@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:schnauzer_spawn_egg"
+    },
+    "title": "Schnauzer Breeder",
+    "description": "Breed a Schnauzer",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:s_to_w_dogs/tame_schnauzer",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:schnauzer"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

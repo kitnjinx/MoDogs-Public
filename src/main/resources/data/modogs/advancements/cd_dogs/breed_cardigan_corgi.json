@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:cardigan_corgi_spawn_egg"
+    },
+    "title": "Cardigan Corgi Breeder",
+    "description": "Breed a Cardigan Corgi",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:cd_dogs/tame_cardigan_corgi",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:cardigan_corgi"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

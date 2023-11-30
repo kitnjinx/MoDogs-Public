@@ -3,13 +3,13 @@
     "icon": {
       "item": "modogs:rabbit_treat"
     },
-    "title": "New Dog Trainer",
-    "description": "Begin your dog training journey",
+    "title": "Dog Trainer",
+    "description": "Your dog training journey",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/barrel_side.png"
   },
-  "parent": "modogs:root",
   "criteria": {
     "bacon_treat": {
       "trigger": "minecraft:inventory_changed",

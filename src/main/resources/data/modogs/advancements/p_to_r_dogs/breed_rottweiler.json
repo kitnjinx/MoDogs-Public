@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:rottweiler_spawn_egg"
+    },
+    "title": "Rottweiler Breeder",
+    "description": "Breed a Rottweiler",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:p_to_r_dogs/tame_rottweiler",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:rottweiler"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

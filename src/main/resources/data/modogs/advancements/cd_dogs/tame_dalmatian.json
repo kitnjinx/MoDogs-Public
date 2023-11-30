@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:dalmatian_spawn_egg"
+    },
+    "title": "Dalmatian Trainer",
+    "description": "Tame a Dalmatian",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:cd_dogs/root_cd",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:dalmatian"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

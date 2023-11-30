@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:mini_schnauzer_spawn_egg"
+    },
+    "title": "Miniature Schnauzer Trainer",
+    "description": "Tame a Miniature Schnauzer",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:l_to_n_dogs/root_l_to_n",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mini_schnauzer"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

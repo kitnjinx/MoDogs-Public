@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:basenji_spawn_egg"
+    },
+    "title": "Basenji Trainer",
+    "description": "Tame a Basenji",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:b_dogs/root_b",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:basenji"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
