@@ -25,7 +25,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.PlayState;
@@ -53,8 +52,6 @@ public class BerneseMountainDogEntity extends AbstractDog {
 
     public BerneseMountainDogEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
 
     public static AttributeSupplier setAttributes() {

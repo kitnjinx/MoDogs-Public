@@ -31,6 +31,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.scores.Team;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -62,6 +63,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
 
     public AbstractDog(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
 
     protected void registerGoals() {

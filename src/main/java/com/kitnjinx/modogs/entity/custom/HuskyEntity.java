@@ -2,8 +2,8 @@ package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
-import com.kitnjinx.modogs.entity.variant.HuskyVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.HuskyVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
@@ -24,7 +24,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.PlayState;
@@ -62,8 +61,6 @@ public class HuskyEntity extends AbstractDog {
 
     public HuskyEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
 
     public static AttributeSupplier setAttributes() {
