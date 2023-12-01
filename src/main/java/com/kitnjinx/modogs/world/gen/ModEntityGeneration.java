@@ -135,13 +135,17 @@ public class ModEntityGeneration {
 
         // RUSSELL TERRIER SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
-                20, 1, 3, OLD_GROWTH_PINE_TAIGA);
+                30, 1, 3, OLD_GROWTH_PINE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
                 20, 1, 3, OLD_GROWTH_SPRUCE_TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
                 30, 1, 3, TAIGA);
         addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
                 30, 1, 3, SNOWY_TAIGA);
+        addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
+                20, 1, 3, SNOWY_PLAINS);
+        addEntityToSpecificBiomes(event, ModEntityTypes.RUSSELL_TERRIER.get(),
+                10, 1, 3, GROVE);
 
         // ALASKAN MALAMUTE SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.ALASKAN_MALAMUTE.get(),

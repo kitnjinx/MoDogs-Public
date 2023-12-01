@@ -98,7 +98,7 @@ public class MoDogs
             SpawnPlacements.register(ModEntityTypes.RUSSELL_TERRIER.get(),
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    AbstractDog::checkDogSpawnRules);
 
             SpawnPlacements.register(ModEntityTypes.ALASKAN_MALAMUTE.get(),
                     SpawnPlacements.Type.ON_GROUND,
