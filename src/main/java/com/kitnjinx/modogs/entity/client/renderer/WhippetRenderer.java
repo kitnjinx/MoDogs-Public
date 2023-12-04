@@ -5,8 +5,7 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.WhippetModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.WhippetCollarLayer;
 import com.kitnjinx.modogs.entity.custom.WhippetEntity;
-import com.kitnjinx.modogs.entity.custom.WhippetEntity;
-import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
+import com.kitnjinx.modogs.entity.variant.WhippetVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -20,23 +19,22 @@ import java.util.Map;
 
 public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
 
-    public static final Map<GreyhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(GreyhoundVariant.class), (var) -> {
-                var.put(GreyhoundVariant.WHITE_BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_white_black.png"));
-                var.put(GreyhoundVariant.WHITE_RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/whippet_white_red.png"));
-                var.put(GreyhoundVariant.WHITE_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_white_blue.png"));
-                var.put(GreyhoundVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white.png"));
-                var.put(GreyhoundVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_black.png"));
-                var.put(GreyhoundVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/whippet_red.png"));
-                var.put(GreyhoundVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_blue.png"));
-
+    public static final Map<WhippetVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(WhippetVariant.class), (var) -> {
+                var.put(WhippetVariant.WHITE_RED,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_red.png"));
+                var.put(WhippetVariant.WHITE_BLUE,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_blue.png"));
+                var.put(WhippetVariant.WHITE_BLACK,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_black.png"));
+                var.put(WhippetVariant.WHITE,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white.png"));
+                var.put(WhippetVariant.RED,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_red.png"));
+                var.put(WhippetVariant.BLUE,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_blue.png"));
+                var.put(WhippetVariant.BLACK,
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_black.png"));
             });
 
     public WhippetRenderer(EntityRendererProvider.Context renderManager) {

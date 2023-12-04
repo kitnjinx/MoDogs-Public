@@ -1744,7 +1744,7 @@ public class GenoReaderItem extends Item {
     }
 
     private String whippetGeno(WhippetEntity dog) {
-        if (dog.getVariant() == GreyhoundVariant.WHITE && dog.isBlue()) {
+        if (dog.getVariant() == WhippetVariant.WHITE && dog.isBlue()) {
             if (dog.isRed()) {
                 return "bb dd WW";
             } else if (dog.isRedCarrier()) {
@@ -1752,7 +1752,7 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB dd WW";
             }
-        } else if (dog.getVariant() == GreyhoundVariant.WHITE && dog.isBlueCarrier()) {
+        } else if (dog.getVariant() == WhippetVariant.WHITE && dog.isBlueCarrier()) {
             if (dog.isRed()) {
                 return "bb Dd WW";
             } else if (dog.isRedCarrier()) {
@@ -1760,7 +1760,7 @@ public class GenoReaderItem extends Item {
             } else {
                 return "BB Dd WW";
             }
-        } else if (dog.getVariant() == GreyhoundVariant.WHITE) {
+        } else if (dog.getVariant() == WhippetVariant.WHITE) {
             if (dog.isRed()) {
                 return "bb DD WW";
             } else if (dog.isRedCarrier()) {

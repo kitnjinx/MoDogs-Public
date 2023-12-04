@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.custom;
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
+import com.kitnjinx.modogs.entity.variant.WhippetVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
@@ -98,26 +98,26 @@ public class WhippetEntity extends AbstractDog {
 
     private <E extends WhippetEntity> PlayState predicate(AnimationEvent<E> event) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.greyhound.sitting"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.whippet.sitting"));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.greyhound.angrywalk"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.whippet.angrywalk"));
             return PlayState.CONTINUE;
         }
 
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.greyhound.walk"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.whippet.walk"));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.greyhound.angryidle"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.whippet.angryidle"));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.greyhound.idle"));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.whippet.idle"));
         return PlayState.CONTINUE;
     }
     @Override
@@ -164,7 +164,7 @@ public class WhippetEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 TextComponent message;
-                if (this.getVariant() == GreyhoundVariant.WHITE) {
+                if (this.getVariant() == WhippetVariant.WHITE) {
                     if (this.isRed() && this.isBlue()) {
                         message = new TextComponent("This Whippet demonstrates a fully white coat. They also have the alleles for diluted red fur.");
                     } else if (this.isRed() && this.isBlueCarrier()) {
@@ -307,14 +307,14 @@ public class WhippetEntity extends AbstractDog {
         if (r.nextBoolean()) {
             setWhite(true);
             if (determine < 6) {
-                var = 1; // WHITE & RED
+                var = 0; // WHITE & RED
                 setRedStatus(true, true);
                 setBlueStatus(carrier == 1, false);
             } else if (determine < 9) {
-                var = 2; // WHITE & BLUE
+                var = 1; // WHITE & BLUE
                 spawnBlueWhippet(carrier);
             } else if (r.nextBoolean()) {
-                var = 0; // WHITE & BLACK
+                var = 2; // WHITE & BLACK
                 setRedStatus(carrier == 1, false);
                 setBlueStatus(carrier == 2, false);
             } else {
@@ -333,21 +333,21 @@ public class WhippetEntity extends AbstractDog {
         } else {
             setWhite(false);
             if (determine < 6) {
-                var = 5; // RED
+                var = 4; // RED
                 setRedStatus(true, true);
                 setBlueStatus(carrier == 1, false);
             } else if (determine < 9) {
-                var = 6; // BLUE
+                var = 5; // BLUE
                 spawnBlueWhippet(carrier);
             } else {
-                var = 4; // BLACK
+                var = 6; // BLACK
                 setRedStatus(carrier == 1, false);
                 setBlueStatus(carrier == 2, false);
             }
         }
 
         // assign chosen variant and finish the method
-        GreyhoundVariant variant = GreyhoundVariant.byId(var);
+        WhippetVariant variant = WhippetVariant.byId(var);
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
@@ -364,15 +364,15 @@ public class WhippetEntity extends AbstractDog {
         }
     }
 
-    public GreyhoundVariant getVariant() {
-        return GreyhoundVariant.byId(this.getTypeVariant() & 255);
+    public WhippetVariant getVariant() {
+        return WhippetVariant.byId(this.getTypeVariant() & 255);
     }
 
     private int getTypeVariant() {
         return this.entityData.get(DATA_ID_TYPE_VARIANT);
     }
 
-    private void setVariant(GreyhoundVariant variant) {
+    private void setVariant(WhippetVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
@@ -470,17 +470,17 @@ public class WhippetEntity extends AbstractDog {
 
         // determine if baby is white, has white markings, or is solid colored
         boolean isWhite;
-        if (this.getVariant() == GreyhoundVariant.WHITE && otherParent.getVariant() == GreyhoundVariant.WHITE) {
+        if (this.getVariant() == WhippetVariant.WHITE && otherParent.getVariant() == WhippetVariant.WHITE) {
             // if both parents are white, baby will be white
             isWhite = true;
             baby.setWhite(true);
-        } else if ((this.getVariant() == GreyhoundVariant.WHITE && otherParent.hasWhite()) ||
-                (this.hasWhite() && otherParent.getVariant() == GreyhoundVariant.WHITE)) {
+        } else if ((this.getVariant() == WhippetVariant.WHITE && otherParent.hasWhite()) ||
+                (this.hasWhite() && otherParent.getVariant() == WhippetVariant.WHITE)) {
             // if one parent is white and one parent has white markings, baby has 50% chance to be white and
             // 50% chance to have white markings
             isWhite = this.random.nextBoolean();
             baby.setWhite(true);
-        } else if (this.getVariant() == GreyhoundVariant.WHITE || otherParent.getVariant() == GreyhoundVariant.WHITE) {
+        } else if (this.getVariant() == WhippetVariant.WHITE || otherParent.getVariant() == WhippetVariant.WHITE) {
             // if one parent is white and the other has no white markings, baby will have white markings
             isWhite = false;
             baby.setWhite(true);
@@ -507,19 +507,19 @@ public class WhippetEntity extends AbstractDog {
 
         // determine baby's phenotype (TYPE_VARIANT)
         if (isWhite) {
-            baby.setVariant(GreyhoundVariant.WHITE);
+            baby.setVariant(WhippetVariant.WHITE);
         } else if (baby.hasWhite() && baby.isBlue()) {
-            baby.setVariant(GreyhoundVariant.WHITE_BLUE);
+            baby.setVariant(WhippetVariant.WHITE_BLUE);
         } else if (baby.hasWhite() && baby.isRed()) {
-            baby.setVariant(GreyhoundVariant.WHITE_RED);
+            baby.setVariant(WhippetVariant.WHITE_RED);
         } else if (baby.hasWhite()) {
-            baby.setVariant(GreyhoundVariant.WHITE_BLACK);
+            baby.setVariant(WhippetVariant.WHITE_BLACK);
         } else if (baby.isBlue()) {
-            baby.setVariant(GreyhoundVariant.BLUE);
+            baby.setVariant(WhippetVariant.BLUE);
         } else if (baby.isRed()) {
-            baby.setVariant(GreyhoundVariant.RED);
+            baby.setVariant(WhippetVariant.RED);
         } else {
-            baby.setVariant(GreyhoundVariant.BLACK);
+            baby.setVariant(WhippetVariant.BLACK);
         }
     }
 }
