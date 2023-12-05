@@ -13,7 +13,7 @@
         "modogs:textures/gui/entries/border_collie_book.png"
       ],
       "border": true,
-      "text": "Example of a Black Border Collie"
+      "text": "Example of a Border Collie"
     },
     {
       "type": "patchouli:text",
