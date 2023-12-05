@@ -194,12 +194,8 @@ public class BullTerrierEntity extends AbstractDog {
         if (Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ItemTags.WOOL)
                 && this.isTame() && this.isOwnedBy(player) && this.showTarget()) {
             if (this.level.isClientSide) {
-                return InteractionResult.CONSUME;
+                return InteractionResult.PASS;
             } else {
-                if (!player.getAbilities().instabuild) {
-                    itemstack.shrink(1);
-                }
-
                 this.setTarget(false);
 
                 return InteractionResult.SUCCESS;
