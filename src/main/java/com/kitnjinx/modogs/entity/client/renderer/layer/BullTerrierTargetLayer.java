@@ -12,7 +12,7 @@ import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 
 public class BullTerrierTargetLayer extends GeoLayerRenderer {
-    public static final ResourceLocation NO_TARGET = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/collar/collar_none.png");
+    public static final ResourceLocation NO_TARGET = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png");
     public static final ResourceLocation TARGET = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/target.png");
 
     private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/bull_terrier.geo.json");
