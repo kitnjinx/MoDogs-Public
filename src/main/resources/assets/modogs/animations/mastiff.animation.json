@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.mastiiff.walk": {
+		"animation.mastiff.walk": {
 			"loop": true,
 			"animation_length": 1.16667,
 			"bones": {
@@ -169,7 +169,7 @@
 				}
 			}
 		},
-		"animation.mastiiff.angrywalk": {
+		"animation.mastiff.angrywalk": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -315,7 +315,7 @@
 				}
 			}
 		},
-		"animation.mastiiff.idle": {
+		"animation.mastiff.idle": {
 			"loop": true,
 			"bones": {
 				"tail": {
@@ -325,7 +325,7 @@
 				}
 			}
 		},
-		"animation.mastiiff.angryidle": {
+		"animation.mastiff.angryidle": {
 			"loop": true,
 			"bones": {
 				"tail": {
@@ -361,7 +361,7 @@
 				}
 			}
 		},
-		"animation.mastiiff.sitting": {
+		"animation.mastiff.sitting": {
 			"loop": true,
 			"bones": {
 				"head": {
