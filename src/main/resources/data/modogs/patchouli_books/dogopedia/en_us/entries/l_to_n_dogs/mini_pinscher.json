@@ -1,7 +1,7 @@
 {
   "name": "Miniature Pinscher",
   "icon": "modogs:mini_pinscher_spawn_egg",
-  "category": "modogs:s_to_w_dogs",
+  "category": "modogs:l_to_n_dogs",
   "pages": [
     {
       "type": "patchouli:text",
