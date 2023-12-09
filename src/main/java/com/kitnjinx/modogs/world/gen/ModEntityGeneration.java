@@ -259,7 +259,7 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event, ModEntityTypes.GREAT_DANE.get(),
                 3, 1, 1, MEADOW);
 
-        // GREAT DANE SPAWNING AREAS
+        // MASTIFF SPAWNING AREAS
         addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
                 15, 1, 1, PLAINS);
         addEntityToSpecificBiomes(event, ModEntityTypes.MASTIFF.get(),
@@ -554,17 +554,17 @@ public class ModEntityGeneration {
                 7, 2, 2, SNOWY_TAIGA);
 
         // TREE WALK HOUND SPAWNING AREAS
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 15, 2, 2, DARK_FOREST);
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 15, 2, 2, OLD_GROWTH_BIRCH_FOREST);
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 7, 2, 2, OLD_GROWTH_PINE_TAIGA);
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 7, 2, 2, OLD_GROWTH_SPRUCE_TAIGA);
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 3, 2, 2, TAIGA);
-        addEntityToSpecificBiomes(event, ModEntityTypes.REDBONE_COONHOUND.get(),
+        addEntityToSpecificBiomes(event, ModEntityTypes.TREE_WALK_HOUND.get(),
                 15, 2, 2, FOREST);
 
         // AIREDALE TERRIER SPAWNING AREAS
