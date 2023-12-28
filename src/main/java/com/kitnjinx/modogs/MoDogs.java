@@ -1,5 +1,6 @@
 package com.kitnjinx.modogs;
 
+import com.kitnjinx.modogs.block.ModBlocks;
 import com.kitnjinx.modogs.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,6 +21,7 @@ public class MoDogs {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
