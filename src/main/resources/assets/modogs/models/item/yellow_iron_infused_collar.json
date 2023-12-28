@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "modogs:item/yellow_iron_infused_collar"
-  }
-}
