@@ -1,0 +1,227 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:black_netherite_laced_collar"
+    },
+    "title": "Ultimate Armor",
+    "description": "The best armor available for your dog",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:generic/obtain_diamond_crusted_collar",
+  "criteria": {
+    "white": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:white_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "light_gray": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:light_gray_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "gray": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:gray_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "black": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:black_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "brown": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:brown_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "red": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:red_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "orange": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:orange_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "yellow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:yellow_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "lime": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:lime_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "green": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:green_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "cyan": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:cyan_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "light_blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:light_blue_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:blue_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "purple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:purple_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "magenta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:magenta_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "pink": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:pink_netherite_laced_collar"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "white",
+      "light_gray",
+      "gray",
+      "black",
+      "brown",
+      "red",
+      "orange",
+      "yellow",
+      "lime",
+      "green",
+      "cyan",
+      "light_blue",
+      "blue",
+      "purple",
+      "magenta",
+      "pink"
+    ]
+  ]
+}

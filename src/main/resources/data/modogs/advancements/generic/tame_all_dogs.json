@@ -1,0 +1,715 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:mutton_treat"
+    },
+    "title": "Ultimate Trainer",
+    "description": "Tame all dogs",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:generic/obtain_dog_treat",
+  "criteria": {
+    "german_shepherd": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:german_shepherd"
+            }
+          }
+        ]
+      }
+    },
+    "border_collie": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:border_collie"
+            }
+          }
+        ]
+      }
+    },
+    "golden_retriever": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:golden_retriever"
+            }
+          }
+        ]
+      }
+    },
+    "lab_retriever": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:lab_retriever"
+            }
+          }
+        ]
+      }
+    },
+    "dachshund": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:dachshund"
+            }
+          }
+        ]
+      }
+    },
+    "dalmatian": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:dalmatian"
+            }
+          }
+        ]
+      }
+    },
+    "cardigan_corgi": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:cardigan_corgi"
+            }
+          }
+        ]
+      }
+    },
+    "pembroke_corgi": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pembroke_corgi"
+            }
+          }
+        ]
+      }
+    },
+    "russell_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:russell_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "alaskan_malamute": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:alaskan_malamute"
+            }
+          }
+        ]
+      }
+    },
+    "bernese_mountain_dog": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:bernese_mountain_dog"
+            }
+          }
+        ]
+      }
+    },
+    "saint_bernard": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:saint_bernard"
+            }
+          }
+        ]
+      }
+    },
+    "bloodhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:bloodhound"
+            }
+          }
+        ]
+      }
+    },
+    "boxer": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:boxer"
+            }
+          }
+        ]
+      }
+    },
+    "greyhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:greyhound"
+            }
+          }
+        ]
+      }
+    },
+    "pit_bull": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pit_bull"
+            }
+          }
+        ]
+      }
+    },
+    "great_dane": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:great_dane"
+            }
+          }
+        ]
+      }
+    },
+    "mastiff": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mastiff"
+            }
+          }
+        ]
+      }
+    },
+    "shiba_inu": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:shiba_inu"
+            }
+          }
+        ]
+      }
+    },
+    "shetland_sheepdog": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:shetland_sheepdog"
+            }
+          }
+        ]
+      }
+    },
+    "boston_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:boston_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "scottish_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:scottish_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "ck_charles_spaniel": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:ck_charles_spaniel"
+            }
+          }
+        ]
+      }
+    },
+    "italian_greyhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:italian_greyhound"
+            }
+          }
+        ]
+      }
+    },
+    "australian_shepherd": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:australian_shepherd"
+            }
+          }
+        ]
+      }
+    },
+    "basenji": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:basenji"
+            }
+          }
+        ]
+      }
+    },
+    "pug": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pug"
+            }
+          }
+        ]
+      }
+    },
+    "cocker_spaniel": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:cocker_spaniel"
+            }
+          }
+        ]
+      }
+    },
+    "bull_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:bull_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "mini_bull_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mini_bull_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "schnauzer": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:schnauzer"
+            }
+          }
+        ]
+      }
+    },
+    "mini_schnauzer": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mini_schnauzer"
+            }
+          }
+        ]
+      }
+    },
+    "poodle": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:poodle"
+            }
+          }
+        ]
+      }
+    },
+    "toy_poodle": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:toy_poodle"
+            }
+          }
+        ]
+      }
+    },
+    "doberman": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:doberman"
+            }
+          }
+        ]
+      }
+    },
+    "mini_pinscher": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mini_pinscher"
+            }
+          }
+        ]
+      }
+    },
+    "husky": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:husky"
+            }
+          }
+        ]
+      }
+    },
+    "redbone_coonhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:redbone_coonhound"
+            }
+          }
+        ]
+      }
+    },
+    "tree_walk_hound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:tree_walk_hound"
+            }
+          }
+        ]
+      }
+    },
+    "airedale_terrier": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:airedale_terrier"
+            }
+          }
+        ]
+      }
+    },
+    "american_foxhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:american_foxhound"
+            }
+          }
+        ]
+      }
+    },
+    "bulldog": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:bulldog"
+            }
+          }
+        ]
+      }
+    },
+    "collie": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:collie"
+            }
+          }
+        ]
+      }
+    },
+    "mudi": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:mudi"
+            }
+          }
+        ]
+      }
+    },
+    "norwegian_elkhound": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:norwegian_elkhound"
+            }
+          }
+        ]
+      }
+    },
+    "beagle": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:beagle"
+            }
+          }
+        ]
+      }
+    },
+    "rottweiler": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:rottweiler"
+            }
+          }
+        ]
+      }
+    },
+    "irish_setter": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:irish_setter"
+            }
+          }
+        ]
+      }
+    },
+    "german_spitz": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:german_spitz"
+            }
+          }
+        ]
+      }
+    },
+    "whippet": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:whippet"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

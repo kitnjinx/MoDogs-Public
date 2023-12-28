@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modogs:white_iron_infused_collar",
+    "modogs:light_gray_iron_infused_collar",
+    "modogs:gray_iron_infused_collar",
+    "modogs:black_iron_infused_collar",
+    "modogs:brown_iron_infused_collar",
+    "modogs:red_iron_infused_collar",
+    "modogs:orange_iron_infused_collar",
+    "modogs:yellow_iron_infused_collar",
+    "modogs:lime_iron_infused_collar",
+    "modogs:green_iron_infused_collar",
+    "modogs:cyan_iron_infused_collar",
+    "modogs:light_blue_iron_infused_collar",
+    "modogs:blue_iron_infused_collar",
+    "modogs:purple_iron_infused_collar",
+    "modogs:magenta_iron_infused_collar",
+    "modogs:pink_iron_infused_collar"
+  ]
+}

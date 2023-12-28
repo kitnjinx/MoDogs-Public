@@ -1,0 +1,227 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:black_reinforced_collar"
+    },
+    "title": "Dog Armor",
+    "description": "A basic reinforced collar for your dog",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:generic/obtain_dog_collar",
+  "criteria": {
+    "white": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:white_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "light_gray": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:light_gray_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "gray": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:gray_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "black": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:black_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "brown": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:brown_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "red": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:red_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "orange": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:orange_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "yellow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:yellow_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "lime": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:lime_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "green": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:green_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "cyan": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:cyan_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "light_blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:light_blue_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:blue_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "purple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:purple_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "magenta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:magenta_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    },
+    "pink": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modogs:pink_reinforced_collar"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "white",
+      "light_gray",
+      "gray",
+      "black",
+      "brown",
+      "red",
+      "orange",
+      "yellow",
+      "lime",
+      "green",
+      "cyan",
+      "light_blue",
+      "blue",
+      "purple",
+      "magenta",
+      "pink"
+    ]
+  ]
+}

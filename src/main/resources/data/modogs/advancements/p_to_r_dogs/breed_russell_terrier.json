@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:russell_terrier_spawn_egg"
+    },
+    "title": "Russell Terrier Breeder",
+    "description": "Breed a Russell Terrier",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:p_to_r_dogs/tame_russell_terrier",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:russell_terrier"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

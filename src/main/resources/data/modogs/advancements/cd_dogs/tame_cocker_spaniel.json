@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:cocker_spaniel_spawn_egg"
+    },
+    "title": "Cocker Spaniel Trainer",
+    "description": "Tame a Cocker Spaniel",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:cd_dogs/root_cd",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:cocker_spaniel"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "modogs:netherite_laced_collar"
+    },
+    {
+      "item": "minecraft:orange_dye"
+    }
+  ],
+  "result": {
+    "item": "modogs:orange_netherite_laced_collar",
+    "count": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:irish_setter_spawn_egg"
+    },
+    "title": "Irish Setter Trainer",
+    "description": "Tame a Irish Setter",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:g_to_i_dogs/root_g_to_i",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:irish_setter"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

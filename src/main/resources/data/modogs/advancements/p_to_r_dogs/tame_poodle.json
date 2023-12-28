@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:poodle_spawn_egg"
+    },
+    "title": "Poodle Trainer",
+    "description": "Tame a Poodle",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:p_to_r_dogs/root_p_to_r",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:poodle"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

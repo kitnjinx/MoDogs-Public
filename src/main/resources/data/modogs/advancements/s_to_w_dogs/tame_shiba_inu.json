@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:shiba_inu_spawn_egg"
+    },
+    "title": "Shiba Inu Trainer",
+    "description": "Tame a Shiba Inu",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:s_to_w_dogs/root_s_to_w",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:shiba_inu"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

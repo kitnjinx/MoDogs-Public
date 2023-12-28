@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:pembroke_corgi_spawn_egg"
+    },
+    "title": "Pembroke Corgi Breeder",
+    "description": "Breed a Pembroke Corgi",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:p_to_r_dogs/tame_pembroke_corgi",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pembroke_corgi"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

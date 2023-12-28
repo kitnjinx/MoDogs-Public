@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "modogs:block/care_station_side",
+    "north": "modogs:block/care_station_side",
+    "south": "modogs:block/care_station_side",
+    "east": "modogs:block/care_station_side",
+    "west": "modogs:block/care_station_side",
+    "up": "modogs:block/care_station_top",
+    "down": "modogs:block/care_station_bottom"
+  }
+}

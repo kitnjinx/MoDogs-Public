@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    " W ",
+    "#  "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:rabbit"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "modogs:rabbit_treat",
+    "count": 3
+  }
+}

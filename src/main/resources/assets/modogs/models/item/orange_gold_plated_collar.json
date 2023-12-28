@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "modogs:item/orange_gold_plated_collar"
+  }
+}

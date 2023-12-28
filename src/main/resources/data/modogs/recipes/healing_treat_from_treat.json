@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "modogs:dog_treat"
+    }
+  ],
+  "result": {
+    "item": "modogs:healing_treat",
+    "count": 1
+  }
+}

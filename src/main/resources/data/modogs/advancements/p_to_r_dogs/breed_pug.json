@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "modogs:pug_spawn_egg"
+    },
+    "title": "Pug Breeder",
+    "description": "Breed a Pug",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "modogs:p_to_r_dogs/tame_pug",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "modogs:pug"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

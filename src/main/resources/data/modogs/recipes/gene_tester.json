@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:glass_bottle"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "modogs:gene_tester",
+    "count": 1
+  }
+}

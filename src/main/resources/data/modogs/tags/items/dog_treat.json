@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "modogs:bacon_treat",
+    "modogs:beef_treat",
+    "modogs:chicken_treat",
+    "modogs:mutton_treat",
+    "modogs:rabbit_treat",
+    "modogs:salmon_treat"
+  ]
+}
