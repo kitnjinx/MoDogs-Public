@@ -2,6 +2,7 @@ package com.kitnjinx.modogs;
 
 import com.kitnjinx.modogs.block.ModBlocks;
 import com.kitnjinx.modogs.item.ModItems;
+import com.kitnjinx.modogs.villager.ModVillagers;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,13 +24,17 @@ public class MoDogs {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModVillagers.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ModVillagers.registerPOIS();
+        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
