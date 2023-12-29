@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:river"
+  ],
+  "spawners": {
+    "type": "modogs:irish_setter",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

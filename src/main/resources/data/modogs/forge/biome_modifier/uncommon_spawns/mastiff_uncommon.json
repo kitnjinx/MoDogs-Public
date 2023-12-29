@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_forest"
+  ],
+  "spawners": {
+    "type": "modogs:mastiff",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

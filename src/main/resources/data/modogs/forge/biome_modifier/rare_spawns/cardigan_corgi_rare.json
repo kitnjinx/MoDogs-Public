@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:dark_forest"
+  ],
+  "spawners": {
+    "type": "modogs:cardigan_corgi",
+    "weight": 3,
+    "minCount": 2,
+    "maxCount": 3
+  }
+}

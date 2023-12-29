@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:meadow"
+  ],
+  "spawners": {
+    "type": "modogs:boxer",
+    "weight": 3,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

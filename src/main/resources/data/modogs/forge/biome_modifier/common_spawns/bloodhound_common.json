@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:dark_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:jungle"
+  ],
+  "spawners": {
+    "type": "modogs:bloodhound",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

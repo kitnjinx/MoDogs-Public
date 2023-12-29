@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp",
+    "minecraft:river"
+  ],
+  "spawners": {
+    "type": "modogs:toy_poodle",
+    "weight": 15,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

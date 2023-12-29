@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:snowy_plains",
+    "minecraft:ice_spikes",
+    "minecraft:snowy_taiga"
+  ],
+  "spawners": {
+    "type": "modogs:german_spitz",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

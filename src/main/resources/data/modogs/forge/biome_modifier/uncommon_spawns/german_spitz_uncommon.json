@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:meadow",
+    "minecraft:snowy_beach"
+  ],
+  "spawners": {
+    "type": "modogs:german_spitz",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:eroded_badlands"
+  ],
+  "spawners": {
+    "type": "modogs:norwegian_elkhound",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

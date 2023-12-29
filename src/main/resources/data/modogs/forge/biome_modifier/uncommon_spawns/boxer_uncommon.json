@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_gravelly_hills"
+  ],
+  "spawners": {
+    "type": "modogs:boxer",
+    "weight": 7,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

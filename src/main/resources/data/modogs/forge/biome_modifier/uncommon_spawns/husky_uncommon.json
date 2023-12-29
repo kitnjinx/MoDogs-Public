@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:ice_spikes",
+    "minecraft:snowy_taiga"
+  ],
+  "spawners": {
+    "type": "modogs:husky",
+    "weight": 7,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

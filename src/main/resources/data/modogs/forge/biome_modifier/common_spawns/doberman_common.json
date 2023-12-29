@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:meadow"
+  ],
+  "spawners": {
+    "type": "modogs:doberman",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

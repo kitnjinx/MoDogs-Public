@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:desert",
+    "minecraft:taiga"
+  ],
+  "spawners": {
+    "type": "modogs:doberman",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

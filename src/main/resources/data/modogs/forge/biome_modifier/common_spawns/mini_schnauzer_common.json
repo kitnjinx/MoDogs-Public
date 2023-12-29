@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest"
+  ],
+  "spawners": {
+    "type": "modogs:mini_schnauzer",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

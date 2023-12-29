@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:windswept_hills"
+  ],
+  "spawners": {
+    "type": "modogs:airedale_terrier",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

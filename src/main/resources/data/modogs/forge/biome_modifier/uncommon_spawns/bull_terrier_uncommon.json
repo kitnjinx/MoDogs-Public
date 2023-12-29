@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau"
+  ],
+  "spawners": {
+    "type": "modogs:bull_terrier",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

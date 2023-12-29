@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:savanna_plateau",
+    "minecraft:jungle"
+  ],
+  "spawners": {
+    "type": "modogs:basenji",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

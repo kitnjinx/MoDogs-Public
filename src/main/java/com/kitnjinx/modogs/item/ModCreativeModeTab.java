@@ -11,10 +11,10 @@ public class ModCreativeModeTab {
         }
     };
 
-    /*public static final CreativeModeTab MODOGS_SPAWNER_TAB = new CreativeModeTab("modogs_spawner_tab") {
+    public static final CreativeModeTab MODOGS_SPAWNER_TAB = new CreativeModeTab("modogs_spawner_tab") {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(ModItems.GERMAN_SHEPHERD_SPAWN_EGG.get());
         }
-    };*/
+    };
 }

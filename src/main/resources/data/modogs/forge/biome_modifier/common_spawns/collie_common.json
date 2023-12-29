@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_forest",
+    "minecraft:windswept_gravelly_hills"
+  ],
+  "spawners": {
+    "type": "modogs:collie",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

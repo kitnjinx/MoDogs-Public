@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:snowy_plains",
+    "minecraft:snowy_slopes",
+    "minecraft:snowy_beach"
+  ],
+  "spawners": {
+    "type": "modogs:husky",
+    "weight": 15,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

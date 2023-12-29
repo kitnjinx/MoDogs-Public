@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:taiga"
+  ],
+  "spawners": {
+    "type": "modogs:tree_walk_hound",
+    "weight": 3,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

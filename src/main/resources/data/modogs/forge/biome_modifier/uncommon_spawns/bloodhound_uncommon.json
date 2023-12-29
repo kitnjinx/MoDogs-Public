@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:flower_forest",
+    "minecraft:birch_forest"
+  ],
+  "spawners": {
+    "type": "modogs:bloodhound",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

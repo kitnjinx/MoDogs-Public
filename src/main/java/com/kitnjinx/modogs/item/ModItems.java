@@ -1,7 +1,9 @@
 package com.kitnjinx.modogs.item;
 
 import com.kitnjinx.modogs.MoDogs;
+import com.kitnjinx.modogs.entity.ModEntityTypes;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -335,7 +337,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MODOGS_ITEMS_TAB)));
 
     /* DOG SPAWN EGGS */
-    /*public static final RegistryObject<Item> GERMAN_SHEPHERD_SPAWN_EGG = ITEMS.register("german_shepherd_spawn_egg",
+    public static final RegistryObject<Item> GERMAN_SHEPHERD_SPAWN_EGG = ITEMS.register("german_shepherd_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.GERMAN_SHEPHERD,0x9C6337, 0x191919,
                     new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
@@ -531,7 +533,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> WHIPPET_SPAWN_EGG = ITEMS.register("whippet_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.WHIPPET,0xca8b68, 0xdedede,
-                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));*/
+                    new Item.Properties().tab(ModCreativeModeTab.MODOGS_SPAWNER_TAB)));
 
     // Register items
     public static void register(IEventBus eventBus) {

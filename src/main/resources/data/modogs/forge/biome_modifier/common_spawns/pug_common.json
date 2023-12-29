@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest"
+  ],
+  "spawners": {
+    "type": "modogs:pug",
+    "weight": 15,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

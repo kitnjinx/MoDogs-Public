@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:bamboo_jungle",
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+],
+  "spawners": {
+    "type": "modogs:mini_pinscher",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}
