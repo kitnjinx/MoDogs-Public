@@ -39,8 +39,8 @@ public class ModItems {
     /* GENE TESTING */
     public static final RegistryObject<Item> GENE_TESTER = ITEMS.register("gene_tester",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MODOGS_ITEMS_TAB)));
-    /*public static final RegistryObject<Item> GENO_READER = ITEMS.register("geno_reader",
-            () -> new GenoReaderItem(new Item.Properties().tab(ModCreativeModeTab.MODOGS_ITEMS_TAB).stacksTo(1)));*/
+    public static final RegistryObject<Item> GENO_READER = ITEMS.register("geno_reader",
+            () -> new GenoReaderItem(new Item.Properties().tab(ModCreativeModeTab.MODOGS_ITEMS_TAB).stacksTo(1)));
 
     /* DOG COLLARS */
     public static final RegistryObject<Item> WHITE_COLLAR = ITEMS.register("white_collar",
