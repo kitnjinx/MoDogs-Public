@@ -33,6 +33,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.scores.Team;
 import org.jetbrains.annotations.Nullable;
@@ -963,6 +964,11 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
 
     /* SPAWN PLACEMENTS */
     public static boolean checkDogSpawnRules(EntityType<? extends AbstractDog> dog, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
-        return pPos.getY() > pLevel.getSeaLevel() && isBrightEnoughToSpawn(pLevel, pPos);
+        return pPos.getY() > pLevel.getSeaLevel() && isBrightEnoughToSpawn(pLevel, pPos) && !isWater(pLevel, pPos);
+    }
+
+    private static boolean isWater(BlockGetter getter, BlockPos pos) {
+        BlockPos pos2 = pos.above();
+        return getter.getFluidState(pos).is(Fluids.WATER) || getter.getFluidState(pos2).is(Fluids.WATER);
     }
 }
