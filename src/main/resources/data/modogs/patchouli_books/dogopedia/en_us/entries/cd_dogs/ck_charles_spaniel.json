@@ -1,0 +1,30 @@
+{
+  "name": "Cavalier K.C. Spaniel",
+  "icon": "modogs:ck_charles_spaniel_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cavalier King Charles Spaniels were originally bred to be lap dogs, or occasionally hunt small birds.$(br2)At only around half a black tall, these regal dogs come in four different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/ck_charles_spaniel_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Cavalier King Charles Spaniel"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Cavalier King Charles Spaniels can be found most commonly in various snowy biomes. They may also be found in taigas and ice spikes, and more rarely in meadows.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:chicken_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Chicken Treat."
+    }
+  ]
+}

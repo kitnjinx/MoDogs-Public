@@ -1,0 +1,18 @@
+{
+  "name": "Healing Treat",
+  "icon": "modogs:healing_treat",
+  "category": "modogs:treat_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Healing treats are crushed up treats used to heal your dogs!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:healing_treat_from_treat",
+      "recipe2": "modogs:healing_treat_from_ingredient",
+      "title": "Healing Treat"
+    }
+  ],
+  "sortnum": 1
+}

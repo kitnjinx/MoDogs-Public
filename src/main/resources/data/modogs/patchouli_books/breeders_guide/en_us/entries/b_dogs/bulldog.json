@@ -1,0 +1,21 @@
+{
+  "name": "Bulldog",
+  "icon": "modogs:bulldog_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Bulldogs have two genes that affect how they look, the D Locus and the W Locus. The D Locus determines whether the dog has red fur or is diluted to fawn fur, while the W Locus determines how extensive the dog's white markings are."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The D Locus has two potential alleles, the dominant 'D' and the recessive 'd'. The 'D' allele does not affect the coat's color, while the 'd' allele is a dilute that creates pale, or fawn, fur. Dogs with one copy of 'd' will carry the dilution trait and may pass it on to pups, providing the potential for diluted pups depending on the other parent. Dogs with two copies of 'd' will always create either dilute carriers or fawn puppies.",
+      "title": "D Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The W Locus has two potential alleles, the dominant 'W' and recessive 'w'. The 'W' allele creates white fur, while the 'w' allele has no affect. Dogs with two copies of 'W' will have completely white fur, while dogs with two copies of 'w' will have minimum white markings. Dogs with one copy of each will have more extensive white markings but still show their base color.",
+      "title": "W Locus"
+    }
+  ]
+}

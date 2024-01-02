@@ -51,6 +51,9 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'modogs'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 modogs {
                     source sourceSets.main
@@ -127,6 +130,8 @@ repositories {
         name = 'GeckoLib'
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
+
+    maven { url 'https://maven.blamejared.com' } // Patchouli
 }
 
 dependencies {
@@ -144,6 +149,9 @@ dependencies {
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.40')
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75")
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

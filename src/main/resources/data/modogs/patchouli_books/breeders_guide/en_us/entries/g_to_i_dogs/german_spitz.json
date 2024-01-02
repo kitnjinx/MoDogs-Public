@@ -1,0 +1,26 @@
+{
+  "name": "German Spitz",
+  "icon": "modogs:german_spitz_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "German Spitz have three genes that affect how they look. These are the B Locus, E Locus, and W Locus. The B Locus determines whether the dog has black or brown fur, while the E Locus determines if the dog has yellow fur or not. The W Locus determines if the dog's base coat, as determined by the B and E Locus, shows or if the dog's coat is white."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates black fur, while the 'b' allele creates brown fur. Dogs with one copy of 'b' will carry the brown trait and may pass it on to pups, providing the potential for brown pups depending on the other parent. Dogs with two copies of 'b' will always create either brown carriers or brown puppies.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The E Locus has two potential alleles, the dominant 'E' and the recessive 'e'. The 'E' allele allows the B Locus to show, while the 'e' allele overrides it to create red fur. Dogs with one copy of 'e' will carry the red trait and may pass it on to pups, providing the potential for red pups depending on the other parent. Dogs with two copies of 'e' will always create either red carriers or red puppies.",
+      "title": "E Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The W Locus has two potential alleles, the dominant 'W' and recessive 'w'. The 'W' allele does not affect the coat's color, while the 'w' allele creates white fur. Dogs with one copy of 'w' will carry the white trait and may pass it on to pups, providing the potential for white pups depending on the other parent. Dogs with two copies of 'b' will always create either white carriers or white puppies.",
+      "title": "W Locus"
+    }
+  ]
+}

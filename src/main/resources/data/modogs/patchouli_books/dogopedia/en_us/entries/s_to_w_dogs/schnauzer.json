@@ -1,0 +1,30 @@
+{
+  "name": "Schnauzer",
+  "icon": "modogs:schnauzer_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Schnauzers were originally bred for herding livestock and guarding farms, though were later used as police and military dogs.$(br2)Standing at roughly three quarters of a block tall, these hard-working dogs come in two different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/schnauzer_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Schnauzer"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found most commonly in plains and meadows. They can also be found in some jungles, and more rarely in deserts.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:beef_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Beef or Mutton Treat."
+    }
+  ]
+}

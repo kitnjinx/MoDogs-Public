@@ -1,0 +1,30 @@
+{
+  "name": "Russell Terrier",
+  "icon": "modogs:russell_terrier_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Russell Terriers, known by various names, were originally bred to hunt foxes both above and below ground.$(br2)These small dogs are only about half a block tall, but make up for it with their fierce nature. They come in six different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/russell_terrier_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Russell Terrier"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in various taiga biomes. They can also be found in other taiga biomes and snowy plains, and more rarely in groves.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:mutton_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Mutton Treat."
+    }
+  ]
+}

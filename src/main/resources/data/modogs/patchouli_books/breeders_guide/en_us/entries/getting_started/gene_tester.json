@@ -1,0 +1,16 @@
+{
+  "name": "Gene Tester",
+  "icon": "modogs:gene_tester",
+  "category": "modogs:getting_started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This handy little item provides a summary of your dog's genetics, already interpreted for you. You'll need it to dig into genetics beyond what you can see!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:gene_tester",
+      "title": "Gene Tester"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Great Dane",
+  "icon": "modogs:great_dane_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These dogs were originally bred to hunt boars, though they also served as guardian dogs.$(br2)Standing at over a black tall, these proud dogs come in three different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/great_dane_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Great Dane"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in old growth forests. They can also be found in some badlands and more rarely in meadows.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:bacon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Bacon Treat."
+    }
+  ]
+}

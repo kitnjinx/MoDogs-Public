@@ -1,0 +1,30 @@
+{
+  "name": "Pembroke Corgi",
+  "icon": "modogs:pembroke_corgi_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These dogs were originally bred to be farm dogs used for herding, guarding, and acting as family companions.$(br2)Standing at roughly half a block tall, these small dogs are surprisingly sturdy and come in four different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/pembroke_corgi_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Pembroke Corgi"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are commonly found in some forests and taigas. They can also be found in old taiga biomes, and more rarely in dark forests.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:beef_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Beef Treat."
+    }
+  ]
+}

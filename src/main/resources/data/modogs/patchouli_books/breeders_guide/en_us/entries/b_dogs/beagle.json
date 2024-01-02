@@ -1,0 +1,26 @@
+{
+  "name": "Beagle",
+  "icon": "modogs:beagle_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Beagles only have one gene that has been witnessed to affect how they look, and this is the B Locus. This gene will determine whether they have black and tan fur or fully tan fur."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Within the breed, a rare variant has been observed as well. This variation, however, is not understood well and won't show on genetics tests.",
+      "title": "Overview Cont."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates black and tan fur, while the 'b' allele creates tan-only fur. Dogs with one copy of 'b' will carry the tan trait and may pass it on to pups, providing the potential for tan pups depending on the other parent. Dogs with two copies of 'b' will always create either tan carriers or tan puppies.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Some dogs have a trait that makes the fur of their ears a darker color. This trait will only show on tan dogs. Genetically, this trait isn't understood enough to show on tests, but it can be passed from parents to their pups.",
+      "title": "Dark Ears Variant"
+    }
+  ]
+}

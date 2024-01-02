@@ -1,0 +1,30 @@
+{
+  "name": "Miniature Schnauzer",
+  "icon": "modogs:mini_schnauzer_spawn_egg",
+  "category": "modogs:l_to_n_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Miniature Schnauzers were originally bred for hunting rats.$(br2)Standing at roughly half a block tall, these hard-working dogs come in three different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/mini_schnauzer_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Miniature Schnauzer"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found most commonly in birch and flower forests. They can also be found in some jungles, and more rarely in deserts.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:rabbit_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Rabbit Treat."
+    }
+  ]
+}

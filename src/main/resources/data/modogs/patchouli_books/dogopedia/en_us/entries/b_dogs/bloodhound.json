@@ -1,0 +1,30 @@
+{
+  "name": "Bloodhound",
+  "icon": "modogs:bloodhound_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Bloodhounds are excellent trackers originally bred for tracking various game, though they're now used more commonly as search-and-rescue or police dogs.$(br2)Standing barely over a block tall, these sharp-nosed dogs come in three coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/bloodhound_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Bloodhound"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Bloodhounds are found most commonly in heavily forested biomes such as jungles and dark oak forests. You can also find them in a variety of other forests.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:mutton_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Mutton Treat."
+    }
+  ]
+}

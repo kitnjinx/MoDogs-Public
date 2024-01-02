@@ -1,0 +1,30 @@
+{
+  "name": "Golden Retriever",
+  "icon": "modogs:golden_retriever_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Golden Retrievers, as their name suggest, were originally bred to be bird dogs, particularly with water fowl.$(br2)Standing at just under a block tall, these sturdy dogs come in three coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/golden_retriever_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Golden Retriever"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs can be most commonly found in swamps and by the water in warm biomes. They can also be found along snowy shores, and rarely in sparse jungles.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:chicken_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Chicken Treat."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Dogs: C & D",
+  "description": "Dogs beginning with the letter C or D.",
+  "icon": "modogs:textures/gui/book_icons/c_icon.png",
+  "sortnum": 3
+}

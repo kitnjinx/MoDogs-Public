@@ -1,0 +1,30 @@
+{
+  "name": "Dalmatian",
+  "icon": "modogs:dalmatian_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Easily recognized by their spotted coats, Dalmatians were originally bred as both hunting and guard dogs.$(br2)Standing just under a block tall, these fierce and loyal dogs come in four different spot patterns."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/dalmatian_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Dalmatian"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in savanna biomes. They can also be found, in varying rarities, in windswept biomes.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:rabbit_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Rabbit or Bacon Treat."
+    }
+  ]
+}

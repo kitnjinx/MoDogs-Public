@@ -1,0 +1,26 @@
+{
+  "name": "Basenji",
+  "icon": "modogs:basenji_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Basenjis only have one gene that has been witnessed to affect how they look, and this is the R Locus. This gene will determine whether they have red fur, black fur, or black and tan fur."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The R Locus has three potential alleles, the dominant 'R' allele which creates red fur, the 'B' allele which creates black fur, and the recessive 'T' allele which creates black and tan fur. The 'R' allele is dominant over both 'B' and 'T', while 'B' is dominant over 'T'.",
+      "title": "R Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with only one copy of 'R' will appear red and carry their other allele, providing the potential to breed different colored pups depending on the other parent. Dogs with one copy of 'B' and one copy of 'T' will appear black, but have the potential to create black and tan pups depending on the other parent.",
+      "title": "R Locus Cont."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with two copies of the 'T' gene will appear black and tan, and all of their pups will either carry the black and tan trait or be black and tan.$(br2)Breakdown:$(br)R-: Red Fur$(br)BB/BT: Black Fur$(br)TT: Black & Tan Fur",
+      "title": "R Locus Cont."
+    }
+  ]
+}

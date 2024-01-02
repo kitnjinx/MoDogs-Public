@@ -1,0 +1,16 @@
+{
+  "name": "Care Station",
+  "icon": "modogs:care_station",
+  "category": "modogs:miscellaneous",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These blocks don't do much, but they are used by villagers with the Shelter Worker profession!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:care_station",
+      "text": "Any combination of planks and treats may be used."
+    }
+  ]
+}

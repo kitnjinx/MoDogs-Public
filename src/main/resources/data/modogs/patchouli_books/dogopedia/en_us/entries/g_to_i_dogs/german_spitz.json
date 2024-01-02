@@ -1,0 +1,30 @@
+{
+  "name": "German Spitz",
+  "icon": "modogs:german_spitz_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Despite their small size, German Spitz were originally bred as watch dogs.$(br2)Standing at just over half a block tall, these loyal dogs come in four different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/german_spitz_book.png"
+      ],
+      "border": true,
+      "text": "Example of a German Spitz"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in snowy plains, ice spikes, and snowy taigas. They can also be found along snowy beaches and in meadows, and more rarely in jungles.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:salmon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Salmon or Bacon Treat."
+    }
+  ]
+}

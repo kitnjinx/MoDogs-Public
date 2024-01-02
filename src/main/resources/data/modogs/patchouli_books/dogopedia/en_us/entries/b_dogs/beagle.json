@@ -1,0 +1,30 @@
+{
+  "name": "Beagle",
+  "icon": "modogs:beagle_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Beagles were originally bred as hunting dogs, specifically for hunting hares.$(br2)Standing at just over half a block tall, these sharp-nosed dogs come in three coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/beagle_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Beagle"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Beagles are found most commonly in taigas and old growth taigas. You can also find them in flower forests and meadows, and more rarely in deserts.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:rabbit_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Rabbit Treat."
+    }
+  ]
+}
