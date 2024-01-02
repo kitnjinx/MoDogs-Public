@@ -164,7 +164,7 @@ dependencies {
     // Examples using mod jars from ./libs
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.40')
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.28')
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75")

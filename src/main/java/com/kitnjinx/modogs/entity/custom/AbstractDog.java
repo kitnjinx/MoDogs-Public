@@ -46,7 +46,7 @@ import java.util.UUID;
 
 public abstract class AbstractDog extends TamableAnimal implements IAnimatable, NeutralMob {
     // animations
-    private AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private AnimationFactory factory = new AnimationFactory(this);
 
     // handles if the animal is sitting
     private static final EntityDataAccessor<Boolean> SITTING =
