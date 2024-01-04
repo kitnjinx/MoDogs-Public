@@ -27,11 +27,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -94,33 +93,33 @@ public class RottweilerEntity extends AbstractDog {
         return baby;
     }
 
-    private <E extends RottweilerEntity> PlayState predicate(AnimationEvent<E> event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState state) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rottweiler.sitting"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.rottweiler.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rottweiler.angrywalk"));
+        if (this.isAngry() || this.isAggressive() & state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.rottweiler.angrywalk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rottweiler.walk"));
+        if (state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.rottweiler.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rottweiler.angryidle"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.rottweiler.angryidle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rottweiler.idle"));
+        state.getController().setAnimation(RawAnimation.begin().then("animation.rottweiler.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
                 0, this::predicate));
     }
 

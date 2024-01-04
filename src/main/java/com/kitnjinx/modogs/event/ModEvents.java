@@ -15,6 +15,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -210,8 +211,8 @@ public class ModEvents {
             event.put(ModEntityTypes.WHIPPET.get(), WhippetEntity.setAttributes());
         }
 
-        /*@SubscribeEvent
-        public static void entitySpawnRestriction(SpawnPlacem event) {
+        @SubscribeEvent
+        public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
             SpawnPlacements.register(ModEntityTypes.GERMAN_SHEPHERD.get(),
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
@@ -286,11 +287,6 @@ public class ModEvents {
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     AbstractDog::checkDogSpawnRules);
-
-            SpawnPlacements.register(ModEntityTypes.BOXER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
 
             SpawnPlacements.register(ModEntityTypes.PIT_BULL.get(),
                     SpawnPlacements.Type.ON_GROUND,
@@ -466,6 +462,6 @@ public class ModEvents {
                     SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     AbstractDog::checkDogSpawnRules);
-        }*/
+        }
     }
 }

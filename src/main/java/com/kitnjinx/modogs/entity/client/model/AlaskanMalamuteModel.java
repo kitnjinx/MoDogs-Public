@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.AlaskanMalamuteRenderer;
 import com.kitnjinx.modogs.entity.custom.AlaskanMalamuteEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class AlaskanMalamuteModel extends AnimatedGeoModel<AlaskanMalamuteEntity> {
+public class AlaskanMalamuteModel extends GeoModel<AlaskanMalamuteEntity> {
     @Override
     public ResourceLocation getModelResource(AlaskanMalamuteEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/alaskan_malamute.geo.json");

@@ -13,8 +13,11 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import org.joml.Matrix4f;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEntity> {
@@ -32,7 +35,7 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
     public AiredaleTerrierRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new AiredaleTerrierModel());
 
-        addLayer(new AiredaleTerrierCollarLayer(this));
+        addRenderLayer(new AiredaleTerrierCollarLayer(this));
 
         this.shadowRadius = 0.5f;
     }
@@ -42,9 +45,9 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(AiredaleTerrierEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, AiredaleTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~23 inches
         if(animatable.isBaby()) {
             stack.scale(0.525f, 0.525f, 0.525f);
@@ -52,6 +55,12 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
             stack.scale(1.05f, 1.05f, 1.05f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(AiredaleTerrierEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

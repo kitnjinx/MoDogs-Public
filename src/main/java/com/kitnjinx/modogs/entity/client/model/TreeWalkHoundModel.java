@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.TreeWalkHoundRenderer;
 import com.kitnjinx.modogs.entity.custom.TreeWalkHoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class TreeWalkHoundModel extends AnimatedGeoModel<TreeWalkHoundEntity> {
+public class TreeWalkHoundModel extends GeoModel<TreeWalkHoundEntity> {
     @Override
     public ResourceLocation getModelResource(TreeWalkHoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/tree_walk_hound.geo.json");

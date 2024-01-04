@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AustralianShepherdModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AustralianShepherdCollarLayer;
+import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
 import com.kitnjinx.modogs.entity.custom.AustralianShepherdEntity;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShepherdEntity> {
@@ -34,7 +37,7 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
     public AustralianShepherdRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new AustralianShepherdModel());
 
-        addLayer(new AustralianShepherdCollarLayer(this));
+        addRenderLayer(new AustralianShepherdCollarLayer(this));
 
         this.shadowRadius = 0.45f;
     }
@@ -44,9 +47,9 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(AustralianShepherdEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, AustralianShepherdEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
             stack.scale(0.4f, 0.4f, 0.4f);
@@ -54,6 +57,12 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
             stack.scale(0.9f, 0.9f, 0.9f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(AustralianShepherdEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

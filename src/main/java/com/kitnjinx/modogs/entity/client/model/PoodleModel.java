@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.PoodleRenderer;
 import com.kitnjinx.modogs.entity.custom.PoodleEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class PoodleModel extends AnimatedGeoModel<PoodleEntity> {
+public class PoodleModel extends GeoModel<PoodleEntity> {
     @Override
     public ResourceLocation getModelResource(PoodleEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/poodle.geo.json");

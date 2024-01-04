@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.GreatDaneRenderer;
 import com.kitnjinx.modogs.entity.custom.GreatDaneEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class GreatDaneModel extends AnimatedGeoModel<GreatDaneEntity> {
+public class GreatDaneModel extends GeoModel<GreatDaneEntity> {
     @Override
     public ResourceLocation getModelResource(GreatDaneEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/great_dane.geo.json");

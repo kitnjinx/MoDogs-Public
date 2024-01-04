@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.ShetlandSheepdogRenderer;
 import com.kitnjinx.modogs.entity.custom.ShetlandSheepdogEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class ShetlandSheepdogModel extends AnimatedGeoModel<ShetlandSheepdogEntity> {
+public class ShetlandSheepdogModel extends GeoModel<ShetlandSheepdogEntity> {
     @Override
     public ResourceLocation getModelResource(ShetlandSheepdogEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/shetland_sheepdog.geo.json");

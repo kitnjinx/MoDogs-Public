@@ -2,21 +2,24 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
+import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
-import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
+import software.bernie.geckolib.renderer.GeoRenderer;
 
 import java.util.Map;
 
-public class CockerSpanielCollarLayer extends GeoLayerRenderer {
+public class CockerSpanielCollarLayer extends GeoRenderLayer {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
@@ -57,7 +60,7 @@ public class CockerSpanielCollarLayer extends GeoLayerRenderer {
 
     private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/cocker_spaniel.geo.json");
 
-    public CockerSpanielCollarLayer(IGeoRenderer entityRendererIn) {
+    public CockerSpanielCollarLayer(GeoRenderer entityRendererIn) {
         super(entityRendererIn);
     }
 
@@ -65,13 +68,11 @@ public class CockerSpanielCollarLayer extends GeoLayerRenderer {
         return LOCATION_BY_COLOR.get(instance.getCollar());
     }
 
-    @Override
-    public void render(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, Entity entityLivingBaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        RenderType cameo =  RenderType.armorCutoutNoCull(getCollarLocation((CockerSpanielEntity) entityLivingBaseIn));
-        matrixStackIn.pushPose();
+    public void render(PoseStack poseStack, CockerSpanielEntity animatable, BakedGeoModel bakedModel, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
+        RenderType armorRenderType = RenderType.armorCutoutNoCull(getCollarLocation(animatable));
 
-        this.getRenderer().render(this.getEntityModel().getModel(MODEL), entityLivingBaseIn, partialTicks, cameo, matrixStackIn, bufferIn,
-                bufferIn.getBuffer(cameo), packedLightIn, OverlayTexture.NO_OVERLAY, 1f, 1f, 1f, 1f);
-        matrixStackIn.popPose();
+        getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
+                bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
+                1, 1, 1, 1);
     }
 }

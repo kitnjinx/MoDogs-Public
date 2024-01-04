@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BoxerModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BoxerCollarLayer;
+import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.BoxerEntity;
 import com.kitnjinx.modogs.entity.variant.BoxerVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,7 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
+
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class BoxerRenderer extends GeoEntityRenderer<BoxerEntity> {
@@ -33,7 +37,7 @@ public class BoxerRenderer extends GeoEntityRenderer<BoxerEntity> {
     public BoxerRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BoxerModel());
 
-        addLayer(new BoxerCollarLayer(this));
+        addRenderLayer(new BoxerCollarLayer(this));
 
         this.shadowRadius = 0.5f;
     }
@@ -43,9 +47,9 @@ public class BoxerRenderer extends GeoEntityRenderer<BoxerEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(BoxerEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, BoxerEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~23 inches
         if(animatable.isBaby()) {
             stack.scale(0.525f, 0.525f, 0.525f);
@@ -53,6 +57,12 @@ public class BoxerRenderer extends GeoEntityRenderer<BoxerEntity> {
             stack.scale(1.05f, 1.05f, 1.05f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(BoxerEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.HuskyRenderer;
 import com.kitnjinx.modogs.entity.custom.HuskyEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class HuskyModel extends AnimatedGeoModel<HuskyEntity> {
+public class HuskyModel extends GeoModel<HuskyEntity> {
     @Override
     public ResourceLocation getModelResource(HuskyEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/husky.geo.json");

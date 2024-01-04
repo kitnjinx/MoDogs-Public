@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.ItalianGreyhoundRenderer;
 import com.kitnjinx.modogs.entity.custom.ItalianGreyhoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class ItalianGreyhoundModel extends AnimatedGeoModel<ItalianGreyhoundEntity> {
+public class ItalianGreyhoundModel extends GeoModel<ItalianGreyhoundEntity> {
     @Override
     public ResourceLocation getModelResource(ItalianGreyhoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/italian_greyhound.geo.json");

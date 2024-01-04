@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.NorwegianElkhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.NorwegianElkhoundCollarLayer;
+import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhoundEntity> {
@@ -32,7 +35,7 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
     public NorwegianElkhoundRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new NorwegianElkhoundModel());
 
-        addLayer(new NorwegianElkhoundCollarLayer(this));
+        addRenderLayer(new NorwegianElkhoundCollarLayer(this));
 
         this.shadowRadius = 0.45f;
     }
@@ -42,9 +45,9 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(NorwegianElkhoundEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, NorwegianElkhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
             stack.scale(0.4f, 0.4f, 0.4f);
@@ -52,6 +55,12 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
             stack.scale(0.9f, 0.9f, 0.9f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(NorwegianElkhoundEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

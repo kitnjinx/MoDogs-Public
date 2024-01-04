@@ -1,10 +1,8 @@
 package com.kitnjinx.modogs.block;
 
 import com.kitnjinx.modogs.MoDogs;
-import com.kitnjinx.modogs.item.ModCreativeModeTab;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,18 +19,17 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MoDogs.MOD_ID);
 
     public static final RegistryObject<Block> CARE_STATION = registerBlock("care_station",
-            () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2)), ModCreativeModeTab.MODOGS_ITEMS_TAB);
+            () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2)));
 
-    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
+    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn, tab);
+        registerBlockItem(name, toReturn);
         return toReturn;
     }
 
-    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
-                                                                           CreativeModeTab tab) {
+    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(tab)));
+                new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

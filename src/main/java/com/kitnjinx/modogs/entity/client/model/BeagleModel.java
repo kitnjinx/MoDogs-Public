@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BeagleRenderer;
 import com.kitnjinx.modogs.entity.custom.BeagleEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BeagleModel extends AnimatedGeoModel<BeagleEntity> {
+public class BeagleModel extends GeoModel<BeagleEntity> {
     @Override
     public ResourceLocation getModelResource(BeagleEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/beagle.geo.json");

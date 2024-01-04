@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.LabRetrieverRenderer;
 import com.kitnjinx.modogs.entity.custom.LabRetrieverEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class LabRetrieverModel extends AnimatedGeoModel<LabRetrieverEntity> {
+public class LabRetrieverModel extends GeoModel<LabRetrieverEntity> {
     @Override
     public ResourceLocation getModelResource(LabRetrieverEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/lab_retriever.geo.json");

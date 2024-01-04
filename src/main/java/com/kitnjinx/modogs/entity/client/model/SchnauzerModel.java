@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.SchnauzerRenderer;
 import com.kitnjinx.modogs.entity.custom.SchnauzerEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class SchnauzerModel extends AnimatedGeoModel<SchnauzerEntity> {
+public class SchnauzerModel extends GeoModel<SchnauzerEntity> {
     @Override
     public ResourceLocation getModelResource(SchnauzerEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/schnauzer.geo.json");

@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RussellTerrierModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.RussellTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.custom.RottweilerEntity;
 import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEntity> {
@@ -38,7 +41,7 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
     public RussellTerrierRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new RussellTerrierModel());
 
-        addLayer(new RussellTerrierCollarLayer(this));
+        addRenderLayer(new RussellTerrierCollarLayer(this));
 
         this.shadowRadius = 0.3f;
     }
@@ -48,9 +51,9 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(RussellTerrierEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, RussellTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
             stack.scale(0.3f, 0.3f, 0.3f);
@@ -58,6 +61,12 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
             stack.scale(0.6f, 0.6f, 0.6f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(RussellTerrierEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

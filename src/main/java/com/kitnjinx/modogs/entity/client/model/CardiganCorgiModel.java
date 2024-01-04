@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.CardiganCorgiRenderer;
 import com.kitnjinx.modogs.entity.custom.CardiganCorgiEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class CardiganCorgiModel extends AnimatedGeoModel<CardiganCorgiEntity> {
+public class CardiganCorgiModel extends GeoModel<CardiganCorgiEntity> {
     @Override
     public ResourceLocation getModelResource(CardiganCorgiEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/cardigan_corgi.geo.json");

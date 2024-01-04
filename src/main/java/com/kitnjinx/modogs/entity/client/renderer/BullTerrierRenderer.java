@@ -6,6 +6,7 @@ import com.kitnjinx.modogs.entity.client.model.BullTerrierModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BullTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BullTerrierTargetLayer;
 import com.kitnjinx.modogs.entity.custom.BullTerrierEntity;
+import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -14,8 +15,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class BullTerrierRenderer extends GeoEntityRenderer<BullTerrierEntity> {
@@ -37,8 +40,8 @@ public class BullTerrierRenderer extends GeoEntityRenderer<BullTerrierEntity> {
     public BullTerrierRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BullTerrierModel());
 
-        addLayer(new BullTerrierCollarLayer(this));
-        addLayer(new BullTerrierTargetLayer(this));
+        addRenderLayer(new BullTerrierCollarLayer(this));
+        addRenderLayer(new BullTerrierTargetLayer(this));
 
         this.shadowRadius = 0.5f;
     }
@@ -48,9 +51,9 @@ public class BullTerrierRenderer extends GeoEntityRenderer<BullTerrierEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(BullTerrierEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, BullTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~22 inches
         if(animatable.isBaby()) {
             stack.scale(0.5f, 0.5f, 0.5f);
@@ -58,6 +61,12 @@ public class BullTerrierRenderer extends GeoEntityRenderer<BullTerrierEntity> {
             stack.scale(1f, 1f, 1f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(BullTerrierEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

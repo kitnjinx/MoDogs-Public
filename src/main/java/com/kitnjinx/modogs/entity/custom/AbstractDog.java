@@ -6,7 +6,6 @@ import com.kitnjinx.modogs.item.ModItems;
 import com.kitnjinx.modogs.util.ModTags;
 import com.kitnjinx.modogs.world.level.storage.loot.ModBuiltInLootTables;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -21,7 +20,10 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
@@ -37,16 +39,15 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.scores.Team;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 
-import java.util.Random;
 import java.util.UUID;
 
-public abstract class AbstractDog extends TamableAnimal implements IAnimatable, NeutralMob {
+public abstract class AbstractDog extends TamableAnimal implements GeoEntity, NeutralMob {
     // animations
-    private AnimationFactory factory = new AnimationFactory(this);
+    private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     // handles if the animal is sitting
     private static final EntityDataAccessor<Boolean> SITTING =
@@ -91,13 +92,13 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return factory;
     }
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(pStack.getItem()).get()).is(ModTags.Items.DOG_TREAT);
+        return pStack.is(ModTags.Items.DOG_TREAT);
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
@@ -140,8 +141,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -155,8 +156,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.REINFORCED_COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.REINFORCED_COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -170,8 +171,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.GOLD_PLATED_COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.GOLD_PLATED_COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -185,8 +186,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.IRON_INFUSED_COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.IRON_INFUSED_COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -200,8 +201,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.DIAMOND_CRUSTED_COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.DIAMOND_CRUSTED_COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -215,8 +216,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.NETHERITE_LACED_COLLAR)
-                && this.getCollar() == CollarVariant.NONE && this.isTame() && this.isOwnedBy(player)) {
+        if(itemstack.is(ModTags.Items.NETHERITE_LACED_COLLAR) && this.getCollar() == CollarVariant.NONE
+                && this.isTame() && this.isOwnedBy(player)) {
             if (this.level.isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
@@ -230,8 +231,8 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
             return InteractionResult.SUCCESS;
         }
 
-        if(this.getCollar() != CollarVariant.NONE &&
-                item == Items.SHEARS && this.isTame() && this.isOwnedBy(player)) {
+        if(this.getCollar() != CollarVariant.NONE && item == Items.SHEARS
+                && this.isTame() && this.isOwnedBy(player)) {
             this.level.playSound(null, this, SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
 
             if (this.getArmor() == ArmorVariant.NONE) {

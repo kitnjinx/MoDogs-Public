@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.CockerSpanielRenderer;
 import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class CockerSpanielModel extends AnimatedGeoModel<CockerSpanielEntity> {
+public class CockerSpanielModel extends GeoModel<CockerSpanielEntity> {
     @Override
     public ResourceLocation getModelResource(CockerSpanielEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/cocker_spaniel.geo.json");

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BloodhoundRenderer;
 import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BloodhoundModel extends AnimatedGeoModel<BloodhoundEntity> {
+public class BloodhoundModel extends GeoModel<BloodhoundEntity> {
     @Override
     public ResourceLocation getModelResource(BloodhoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/bloodhound.geo.json");

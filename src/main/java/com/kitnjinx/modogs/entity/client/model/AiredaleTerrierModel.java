@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.AiredaleTerrierRenderer;
 import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class AiredaleTerrierModel extends AnimatedGeoModel<AiredaleTerrierEntity> {
+public class AiredaleTerrierModel extends GeoModel<AiredaleTerrierEntity> {
     @Override
     public ResourceLocation getModelResource(AiredaleTerrierEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/airedale_terrier.geo.json");

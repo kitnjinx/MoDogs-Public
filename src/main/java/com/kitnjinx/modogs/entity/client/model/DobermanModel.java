@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.DobermanRenderer;
 import com.kitnjinx.modogs.entity.custom.DobermanEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class DobermanModel extends AnimatedGeoModel<DobermanEntity> {
+public class DobermanModel extends GeoModel<DobermanEntity> {
     @Override
     public ResourceLocation getModelResource(DobermanEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/doberman.geo.json");

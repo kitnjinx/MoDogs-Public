@@ -4,12 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.GermanShepherdRenderer;
 import com.kitnjinx.modogs.entity.custom.GermanShepherdEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import software.bernie.geckolib.model.GeoModel;
 
-public class GermanShepherdModel extends AnimatedGeoModel<GermanShepherdEntity> {
+public class GermanShepherdModel extends GeoModel<GermanShepherdEntity> {
     @Override
     public ResourceLocation getModelResource(GermanShepherdEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/german_shepherd.geo.json");

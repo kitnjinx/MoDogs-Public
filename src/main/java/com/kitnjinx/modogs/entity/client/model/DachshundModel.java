@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.DachshundRenderer;
 import com.kitnjinx.modogs.entity.custom.DachshundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class DachshundModel extends AnimatedGeoModel<DachshundEntity> {
+public class DachshundModel extends GeoModel<DachshundEntity> {
     @Override
     public ResourceLocation getModelResource(DachshundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/dachshund.geo.json");

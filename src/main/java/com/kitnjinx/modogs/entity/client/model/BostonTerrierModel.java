@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BostonTerrierRenderer;
 import com.kitnjinx.modogs.entity.custom.BostonTerrierEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BostonTerrierModel extends AnimatedGeoModel<BostonTerrierEntity> {
+public class BostonTerrierModel extends GeoModel<BostonTerrierEntity> {
     @Override
     public ResourceLocation getModelResource(BostonTerrierEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/boston_terrier.geo.json");

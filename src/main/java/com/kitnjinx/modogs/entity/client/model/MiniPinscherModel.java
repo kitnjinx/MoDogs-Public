@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.MiniPinscherRenderer;
 import com.kitnjinx.modogs.entity.custom.MiniPinscherEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class MiniPinscherModel extends AnimatedGeoModel<MiniPinscherEntity> {
+public class MiniPinscherModel extends GeoModel<MiniPinscherEntity> {
     @Override
     public ResourceLocation getModelResource(MiniPinscherEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/mini_pinscher.geo.json");

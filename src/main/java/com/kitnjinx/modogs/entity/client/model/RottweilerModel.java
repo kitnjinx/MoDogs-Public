@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.RottweilerRenderer;
 import com.kitnjinx.modogs.entity.custom.RottweilerEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class RottweilerModel extends AnimatedGeoModel<RottweilerEntity> {
+public class RottweilerModel extends GeoModel<RottweilerEntity> {
     @Override
     public ResourceLocation getModelResource(RottweilerEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/rottweiler.geo.json");

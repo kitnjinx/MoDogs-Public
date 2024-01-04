@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GreyhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.GreyhoundCollarLayer;
+import com.kitnjinx.modogs.entity.custom.GreatDaneEntity;
 import com.kitnjinx.modogs.entity.custom.GreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
@@ -41,7 +44,7 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
     public GreyhoundRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new GreyhoundModel());
 
-        addLayer(new GreyhoundCollarLayer(this));
+        addRenderLayer(new GreyhoundCollarLayer(this));
 
         this.shadowRadius = 0.6f;
     }
@@ -51,9 +54,9 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(GreyhoundEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, GreyhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~28 in
         if(animatable.isBaby()) {
             stack.scale(0.65f, 0.65f, 0.65f);
@@ -61,6 +64,12 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
             stack.scale(1.3f, 1.3f, 1.3f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(GreyhoundEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

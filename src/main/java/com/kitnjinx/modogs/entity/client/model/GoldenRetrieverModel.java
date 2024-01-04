@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.GoldenRetrieverRenderer;
 import com.kitnjinx.modogs.entity.custom.GoldenRetrieverEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class GoldenRetrieverModel extends AnimatedGeoModel<GoldenRetrieverEntity> {
+public class GoldenRetrieverModel extends GeoModel<GoldenRetrieverEntity> {
     @Override
     public ResourceLocation getModelResource(GoldenRetrieverEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/golden_retriever.geo.json");

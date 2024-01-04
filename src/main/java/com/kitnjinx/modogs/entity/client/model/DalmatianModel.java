@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.DalmatianRenderer;
 import com.kitnjinx.modogs.entity.custom.DalmatianEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class DalmatianModel extends AnimatedGeoModel<DalmatianEntity> {
+public class DalmatianModel extends GeoModel<DalmatianEntity> {
     @Override
     public ResourceLocation getModelResource(DalmatianEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/dalmatian.geo.json");

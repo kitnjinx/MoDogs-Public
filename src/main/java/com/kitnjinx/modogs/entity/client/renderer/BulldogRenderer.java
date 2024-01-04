@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BulldogModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BulldogCollarLayer;
+import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BulldogVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
@@ -36,7 +39,7 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
     public BulldogRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BulldogModel());
 
-        addLayer(new BulldogCollarLayer(this));
+        addRenderLayer(new BulldogCollarLayer(this));
 
         this.shadowRadius = 0.375f;
     }
@@ -46,9 +49,9 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(BulldogEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, BulldogEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~15 inches
         if(animatable.isBaby()) {
             stack.scale(0.375f, 0.375f, 0.375f);
@@ -56,6 +59,12 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
             stack.scale(0.75f, 0.75f, 0.75f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(BulldogEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

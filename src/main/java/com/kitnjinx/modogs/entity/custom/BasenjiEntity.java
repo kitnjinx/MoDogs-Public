@@ -1,8 +1,9 @@
 package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
-import com.kitnjinx.modogs.entity.variant.*;
+import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BasenjiVariant;
+import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -25,11 +26,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -88,33 +88,33 @@ public class BasenjiEntity extends AbstractDog {
         return baby;
     }
 
-    private <E extends BasenjiEntity> PlayState predicate(AnimationEvent<E> event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState state) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.basenji.sitting"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.basenji.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.basenji.angrywalk"));
+        if (this.isAngry() || this.isAggressive() & state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.basenji.angrywalk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.basenji.walk"));
+        if (state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.basenji.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.basenji.angryidle"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.basenji.angryidle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.basenji.idle"));
+        state.getController().setAnimation(RawAnimation.begin().then("animation.basenji.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
                 0, this::predicate));
     }
 

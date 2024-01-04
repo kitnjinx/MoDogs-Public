@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.WhippetRenderer;
 import com.kitnjinx.modogs.entity.custom.WhippetEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class WhippetModel extends AnimatedGeoModel<WhippetEntity> {
+public class WhippetModel extends GeoModel<WhippetEntity> {
     @Override
     public ResourceLocation getModelResource(WhippetEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/whippet.geo.json");

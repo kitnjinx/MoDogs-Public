@@ -27,11 +27,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -90,33 +89,33 @@ public class MastiffEntity extends AbstractDog {
         return baby;
     }
 
-    private <E extends MastiffEntity> PlayState predicate(AnimationEvent<E> event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState event) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mastiff.sitting"));
+            event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mastiff.angrywalk"));
+            event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.angrywalk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mastiff.walk"));
+            event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mastiff.angryidle"));
+            event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.angryidle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mastiff.idle"));
+        event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
                 0, this::predicate));
     }
 

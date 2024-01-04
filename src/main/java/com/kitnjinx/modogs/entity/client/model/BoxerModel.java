@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BoxerRenderer;
 import com.kitnjinx.modogs.entity.custom.BoxerEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BoxerModel extends AnimatedGeoModel<BoxerEntity> {
+public class BoxerModel extends GeoModel<BoxerEntity> {
     @Override
     public ResourceLocation getModelResource(BoxerEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/boxer.geo.json");

@@ -1,6 +1,6 @@
 {
-  "itemGroup.modogs_items_tab": "Mo'Dogs Items",
-  "itemGroup.modogs_spawner_tab": "Mo'Dogs Spawn Eggs",
+  "creativemodetab.modogs_items_tab": "Mo'Dogs Items",
+  "creativemodetab.modogs_spawner_tab": "Mo'Dogs Spawn Eggs",
 
   "block.modogs.care_station": "Care Station",
 

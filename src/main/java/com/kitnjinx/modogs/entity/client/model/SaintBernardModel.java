@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.SaintBernardRenderer;
 import com.kitnjinx.modogs.entity.custom.SaintBernardEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class SaintBernardModel extends AnimatedGeoModel<SaintBernardEntity> {
+public class SaintBernardModel extends GeoModel<SaintBernardEntity> {
     @Override
     public ResourceLocation getModelResource(SaintBernardEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/saint_bernard.geo.json");

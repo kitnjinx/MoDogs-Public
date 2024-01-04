@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.ScottishTerrierRenderer;
 import com.kitnjinx.modogs.entity.custom.ScottishTerrierEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class ScottishTerrierModel extends AnimatedGeoModel<ScottishTerrierEntity> {
+public class ScottishTerrierModel extends GeoModel<ScottishTerrierEntity> {
     @Override
     public ResourceLocation getModelResource(ScottishTerrierEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/scottish_terrier.geo.json");

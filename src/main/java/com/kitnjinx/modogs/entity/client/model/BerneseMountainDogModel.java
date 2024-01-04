@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BerneseMountainDogRenderer;
 import com.kitnjinx.modogs.entity.custom.BerneseMountainDogEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BerneseMountainDogModel extends AnimatedGeoModel<BerneseMountainDogEntity> {
+public class BerneseMountainDogModel extends GeoModel<BerneseMountainDogEntity> {
     @Override
     public ResourceLocation getModelResource(BerneseMountainDogEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/bernese_mountain_dog.geo.json");

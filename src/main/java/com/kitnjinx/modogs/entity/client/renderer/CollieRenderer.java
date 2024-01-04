@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CollieModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.CollieCollarLayer;
+import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import com.kitnjinx.modogs.entity.custom.CollieEntity;
 import com.kitnjinx.modogs.entity.variant.CollieVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,8 +14,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
@@ -34,7 +37,7 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
     public CollieRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new CollieModel());
 
-        addLayer(new CollieCollarLayer(this));
+        addRenderLayer(new CollieCollarLayer(this));
 
         this.shadowRadius = 0.525f;
     }
@@ -44,9 +47,9 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(CollieEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, CollieEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~24 inches
         if(animatable.isBaby()) {
             stack.scale(0.55f, 0.55f, 0.55f);
@@ -54,6 +57,12 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
             stack.scale(1.1f, 1.1f, 1.1f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(CollieEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

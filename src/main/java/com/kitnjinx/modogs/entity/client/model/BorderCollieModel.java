@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BorderCollieRenderer;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BorderCollieModel extends AnimatedGeoModel<BorderCollieEntity> {
+public class BorderCollieModel extends GeoModel<BorderCollieEntity> {
     @Override
     public ResourceLocation getModelResource(BorderCollieEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/border_collie.geo.json");

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.PugRenderer;
 import com.kitnjinx.modogs.entity.custom.PugEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class PugModel extends AnimatedGeoModel<PugEntity> {
+public class PugModel extends GeoModel<PugEntity> {
     @Override
     public ResourceLocation getModelResource(PugEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/pug.geo.json");

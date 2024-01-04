@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BasenjiRenderer;
 import com.kitnjinx.modogs.entity.custom.BasenjiEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BasenjiModel extends AnimatedGeoModel<BasenjiEntity> {
+public class BasenjiModel extends GeoModel<BasenjiEntity> {
     @Override
     public ResourceLocation getModelResource(BasenjiEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/basenji.geo.json");

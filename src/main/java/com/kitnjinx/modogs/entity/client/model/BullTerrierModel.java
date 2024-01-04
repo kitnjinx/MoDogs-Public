@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.BullTerrierRenderer;
 import com.kitnjinx.modogs.entity.custom.BullTerrierEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class BullTerrierModel extends AnimatedGeoModel<BullTerrierEntity> {
+public class BullTerrierModel extends GeoModel<BullTerrierEntity> {
     @Override
     public ResourceLocation getModelResource(BullTerrierEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/bull_terrier.geo.json");

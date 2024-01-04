@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.NorwegianElkhoundRenderer;
 import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class NorwegianElkhoundModel extends AnimatedGeoModel<NorwegianElkhoundEntity> {
+public class NorwegianElkhoundModel extends GeoModel<NorwegianElkhoundEntity> {
     @Override
     public ResourceLocation getModelResource(NorwegianElkhoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/norwegian_elkhound.geo.json");

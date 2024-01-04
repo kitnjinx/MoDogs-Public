@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MastiffModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.MastiffCollarLayer;
+import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.variant.MastiffVariant;
@@ -14,8 +15,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
@@ -31,7 +34,7 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
     public MastiffRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new MastiffModel());
 
-        addLayer(new MastiffCollarLayer(this));
+        addRenderLayer(new MastiffCollarLayer(this));
 
         this.shadowRadius = 0.65f;
     }
@@ -41,9 +44,9 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
         return LOCATION_BY_VARIANT.get(instance.getVariant());
     }
 
-    public RenderType getRenderType(MastiffEntity animatable, float partialTicks, PoseStack stack,
-                                    MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
-                                    ResourceLocation textureLocation) {
+    @Override
+    public void preRender(PoseStack stack, MastiffEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
+                          float alpha) {
         // Height ~30 in
         if(animatable.isBaby()) {
             stack.scale(0.7f, 0.7f, 0.7f);
@@ -51,6 +54,12 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
             stack.scale(1.4f, 1.4f, 1.4f);
         }
 
-        return  super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public RenderType getRenderType(MastiffEntity animatable, ResourceLocation texture,
+                                    @Nullable MultiBufferSource bufferSource, float partialTick) {
+        return super.getRenderType(animatable, texture, bufferSource, partialTick);
     }
 }

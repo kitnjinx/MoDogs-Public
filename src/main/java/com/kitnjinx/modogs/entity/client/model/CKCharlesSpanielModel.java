@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.CKCharlesSpanielRenderer;
 import com.kitnjinx.modogs.entity.custom.CKCharlesSpanielEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class CKCharlesSpanielModel extends AnimatedGeoModel<CKCharlesSpanielEntity> {
+public class CKCharlesSpanielModel extends GeoModel<CKCharlesSpanielEntity> {
     @Override
     public ResourceLocation getModelResource(CKCharlesSpanielEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/ck_charles_spaniel.geo.json");

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.GermanSpitzRenderer;
 import com.kitnjinx.modogs.entity.custom.GermanSpitzEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class GermanSpitzModel extends AnimatedGeoModel<GermanSpitzEntity> {
+public class GermanSpitzModel extends GeoModel<GermanSpitzEntity> {
     @Override
     public ResourceLocation getModelResource(GermanSpitzEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/german_spitz.geo.json");

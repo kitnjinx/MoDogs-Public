@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.IrishSetterRenderer;
 import com.kitnjinx.modogs.entity.custom.IrishSetterEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class IrishSetterModel extends AnimatedGeoModel<IrishSetterEntity> {
+public class IrishSetterModel extends GeoModel<IrishSetterEntity> {
     @Override
     public ResourceLocation getModelResource(IrishSetterEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/irish_setter.geo.json");

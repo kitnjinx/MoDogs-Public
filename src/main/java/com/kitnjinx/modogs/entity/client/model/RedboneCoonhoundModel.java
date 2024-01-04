@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.RedboneCoonhoundRenderer;
 import com.kitnjinx.modogs.entity.custom.RedboneCoonhoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class RedboneCoonhoundModel extends AnimatedGeoModel<RedboneCoonhoundEntity> {
+public class RedboneCoonhoundModel extends GeoModel<RedboneCoonhoundEntity> {
     @Override
     public ResourceLocation getModelResource(RedboneCoonhoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/redbone_coonhound.geo.json");

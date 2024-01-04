@@ -5,14 +5,12 @@ import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,16 +23,14 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -97,33 +93,33 @@ public class MiniBullTerrierEntity extends AbstractDog {
         return baby;
     }
 
-    private <E extends MiniBullTerrierEntity> PlayState predicate(AnimationEvent<E> event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState state) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bull_terrier.sitting"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.bull_terrier.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bull_terrier.angrywalk"));
+        if (this.isAngry() || this.isAggressive() & state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.bull_terrier.angrywalk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bull_terrier.walk"));
+        if (state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.bull_terrier.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bull_terrier.angryidle"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.bull_terrier.angryidle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bull_terrier.idle"));
+        state.getController().setAnimation(RawAnimation.begin().then("animation.bull_terrier.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
                 0, this::predicate));
     }
 

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.MastiffRenderer;
 import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class MastiffModel extends AnimatedGeoModel<MastiffEntity> {
+public class MastiffModel extends GeoModel<MastiffEntity> {
     @Override
     public ResourceLocation getModelResource(MastiffEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/mastiff.geo.json");

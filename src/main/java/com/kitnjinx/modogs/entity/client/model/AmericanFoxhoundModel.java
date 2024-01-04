@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.AmericanFoxhoundRenderer;
 import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class AmericanFoxhoundModel extends AnimatedGeoModel<AmericanFoxhoundEntity> {
+public class AmericanFoxhoundModel extends GeoModel<AmericanFoxhoundEntity> {
     @Override
     public ResourceLocation getModelResource(AmericanFoxhoundEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/american_foxhound.geo.json");

@@ -4,9 +4,9 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.renderer.MudiRenderer;
 import com.kitnjinx.modogs.entity.custom.MudiEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class MudiModel extends AnimatedGeoModel<MudiEntity> {
+public class MudiModel extends GeoModel<MudiEntity> {
     @Override
     public ResourceLocation getModelResource(MudiEntity object) {
         return new ResourceLocation(MoDogs.MOD_ID, "geo/mudi.geo.json");

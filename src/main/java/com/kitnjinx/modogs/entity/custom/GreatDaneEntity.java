@@ -27,11 +27,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.awt.*;
 import java.util.Random;
@@ -95,33 +94,33 @@ public class GreatDaneEntity extends AbstractDog {
         return baby;
     }
 
-    private <E extends GreatDaneEntity> PlayState predicate(AnimationEvent<E> event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState state) {
         if (this.isSitting()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.great_dane.sitting"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.great_dane.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (this.isAngry() || this.isAggressive() & event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.great_dane.angrywalk"));
+        if (this.isAngry() || this.isAggressive() & state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.great_dane.angrywalk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.great_dane.walk"));
+        if (state.isMoving()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.great_dane.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
         if (this.isAngry() || this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.great_dane.angryidle"));
+            state.getController().setAnimation(RawAnimation.begin().then("animation.great_dane.angryidle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.great_dane.idle"));
+        state.getController().setAnimation(RawAnimation.begin().then("animation.great_dane.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
                 0, this::predicate));
     }
 
