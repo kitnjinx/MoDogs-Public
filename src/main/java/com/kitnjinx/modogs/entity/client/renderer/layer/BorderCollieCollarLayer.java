@@ -19,7 +19,7 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 
 import java.util.Map;
 
-public class BorderCollieCollarLayer extends GeoRenderLayer {
+public class BorderCollieCollarLayer extends GeoRenderLayer<BorderCollieEntity> {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
@@ -58,9 +58,7 @@ public class BorderCollieCollarLayer extends GeoRenderLayer {
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/60x40/collar_pink.png"));
             });
 
-    private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/border_collie.geo.json");
-
-    public BorderCollieCollarLayer(GeoRenderer entityRendererIn) {
+    public BorderCollieCollarLayer(GeoRenderer<BorderCollieEntity> entityRendererIn) {
         super(entityRendererIn);
     }
 

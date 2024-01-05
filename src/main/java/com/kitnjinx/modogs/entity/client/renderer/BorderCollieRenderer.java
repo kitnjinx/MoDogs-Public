@@ -4,6 +4,8 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BorderCollieModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieMerleLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieStripeLayer;
 import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;
 import com.kitnjinx.modogs.entity.variant.BorderCollieVariant;
@@ -30,17 +32,13 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_red.png"));
                 var.put(BorderCollieVariant.LILAC,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_lilac.png"));
-                var.put(BorderCollieVariant.BLACK_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_black_merle.png"));
-                var.put(BorderCollieVariant.RED_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_red_merle.png"));
-                var.put(BorderCollieVariant.LILAC_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_lilac_merle.png"));
             });
 
     public BorderCollieRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BorderCollieModel());
 
+        addRenderLayer(new BorderCollieMerleLayer(this));
+        addRenderLayer(new BorderCollieStripeLayer(this));
         addRenderLayer(new BorderCollieCollarLayer(this));
 
         this.shadowRadius = 0.45f;
@@ -56,9 +54,9 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

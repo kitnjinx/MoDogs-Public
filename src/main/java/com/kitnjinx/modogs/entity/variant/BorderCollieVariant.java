@@ -6,10 +6,7 @@ import java.util.Comparator;
 public enum BorderCollieVariant {
     BLACK (0),
     RED (1),
-    LILAC (2),
-    BLACK_MERLE (3),
-    RED_MERLE (4),
-    LILAC_MERLE (5);
+    LILAC (2);
 
     private static final BorderCollieVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(BorderCollieVariant::getId)).toArray(BorderCollieVariant[]::new);
