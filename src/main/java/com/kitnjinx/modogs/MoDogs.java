@@ -48,9 +48,9 @@ public class MoDogs {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ModVillagers.registerPOIS();
-        });
+        /*event.enqueueWork(() -> {
+
+        });*/
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {

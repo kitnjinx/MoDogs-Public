@@ -93,7 +93,7 @@ public class MudiEntity extends AbstractDog {
         return baby;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState state) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
         if (this.isSitting()) {
             state.getController().setAnimation(RawAnimation.begin().then("animation.mudi.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;

@@ -91,7 +91,7 @@ public class AustralianShepherdEntity extends AbstractDog {
         return baby;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> event) {
         if (this.isSitting()) {
             event.getController().setAnimation(RawAnimation.begin().then("animation.australian_shepherd.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;

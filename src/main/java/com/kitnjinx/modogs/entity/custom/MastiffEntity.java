@@ -89,7 +89,7 @@ public class MastiffEntity extends AbstractDog {
         return baby;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState event) {
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> event) {
         if (this.isSitting()) {
             event.getController().setAnimation(RawAnimation.begin().then("animation.mastiff.sitting", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;

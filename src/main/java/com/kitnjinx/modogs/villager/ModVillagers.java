@@ -29,15 +29,6 @@ public class ModVillagers {
                     x -> x.get() == CARE_STATION_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
                     SoundEvents.VILLAGER_WORK_SHEPHERD));
 
-    public static void registerPOIS() {
-        try {
-            ObfuscationReflectionHelper.findMethod(PoiType.class,
-                    "registerBlockStates", PoiType.class).invoke(null, CARE_STATION_POI.get());
-        } catch (InvocationTargetException | IllegalAccessException exception) {
-            exception.printStackTrace();
-        }
-    }
-
     public static void register(IEventBus eventBus) {
         POI_TYPES.register(eventBus);
         VILLAGER_PROFESSIONS.register(eventBus);
