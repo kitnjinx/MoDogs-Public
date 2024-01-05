@@ -3,5 +3,6 @@
   "landing_text": "Welcome to the dog breeder's guide to understanding dog genetics in this world!",
   "version": 0,
   "subtitle": "Breeder's Guide to Dog Genetics",
+  "creative_tab": "modogs:modogs_items_tab",
   "model": "modogs:breeders_guide"
 }

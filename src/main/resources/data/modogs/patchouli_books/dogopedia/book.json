@@ -3,5 +3,6 @@
   "landing_text": "Welcome to the Dogopedia, the greatest collection of information you'll find on this world's dogs!",
   "version": 0,
   "subtitle": "The Dog Encyclopedia",
+  "creative_tab": "modogs:modogs_items_tab",
   "model": "modogs:dogopedia"
 }
