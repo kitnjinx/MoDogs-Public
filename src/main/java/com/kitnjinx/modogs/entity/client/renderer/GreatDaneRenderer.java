@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GreatDaneModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.GreatDaneCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.GreatDaneEntity;
 import com.kitnjinx.modogs.entity.variant.GreatDaneVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class GreatDaneRenderer extends GeoEntityRenderer<GreatDaneEntity> {
                           float alpha) {
         // Height ~30 in
         if(animatable.isBaby()) {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            withScale(0.7f, 0.7f);
         } else {
-            stack.scale(1.4f, 1.4f, 1.4f);
+            withScale(1.4f, 1.4f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

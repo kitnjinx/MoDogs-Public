@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BorderCollieModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieCollarLayer;
-import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;
 import com.kitnjinx.modogs.entity.variant.BorderCollieVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -56,9 +55,9 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

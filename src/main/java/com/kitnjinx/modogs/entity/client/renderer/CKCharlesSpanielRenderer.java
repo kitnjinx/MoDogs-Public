@@ -5,7 +5,6 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CKCharlesSpanielModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.CKCharlesSpanielCollarLayer;
 import com.kitnjinx.modogs.entity.custom.CKCharlesSpanielEntity;
-import com.kitnjinx.modogs.entity.custom.CardiganCorgiEntity;
 import com.kitnjinx.modogs.entity.variant.CKCharlesSpanielVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -52,9 +51,9 @@ public class CKCharlesSpanielRenderer extends GeoEntityRenderer<CKCharlesSpaniel
                           float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+           withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.8f, 0.8f, 0.8f);
+            withScale(0.8f, 0.8f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PembrokeCorgiModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.PembrokeCorgiCollarLayer;
-import com.kitnjinx.modogs.entity.custom.MiniPinscherEntity;
 import com.kitnjinx.modogs.entity.custom.PembrokeCorgiEntity;
 import com.kitnjinx.modogs.entity.variant.PembrokeCorgiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -52,9 +51,9 @@ public class PembrokeCorgiRenderer extends GeoEntityRenderer<PembrokeCorgiEntity
                           float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.8f, 0.8f, 0.8f);
+            withScale(0.8f, 0.8f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -5,7 +5,6 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MudiModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.MudiCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MudiEntity;
-import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
 import com.kitnjinx.modogs.entity.variant.MudiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -54,9 +53,9 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
                           float alpha) {
         // Height ~18 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.8f, 0.8f, 0.8f);
+            withScale(0.8f, 0.8f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

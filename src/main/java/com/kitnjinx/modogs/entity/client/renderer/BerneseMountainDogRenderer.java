@@ -48,9 +48,9 @@ public class BerneseMountainDogRenderer extends GeoEntityRenderer<BerneseMountai
                           float alpha) {
         // Height ~26 in
         if(animatable.isBaby()) {
-            stack.scale(0.6f, 0.6f, 0.6f);
+            withScale(0.6f, 0.6f);
         } else {
-            stack.scale(1.2f, 1.2f, 1.2f);
+            withScale(1.2f, 1.2f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

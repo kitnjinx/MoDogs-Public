@@ -6,7 +6,6 @@ import com.kitnjinx.modogs.entity.client.model.BullTerrierModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BullTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BullTerrierTargetLayer;
 import com.kitnjinx.modogs.entity.custom.BullTerrierEntity;
-import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -56,9 +55,9 @@ public class BullTerrierRenderer extends GeoEntityRenderer<BullTerrierEntity> {
                           float alpha) {
         // Height ~22 inches
         if(animatable.isBaby()) {
-            stack.scale(0.5f, 0.5f, 0.5f);
+            withScale(0.5f, 0.5f);
         } else {
-            stack.scale(1f, 1f, 1f);
+            withScale(1f, 1f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

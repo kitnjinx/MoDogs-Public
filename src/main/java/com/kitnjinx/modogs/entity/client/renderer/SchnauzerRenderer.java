@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.SchnauzerModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.SchnauzerCollarLayer;
-import com.kitnjinx.modogs.entity.custom.SaintBernardEntity;
 import com.kitnjinx.modogs.entity.custom.SchnauzerEntity;
 import com.kitnjinx.modogs.entity.variant.SchnauzerVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -48,9 +47,9 @@ public class SchnauzerRenderer extends GeoEntityRenderer<SchnauzerEntity> {
                           float alpha) {
         // Height ~18 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.8f, 0.8f, 0.8f);
+            withScale(0.8f, 0.8f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

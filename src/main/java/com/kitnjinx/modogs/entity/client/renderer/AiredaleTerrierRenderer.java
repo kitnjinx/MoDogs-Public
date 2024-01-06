@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import org.joml.Matrix4f;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -50,9 +49,9 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
                           float alpha) {
         // Height ~23 inches
         if(animatable.isBaby()) {
-            stack.scale(0.525f, 0.525f, 0.525f);
+            withScale(0.525f, 0.525f);
         } else {
-            stack.scale(1.05f, 1.05f, 1.05f);
+            withScale(1.05f, 1.05f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

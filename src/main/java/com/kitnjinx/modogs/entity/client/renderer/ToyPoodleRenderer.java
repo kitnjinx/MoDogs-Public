@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ToyPoodleModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.ToyPoodleCollarLayer;
-import com.kitnjinx.modogs.entity.custom.ScottishTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.ToyPoodleEntity;
 import com.kitnjinx.modogs.entity.variant.PoodleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -54,9 +53,9 @@ public class ToyPoodleRenderer extends GeoEntityRenderer<ToyPoodleEntity> {
                           float alpha) {
         // Height ~10 inches
         if(animatable.isBaby()) {
-            stack.scale(0.25f, 0.25f, 0.25f);
+            withScale(0.25f, 0.25f);
         } else {
-            stack.scale(0.5f, 0.5f, 0.5f);
+            withScale(0.5f, 0.5f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

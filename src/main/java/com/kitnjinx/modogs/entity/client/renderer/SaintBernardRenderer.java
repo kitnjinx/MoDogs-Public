@@ -5,7 +5,6 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.SaintBernardModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.SaintBernardBarrelLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.SaintBernardCollarLayer;
-import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.SaintBernardEntity;
 import com.kitnjinx.modogs.entity.variant.SaintBernardVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -56,9 +55,9 @@ public class SaintBernardRenderer extends GeoEntityRenderer<SaintBernardEntity> 
                           float alpha) {
         // Height ~28 in
         if(animatable.isBaby()) {
-            stack.scale(0.65f, 0.65f, 0.65f);
+            withScale(0.65f, 0.65f);
         } else {
-            stack.scale(1.3f, 1.3f, 1.3f);
+            withScale(1.3f, 1.3f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

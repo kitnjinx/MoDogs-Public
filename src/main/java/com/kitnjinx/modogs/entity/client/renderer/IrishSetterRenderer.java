@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.IrishSetterModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.IrishSetterCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.IrishSetterEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
                           float alpha) {
         // Height ~26 in
         if(animatable.isBaby()) {
-            stack.scale(0.6f, 0.6f, 0.6f);
+            withScale(0.6f, 0.6f);
         } else {
-            stack.scale(1.2f, 1.2f, 1.2f);
+            withScale(1.2f, 1.2f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

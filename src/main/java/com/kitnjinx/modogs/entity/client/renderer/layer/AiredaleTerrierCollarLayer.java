@@ -17,7 +17,7 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 import java.util.Map;
 
-public class AiredaleTerrierCollarLayer extends GeoRenderLayer {
+public class AiredaleTerrierCollarLayer extends GeoRenderLayer<AiredaleTerrierEntity> {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
@@ -56,9 +56,7 @@ public class AiredaleTerrierCollarLayer extends GeoRenderLayer {
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/collar/collar_pink.png"));
             });
 
-    private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/airedale_terrier.geo.json");
-
-    public AiredaleTerrierCollarLayer(GeoRenderer entityRendererIn) {
+    public AiredaleTerrierCollarLayer(GeoRenderer<AiredaleTerrierEntity> entityRendererIn) {
         super(entityRendererIn);
     }
 

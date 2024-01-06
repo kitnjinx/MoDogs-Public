@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PugModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.PugCollarLayer;
-import com.kitnjinx.modogs.entity.custom.MiniPinscherEntity;
 import com.kitnjinx.modogs.entity.custom.PugEntity;
 import com.kitnjinx.modogs.entity.variant.PugVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -48,9 +47,9 @@ public class PugRenderer extends GeoEntityRenderer<PugEntity> {
                           float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
-            stack.scale(0.3f, 0.3f, 0.3f);
+            withScale(0.3f, 0.3f);
         } else {
-            stack.scale(0.6f, 0.6f, 0.6f);
+            withScale(0.6f, 0.6f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

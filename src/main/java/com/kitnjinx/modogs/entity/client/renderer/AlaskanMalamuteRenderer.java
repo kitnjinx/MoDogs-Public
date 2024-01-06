@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AlaskanMalamuteModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AlaskanMalamuteCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.AlaskanMalamuteEntity;
 import com.kitnjinx.modogs.entity.variant.AlaskanMalamuteVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -56,9 +55,9 @@ public class AlaskanMalamuteRenderer extends GeoEntityRenderer<AlaskanMalamuteEn
                           float alpha) {
         // Height ~24 in
         if(animatable.isBaby()) {
-            stack.scale(0.55f, 0.55f, 0.55f);
+            withScale(0.55f, 0.55f);
         } else {
-            stack.scale(1.1f, 1.1f, 1.1f);
+            withScale(1.1f, 1.1f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
