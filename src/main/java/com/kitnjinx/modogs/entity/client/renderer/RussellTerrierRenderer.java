@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RussellTerrierModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.RussellTerrierCollarLayer;
-import com.kitnjinx.modogs.entity.custom.RottweilerEntity;
 import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -56,9 +55,9 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
                           float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
-            stack.scale(0.3f, 0.3f, 0.3f);
+            withScale(0.3f, 0.3f);
         } else {
-            stack.scale(0.6f, 0.6f, 0.6f);
+            withScale(0.6f, 0.6f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

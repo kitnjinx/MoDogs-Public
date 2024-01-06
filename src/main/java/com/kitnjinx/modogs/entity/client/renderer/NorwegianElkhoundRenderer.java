@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.NorwegianElkhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.NorwegianElkhoundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

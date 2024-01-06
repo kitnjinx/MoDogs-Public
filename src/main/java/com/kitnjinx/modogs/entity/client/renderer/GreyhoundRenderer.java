@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GreyhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.GreyhoundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.GreatDaneEntity;
 import com.kitnjinx.modogs.entity.custom.GreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -59,9 +58,9 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
                           float alpha) {
         // Height ~28 in
         if(animatable.isBaby()) {
-            stack.scale(0.65f, 0.65f, 0.65f);
+            withScale(0.65f, 0.65f);
         } else {
-            stack.scale(1.3f, 1.3f, 1.3f);
+            withScale(1.3f, 1.3f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.HuskyModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.HuskyCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.HuskyEntity;
 import com.kitnjinx.modogs.entity.variant.HuskyVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -54,9 +53,9 @@ public class HuskyRenderer extends GeoEntityRenderer<HuskyEntity> {
                           float alpha) {
         // Height ~22 inches
         if(animatable.isBaby()) {
-            stack.scale(0.5f, 0.5f, 0.5f);
+            withScale(0.5f, 0.5f);
         } else {
-            stack.scale(1f, 1f, 1f);
+            withScale(1f, 1f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

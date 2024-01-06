@@ -4,8 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MastiffModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.MastiffCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
-import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.variant.MastiffVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -49,9 +47,9 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
                           float alpha) {
         // Height ~30 in
         if(animatable.isBaby()) {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            withScale(0.7f, 0.7f);
         } else {
-            stack.scale(1.4f, 1.4f, 1.4f);
+            withScale(1.4f, 1.4f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

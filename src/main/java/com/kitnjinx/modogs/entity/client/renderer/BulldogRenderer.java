@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BulldogModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BulldogCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BulldogVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -54,9 +53,9 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
                           float alpha) {
         // Height ~15 inches
         if(animatable.isBaby()) {
-            stack.scale(0.375f, 0.375f, 0.375f);
+            withScale(0.375f, 0.375f);
         } else {
-            stack.scale(0.75f, 0.75f, 0.75f);
+            withScale(0.75f, 0.75f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -2,7 +2,6 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -12,14 +11,13 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.renderer.GeoRenderer;
+import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 import java.util.Map;
 
-public class BulldogCollarLayer extends GeoRenderLayer {
+public class BulldogCollarLayer extends GeoRenderLayer<BulldogEntity> {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
@@ -58,9 +56,7 @@ public class BulldogCollarLayer extends GeoRenderLayer {
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_pink.png"));
             });
 
-    private static final ResourceLocation MODEL = new ResourceLocation(MoDogs.MOD_ID, "geo/bulldog.geo.json");
-
-    public BulldogCollarLayer(GeoRenderer entityRendererIn) {
+    public BulldogCollarLayer(GeoRenderer<BulldogEntity> entityRendererIn) {
         super(entityRendererIn);
     }
 
