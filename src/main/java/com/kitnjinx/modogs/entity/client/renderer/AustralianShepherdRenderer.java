@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AustralianShepherdModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AustralianShepherdCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
 import com.kitnjinx.modogs.entity.custom.AustralianShepherdEntity;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -52,9 +51,9 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

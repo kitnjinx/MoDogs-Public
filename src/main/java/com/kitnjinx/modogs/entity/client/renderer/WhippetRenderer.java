@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.WhippetModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.WhippetCollarLayer;
-import com.kitnjinx.modogs.entity.custom.TreeWalkHoundEntity;
 import com.kitnjinx.modogs.entity.custom.WhippetEntity;
 import com.kitnjinx.modogs.entity.variant.WhippetVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -58,9 +57,9 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

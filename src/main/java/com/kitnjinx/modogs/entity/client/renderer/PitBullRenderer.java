@@ -5,7 +5,6 @@ import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PitBullModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.PitBullCollarLayer;
 import com.kitnjinx.modogs.entity.custom.PitBullEntity;
-import com.kitnjinx.modogs.entity.custom.PoodleEntity;
 import com.kitnjinx.modogs.entity.variant.PitBullVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -58,9 +57,9 @@ public class PitBullRenderer extends GeoEntityRenderer<PitBullEntity> {
                           float alpha) {
         // Height ~20 in
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.9f, 0.9f, 0.9f);
+            withScale(0.9f, 0.9f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

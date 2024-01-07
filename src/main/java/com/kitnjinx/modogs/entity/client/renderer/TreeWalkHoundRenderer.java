@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.TreeWalkHoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.TreeWalkHoundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.ShibaInuEntity;
 import com.kitnjinx.modogs.entity.custom.TreeWalkHoundEntity;
 import com.kitnjinx.modogs.entity.variant.TreeWalkHoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -48,9 +47,9 @@ public class TreeWalkHoundRenderer extends GeoEntityRenderer<TreeWalkHoundEntity
                           float alpha) {
         // Height ~24 inches
         if(animatable.isBaby()) {
-            stack.scale(0.55f, 0.55f, 0.55f);
+            withScale(0.55f, 0.55f);
         } else {
-            stack.scale(1.1f, 1.1f, 1.1f);
+            withScale(1.1f, 1.1f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AmericanFoxhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.AmericanFoxhoundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class AmericanFoxhoundRenderer extends GeoEntityRenderer<AmericanFoxhound
                           float alpha) {
         // Height ~23 inches
         if(animatable.isBaby()) {
-            stack.scale(0.525f, 0.525f, 0.525f);
+            withScale(0.525f, 0.525f);
         } else {
-            stack.scale(1.05f, 1.05f, 1.05f);
+            withScale(1.05f, 1.05f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

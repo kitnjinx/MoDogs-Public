@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CollieModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.CollieCollarLayer;
-import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import com.kitnjinx.modogs.entity.custom.CollieEntity;
 import com.kitnjinx.modogs.entity.variant.CollieVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -52,9 +51,9 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
                           float alpha) {
         // Height ~24 inches
         if(animatable.isBaby()) {
-            stack.scale(0.55f, 0.55f, 0.55f);
+            withScale(0.55f, 0.55f);
         } else {
-            stack.scale(1.1f, 1.1f, 1.1f);
+            withScale(1.1f, 1.1f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

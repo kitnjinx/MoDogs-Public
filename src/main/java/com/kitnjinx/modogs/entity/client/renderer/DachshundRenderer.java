@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.DachshundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.DachshundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.CollieEntity;
 import com.kitnjinx.modogs.entity.custom.DachshundEntity;
 import com.kitnjinx.modogs.entity.variant.DachshundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -56,9 +55,9 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
                           float alpha) {
         // Height ~10 inches
         if(animatable.isBaby()) {
-            stack.scale(0.35f, 0.35f, 0.35f);
+            withScale(0.35f, 0.35f);
         } else {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            withScale(0.7f, 0.7f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -6,7 +6,6 @@ import com.kitnjinx.modogs.entity.client.model.BorderCollieModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieCollarLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieMerleLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieStripeLayer;
-import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;
 import com.kitnjinx.modogs.entity.variant.BorderCollieVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

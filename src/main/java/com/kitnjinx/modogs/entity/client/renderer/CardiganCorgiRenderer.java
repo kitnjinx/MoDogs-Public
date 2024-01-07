@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CardiganCorgiModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.CardiganCorgiCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.CardiganCorgiEntity;
 import com.kitnjinx.modogs.entity.variant.CardiganCorgiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -52,9 +51,9 @@ public class CardiganCorgiRenderer extends GeoEntityRenderer<CardiganCorgiEntity
                           float alpha) {
         // Height ~12 inches
         if(animatable.isBaby()) {
-            stack.scale(0.4f, 0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
-            stack.scale(0.8f, 0.8f, 0.8f);
+            withScale(0.8f, 0.8f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BeagleModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BeagleCollarLayer;
-import com.kitnjinx.modogs.entity.custom.BasenjiEntity;
 import com.kitnjinx.modogs.entity.custom.BeagleEntity;
 import com.kitnjinx.modogs.entity.variant.BeagleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class BeagleRenderer extends GeoEntityRenderer<BeagleEntity> {
                           float alpha) {
         // Height ~14 in
         if(animatable.isBaby()) {
-            stack.scale(0.35f, 0.35f, 0.35f);
+            withScale(0.35f, 0.35f);
         } else {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            withScale(0.7f, 0.7f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

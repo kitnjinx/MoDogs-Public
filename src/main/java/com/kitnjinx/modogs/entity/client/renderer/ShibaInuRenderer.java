@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ShibaInuModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.ShibaInuCollarLayer;
-import com.kitnjinx.modogs.entity.custom.ShetlandSheepdogEntity;
 import com.kitnjinx.modogs.entity.custom.ShibaInuEntity;
 import com.kitnjinx.modogs.entity.variant.ShibaInuVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -52,9 +51,9 @@ public class ShibaInuRenderer extends GeoEntityRenderer<ShibaInuEntity> {
                           float alpha) {
         // Height ~15 inches
         if(animatable.isBaby()) {
-            stack.scale(0.375f, 0.375f, 0.375f);
+            withScale(0.375f, 0.375f);
         } else {
-            stack.scale(0.75f, 0.75f, 0.75f);
+            withScale(0.75f, 0.75f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

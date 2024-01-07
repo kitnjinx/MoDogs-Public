@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CockerSpanielModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.CockerSpanielCollarLayer;
-import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import com.kitnjinx.modogs.entity.variant.CockerSpanielVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -54,9 +53,9 @@ public class CockerSpanielRenderer extends GeoEntityRenderer<CockerSpanielEntity
                           float alpha) {
         // Height ~14 in
         if(animatable.isBaby()) {
-            stack.scale(0.35f, 0.35f, 0.35f);
+            withScale(0.35f, 0.35f);
         } else {
-            stack.scale(0.7f, 0.7f, 0.7f);
+            withScale(0.7f, 0.7f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BloodhoundModel;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BloodhoundCollarLayer;
-import com.kitnjinx.modogs.entity.custom.BerneseMountainDogEntity;
 import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import com.kitnjinx.modogs.entity.variant.BloodhoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -50,9 +49,9 @@ public class BloodhoundRenderer extends GeoEntityRenderer<BloodhoundEntity> {
                           float alpha) {
         // Height ~25 inches
         if(animatable.isBaby()) {
-            stack.scale(0.575f, 0.575f, 0.575f);
+            withScale(0.575f, 0.575f);
         } else {
-            stack.scale(1.15f, 1.15f, 1.15f);
+            withScale(1.15f, 1.15f);
         }
 
         super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
