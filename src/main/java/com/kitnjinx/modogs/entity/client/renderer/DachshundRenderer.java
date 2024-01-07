@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.DachshundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.DachshundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.DachshundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.DachshundEntity;
 import com.kitnjinx.modogs.entity.variant.DachshundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

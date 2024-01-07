@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BostonTerrierModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BostonTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BostonTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BostonTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.BostonTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

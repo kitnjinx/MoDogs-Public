@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MiniPinscherModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.MiniPinscherCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MiniPinscherCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MiniPinscherEntity;
 import com.kitnjinx.modogs.entity.variant.MiniPinscherVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

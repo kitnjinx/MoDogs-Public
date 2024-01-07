@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ScottishTerrierModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.ScottishTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.ScottishTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.ScottishTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.ScottishTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MudiModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.MudiCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MudiCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MudiEntity;
 import com.kitnjinx.modogs.entity.variant.MudiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RottweilerModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.RottweilerCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.RottweilerCollarLayer;
 import com.kitnjinx.modogs.entity.custom.RottweilerEntity;
 import com.kitnjinx.modogs.entity.variant.RottweilerVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

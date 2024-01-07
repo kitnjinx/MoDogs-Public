@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PugModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.PugCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.PugCollarLayer;
 import com.kitnjinx.modogs.entity.custom.PugEntity;
 import com.kitnjinx.modogs.entity.variant.PugVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

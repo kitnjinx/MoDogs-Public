@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BloodhoundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BloodhoundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BloodhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BloodhoundEntity;
 import com.kitnjinx.modogs.entity.variant.BloodhoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

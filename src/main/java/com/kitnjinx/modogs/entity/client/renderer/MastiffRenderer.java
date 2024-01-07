@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MastiffModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.MastiffCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MastiffCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MastiffEntity;
 import com.kitnjinx.modogs.entity.variant.MastiffVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

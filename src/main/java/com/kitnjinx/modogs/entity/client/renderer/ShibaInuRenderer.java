@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ShibaInuModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.ShibaInuCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.ShibaInuCollarLayer;
 import com.kitnjinx.modogs.entity.custom.ShibaInuEntity;
 import com.kitnjinx.modogs.entity.variant.ShibaInuVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

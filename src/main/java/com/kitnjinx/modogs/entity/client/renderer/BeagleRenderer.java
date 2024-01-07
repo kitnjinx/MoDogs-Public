@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BeagleModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BeagleCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BeagleCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BeagleEntity;
 import com.kitnjinx.modogs.entity.variant.BeagleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

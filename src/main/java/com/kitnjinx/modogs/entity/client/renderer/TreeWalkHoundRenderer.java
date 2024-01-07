@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.TreeWalkHoundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.TreeWalkHoundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.TreeWalkHoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.TreeWalkHoundEntity;
 import com.kitnjinx.modogs.entity.variant.TreeWalkHoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

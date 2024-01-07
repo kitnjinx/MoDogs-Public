@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AiredaleTerrierModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.AiredaleTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.AiredaleTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AiredaleTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

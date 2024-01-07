@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MiniSchnauzerModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.MiniSchnauzerCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MiniSchnauzerCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MiniSchnauzerEntity;
 import com.kitnjinx.modogs.entity.variant.MiniSchnauzerVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

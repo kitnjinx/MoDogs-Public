@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RussellTerrierModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.RussellTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.RussellTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CollieModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.CollieCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.CollieCollarLayer;
 import com.kitnjinx.modogs.entity.custom.CollieEntity;
 import com.kitnjinx.modogs.entity.variant.CollieVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

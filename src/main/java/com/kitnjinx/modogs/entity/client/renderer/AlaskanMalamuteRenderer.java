@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AlaskanMalamuteModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.AlaskanMalamuteCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.AlaskanMalamuteCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AlaskanMalamuteEntity;
 import com.kitnjinx.modogs.entity.variant.AlaskanMalamuteVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

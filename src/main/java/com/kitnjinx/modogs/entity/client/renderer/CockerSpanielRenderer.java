@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CockerSpanielModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.CockerSpanielCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.CockerSpanielCollarLayer;
 import com.kitnjinx.modogs.entity.custom.CockerSpanielEntity;
 import com.kitnjinx.modogs.entity.variant.CockerSpanielVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

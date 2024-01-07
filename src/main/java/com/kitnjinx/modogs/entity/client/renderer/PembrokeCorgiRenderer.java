@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PembrokeCorgiModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.PembrokeCorgiCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.PembrokeCorgiCollarLayer;
 import com.kitnjinx.modogs.entity.custom.PembrokeCorgiEntity;
 import com.kitnjinx.modogs.entity.variant.PembrokeCorgiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

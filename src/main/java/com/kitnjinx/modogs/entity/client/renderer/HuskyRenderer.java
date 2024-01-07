@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.HuskyModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.HuskyCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.HuskyCollarLayer;
 import com.kitnjinx.modogs.entity.custom.HuskyEntity;
 import com.kitnjinx.modogs.entity.variant.HuskyVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

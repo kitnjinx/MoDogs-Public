@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.PoodleModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.PoodleCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.PoodleCollarLayer;
 import com.kitnjinx.modogs.entity.custom.PoodleEntity;
 import com.kitnjinx.modogs.entity.variant.PoodleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

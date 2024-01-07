@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GermanShepherdModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.GermanShepherdCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.GermanShepherdCollarLayer;
 import com.kitnjinx.modogs.entity.custom.GermanShepherdEntity;
 import com.kitnjinx.modogs.entity.variant.GermanShepherdVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AmericanFoxhoundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.AmericanFoxhoundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.AmericanFoxhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AmericanFoxhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

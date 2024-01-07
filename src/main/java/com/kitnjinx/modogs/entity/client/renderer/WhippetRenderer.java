@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.WhippetModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.WhippetCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.WhippetCollarLayer;
 import com.kitnjinx.modogs.entity.custom.WhippetEntity;
 import com.kitnjinx.modogs.entity.variant.WhippetVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

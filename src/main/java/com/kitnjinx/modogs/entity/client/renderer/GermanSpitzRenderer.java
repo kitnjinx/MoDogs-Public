@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GermanSpitzModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.GermanSpitzCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.GermanSpitzCollarLayer;
 import com.kitnjinx.modogs.entity.custom.GermanSpitzEntity;
 import com.kitnjinx.modogs.entity.variant.GermanSpitzVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

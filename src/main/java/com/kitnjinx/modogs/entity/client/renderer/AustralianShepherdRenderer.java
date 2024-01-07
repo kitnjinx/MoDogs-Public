@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AustralianShepherdModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.AustralianShepherdCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.AustralianShepherdCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AustralianShepherdEntity;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

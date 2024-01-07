@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BoxerModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BoxerCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BoxerCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BoxerEntity;
 import com.kitnjinx.modogs.entity.variant.BoxerVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

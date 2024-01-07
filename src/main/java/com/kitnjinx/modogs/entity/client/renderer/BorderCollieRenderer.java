@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BorderCollieModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BorderCollieCollarLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieMerleLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.BorderCollieStripeLayer;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GreyhoundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.GreyhoundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.GreyhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.GreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.DobermanModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.DobermanCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.DobermanCollarLayer;
 import com.kitnjinx.modogs.entity.custom.DobermanEntity;
 import com.kitnjinx.modogs.entity.variant.DobermanVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

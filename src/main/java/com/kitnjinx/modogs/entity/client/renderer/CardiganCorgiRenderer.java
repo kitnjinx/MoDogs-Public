@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CardiganCorgiModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.CardiganCorgiCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.CardiganCorgiCollarLayer;
 import com.kitnjinx.modogs.entity.custom.CardiganCorgiEntity;
 import com.kitnjinx.modogs.entity.variant.CardiganCorgiVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

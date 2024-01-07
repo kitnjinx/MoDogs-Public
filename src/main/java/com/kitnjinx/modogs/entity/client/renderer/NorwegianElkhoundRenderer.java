@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.NorwegianElkhoundModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.NorwegianElkhoundCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.NorwegianElkhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.NorwegianElkhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

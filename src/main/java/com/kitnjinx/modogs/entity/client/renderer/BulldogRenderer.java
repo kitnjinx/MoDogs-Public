@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BulldogModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.BulldogCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BulldogCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BulldogVariant;
 import com.mojang.blaze3d.vertex.PoseStack;

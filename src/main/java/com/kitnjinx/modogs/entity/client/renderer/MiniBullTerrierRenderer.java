@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MiniBullTerrierModel;
-import com.kitnjinx.modogs.entity.client.renderer.layer.MiniBullTerrierCollarLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MiniBullTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MiniBullTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
