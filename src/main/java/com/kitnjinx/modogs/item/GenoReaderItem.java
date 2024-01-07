@@ -628,7 +628,7 @@ public class GenoReaderItem extends Item {
     }
 
     private String dalmatianGeno(DalmatianEntity dog) {
-        if (dog.getVariant() == DalmatianVariant.BROWN) {
+        if (dog.isBrown()) {
             return "bb";
         } else if (dog.getCarrier()) {
             return "Bb";

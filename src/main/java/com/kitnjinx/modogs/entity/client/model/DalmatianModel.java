@@ -14,7 +14,7 @@ public class DalmatianModel extends GeoModel<DalmatianEntity> {
 
     @Override
     public ResourceLocation getTextureResource(DalmatianEntity object) {
-        return DalmatianRenderer.LOCATION_BY_VARIANT.get(object.getVariant());
+        return DalmatianRenderer.WHITE_BASE_LOCATION;
     }
 
     @Override

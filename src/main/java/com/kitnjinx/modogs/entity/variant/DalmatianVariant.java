@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public enum DalmatianVariant {
-    BLACK1(0),
-    BLACK2(1),
-    BLACK3(2),
-    BROWN(3);
+    PATTERN1(0),
+    PATTERN2(1),
+    PATTERN3(2),
+    PATTERN4(3);
 
     private static final DalmatianVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(DalmatianVariant::getId)).toArray(DalmatianVariant[]::new);

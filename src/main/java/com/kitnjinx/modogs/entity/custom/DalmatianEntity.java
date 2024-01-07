@@ -1,10 +1,9 @@
 package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
-import com.kitnjinx.modogs.entity.variant.ArmorVariant;
-import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.DalmatianVariant;
+import com.kitnjinx.modogs.entity.variant.*;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -37,9 +36,11 @@ import java.util.function.Predicate;
 public class DalmatianEntity extends AbstractDog {
 
     // handles coat variant
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+    private static final EntityDataAccessor<Integer> SPOT_PATTERN =
             SynchedEntityData.defineId(DalmatianEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> CARRIES_BROWN =
+            SynchedEntityData.defineId(DalmatianEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_BROWN =
             SynchedEntityData.defineId(DalmatianEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
@@ -74,6 +75,7 @@ public class DalmatianEntity extends AbstractDog {
         DalmatianEntity baby = ModEntityTypes.DALMATIAN.get().create(serverLevel);
 
         determineBabyVariant(baby, (DalmatianEntity) otherParent);
+        assert baby != null;
 
         // Determines if the baby is tamed based on parent
         if (this.isTame()) {
@@ -156,7 +158,7 @@ public class DalmatianEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 Component message;
-                if (this.getVariant() == DalmatianVariant.BROWN) {
+                if (this.isBrown()) {
                     message = Component.literal("This Dalmatian demonstrates a recessive trait.");
                 } else if (this.getCarrier()) {
                     message = Component.literal("This Dalmatian carries a recessive trait.");
@@ -178,22 +180,25 @@ public class DalmatianEntity extends AbstractDog {
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(SPOT_PATTERN, tag.getInt("Pattern"));
         this.entityData.set(CARRIES_BROWN, tag.getBoolean("CarrierStatus"));
+        this.entityData.set(IS_BROWN, tag.getBoolean("IsBrown"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("Pattern", this.getPattern());
         tag.putBoolean("CarrierStatus", this.getCarrier());
+        tag.putBoolean("IsBrown", this.isBrown());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(SPOT_PATTERN, 0);
         this.entityData.define(CARRIES_BROWN, false);
+        this.entityData.define(IS_BROWN, false);
     }
 
     @Override
@@ -218,124 +223,71 @@ public class DalmatianEntity extends AbstractDog {
         Random r = new Random();
         int determine = r.nextInt(13) + 1;
         int carrier = r.nextInt(4) + 1;
-        int var;
 
-        // if statement gives weighted chances to different variants
-        if (determine < 5) {
-            var = 0; // BLACK1
-        } else if (determine < 9) {
-            var = 1; // BLACK2
-        } else if (determine < 13) {
-            var = 2; // BLACK3
-        } else {
-            var = 3; // BROWN
-        }
-
-        setCarrier(var == 3 || carrier == 4); // if dog is brown or rolled to be a carrier, boolean is true
+        setBrownStatus(determine == 13 || carrier == 4, determine == 13); // if dog is brown or rolled to be a carrier, boolean is true
 
         // assign chosen variant and finish the method
-        DalmatianVariant variant = DalmatianVariant.byId(var);
-        setVariant(variant);
+        DalmatianVariant variant = Util.getRandom(DalmatianVariant.values(), this.random);
+        setPattern(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
     }
 
-    public DalmatianVariant getVariant() {
-        return DalmatianVariant.byId(this.getTypeVariant() & 255);
+    public DalmatianVariant getPatternVariant() {
+        return DalmatianVariant.byId(this.getPattern() & 255);
     }
 
-    private int getTypeVariant() {
-        return this.entityData.get(DATA_ID_TYPE_VARIANT);
+    private int getPattern() {
+        return this.entityData.get(SPOT_PATTERN);
     }
 
-    private void setVariant(DalmatianVariant variant) {
-        this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    private void setPattern(DalmatianVariant variant) {
+        this.entityData.set(SPOT_PATTERN, variant.getId() & 255);
     }
 
     public boolean getCarrier() {
         return this.entityData.get(CARRIES_BROWN);
     }
+    public boolean isBrown() {
+        return this.entityData.get(IS_BROWN);
+    }
 
-    private void setCarrier(boolean carrierStatus) {
-        this.entityData.set(CARRIES_BROWN, carrierStatus);
+    private void setBrownStatus(boolean carrier, boolean is) {
+        this.entityData.set(CARRIES_BROWN, carrier);
+        this.entityData.set(IS_BROWN, is);
     }
 
     private void determineBabyVariant(DalmatianEntity baby, DalmatianEntity otherParent) {
-        if (this.getVariant() == DalmatianVariant.BROWN && otherParent.getVariant() == DalmatianVariant.BROWN) {
-            // if both parents are brown, baby will be marked as a carrier and have the Brown variant
-            baby.setCarrier(true);
-            baby.setVariant(DalmatianVariant.BROWN);
-        } else if (this.getVariant() == DalmatianVariant.BROWN && otherParent.getCarrier()) {
-            // if one parent is brown and the other a carrier, the baby will be marked as a carrier and have
-            // a 50% chance of being Brown. Otherwise, they'll get their black parent's coat
-            baby.setCarrier(true);
-            if (this.random.nextBoolean()) {
-                baby.setVariant(DalmatianVariant.BROWN);
-            } else {
-                baby.setVariant(otherParent.getVariant());
-            }
-        } else if (this.getCarrier() && otherParent.getVariant() == DalmatianVariant.BROWN) {
-            // if one parent is brown and the other a carrier, the baby will be marked as a carrier and have
-            // a 50% chance of being Brown. Otherwise, they'll get their black parent's coat
-            baby.setCarrier(true);
-            if (this.random.nextBoolean()) {
-                baby.setVariant(DalmatianVariant.BROWN);
-            } else {
-                baby.setVariant(this.getVariant());
-            }
-        } else if (this.getVariant() == DalmatianVariant.BROWN && !otherParent.getCarrier()) {
-            // if one parent is brown and the other is not a carrier, the baby will be marked as a carrier and
-            // have the black parent's variant
-            baby.setCarrier(true);
-            baby.setVariant(otherParent.getVariant());
-        } else if (!this.getCarrier() && otherParent.getVariant() == DalmatianVariant.BROWN) {
-            // if one parent is brown and the other is not a carrier, the baby will be marked as a carrier and
-            // have the black parent's variant
-            baby.setCarrier(true);
-            baby.setVariant(this.getVariant());
+        // determine if baby is brown, a carrier, or black
+        if (this.isBrown() && otherParent.isBrown()) {
+            // if both parents are brown, baby will be brown
+            baby.setBrownStatus(true, true);
+        } else if ((this.isBrown() && otherParent.getCarrier()) || (this.getCarrier() && otherParent.isBrown())) {
+            // if one parent is brown and the other a carrier, the baby has 50% chance to be a carrier and
+            // 50% chance to be brown
+            baby.setBrownStatus(true, this.random.nextBoolean());
+        } else if (this.isBrown() || otherParent.isBrown()) {
+            // if one parent is brown and the other is not a carrier, the baby will be a carrier
+            baby.setBrownStatus(true, false);
         } else if (this.getCarrier() && otherParent.getCarrier()) {
             // if both parents are a carrier, baby has 25% chance not to be a carrier, 50% to be a carrier, and
-            // 25% to be brown. If baby is not brown, baby will have a variant based on its parents
-            Random r = new Random();
-            int determine = r.nextInt(4) + 1;
-            if (determine == 1) {
-                baby.setCarrier(false);
-                setBabyBlack(baby, otherParent);
-            } else if (determine < 4) {
-                baby.setCarrier(true);
-                setBabyBlack(baby, otherParent);
-            } else {
-                baby.setCarrier(true);
-                baby.setVariant(DalmatianVariant.BROWN);
-            }
+            // 25% to be brown.
+            int determine = this.random.nextInt(4) + 1;
+            baby.setBrownStatus(determine > 1, determine == 4);
         } else if (this.getCarrier() || otherParent.getCarrier()) {
-            // if one parent is a carrier, baby has a 50% chance to be a carrier. Baby's visible variant will
-            // be based on its parents
-            setBabyBlack(baby, otherParent);
-            baby.setCarrier(this.random.nextBoolean());
+            // if one parent is a carrier, baby has a 50% chance to be a carrier
+            baby.setBrownStatus(this.random.nextBoolean(), false);
         } else {
-            // if neither parent is a carrier, baby won't be a carrier and will have a variant based on its parents
-            baby.setCarrier(false);
-            setBabyBlack(baby, otherParent);
+            // if neither parent is a carrier, baby won't be a carrier
+            baby.setBrownStatus(false, false);
         }
-    }
 
-    private void setBabyBlack(DalmatianEntity baby, DalmatianEntity otherParent) {
-        if (this.getVariant() != otherParent.getVariant()) {
-            // if parents are 2 different black patterns, baby can have any black pattern
-            int determine = this.random.nextInt(3) + 1;
-
-            if (determine == 1) {
-                baby.setVariant(DalmatianVariant.BLACK1);
-            } else if (determine == 2) {
-                baby.setVariant(DalmatianVariant.BLACK2);
-            } else {
-                baby.setVariant(DalmatianVariant.BLACK3);
-            }
+        // determine baby's spot pattern
+        if (this.getPattern() == otherParent.getPattern()) {
+            baby.setPattern(this.getPatternVariant());
         } else {
-            // if parents have same pattern, baby will have their pattern
-            baby.setVariant(this.getVariant());
+            baby.setPattern(Util.getRandom(DalmatianVariant.values(), this.random));
         }
     }
 }
