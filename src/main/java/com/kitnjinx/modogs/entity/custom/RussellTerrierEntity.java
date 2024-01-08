@@ -3,8 +3,11 @@ package com.kitnjinx.modogs.entity.custom;
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.DalmatianVariant;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.RussellTerrierWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -38,6 +41,8 @@ public class RussellTerrierEntity extends AbstractDog {
 
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+            SynchedEntityData.defineId(RussellTerrierEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
             SynchedEntityData.defineId(RussellTerrierEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_TAN =
             SynchedEntityData.defineId(RussellTerrierEntity.class, EntityDataSerializers.BOOLEAN);
@@ -219,6 +224,7 @@ public class RussellTerrierEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("White"));
         this.entityData.set(IS_TAN, tag.getBoolean("IsTan"));
         this.entityData.set(CARRIES_TAN, tag.getBoolean("CarriesTan"));
         this.entityData.set(IS_TRICOLOR, tag.getBoolean("IsTricolor"));
@@ -230,6 +236,7 @@ public class RussellTerrierEntity extends AbstractDog {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("White", this.getWhite());
         tag.putBoolean("IsTan", this.isTan());
         tag.putBoolean("CarriesTan", this.isTanCarrier());
         tag.putBoolean("IsTricolor", this.isTricolor());
@@ -241,6 +248,7 @@ public class RussellTerrierEntity extends AbstractDog {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_VARIANT, 0);
         this.entityData.define(IS_TAN, true);
         this.entityData.define(CARRIES_TAN, true);
         this.entityData.define(IS_TRICOLOR, false);
@@ -323,6 +331,7 @@ public class RussellTerrierEntity extends AbstractDog {
         // assign chosen variant and finish the method
         RussellTerrierVariant variant = RussellTerrierVariant.byId(var);
         setVariant(variant);
+        setWhiteVariant(Util.getRandom(RussellTerrierWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -338,6 +347,18 @@ public class RussellTerrierEntity extends AbstractDog {
 
     private void setVariant(RussellTerrierVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public RussellTerrierWhiteVariant getWhiteVariant() {
+        return RussellTerrierWhiteVariant.byId(this.getWhite() & 255);
+    }
+
+    private int getWhite() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhiteVariant(RussellTerrierWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     public boolean isTan() {
@@ -476,6 +497,13 @@ public class RussellTerrierEntity extends AbstractDog {
             }
         } else {
             baby.setVariant(RussellTerrierVariant.BLACK);
+        }
+
+        // determine baby's white pattern
+        if (this.getWhite() == otherParent.getWhite()) {
+            baby.setWhiteVariant(this.getWhiteVariant());
+        } else {
+            baby.setWhiteVariant(Util.getRandom(RussellTerrierWhiteVariant.values(), this.random));
         }
     }
 }

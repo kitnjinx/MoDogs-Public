@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.RussellTerrierModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.RussellTerrierWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.RussellTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
@@ -40,6 +41,7 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
     public RussellTerrierRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new RussellTerrierModel());
 
+        addRenderLayer(new RussellTerrierWhiteLayer(this));
         addRenderLayer(new RussellTerrierCollarLayer(this));
 
         this.shadowRadius = 0.3f;
