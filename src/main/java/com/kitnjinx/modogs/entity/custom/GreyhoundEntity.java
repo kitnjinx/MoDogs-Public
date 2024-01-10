@@ -2,9 +2,12 @@ package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
+import com.kitnjinx.modogs.entity.variant.DalmatianVariant;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.GreyhoundWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -38,6 +41,8 @@ public class GreyhoundEntity extends AbstractDog {
 
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+            SynchedEntityData.defineId(GreyhoundEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_PATTERN =
             SynchedEntityData.defineId(GreyhoundEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> CARRIES_RED =
             SynchedEntityData.defineId(GreyhoundEntity.class, EntityDataSerializers.BOOLEAN);
@@ -248,6 +253,7 @@ public class GreyhoundEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_PATTERN, tag.getInt("Pattern"));
         this.entityData.set(CARRIES_RED, tag.getBoolean("RedCarrier"));
         this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
         this.entityData.set(CARRIES_BLUE, tag.getBoolean("BlueCarrier"));
@@ -259,6 +265,7 @@ public class GreyhoundEntity extends AbstractDog {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("Pattern", this.getWhitePattern());
         tag.putBoolean("RedCarrier", this.isRedCarrier());
         tag.putBoolean("IsRed", this.isRed());
         tag.putBoolean("BlueCarrier", this.isBlueCarrier());
@@ -270,6 +277,7 @@ public class GreyhoundEntity extends AbstractDog {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_PATTERN, 0);
         this.entityData.define(CARRIES_RED, true);
         this.entityData.define(IS_RED, true);
         this.entityData.define(CARRIES_BLUE, false);
@@ -300,55 +308,42 @@ public class GreyhoundEntity extends AbstractDog {
         // Variables for determining the variant
         Random r = new Random();
         int determine = r.nextInt(9) + 1;
+        boolean determineWhite = r.nextBoolean();
         int carrier = r.nextInt(8) + 1;
         int var;
 
         // if statement gives weighted chances to different variants
-        if (r.nextBoolean()) {
-            setWhite(true);
-            if (determine < 6) {
-                var = 0; // WHITE & BLACK
+        if (determine == 9 && r.nextBoolean()) {
+            var = 0; // WHITE
+            int status = r.nextInt(9) + 1;
+            if (status < 6) {
                 setRedStatus(carrier == 1, false);
                 setBlueStatus(carrier == 2, false);
-            } else if (determine < 9) {
-                var = 1; // WHITE & RED
+            } else if (status < 9) {
                 setRedStatus(true, true);
                 setBlueStatus(carrier == 1, false);
-            } else if (r.nextBoolean()) {
-                var = 2; // WHITE & BLUE
-                spawnBlueGreyhound(carrier);
             } else {
-                var = 3; // WHITE
-                int status = r.nextInt(9) + 1;
-                if (status < 6) {
-                    setRedStatus(carrier == 1, false);
-                    setBlueStatus(carrier == 2, false);
-                } else if (status < 9) {
-                    setRedStatus(true, true);
-                    setBlueStatus(carrier == 1, false);
-                } else {
-                    spawnBlueGreyhound(carrier);
-                }
+                spawnBlueGreyhound(carrier);
             }
+        } else if (determine < 6) {
+            var = 1; // BLACK
+            setRedStatus(carrier == 1, false);
+            setBlueStatus(carrier == 2, false);
+        } else if (determine < 9) {
+            var = 2; // RED
+            setRedStatus(true, true);
+            setBlueStatus(carrier == 1, false);
         } else {
-            setWhite(false);
-            if (determine < 6) {
-                var = 4; // BLACK
-                setRedStatus(carrier == 1, false);
-                setBlueStatus(carrier == 2, false);
-            } else if (determine < 9) {
-                var = 5; // RED
-                setRedStatus(true, true);
-                setBlueStatus(carrier == 1, false);
-            } else {
-                var = 6; // BLUE
-                spawnBlueGreyhound(carrier);
-            }
+            var = 3; // BLUE
+            spawnBlueGreyhound(carrier);
         }
+
+        setWhite(var == 0 || determineWhite);
 
         // assign chosen variant and finish the method
         GreyhoundVariant variant = GreyhoundVariant.byId(var);
         setVariant(variant);
+        setWhitePattern(Util.getRandom(GreyhoundWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -374,6 +369,18 @@ public class GreyhoundEntity extends AbstractDog {
 
     private void setVariant(GreyhoundVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public GreyhoundWhiteVariant getWhiteVariant() {
+        return GreyhoundWhiteVariant.byId(this.getWhitePattern() & 255);
+    }
+
+    private int getWhitePattern() {
+        return this.entityData.get(WHITE_PATTERN);
+    }
+
+    private void setWhitePattern(GreyhoundWhiteVariant variant) {
+        this.entityData.set(WHITE_PATTERN, variant.getId() & 255);
     }
 
     public boolean isRedCarrier() {
@@ -508,12 +515,6 @@ public class GreyhoundEntity extends AbstractDog {
         // determine baby's phenotype (TYPE_VARIANT)
         if (isWhite) {
             baby.setVariant(GreyhoundVariant.WHITE);
-        } else if (baby.hasWhite() && baby.isBlue()) {
-            baby.setVariant(GreyhoundVariant.WHITE_BLUE);
-        } else if (baby.hasWhite() && baby.isRed()) {
-            baby.setVariant(GreyhoundVariant.WHITE_RED);
-        } else if (baby.hasWhite()) {
-            baby.setVariant(GreyhoundVariant.WHITE_BLACK);
         } else if (baby.isBlue()) {
             baby.setVariant(GreyhoundVariant.BLUE);
         } else if (baby.isRed()) {
@@ -521,5 +522,8 @@ public class GreyhoundEntity extends AbstractDog {
         } else {
             baby.setVariant(GreyhoundVariant.BLACK);
         }
+
+        // determine baby's white pattern
+        baby.setWhitePattern(Util.getRandom(GreyhoundWhiteVariant.values(), this.random));
     }
 }

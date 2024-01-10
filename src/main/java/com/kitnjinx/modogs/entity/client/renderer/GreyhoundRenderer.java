@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.GreyhoundModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.GreyhoundWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.GreyhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.GreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
@@ -23,12 +24,6 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
 
     public static final Map<GreyhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GreyhoundVariant.class), (var) -> {
-                var.put(GreyhoundVariant.WHITE_BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white_black.png"));
-                var.put(GreyhoundVariant.WHITE_RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white_red.png"));
-                var.put(GreyhoundVariant.WHITE_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white_blue.png"));
                 var.put(GreyhoundVariant.WHITE,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white.png"));
                 var.put(GreyhoundVariant.BLACK,
@@ -43,6 +38,7 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
     public GreyhoundRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new GreyhoundModel());
 
+        addRenderLayer(new GreyhoundWhiteLayer(this));
         addRenderLayer(new GreyhoundCollarLayer(this));
 
         this.shadowRadius = 0.6f;
