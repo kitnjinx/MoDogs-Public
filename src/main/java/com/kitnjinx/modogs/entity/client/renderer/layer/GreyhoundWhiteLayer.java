@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.custom.GreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.GreyhoundWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeWhiteVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -19,13 +19,13 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import java.util.Map;
 
 public class GreyhoundWhiteLayer extends GeoRenderLayer<GreyhoundEntity> {
-    public static final Map<GreyhoundWhiteVariant, ResourceLocation> WHITE_PATTERNS =
-            Util.make(Maps.newEnumMap(GreyhoundWhiteVariant.class), (pat) -> {
-                pat.put(GreyhoundWhiteVariant.WHITE1,
+    public static final Map<ThreeWhiteVariant, ResourceLocation> WHITE_PATTERNS =
+            Util.make(Maps.newEnumMap(ThreeWhiteVariant.class), (pat) -> {
+                pat.put(ThreeWhiteVariant.WHITE1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white1.png"));
-                pat.put(GreyhoundWhiteVariant.WHITE2,
+                pat.put(ThreeWhiteVariant.WHITE2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white2.png"));
-                pat.put(GreyhoundWhiteVariant.WHITE3,
+                pat.put(ThreeWhiteVariant.WHITE3,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white3.png"));
             });
 

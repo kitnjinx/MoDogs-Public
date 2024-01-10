@@ -2,10 +2,9 @@ package com.kitnjinx.modogs.entity.custom;
 
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
-import com.kitnjinx.modogs.entity.variant.DalmatianVariant;
 import com.kitnjinx.modogs.entity.variant.GreyhoundVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.GreyhoundWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
@@ -343,7 +342,7 @@ public class GreyhoundEntity extends AbstractDog {
         // assign chosen variant and finish the method
         GreyhoundVariant variant = GreyhoundVariant.byId(var);
         setVariant(variant);
-        setWhitePattern(Util.getRandom(GreyhoundWhiteVariant.values(), this.random));
+        setWhitePattern(Util.getRandom(ThreeWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -371,15 +370,15 @@ public class GreyhoundEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
-    public GreyhoundWhiteVariant getWhiteVariant() {
-        return GreyhoundWhiteVariant.byId(this.getWhitePattern() & 255);
+    public ThreeWhiteVariant getWhiteVariant() {
+        return ThreeWhiteVariant.byId(this.getWhitePattern() & 255);
     }
 
     private int getWhitePattern() {
         return this.entityData.get(WHITE_PATTERN);
     }
 
-    private void setWhitePattern(GreyhoundWhiteVariant variant) {
+    private void setWhitePattern(ThreeWhiteVariant variant) {
         this.entityData.set(WHITE_PATTERN, variant.getId() & 255);
     }
 
@@ -524,6 +523,6 @@ public class GreyhoundEntity extends AbstractDog {
         }
 
         // determine baby's white pattern
-        baby.setWhitePattern(Util.getRandom(GreyhoundWhiteVariant.values(), this.random));
+        baby.setWhitePattern(Util.getRandom(ThreeWhiteVariant.values(), this.random));
     }
 }
