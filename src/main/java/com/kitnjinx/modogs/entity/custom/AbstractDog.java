@@ -24,6 +24,11 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -38,6 +43,7 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.UUID;
 
@@ -833,6 +839,25 @@ public abstract class AbstractDog extends TamableAnimal implements IAnimatable, 
     @Override
     public void setPersistentAngerTarget(@Nullable UUID pTarget) {
         this.persistentAngerTarget = pTarget;
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public boolean wantsToAttack(LivingEntity pTarget, LivingEntity pOwner) {
+        if (!(pTarget instanceof Creeper) && !(pTarget instanceof Ghast)) {
+            if (pTarget instanceof TamableAnimal) {
+                if (pTarget instanceof Wolf || pTarget instanceof AbstractDog) {
+                    TamableAnimal tamable = (TamableAnimal) pTarget;
+                    return !(tamable.isTame() && tamable.getOwner() == pOwner);
+                } else {
+                    return !((TamableAnimal) pTarget).isTame();
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
     /* LOOT TABLES */
