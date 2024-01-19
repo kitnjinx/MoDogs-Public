@@ -20,13 +20,13 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,6 +43,7 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.UUID;
 
 public abstract class AbstractDog extends TamableAnimal implements GeoEntity, NeutralMob {
@@ -837,6 +838,25 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
     @Override
     public void setPersistentAngerTarget(@Nullable UUID pTarget) {
         this.persistentAngerTarget = pTarget;
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public boolean wantsToAttack(LivingEntity pTarget, LivingEntity pOwner) {
+        if (!(pTarget instanceof Creeper) && !(pTarget instanceof Ghast)) {
+            if (pTarget instanceof TamableAnimal) {
+                if (pTarget instanceof Wolf || pTarget instanceof AbstractDog) {
+                    TamableAnimal tamable = (TamableAnimal) pTarget;
+                    return !(tamable.isTame() && tamable.getOwner() == pOwner);
+                } else {
+                    return !((TamableAnimal) pTarget).isTame();
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
     /* LOOT TABLES */
