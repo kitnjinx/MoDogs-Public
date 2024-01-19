@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.PitBullVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -38,6 +40,8 @@ public class PitBullEntity extends AbstractDog {
 
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+            SynchedEntityData.defineId(PitBullEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_PATTERN =
             SynchedEntityData.defineId(PitBullEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> CARRIES_BROWN =
             SynchedEntityData.defineId(PitBullEntity.class, EntityDataSerializers.BOOLEAN);
@@ -240,6 +244,7 @@ public class PitBullEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_PATTERN, tag.getInt("WhitePattern"));
         this.entityData.set(CARRIES_BROWN, tag.getBoolean("BrownCarrier"));
         this.entityData.set(IS_BROWN, tag.getBoolean("IsBrown"));
         this.entityData.set(CARRIES_BLUE, tag.getBoolean("BlueCarrier"));
@@ -251,6 +256,7 @@ public class PitBullEntity extends AbstractDog {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("WhitePattern", this.getWhitePattern());
         tag.putBoolean("BrownCarrier", this.isBrownCarrier());
         tag.putBoolean("IsBrown", this.isBrown());
         tag.putBoolean("BlueCarrier", this.isBlueCarrier());
@@ -262,6 +268,7 @@ public class PitBullEntity extends AbstractDog {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_PATTERN, 0);
         this.entityData.define(CARRIES_BROWN, true);
         this.entityData.define(IS_BROWN, true);
         this.entityData.define(CARRIES_BLUE, false);
@@ -290,57 +297,41 @@ public class PitBullEntity extends AbstractDog {
         // Variables for determining the variant
         Random r = new Random();
         int white = r.nextInt(3) + 1;
-        int determine = r.nextInt(10) + 1;
+        int determine = r.nextInt(12) + 1;
         int carrier = r.nextInt(8) + 1;
         int var;
 
         // if statement gives weighted chances to different variants
-        if (white < 3) {
-            setWhite(true);
-            if (determine < 7) {
-                var = 0; // BROWN_WHITE
-                setBrownStatus(true, true);
-                setBlueStatus(carrier == 1, false);
-            } else if (determine < 10) {
-                var = 1; // BLACK_WHITE
-                setBrownStatus(carrier == 1, false);
-                setBlueStatus(carrier == 2, false);
-            } else {
-                var = 2; // BLUE_WHITE
-                setBrownStatus(carrier < 7, false);
-                setBlueStatus(true, true);
-            }
+        if (determine < 7) {
+            var = 0; // BROWN
+            setBrownStatus(true, true);
+            setBlueStatus(carrier == 1, false);
+        } else if (determine < 10) {
+            var = 1; // BLACK
+            setBrownStatus(carrier == 1, false);
+            setBlueStatus(carrier == 2, false);
+        } else if (determine < 12) {
+            var = 2; // BLUE
+            setBrownStatus(carrier < 7, false);
+            setBlueStatus(true, true);
         } else {
-            setWhite(false);
-            if (determine < 7) {
-                var = 3; // BROWN
-                setBrownStatus(true, true);
-                setBlueStatus(carrier == 1, false);
-            } else if (determine < 10) {
-                var = 4; // BLACK
-                setBrownStatus(carrier == 1, false);
-                setBlueStatus(carrier == 2, false);
-            } else if (r.nextBoolean()) {
-                var = 5; // BLUE
+            var = 3; // WHITE
+            int blue = r.nextInt(10) + 1;
+            if (blue == 10) {
                 setBrownStatus(carrier < 7, false);
                 setBlueStatus(true, true);
             } else {
-                var = 6; // WHITE
-                setWhite(true);
-                int blue = r.nextInt(10) + 1;
-                if (blue == 10) {
-                    setBrownStatus(carrier < 7, false);
-                    setBlueStatus(true, true);
-                } else {
-                    setBrownStatus(carrier < 7, carrier < 4);
-                    setBlueStatus(carrier == 1, false);
-                }
+                setBrownStatus(carrier < 7, carrier < 4);
+                setBlueStatus(carrier == 1, false);
             }
         }
+
+        setWhite(var == 3 || white < 3);
 
         // assign chosen variant and finish the method
         PitBullVariant variant = PitBullVariant.byId(var);
         setVariant(variant);
+        setWhitePattern(Util.getRandom(ThreeWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -356,6 +347,18 @@ public class PitBullEntity extends AbstractDog {
 
     private void setVariant(PitBullVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public ThreeWhiteVariant getWhiteVariant() {
+        return ThreeWhiteVariant.byId(this.getWhitePattern() & 255);
+    }
+
+    private int getWhitePattern() {
+        return this.entityData.get(WHITE_PATTERN);
+    }
+
+    private void setWhitePattern(ThreeWhiteVariant variant) {
+        this.entityData.set(WHITE_PATTERN, variant.getId() & 255);
     }
 
     public boolean isBrown() {
@@ -486,12 +489,6 @@ public class PitBullEntity extends AbstractDog {
         // determine baby's phenotype (TYPE_VARIANT)
         if (pureWhite) {
             baby.setVariant(PitBullVariant.WHITE);
-        } else if (baby.hasWhite() && baby.isBrown()) {
-            baby.setVariant(PitBullVariant.BROWN_WHITE);
-        } else if (baby.hasWhite() && baby.isBlue()) {
-            baby.setVariant(PitBullVariant.BLUE_WHITE);
-        } else if (baby.hasWhite()) {
-            baby.setVariant(PitBullVariant.BLACK_WHITE);
         } else if (baby.isBrown()) {
             baby.setVariant(PitBullVariant.BROWN);
         } else if (baby.isBlue()) {
@@ -499,5 +496,7 @@ public class PitBullEntity extends AbstractDog {
         } else {
             baby.setVariant(PitBullVariant.BLACK);
         }
+
+        setWhitePattern(Util.getRandom(ThreeWhiteVariant.values(), this.random));
     }
 }
