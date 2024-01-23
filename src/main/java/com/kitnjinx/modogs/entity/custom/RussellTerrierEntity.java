@@ -3,9 +3,8 @@ package com.kitnjinx.modogs.entity.custom;
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.DalmatianVariant;
 import com.kitnjinx.modogs.entity.variant.RussellTerrierVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.RussellTerrierWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.SixWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
@@ -331,7 +330,7 @@ public class RussellTerrierEntity extends AbstractDog {
         // assign chosen variant and finish the method
         RussellTerrierVariant variant = RussellTerrierVariant.byId(var);
         setVariant(variant);
-        setWhiteVariant(Util.getRandom(RussellTerrierWhiteVariant.values(), this.random));
+        setWhiteVariant(Util.getRandom(SixWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -349,15 +348,15 @@ public class RussellTerrierEntity extends AbstractDog {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 
-    public RussellTerrierWhiteVariant getWhiteVariant() {
-        return RussellTerrierWhiteVariant.byId(this.getWhite() & 255);
+    public SixWhiteVariant getWhiteVariant() {
+        return SixWhiteVariant.byId(this.getWhite() & 255);
     }
 
     private int getWhite() {
         return this.entityData.get(WHITE_VARIANT);
     }
 
-    private void setWhiteVariant(RussellTerrierWhiteVariant variant) {
+    private void setWhiteVariant(SixWhiteVariant variant) {
         this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
@@ -503,7 +502,7 @@ public class RussellTerrierEntity extends AbstractDog {
         if (this.getWhite() == otherParent.getWhite()) {
             baby.setWhiteVariant(this.getWhiteVariant());
         } else {
-            baby.setWhiteVariant(Util.getRandom(RussellTerrierWhiteVariant.values(), this.random));
+            baby.setWhiteVariant(Util.getRandom(SixWhiteVariant.values(), this.random));
         }
     }
 }

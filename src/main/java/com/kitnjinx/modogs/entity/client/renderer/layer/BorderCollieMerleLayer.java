@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.custom.BorderCollieEntity;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.BorderCollieMerleVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeMerleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -18,33 +18,33 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import java.util.Map;
 
 public class BorderCollieMerleLayer extends GeoRenderLayer<BorderCollieEntity> {
-    public static final Map<BorderCollieMerleVariant, ResourceLocation> BLACK_MERLE_PATTERNS =
-            Util.make(Maps.newEnumMap(BorderCollieMerleVariant.class), (pat) -> {
-                pat.put(BorderCollieMerleVariant.PATTERN1,
+    public static final Map<ThreeMerleVariant, ResourceLocation> BLACK_MERLE_PATTERNS =
+            Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
+                pat.put(ThreeMerleVariant.PATTERN1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_black_merle1.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN2,
+                pat.put(ThreeMerleVariant.PATTERN2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_black_merle2.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN3,
+                pat.put(ThreeMerleVariant.PATTERN3,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_black_merle3.png"));
             });
 
-    public static final Map<BorderCollieMerleVariant, ResourceLocation> RED_MERLE_PATTERNS =
-            Util.make(Maps.newEnumMap(BorderCollieMerleVariant.class), (pat) -> {
-                pat.put(BorderCollieMerleVariant.PATTERN1,
+    public static final Map<ThreeMerleVariant, ResourceLocation> RED_MERLE_PATTERNS =
+            Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
+                pat.put(ThreeMerleVariant.PATTERN1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_red_merle1.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN2,
+                pat.put(ThreeMerleVariant.PATTERN2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_red_merle2.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN3,
+                pat.put(ThreeMerleVariant.PATTERN3,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_red_merle3.png"));
             });
 
-    public static final Map<BorderCollieMerleVariant, ResourceLocation> LILAC_MERLE_PATTERNS =
-            Util.make(Maps.newEnumMap(BorderCollieMerleVariant.class), (pat) -> {
-                pat.put(BorderCollieMerleVariant.PATTERN1,
+    public static final Map<ThreeMerleVariant, ResourceLocation> LILAC_MERLE_PATTERNS =
+            Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
+                pat.put(ThreeMerleVariant.PATTERN1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_lilac_merle1.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN2,
+                pat.put(ThreeMerleVariant.PATTERN2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_lilac_merle2.png"));
-                pat.put(BorderCollieMerleVariant.PATTERN3,
+                pat.put(ThreeMerleVariant.PATTERN3,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/merle/border_collie_lilac_merle3.png"));
             });
 

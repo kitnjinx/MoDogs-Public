@@ -4,7 +4,7 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BorderCollieVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.BorderCollieMerleVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeMerleVariant;
 import com.kitnjinx.modogs.entity.variant.pattern_variation.BorderCollieStripeVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
@@ -380,8 +380,8 @@ public class BorderCollieEntity extends AbstractDog {
         this.entityData.set(BASE_COLOR, base);
     }
 
-    public BorderCollieMerleVariant getMerleVariant() {
-        return BorderCollieMerleVariant.byId((this.getMerlePattern() - 1) & 255);
+    public ThreeMerleVariant getMerleVariant() {
+        return ThreeMerleVariant.byId((this.getMerlePattern() - 1) & 255);
     }
 
     public int getMerlePattern() {

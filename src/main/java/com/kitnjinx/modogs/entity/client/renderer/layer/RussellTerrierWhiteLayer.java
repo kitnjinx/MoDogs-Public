@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.custom.RussellTerrierEntity;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.RussellTerrierWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.SixWhiteVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -18,19 +18,19 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import java.util.Map;
 
 public class RussellTerrierWhiteLayer extends GeoRenderLayer<RussellTerrierEntity> {
-    public static final Map<RussellTerrierWhiteVariant, ResourceLocation> LOCATION_BY_WHITE =
-            Util.make(Maps.newEnumMap(RussellTerrierWhiteVariant.class), (whi) -> {
-                whi.put(RussellTerrierWhiteVariant.WHITE1,
+    public static final Map<SixWhiteVariant, ResourceLocation> LOCATION_BY_WHITE =
+            Util.make(Maps.newEnumMap(SixWhiteVariant.class), (whi) -> {
+                whi.put(SixWhiteVariant.WHITE1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white1.png"));
-                whi.put(RussellTerrierWhiteVariant.WHITE2,
+                whi.put(SixWhiteVariant.WHITE2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white2.png"));
-                whi.put(RussellTerrierWhiteVariant.WHITE3,
+                whi.put(SixWhiteVariant.WHITE3,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white3.png"));
-                whi.put(RussellTerrierWhiteVariant.WHITE4,
+                whi.put(SixWhiteVariant.WHITE4,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white4.png"));
-                whi.put(RussellTerrierWhiteVariant.WHITE5,
+                whi.put(SixWhiteVariant.WHITE5,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white5.png"));
-                whi.put(RussellTerrierWhiteVariant.WHITE6,
+                whi.put(SixWhiteVariant.WHITE6,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/white/russell_terrier_white6.png"));
             });
 
