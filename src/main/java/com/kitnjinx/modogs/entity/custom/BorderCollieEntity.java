@@ -304,11 +304,7 @@ public class BorderCollieEntity extends AbstractDog {
         carrier: Used to determine potential carrier status for recessive traits (Red and Lilac)
          */
 
-        if (merle == 3) {
-            setMerle(true);
-        } else {
-            setMerle(false);
-        }
+        setMerle(merle == 3);
 
         if (determine < 6) {
             // BLACK
