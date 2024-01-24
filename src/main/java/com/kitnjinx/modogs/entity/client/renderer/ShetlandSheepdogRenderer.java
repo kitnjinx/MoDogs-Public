@@ -3,6 +3,8 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ShetlandSheepdogModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.ShetlandSheepdogMerleLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.ShetlandSheepdogWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.ShetlandSheepdogCollarLayer;
 import com.kitnjinx.modogs.entity.custom.ShetlandSheepdogEntity;
 import com.kitnjinx.modogs.entity.variant.ShetlandSheepdogVariant;
@@ -28,18 +30,14 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
                 var.put(ShetlandSheepdogVariant.BLACK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
                 var.put(ShetlandSheepdogVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png"));
-                var.put(ShetlandSheepdogVariant.SABLE_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_sable_merle.png"));
-                var.put(ShetlandSheepdogVariant.BLUE_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_blue_merle.png"));
-                var.put(ShetlandSheepdogVariant.BLACK_TAN_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan_merle.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
             });
 
     public ShetlandSheepdogRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ShetlandSheepdogModel());
 
+        addRenderLayer(new ShetlandSheepdogMerleLayer(this));
+        addRenderLayer(new ShetlandSheepdogWhiteLayer(this));
         addRenderLayer(new ShetlandSheepdogCollarLayer(this));
 
         this.shadowRadius = 0.35f;

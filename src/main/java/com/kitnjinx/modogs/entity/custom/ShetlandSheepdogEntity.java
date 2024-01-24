@@ -4,7 +4,10 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.ShetlandSheepdogVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.SixWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeMerleVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -39,6 +42,8 @@ public class ShetlandSheepdogEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
+            SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_SABLE =
             SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> CARRIES_SABLE =
@@ -49,6 +54,8 @@ public class ShetlandSheepdogEntity extends AbstractDog {
             SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> MERLE =
             SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> MERLE_PATTERN =
+            SynchedEntityData.defineId(ShetlandSheepdogEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -219,11 +226,11 @@ public class ShetlandSheepdogEntity extends AbstractDog {
                             message = Component.literal("This Shetland Sheepdog doesn't have any recessive traits.");
                         }
                     }
-
-                    player.sendSystemMessage(message);
-
-                    return InteractionResult.SUCCESS;
                 }
+
+                player.sendSystemMessage(message);
+
+                return InteractionResult.SUCCESS;
             } else {
                 return InteractionResult.PASS;
             }
@@ -236,33 +243,39 @@ public class ShetlandSheepdogEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("WhitePattern"));
         this.entityData.set(IS_SABLE, tag.getBoolean("IsSable"));
         this.entityData.set(CARRIES_SABLE, tag.getBoolean("CarriesSable"));
         this.entityData.set(IS_TAN, tag.getBoolean("IsTan"));
         this.entityData.set(CARRIES_TAN, tag.getBoolean("CarriesTan"));
         this.entityData.set(MERLE, tag.getBoolean("Merle"));
+        this.entityData.set(MERLE_PATTERN, tag.getInt("MerlePattern"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("WhitePattern", this.getWhite());
         tag.putBoolean("IsSable", this.isSable());
         tag.putBoolean("CarriesSable", this.carriesSable());
         tag.putBoolean("IsTan", this.isTan());
         tag.putBoolean("CarriesTan", this.carriesTan());
         tag.putBoolean("Merle", this.hasMerle());
+        tag.putInt("MerlePattern", this.getMerlePattern());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_VARIANT, 0);
         this.entityData.define(IS_SABLE, true);
         this.entityData.define(CARRIES_SABLE, true);
         this.entityData.define(IS_TAN, false);
         this.entityData.define(CARRIES_TAN, false);
         this.entityData.define(MERLE, false);
+        this.entityData.define(MERLE_PATTERN, 0);
     }
 
     @Override
@@ -293,41 +306,26 @@ public class ShetlandSheepdogEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (merle != 3) {
-            setMerle(false);
-            if (determine < 6) {
-                var = 0; // SABLE
-                setSableStatus(true, true);
-                setTanStatus(carrier < 3, false);
-            } else if (determine < 9) {
-                var = 1; // BLACK
-                setSableStatus(carrier < 3, false);
-                setTanStatus(carrier == 3, false);
-            } else {
-                var = 2; //BLACK_TAN
-                setSableStatus(carrier < 3, false);
-                setTanStatus(true, true);
-            }
+        if (determine < 6) {
+            var = 0; // SABLE
+            setSableStatus(true, true);
+            setTanStatus(carrier < 3, false);
+        } else if (determine < 9) {
+            var = 1; // BLACK
+            setSableStatus(carrier < 3, false);
+            setTanStatus(carrier == 3, false);
         } else {
-            setMerle(true);
-            if (determine < 6) {
-                var = 3; // SABLE_MERLE
-                setSableStatus(true, true);
-                setTanStatus(carrier < 3, false);
-            } else if (determine < 9) {
-                var = 4; // BLUE_MERLE (Black Merle)
-                setSableStatus(carrier < 3, false);
-                setTanStatus(carrier == 3, false);
-            } else {
-                var = 5; // BLACK_TAN_MERLE
-                setSableStatus(carrier < 3, false);
-                setTanStatus(true, true);
-            }
+            var = 2; //BLACK_TAN
+            setSableStatus(carrier < 3, false);
+            setTanStatus(true, true);
         }
+        setMerle(merle == 3);
 
         // assign chosen variant and finish the method
         ShetlandSheepdogVariant variant = ShetlandSheepdogVariant.byId(var);
         setVariant(variant);
+        setWhiteVariant(Util.getRandom(SixWhiteVariant.values(), this.random));
+        setMerlePattern(Util.getRandom(ThreeMerleVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -343,6 +341,18 @@ public class ShetlandSheepdogEntity extends AbstractDog {
 
     private void setVariant(ShetlandSheepdogVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public SixWhiteVariant getWhiteVariant() {
+        return SixWhiteVariant.byId(this.getWhite() & 255);
+    }
+
+    private int getWhite() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhiteVariant(SixWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     public boolean isSable() {
@@ -377,6 +387,18 @@ public class ShetlandSheepdogEntity extends AbstractDog {
 
     private void setMerle(boolean has) {
         this.entityData.set(MERLE, has);
+    }
+
+    public ThreeMerleVariant getMerleVariant() {
+        return ThreeMerleVariant.byId(this.getMerlePattern() & 255);
+    }
+
+    private int getMerlePattern() {
+        return this.entityData.get(MERLE_PATTERN);
+    }
+
+    private void setMerlePattern(ThreeMerleVariant variant) {
+        this.entityData.set(MERLE_PATTERN, variant.getId() & 255);
     }
 
     private void determineBabyVariant(ShetlandSheepdogEntity baby, ShetlandSheepdogEntity otherParent) {
@@ -441,22 +463,20 @@ public class ShetlandSheepdogEntity extends AbstractDog {
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (baby.hasMerle()) {
-            if (baby.isSable()) {
-                baby.setVariant(ShetlandSheepdogVariant.SABLE_MERLE);
-            } else if (baby.isTan()) {
-                baby.setVariant(ShetlandSheepdogVariant.BLACK_TAN_MERLE);
-            } else {
-                baby.setVariant(ShetlandSheepdogVariant.BLUE_MERLE);
-            }
+        if (baby.isSable()) {
+            baby.setVariant(ShetlandSheepdogVariant.SABLE);
+        } else if (baby.isTan()) {
+            baby.setVariant(ShetlandSheepdogVariant.BLACK_TAN);
         } else {
-            if (baby.isSable()) {
-                baby.setVariant(ShetlandSheepdogVariant.SABLE);
-            } else if (baby.isTan()) {
-                baby.setVariant(ShetlandSheepdogVariant.BLACK_TAN);
-            } else {
-                baby.setVariant(ShetlandSheepdogVariant.BLACK);
-            }
+            baby.setVariant(ShetlandSheepdogVariant.BLACK);
         }
+
+        if (this.getWhiteVariant() == otherParent.getWhiteVariant()) {
+            baby.setWhiteVariant(this.getWhiteVariant());
+        } else {
+            baby.setWhiteVariant(Util.getRandom(SixWhiteVariant.values(), this.random));
+        }
+
+        baby.setMerlePattern(Util.getRandom(ThreeMerleVariant.values(), this.random));
     }
 }
