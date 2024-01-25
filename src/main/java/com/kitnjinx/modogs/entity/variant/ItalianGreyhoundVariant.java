@@ -6,10 +6,7 @@ import java.util.Comparator;
 public enum ItalianGreyhoundVariant {
     BLUE(0),
     FAWN(1),
-    BLACK(2),
-    WHITE_BLUE(3),
-    WHITE_FAWN(4),
-    WHITE_BLACK(5);
+    BLACK(2);
 
     private static final ItalianGreyhoundVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(ItalianGreyhoundVariant::getId)).toArray(ItalianGreyhoundVariant[]::new);

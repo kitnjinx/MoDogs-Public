@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.ItalianGreyhoundVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -49,6 +51,8 @@ public class ItalianGreyhoundEntity extends AbstractDog {
             SynchedEntityData.defineId(ItalianGreyhoundEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_WHITE =
             SynchedEntityData.defineId(ItalianGreyhoundEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> WHITE_PATTERN =
+            SynchedEntityData.defineId(ItalianGreyhoundEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -235,6 +239,7 @@ public class ItalianGreyhoundEntity extends AbstractDog {
         this.entityData.set(IS_FAWN, tag.getBoolean("IsFawn"));
         this.entityData.set(CARRIES_FAWN, tag.getBoolean("CarriesFawn"));
         this.entityData.set(HAS_WHITE, tag.getBoolean("HasWhite"));
+        this.entityData.set(WHITE_PATTERN, tag.getInt("WhitePattern"));
     }
 
     @Override
@@ -246,6 +251,7 @@ public class ItalianGreyhoundEntity extends AbstractDog {
         tag.putBoolean("IsFawn", this.isFawn());
         tag.putBoolean("CarriesFawn", this.carriesFawn());
         tag.putBoolean("HasWhite", this.hasWhite());
+        tag.putInt("WhitePattern", this.getWhiteVariant());
     }
 
     @Override
@@ -257,6 +263,7 @@ public class ItalianGreyhoundEntity extends AbstractDog {
         this.entityData.define(IS_FAWN, true);
         this.entityData.define(CARRIES_FAWN, true);
         this.entityData.define(HAS_WHITE, false);
+        this.entityData.define(WHITE_PATTERN, 0);
     }
 
     @Override
@@ -287,41 +294,25 @@ public class ItalianGreyhoundEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (white < 3) {
-            setWhite(false);
-            if (determine < 6) {
-                var = 0; // BLUE
-                setBlueStatus(true, true);
-                setFawnStatus(carrier < 7, carrier < 5);
-            } else if (determine < 9) {
-                var = 1; // FAWN
-                setBlueStatus(carrier < 5, false);
-                setFawnStatus(true, true);
-            } else {
-                var = 2; // BLACK
-                setBlueStatus(carrier < 5, false);
-                setFawnStatus(carrier == 6, false);
-            }
+        if (determine < 6) {
+            var = 0; // BLUE
+            setBlueStatus(true, true);
+            setFawnStatus(carrier < 7, carrier < 5);
+        } else if (determine < 9) {
+            var = 1; // FAWN
+            setBlueStatus(carrier < 5, false);
+            setFawnStatus(true, true);
         } else {
-            this.setWhite(true);
-            if (determine < 6) {
-                var = 3; // WHITE_BLUE
-                setBlueStatus(true, true);
-                setFawnStatus(carrier < 7, carrier < 5);
-            } else if (determine < 9) {
-                var = 4; // WHITE_FAWN
-                setBlueStatus(carrier < 5, false);
-                setFawnStatus(true, true);
-            } else {
-                var = 5; // WHITE_BLACK
-                setBlueStatus(carrier < 5, false);
-                setFawnStatus(carrier == 6, false);
-            }
+            var = 2; // BLACK
+            setBlueStatus(carrier < 5, false);
+            setFawnStatus(carrier == 6, false);
         }
+        setWhite(white == 3);
 
         // assign chosen variant and finish the method
         ItalianGreyhoundVariant variant = ItalianGreyhoundVariant.byId(var);
         setVariant(variant);
+        setWhiteVariant(Util.getRandom(ThreeWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -371,6 +362,18 @@ public class ItalianGreyhoundEntity extends AbstractDog {
 
     private void setWhite(boolean has) {
         this.entityData.set(HAS_WHITE, has);
+    }
+
+    public ThreeWhiteVariant getWhite() {
+        return ThreeWhiteVariant.byId(this.getWhiteVariant() & 255);
+    }
+
+    private int getWhiteVariant() {
+        return this.entityData.get(WHITE_PATTERN);
+    }
+
+    private void setWhiteVariant(ThreeWhiteVariant variant) {
+        this.entityData.set(WHITE_PATTERN, variant.getId() & 255);
     }
 
     private void determineBabyVariant(ItalianGreyhoundEntity baby, ItalianGreyhoundEntity otherParent) {
@@ -435,18 +438,18 @@ public class ItalianGreyhoundEntity extends AbstractDog {
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (baby.hasWhite() && baby.isBlue()) {
-            baby.setVariant(ItalianGreyhoundVariant.WHITE_BLUE);
-        } else if (baby.hasWhite() && baby.isFawn()) {
-            baby.setVariant(ItalianGreyhoundVariant.WHITE_FAWN);
-        } else if (baby.hasWhite()) {
-            baby.setVariant(ItalianGreyhoundVariant.WHITE_BLACK);
-        } else if (baby.isBlue()) {
+        if (baby.isBlue()) {
             baby.setVariant(ItalianGreyhoundVariant.BLUE);
         } else if (baby.isFawn()) {
             baby.setVariant(ItalianGreyhoundVariant.FAWN);
         } else {
             baby.setVariant(ItalianGreyhoundVariant.BLACK);
+        }
+
+        if (this.hasWhite() && otherParent.hasWhite() && this.getWhite() == otherParent.getWhite()) {
+            baby.setWhiteVariant(this.getWhite());
+        } else {
+            baby.setWhiteVariant(Util.getRandom(ThreeWhiteVariant.values(), this.random));
         }
     }
 }

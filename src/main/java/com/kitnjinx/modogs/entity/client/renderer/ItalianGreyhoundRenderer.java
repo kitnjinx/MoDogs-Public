@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.ItalianGreyhoundModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.ItalianGreyhoundWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.ItalianGreyhoundCollarLayer;
 import com.kitnjinx.modogs.entity.custom.ItalianGreyhoundEntity;
 import com.kitnjinx.modogs.entity.variant.ItalianGreyhoundVariant;
@@ -29,17 +30,12 @@ public class ItalianGreyhoundRenderer extends GeoEntityRenderer<ItalianGreyhound
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_fawn.png"));
                 var.put(ItalianGreyhoundVariant.BLACK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_black.png"));
-                var.put(ItalianGreyhoundVariant.WHITE_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_white_blue.png"));
-                var.put(ItalianGreyhoundVariant.WHITE_FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_white_fawn.png"));
-                var.put(ItalianGreyhoundVariant.WHITE_BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_white_black.png"));
             });
 
     public ItalianGreyhoundRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ItalianGreyhoundModel());
 
+        addRenderLayer(new ItalianGreyhoundWhiteLayer(this));
         addRenderLayer(new ItalianGreyhoundCollarLayer(this));
 
         this.shadowRadius = 0.35f;
