@@ -5,9 +5,7 @@ import java.util.Comparator;
 
 public enum AustralianShepherdVariant {
     BLACK(0),
-    RED(1),
-    BLUE_MERLE(2),
-    RED_MERLE(3);
+    RED(1);
 
     private static final AustralianShepherdVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(AustralianShepherdVariant::getId)).toArray(AustralianShepherdVariant[]::new);

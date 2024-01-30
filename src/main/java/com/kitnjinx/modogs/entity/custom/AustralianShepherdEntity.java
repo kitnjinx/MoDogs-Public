@@ -4,7 +4,10 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.AustralianShepherdMerleVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.AustralianShepherdWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -39,12 +42,16 @@ public class AustralianShepherdEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
+            SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_RED =
             SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> CARRIES_RED =
             SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_MERLE =
             SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> MERLE_VARIANT =
+            SynchedEntityData.defineId(AustralianShepherdEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -188,27 +195,33 @@ public class AustralianShepherdEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("WhiteVariant"));
         this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
         this.entityData.set(CARRIES_RED, tag.getBoolean("CarriesRed"));
         this.entityData.set(IS_MERLE, tag.getBoolean("IsMerle"));
+        this.entityData.set(MERLE_VARIANT, tag.getInt("MerleVariant"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("WhiteVariant", this.getWhite());
         tag.putBoolean("IsRed", this.isRed());
         tag.putBoolean("CarriesRed", this.carriesRed());
         tag.putBoolean("IsMerle", this.isMerle());
+        tag.putInt("MerleVariant", this.getMerlePattern());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_VARIANT, 0);
         this.entityData.define(IS_RED, false);
         this.entityData.define(CARRIES_RED, false);
         this.entityData.define(IS_MERLE, false);
+        this.entityData.define(MERLE_VARIANT, 0);
     }
 
     @Override
@@ -239,29 +252,20 @@ public class AustralianShepherdEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (merle < 3) {
-            setMerle(false);
-            if (determine < 5) {
-                var = 0; // BLACK
-                setRedStatus(carrier == 4, false);
-            } else {
-                var = 1; // RED
-                setRedStatus(true, true);
-            }
+        if (determine < 5) {
+            var = 0; // BLACK
+            setRedStatus(carrier == 4, false);
         } else {
-            setMerle(true);
-            if (determine < 5) {
-                var = 2; // BLUE_MERLE
-                setRedStatus(carrier == 4, false);
-            } else {
-                var = 3; // RED_MERLE
-                setRedStatus(true, true);
-            }
+            var = 1; // RED
+            setRedStatus(true, true);
         }
 
+        setMerle(merle == 3);
+
         // assign chosen variant and finish the method
-        AustralianShepherdVariant variant = AustralianShepherdVariant.byId(var);
-        setVariant(variant);
+        setVariant(AustralianShepherdVariant.byId(var));
+        setWhiteVariant(Util.getRandom(AustralianShepherdWhiteVariant.values(), this.random));
+        setMerleVariant(Util.getRandom(AustralianShepherdMerleVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -277,6 +281,18 @@ public class AustralianShepherdEntity extends AbstractDog {
 
     private void setVariant(AustralianShepherdVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public AustralianShepherdWhiteVariant getWhiteVariant() {
+        return AustralianShepherdWhiteVariant.byId(this.getWhite() & 255);
+    }
+
+    private int getWhite() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhiteVariant(AustralianShepherdWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     public boolean isRed() {
@@ -298,6 +314,18 @@ public class AustralianShepherdEntity extends AbstractDog {
 
     private void setMerle(boolean is) {
         this.entityData.set(IS_MERLE, is);
+    }
+
+    public AustralianShepherdMerleVariant getMerleVariant() {
+        return AustralianShepherdMerleVariant.byId(this.getMerlePattern() & 255);
+    }
+
+    private int getMerlePattern() {
+        return this.entityData.get(MERLE_VARIANT);
+    }
+
+    private void setMerleVariant(AustralianShepherdMerleVariant variant) {
+        this.entityData.set(MERLE_VARIANT, variant.getId() & 255);
     }
 
     private void determineBabyVariant(AustralianShepherdEntity baby, AustralianShepherdEntity otherParent) {
@@ -338,14 +366,22 @@ public class AustralianShepherdEntity extends AbstractDog {
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (baby.isMerle() && baby.isRed()) {
-            baby.setVariant(AustralianShepherdVariant.RED_MERLE);
-        } else if (baby.isMerle()) {
-            baby.setVariant(AustralianShepherdVariant.BLUE_MERLE);
-        } else if (baby.isRed()) {
+        if (baby.isRed()) {
             baby.setVariant(AustralianShepherdVariant.RED);
         } else {
             baby.setVariant(AustralianShepherdVariant.BLACK);
+        }
+
+        if (this.getWhiteVariant() == otherParent.getWhiteVariant()) {
+            baby.setWhiteVariant(this.getWhiteVariant());
+        } else {
+            baby.setWhiteVariant(Util.getRandom(AustralianShepherdWhiteVariant.values(), this.random));
+        }
+
+        if (this.isMerle() && otherParent.isMerle() && this.getMerleVariant() == otherParent.getMerleVariant()) {
+            baby.setMerleVariant(this.getMerleVariant());
+        } else {
+            baby.setMerleVariant(Util.getRandom(AustralianShepherdMerleVariant.values(), this.random));
         }
     }
 }

@@ -3,6 +3,8 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.AustralianShepherdModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.AustralianShepherdMerleLayer;
+import com.kitnjinx.modogs.entity.client.renderer.layer.AustralianShepherdWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.AustralianShepherdCollarLayer;
 import com.kitnjinx.modogs.entity.custom.AustralianShepherdEntity;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
@@ -27,15 +29,13 @@ public class AustralianShepherdRenderer extends GeoEntityRenderer<AustralianShep
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/australian_shepherd_black.png"));
                 var.put(AustralianShepherdVariant.RED,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/australian_shepherd_red.png"));
-                var.put(AustralianShepherdVariant.BLUE_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/australian_shepherd_blue_merle.png"));
-                var.put(AustralianShepherdVariant.RED_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/australian_shepherd_red_merle.png"));
             });
 
     public AustralianShepherdRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new AustralianShepherdModel());
 
+        addRenderLayer(new AustralianShepherdMerleLayer(this));
+        addRenderLayer(new AustralianShepherdWhiteLayer(this));
         addRenderLayer(new AustralianShepherdCollarLayer(this));
 
         this.shadowRadius = 0.45f;
