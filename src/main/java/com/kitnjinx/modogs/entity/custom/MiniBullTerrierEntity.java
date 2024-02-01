@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.BullTerrierWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -46,6 +48,10 @@ public class MiniBullTerrierEntity extends AbstractDog {
             SynchedEntityData.defineId(MiniBullTerrierEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HIGH_WHITE =
             SynchedEntityData.defineId(MiniBullTerrierEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> PURE_WHITE =
+            SynchedEntityData.defineId(BullTerrierEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
+            SynchedEntityData.defineId(BullTerrierEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -167,30 +173,32 @@ public class MiniBullTerrierEntity extends AbstractDog {
             if (this.level.isClientSide) {
                 Component message;
                 if (this.isRed()) {
-                    if (this.getVariant() == BullTerrierVariant.WHITE) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates a fully white coat. They also have the alleles for red fur.");
+                    if (this.isPureWhite()) {
+                        message = Component.literal("This Bull Terrier demonstrates a fully white coat. They also have the alleles for red fur.");
                     } else if (this.hasHighWhite()) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates a recessive trait and high amounts of white markings.");
+                        message = Component.literal("This Bull Terrier demonstrates a recessive trait and high amounts of white markings.");
                     } else {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates a recessive trait.");
+                        message = Component.literal("This Bull Terrier demonstrates a recessive trait.");
                     }
                 } else if (this.carriesRed()) {
-                    if (this.getVariant() == BullTerrierVariant.WHITE) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates a fully white coat. They also carry a recessive trait.");
+                    if (this.isPureWhite()) {
+                        message = Component.literal("This Bull Terrier demonstrates a fully white coat. They also carry a recessive trait.");
                     } else if (this.hasHighWhite()) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates high amounts of white markings and carries a recessive trait.");
+                        message = Component.literal("This Bull Terrier demonstrates high amounts of white markings and carries a recessive trait.");
                     } else {
-                        message = Component.literal("This Miniature Bull Terrier carries a recessive trait.");
+                        message = Component.literal("This Bull Terrier carries a recessive trait.");
                     }
                 } else {
-                    if (this.getVariant() == BullTerrierVariant.WHITE) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates a fully white coat.");
+                    if (this.isPureWhite()) {
+                        message = Component.literal("This Bull Terrier demonstrates a fully white coat.");
                     } else if (this.hasHighWhite()) {
-                        message = Component.literal("This Miniature Bull Terrier demonstrates high amounts of white markings.");
+                        message = Component.literal("This Bull Terrier demonstrates high amounts of white markings.");
                     } else {
-                        message = Component.literal("This Miniature Bull Terrier doesn't have any recessive traits.");
+                        message = Component.literal("This Bull Terrier doesn't have any recessive traits.");
                     }
                 }
+
+                player.sendSystemMessage(message);
             } else {
                 return InteractionResult.PASS;
             }
@@ -206,6 +214,8 @@ public class MiniBullTerrierEntity extends AbstractDog {
         this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
         this.entityData.set(CARRIES_RED, tag.getBoolean("CarriesRed"));
         this.entityData.set(HIGH_WHITE, tag.getBoolean("HighWhite"));
+        this.entityData.set(PURE_WHITE, tag.getBoolean("PureWhite"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("WhiteVariant"));
     }
 
     @Override
@@ -215,6 +225,8 @@ public class MiniBullTerrierEntity extends AbstractDog {
         tag.putBoolean("IsRed", this.isRed());
         tag.putBoolean("CarriesRed", this.carriesRed());
         tag.putBoolean("HighWhite", this.hasHighWhite());
+        tag.putBoolean("PureWhite", this.isPureWhite());
+        tag.putInt("WhiteVariant", this.getWhiteVariant());
     }
 
     @Override
@@ -224,6 +236,8 @@ public class MiniBullTerrierEntity extends AbstractDog {
         this.entityData.define(IS_RED, false);
         this.entityData.define(CARRIES_RED, false);
         this.entityData.define(HIGH_WHITE, true);
+        this.entityData.define(PURE_WHITE, true);
+        this.entityData.define(WHITE_VARIANT, 0);
     }
 
     @Override
@@ -252,37 +266,19 @@ public class MiniBullTerrierEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (whiteLevel < 3) {
-            var = 0; // WHITE
-            setHighWhite(true);
-            if (determine != 4) {
-                setRedStatus(true, true);
-            } else {
-                setRedStatus(carrier == 1, false);
-            }
-        } else if (whiteLevel == 3) {
-            setHighWhite(false);
-            if (determine == 1) {
-                var = 1; // BLACK
-                setRedStatus(carrier == 1, false);
-            } else {
-                var = 2; // RED
-                setRedStatus(true, true);
-            }
+        if (determine != 4) {
+            var = 0; // BLACK
+            setRedStatus(carrier == 1, false);
         } else {
-            setHighWhite(true);
-            if (determine == 1) {
-                var = 3; // WHITE_BLACK
-                setRedStatus(carrier == 1, false);
-            } else {
-                var = 4; // WHITE_RED
-                setRedStatus(true, true);
-            }
+            var = 1; // RED
+            setRedStatus(true, true);
         }
 
+        setWhiteStatus(whiteLevel < 4, whiteLevel < 3);
+
         // assign chosen variant and finish the method
-        BullTerrierVariant variant = BullTerrierVariant.byId(var);
-        setVariant(variant);
+        setVariant(BullTerrierVariant.byId(var));
+        setWhiteVariant(Util.getRandom(BullTerrierWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -317,8 +313,25 @@ public class MiniBullTerrierEntity extends AbstractDog {
         return this.entityData.get(HIGH_WHITE);
     }
 
-    private void setHighWhite(boolean status) {
-        this.entityData.set(HIGH_WHITE, status);
+    public boolean isPureWhite() {
+        return this.entityData.get(PURE_WHITE);
+    }
+
+    private void setWhiteStatus(boolean highWhite, boolean pureWhite) {
+        this.entityData.set(HIGH_WHITE, highWhite);
+        this.entityData.set(PURE_WHITE, pureWhite);
+    }
+
+    public BullTerrierWhiteVariant getWhitePattern() {
+        return BullTerrierWhiteVariant.byId(this.getWhiteVariant() & 255);
+    }
+
+    private int getWhiteVariant() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhiteVariant(BullTerrierWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     private void determineBabyVariant(MiniBullTerrierEntity baby, MiniBullTerrierEntity otherParent) {
@@ -347,48 +360,43 @@ public class MiniBullTerrierEntity extends AbstractDog {
         }
 
         // determine if baby has low white, high white, or is pure white
-        boolean pureWhite;
-        if (this.getVariant() == BullTerrierVariant.WHITE && otherParent.getVariant() == BullTerrierVariant.WHITE) {
+        if (this.isPureWhite() && otherParent.isPureWhite()) {
             // if both parents are white, baby will be white
-            baby.setHighWhite(true);
-            pureWhite = true;
-        } else if ((this.getVariant() == BullTerrierVariant.WHITE && otherParent.hasHighWhite()) ||
-                (this.hasHighWhite() && otherParent.getVariant() == BullTerrierVariant.WHITE)) {
+            baby.setWhiteStatus(true, true);
+        } else if ((this.isPureWhite() && otherParent.hasHighWhite()) ||
+                (this.hasHighWhite() && otherParent.isPureWhite())) {
             // if one parent is pure white and the other has high white, baby has 50% chance to be pure white
             // and 50% chance to have high white
-            baby.setHighWhite(true);
-            pureWhite = this.random.nextBoolean();
-        } else if (this.getVariant() == BullTerrierVariant.WHITE || otherParent.getVariant() == BullTerrierVariant.WHITE) {
+            baby.setWhiteStatus(true, this.random.nextBoolean());
+        } else if (this.isPureWhite() || otherParent.isPureWhite()) {
             // if only one parent is white, baby will have high white
-            baby.setHighWhite(true);
-            pureWhite = false;
+            baby.setWhiteStatus(true, false);
         } else if (this.hasHighWhite() && otherParent.hasHighWhite()) {
             // if both parents have high white, baby has 25% chance to have low white, 50% chance to have high
             // white, and 25% chance to be white
             int determine = this.random.nextInt(4) + 1;
-            baby.setHighWhite(determine > 1);
-            pureWhite = determine == 4;
+            baby.setWhiteStatus(determine > 1, determine == 4);
         } else if (this.hasHighWhite() || otherParent.hasHighWhite()) {
             // if only one parent has high white, baby will have 50/50 chance to have high white
-            baby.setHighWhite(this.random.nextBoolean());
-            pureWhite = false;
+            baby.setWhiteStatus(this.random.nextBoolean(), false);
         } else {
             // if neither parent has high white, baby will not have high white
-            baby.setHighWhite(false);
-            pureWhite = false;
+            baby.setWhiteStatus(false, false);
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (pureWhite) {
-            baby.setVariant(BullTerrierVariant.WHITE);
-        } else if (baby.hasHighWhite() && baby.isRed()) {
-            baby.setVariant(BullTerrierVariant.WHITE_RED);
-        } else if (baby.hasHighWhite()) {
-            baby.setVariant(BullTerrierVariant.WHITE_BLACK);
-        } else if (baby.isRed()) {
+        if (baby.isRed()) {
             baby.setVariant(BullTerrierVariant.RED);
         } else {
             baby.setVariant(BullTerrierVariant.BLACK);
+        }
+
+        if (!this.isPureWhite() && !otherParent.isPureWhite() &&
+                this.hasHighWhite() == otherParent.hasHighWhite() &&
+                this.getWhitePattern() == otherParent.getWhitePattern()) {
+            baby.setWhiteVariant(this.getWhitePattern());
+        } else {
+            baby.setWhiteVariant(Util.getRandom(BullTerrierWhiteVariant.values(), this.random));
         }
     }
 }

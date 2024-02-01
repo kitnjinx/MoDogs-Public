@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MiniBullTerrierModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.MiniBullTerrierWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MiniBullTerrierCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MiniBullTerrierEntity;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
@@ -23,21 +24,16 @@ public class MiniBullTerrierRenderer extends GeoEntityRenderer<MiniBullTerrierEn
 
     public static final Map<BullTerrierVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BullTerrierVariant.class), (var) -> {
-                var.put(BullTerrierVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/bull_terrier_white.png"));
                 var.put(BullTerrierVariant.BLACK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/bull_terrier_black.png"));
                 var.put(BullTerrierVariant.RED,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/mini_bull_terrier_red.png"));
-                var.put(BullTerrierVariant.WHITE_BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/bull_terrier_white_black.png"));
-                var.put(BullTerrierVariant.WHITE_RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/mini_bull_terrier_white_red.png"));
             });
 
     public MiniBullTerrierRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new MiniBullTerrierModel());
 
+        addRenderLayer(new MiniBullTerrierWhiteLayer(this));
         addRenderLayer(new MiniBullTerrierCollarLayer(this));
 
         this.shadowRadius = 0.3f;

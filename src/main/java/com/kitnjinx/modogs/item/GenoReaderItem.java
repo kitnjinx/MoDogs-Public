@@ -430,7 +430,7 @@ public class GenoReaderItem extends Item {
     }
 
     private String bullTerrierGeno(BullTerrierEntity dog) {
-        if (dog.getVariant() == BullTerrierVariant.WHITE) {
+        if (dog.isPureWhite()) {
             if (dog.isRed()) {
                 return "bb WW";
             } else if (dog.carriesRed()) {
@@ -1084,7 +1084,7 @@ public class GenoReaderItem extends Item {
     }
 
     private String miniBullTerrierGeno(MiniBullTerrierEntity dog) {
-        if (dog.getVariant() == BullTerrierVariant.WHITE) {
+        if (dog.isPureWhite()) {
             if (dog.isRed()) {
                 return "bb WW";
             } else if (dog.carriesRed()) {
