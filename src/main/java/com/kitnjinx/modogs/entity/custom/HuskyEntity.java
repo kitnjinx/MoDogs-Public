@@ -4,6 +4,7 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.entity.variant.HuskyVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.HuskyEyeVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -38,6 +39,8 @@ public class HuskyEntity extends AbstractDog {
 
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+            SynchedEntityData.defineId(HuskyEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> EYE_COLOR_VARIANT =
             SynchedEntityData.defineId(HuskyEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_RED =
             SynchedEntityData.defineId(HuskyEntity.class, EntityDataSerializers.BOOLEAN);
@@ -252,6 +255,7 @@ public class HuskyEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(EYE_COLOR_VARIANT, tag.getInt("EyeVariant"));
         this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
         this.entityData.set(CARRIES_RED, tag.getBoolean("CarriesRed"));
         this.entityData.set(IS_SOLID, tag.getBoolean("IsSolid"));
@@ -264,6 +268,7 @@ public class HuskyEntity extends AbstractDog {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("EyeVariant", this.getEyeTypeVariant());
         tag.putBoolean("IsRed", this.isRed());
         tag.putBoolean("CarriesRed", this.carriesRed());
         tag.putBoolean("IsSolid", this.isSolid());
@@ -276,6 +281,7 @@ public class HuskyEntity extends AbstractDog {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(EYE_COLOR_VARIANT, 0);
         this.entityData.define(IS_RED, false);
         this.entityData.define(CARRIES_RED, false);
         this.entityData.define(IS_SOLID, true);
@@ -308,6 +314,7 @@ public class HuskyEntity extends AbstractDog {
         Random r = new Random();
         int determine = r.nextInt(27) + 1;
         int carrier = r.nextInt(8) + 1;
+        int eye = r.nextInt(7) + 1;
         int var;
 
         // if statement gives weighted chances to different variants
@@ -340,6 +347,15 @@ public class HuskyEntity extends AbstractDog {
             setSolidStatus(solid < 11, solid < 9);
         }
 
+        // determine husky's eye color
+        if (eye < 5) {
+            setEyeVariant(HuskyEyeVariant.byId(r.nextInt(2)));
+        } else if (eye < 7) {
+            setEyeVariant(HuskyEyeVariant.byId(r.nextInt(2) + 2));
+        } else {
+            setEyeVariant(HuskyEyeVariant.byId(r.nextInt(2) + 4));
+        }
+
         // assign chosen variant and finish the method
         HuskyVariant variant = HuskyVariant.byId(var);
         setVariant(variant);
@@ -358,6 +374,18 @@ public class HuskyEntity extends AbstractDog {
 
     private void setVariant(HuskyVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public HuskyEyeVariant getEyeVariant() {
+        return HuskyEyeVariant.byId(this.getEyeTypeVariant() & 255);
+    }
+
+    private int getEyeTypeVariant() {
+        return this.entityData.get(EYE_COLOR_VARIANT);
+    }
+
+    private void setEyeVariant(HuskyEyeVariant variant) {
+        this.entityData.set(EYE_COLOR_VARIANT, variant.getId() & 255);
     }
 
     public boolean isRed() {
@@ -483,6 +511,42 @@ public class HuskyEntity extends AbstractDog {
             baby.setVariant(HuskyVariant.SABLE);
         } else {
             baby.setVariant(HuskyVariant.GRAY);
+        }
+
+        // determine baby's eye color based on parents
+        boolean parAHet = this.getEyeTypeVariant() == 4 || this.getEyeTypeVariant() == 5;
+        boolean parBHet = otherParent.getEyeTypeVariant() == 4 || otherParent.getEyeTypeVariant() == 5;
+
+        if (parAHet && parBHet) {
+            // if both parents have heterochromia, baby has 50% chance to have heterochromia, 25% chance to
+            // have brown eyes, and 25% chance to have blue eyes
+            int determine = this.random.nextInt(4) + 1;
+            if (determine < 3 && this.getEyeVariant() == otherParent.getEyeVariant()) {
+                baby.setEyeVariant(this.getEyeVariant());
+            } else if (determine < 3) {
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2) + 4));
+            } else if (determine < 4) {
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2) + 2));
+            } else {
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2)));
+            }
+        } else if (this.getEyeVariant() == otherParent.getEyeVariant()) {
+            // if both parents have the same color & shade of eyes, baby will be the same
+            baby.setEyeVariant(this.getEyeVariant());
+        } else {
+            boolean parABlue = this.getEyeTypeVariant() == 0 || this.getEyeTypeVariant() == 1;
+            boolean parBBlue = otherParent.getEyeTypeVariant() == 0 || otherParent.getEyeTypeVariant() == 1;
+
+            if (parABlue && parBBlue) {
+                // if both parents have blue eyes, baby will have blue eyes
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2)));
+            } else if (parABlue || parBBlue) {
+                // if one parent has blue eyes and one has brown, baby will have heterochromia
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2) + 4));
+            } else {
+                // if both parents have brown eyes, baby will have brown eyes
+                baby.setEyeVariant(HuskyEyeVariant.byId(this.random.nextInt(2) + 2));
+            }
         }
     }
 }

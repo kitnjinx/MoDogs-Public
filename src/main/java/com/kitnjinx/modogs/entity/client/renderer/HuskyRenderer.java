@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.HuskyModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.HuskyEyeLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.HuskyCollarLayer;
 import com.kitnjinx.modogs.entity.custom.HuskyEntity;
 import com.kitnjinx.modogs.entity.variant.HuskyVariant;
@@ -38,6 +39,7 @@ public class HuskyRenderer extends GeoEntityRenderer<HuskyEntity> {
     public HuskyRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new HuskyModel());
 
+        addRenderLayer(new HuskyEyeLayer(this));
         addRenderLayer(new HuskyCollarLayer(this));
 
         this.shadowRadius = 0.5f;
