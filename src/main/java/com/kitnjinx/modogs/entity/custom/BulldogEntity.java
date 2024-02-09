@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BulldogVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -39,11 +41,15 @@ public class BulldogEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
+            SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_FAWN =
             SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> CARRIES_FAWN =
             SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_WHITE =
+            SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> PURE_WHITE =
             SynchedEntityData.defineId(BulldogEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
@@ -163,7 +169,7 @@ public class BulldogEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 Component message;
-                if (this.getVariant() == BulldogVariant.WHITE) {
+                if (this.isPureWhite()) {
                     if (this.isFawn()) {
                         message = Component.literal("This Bulldog demonstrates a fully white coat. They also have the alleles for fawn fur.");
                     } else if (this.carriesFawn()) {
@@ -202,27 +208,33 @@ public class BulldogEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("WhiteVariant"));
         this.entityData.set(IS_FAWN, tag.getBoolean("IsFawn"));
         this.entityData.set(CARRIES_FAWN, tag.getBoolean("CarriesFawn"));
         this.entityData.set(HAS_WHITE, tag.getBoolean("HasWhite"));
+        this.entityData.set(PURE_WHITE, tag.getBoolean("PureWhite"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("WhiteVariant", this.getWhiteVariant());
         tag.putBoolean("IsFawn", this.isFawn());
         tag.putBoolean("CarriesFawn", this.carriesFawn());
         tag.putBoolean("HasWhite", this.hasWhite());
+        tag.putBoolean("PureWhite", this.isPureWhite());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_VARIANT, 0);
         this.entityData.define(IS_FAWN, false);
         this.entityData.define(CARRIES_FAWN, false);
         this.entityData.define(HAS_WHITE, true);
+        this.entityData.define(PURE_WHITE, false);
     }
 
     @Override
@@ -251,37 +263,19 @@ public class BulldogEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (white < 7) {
-            setWhite(true);
-            if (determine != 5) {
-                var = 0; // RED_WHITE
-                setFawnStatus(carrier == 4, false);
-            } else {
-                var = 1; // FAWN_WHITE
-                setFawnStatus(true, true);
-            }
-        } else if (white < 10) {
-            var = 2; // WHITE
-            setWhite(true);
-            if (determine != 5) {
-                setFawnStatus(carrier == 4, false);
-            } else {
-                setFawnStatus(true, true);
-            }
+        if (determine != 5) {
+            var = 0; // RED
+            setFawnStatus(carrier == 4, false);
         } else {
-            setWhite(false);
-            if (determine != 5) {
-                var = 3; // RED
-                setFawnStatus(carrier == 4, false);
-            } else {
-                var = 4; // FAWN
-                setFawnStatus(true, true);
-            }
+            var = 1; // FAWN
+            setFawnStatus(true, true);
         }
 
+        setWhiteStatus(white < 10, white < 4);
+
         // assign chosen variant and finish the method
-        BulldogVariant variant = BulldogVariant.byId(var);
-        setVariant(variant);
+        setVariant(BulldogVariant.byId(var));
+        setWhitePattern(Util.getRandom(TwoWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -297,6 +291,18 @@ public class BulldogEntity extends AbstractDog {
 
     private void setVariant(BulldogVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public TwoWhiteVariant getWhitePattern() {
+        return TwoWhiteVariant.byId(this.getWhiteVariant() & 255);
+    }
+
+    private int getWhiteVariant() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhitePattern(TwoWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     public boolean isFawn() {
@@ -316,8 +322,13 @@ public class BulldogEntity extends AbstractDog {
         return this.entityData.get(HAS_WHITE);
     }
 
-    private void setWhite(boolean has) {
+    public boolean isPureWhite() {
+        return this.entityData.get(PURE_WHITE);
+    }
+
+    private void setWhiteStatus(boolean has, boolean pure) {
         this.entityData.set(HAS_WHITE, has);
+        this.entityData.set(PURE_WHITE, pure);
     }
 
     private void determineBabyVariant(BulldogEntity baby, BulldogEntity otherParent) {
@@ -346,48 +357,44 @@ public class BulldogEntity extends AbstractDog {
         }
 
         // determine baby's white status
-        boolean isWhite;
-        if (this.getVariant() == BulldogVariant.WHITE && otherParent.getVariant() == BulldogVariant.WHITE) {
+        if (this.isPureWhite() && otherParent.isPureWhite()) {
             // if both parents are white, baby will be white
-            isWhite = true;
-            baby.setWhite(true);
-        } else if ((this.getVariant() == BulldogVariant.WHITE && otherParent.hasWhite()) ||
-                (this.hasWhite() && otherParent.getVariant() == BulldogVariant.WHITE)) {
+            baby.setWhiteStatus(true, true);
+        } else if ((this.isPureWhite() && otherParent.hasWhite()) ||
+                (this.hasWhite() && otherParent.isPureWhite())) {
             // if one parent is white and the other has white, baby has 50% chance to have white and 50%
             // chance to be pure white
-            isWhite = this.random.nextBoolean();
-            baby.setWhite(true);
-        } else if (this.getVariant() == BulldogVariant.WHITE || otherParent.getVariant() == BulldogVariant.WHITE) {
+            baby.setWhiteStatus(true, this.random.nextBoolean());
+        } else if (this.isPureWhite() || otherParent.isPureWhite()) {
             // if only one parent is pure white, baby will have white
-            isWhite = false;
-            baby.setWhite(true);
+            baby.setWhiteStatus(true, false);
         } else if (this.hasWhite() && otherParent.hasWhite()) {
             // if both parents have white, baby has 25% chance not to have white, 50% chance to have white,
             // and 25% to be pure white
             int determine = this.random.nextInt(4) + 1;
-            isWhite = determine == 4;
-            baby.setWhite(determine > 1);
+            baby.setWhiteStatus(determine > 1, determine == 4);
         } else if (this.hasWhite() || otherParent.hasWhite()) {
             // if only one parent has white, baby has 50/50 chance to have white
-            isWhite = false;
-            baby.setWhite(this.random.nextBoolean());
+            baby.setWhiteStatus(this.random.nextBoolean(), false);
         } else {
             // if neither parent has white, baby will not have white
-            baby.setWhite(false);
-            isWhite = false;
+            baby.setWhiteStatus(false, false);
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (isWhite) {
-            baby.setVariant(BulldogVariant.WHITE);
-        } else if (baby.hasWhite() && baby.isFawn()) {
-            baby.setVariant(BulldogVariant.FAWN_WHITE);
-        } else if (baby.hasWhite()) {
-            baby.setVariant(BulldogVariant.RED_WHITE);
-        } else if (baby.isFawn()) {
+        if (baby.isFawn()) {
             baby.setVariant(BulldogVariant.FAWN);
         } else {
             baby.setVariant(BulldogVariant.RED);
+        }
+
+        // determine baby's white based on parents (loosely)
+        if (!this.isPureWhite() && !otherParent.isPureWhite() && !baby.isPureWhite() &&
+                this.hasWhite() == otherParent.hasWhite() && this.hasWhite() == baby.hasWhite() &&
+                this.getWhitePattern() == otherParent.getWhitePattern()) {
+            baby.setWhitePattern(this.getWhitePattern());
+        } else {
+            baby.setWhitePattern(Util.getRandom(TwoWhiteVariant.values(), this.random));
         }
     }
 }

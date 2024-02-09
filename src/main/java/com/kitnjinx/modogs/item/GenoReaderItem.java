@@ -402,7 +402,7 @@ public class GenoReaderItem extends Item {
     }
 
     private String bulldogGeno(BulldogEntity dog) {
-        if (dog.getVariant() == BulldogVariant.WHITE) {
+        if (dog.isPureWhite()) {
             if (dog.isFawn()) {
                 return "dd WW";
             } else if (dog.carriesFawn()) {

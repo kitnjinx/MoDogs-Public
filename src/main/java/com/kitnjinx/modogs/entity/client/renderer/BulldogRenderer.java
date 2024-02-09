@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.BulldogModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.BulldogWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.BulldogCollarLayer;
 import com.kitnjinx.modogs.entity.custom.BulldogEntity;
 import com.kitnjinx.modogs.entity.variant.BulldogVariant;
@@ -23,12 +24,6 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
 
     public static final Map<BulldogVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BulldogVariant.class), (var) -> {
-                var.put(BulldogVariant.RED_WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_red_white.png"));
-                var.put(BulldogVariant.FAWN_WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_fawn_white.png"));
-                var.put(BulldogVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_white.png"));
                 var.put(BulldogVariant.RED,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_red.png"));
                 var.put(BulldogVariant.FAWN,
@@ -38,6 +33,7 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
     public BulldogRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BulldogModel());
 
+        addRenderLayer(new BulldogWhiteLayer(this));
         addRenderLayer(new BulldogCollarLayer(this));
 
         this.shadowRadius = 0.375f;

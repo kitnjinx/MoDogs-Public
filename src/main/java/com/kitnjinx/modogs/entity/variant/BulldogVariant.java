@@ -4,11 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public enum BulldogVariant {
-    RED_WHITE(0),
-    FAWN_WHITE(1),
-    WHITE(2),
-    RED(3),
-    FAWN(4);
+    RED(0),
+    FAWN(1);
 
     private static final BulldogVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(BulldogVariant::getId)).toArray(BulldogVariant[]::new);
