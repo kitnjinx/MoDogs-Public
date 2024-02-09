@@ -4,7 +4,7 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.BullTerrierVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.BullTerrierWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
@@ -306,7 +306,7 @@ public class BullTerrierEntity extends AbstractDog {
 
         // assign chosen variant and finish the method
         setVariant(BullTerrierVariant.byId(var));
-        setWhiteVariant(Util.getRandom(BullTerrierWhiteVariant.values(), this.random));
+        setWhiteVariant(Util.getRandom(TwoWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         setTarget(false);
@@ -359,15 +359,15 @@ public class BullTerrierEntity extends AbstractDog {
         this.entityData.set(PURE_WHITE, pureWhite);
     }
 
-    public BullTerrierWhiteVariant getWhitePattern() {
-        return BullTerrierWhiteVariant.byId(this.getWhiteVariant() & 255);
+    public TwoWhiteVariant getWhitePattern() {
+        return TwoWhiteVariant.byId(this.getWhiteVariant() & 255);
     }
 
     private int getWhiteVariant() {
         return this.entityData.get(WHITE_VARIANT);
     }
 
-    private void setWhiteVariant(BullTerrierWhiteVariant variant) {
+    private void setWhiteVariant(TwoWhiteVariant variant) {
         this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
@@ -433,7 +433,7 @@ public class BullTerrierEntity extends AbstractDog {
                 this.getWhitePattern() == otherParent.getWhitePattern()) {
             baby.setWhiteVariant(this.getWhitePattern());
         } else {
-            baby.setWhiteVariant(Util.getRandom(BullTerrierWhiteVariant.values(), this.random));
+            baby.setWhiteVariant(Util.getRandom(TwoWhiteVariant.values(), this.random));
         }
     }
 }

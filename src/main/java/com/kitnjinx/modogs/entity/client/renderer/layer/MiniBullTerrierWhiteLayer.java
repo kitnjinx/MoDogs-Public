@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.custom.MiniBullTerrierEntity;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.BullTerrierWhiteVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoWhiteVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -18,19 +18,19 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import java.util.Map;
 
 public class MiniBullTerrierWhiteLayer extends GeoRenderLayer<MiniBullTerrierEntity> {
-    public static final Map<BullTerrierWhiteVariant, ResourceLocation> LOW_WHITE_PATTERNS =
-            Util.make(Maps.newEnumMap(BullTerrierWhiteVariant.class), (pat) -> {
-                pat.put(BullTerrierWhiteVariant.PATTERN1,
+    public static final Map<TwoWhiteVariant, ResourceLocation> LOW_WHITE_PATTERNS =
+            Util.make(Maps.newEnumMap(TwoWhiteVariant.class), (pat) -> {
+                pat.put(TwoWhiteVariant.WHITE1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white1.png"));
-                pat.put(BullTerrierWhiteVariant.PATTERN2,
+                pat.put(TwoWhiteVariant.WHITE2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white2.png"));
             });
 
-    public static final Map<BullTerrierWhiteVariant, ResourceLocation> HIGH_WHITE_PATTERNS =
-            Util.make(Maps.newEnumMap(BullTerrierWhiteVariant.class), (pat) -> {
-                pat.put(BullTerrierWhiteVariant.PATTERN1,
+    public static final Map<TwoWhiteVariant, ResourceLocation> HIGH_WHITE_PATTERNS =
+            Util.make(Maps.newEnumMap(TwoWhiteVariant.class), (pat) -> {
+                pat.put(TwoWhiteVariant.WHITE1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white1.png"));
-                pat.put(BullTerrierWhiteVariant.PATTERN2,
+                pat.put(TwoWhiteVariant.WHITE2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white2.png"));
             });
 
