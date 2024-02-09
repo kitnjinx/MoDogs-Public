@@ -3,7 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer.layer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.custom.AustralianShepherdEntity;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.AustralianShepherdMerleVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoMerleVariant;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import org.lwjgl.system.windows.INPUT;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
@@ -19,19 +18,19 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import java.util.Map;
 
 public class AustralianShepherdMerleLayer extends GeoRenderLayer<AustralianShepherdEntity> {
-    public static final Map<AustralianShepherdMerleVariant, ResourceLocation> BLUE_MERLE_PATTERNS =
-            Util.make(Maps.newEnumMap(AustralianShepherdMerleVariant.class), (pat) -> {
-                pat.put(AustralianShepherdMerleVariant.PATTERN1,
+    public static final Map<TwoMerleVariant, ResourceLocation> BLUE_MERLE_PATTERNS =
+            Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
+                pat.put(TwoMerleVariant.PATTERN1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle1.png"));
-                pat.put(AustralianShepherdMerleVariant.PATTERN2,
+                pat.put(TwoMerleVariant.PATTERN2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle2.png"));
             });
 
-    public static final Map<AustralianShepherdMerleVariant, ResourceLocation> RED_MERLE_PATTERNS =
-            Util.make(Maps.newEnumMap(AustralianShepherdMerleVariant.class), (pat) -> {
-                pat.put(AustralianShepherdMerleVariant.PATTERN1,
+    public static final Map<TwoMerleVariant, ResourceLocation> RED_MERLE_PATTERNS =
+            Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
+                pat.put(TwoMerleVariant.PATTERN1,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle1.png"));
-                pat.put(AustralianShepherdMerleVariant.PATTERN2,
+                pat.put(TwoMerleVariant.PATTERN2,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle2.png"));
             });
 

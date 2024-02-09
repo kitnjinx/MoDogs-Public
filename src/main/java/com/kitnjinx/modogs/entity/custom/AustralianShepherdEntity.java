@@ -4,7 +4,7 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.AustralianShepherdVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
-import com.kitnjinx.modogs.entity.variant.pattern_variation.AustralianShepherdMerleVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoMerleVariant;
 import com.kitnjinx.modogs.entity.variant.pattern_variation.AustralianShepherdWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.Util;
@@ -265,7 +265,7 @@ public class AustralianShepherdEntity extends AbstractDog {
         // assign chosen variant and finish the method
         setVariant(AustralianShepherdVariant.byId(var));
         setWhiteVariant(Util.getRandom(AustralianShepherdWhiteVariant.values(), this.random));
-        setMerleVariant(Util.getRandom(AustralianShepherdMerleVariant.values(), this.random));
+        setMerleVariant(Util.getRandom(TwoMerleVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -316,15 +316,15 @@ public class AustralianShepherdEntity extends AbstractDog {
         this.entityData.set(IS_MERLE, is);
     }
 
-    public AustralianShepherdMerleVariant getMerleVariant() {
-        return AustralianShepherdMerleVariant.byId(this.getMerlePattern() & 255);
+    public TwoMerleVariant getMerleVariant() {
+        return TwoMerleVariant.byId(this.getMerlePattern() & 255);
     }
 
     private int getMerlePattern() {
         return this.entityData.get(MERLE_VARIANT);
     }
 
-    private void setMerleVariant(AustralianShepherdMerleVariant variant) {
+    private void setMerleVariant(TwoMerleVariant variant) {
         this.entityData.set(MERLE_VARIANT, variant.getId() & 255);
     }
 
@@ -381,7 +381,7 @@ public class AustralianShepherdEntity extends AbstractDog {
         if (this.isMerle() && otherParent.isMerle() && this.getMerleVariant() == otherParent.getMerleVariant()) {
             baby.setMerleVariant(this.getMerleVariant());
         } else {
-            baby.setMerleVariant(Util.getRandom(AustralianShepherdMerleVariant.values(), this.random));
+            baby.setMerleVariant(Util.getRandom(TwoMerleVariant.values(), this.random));
         }
     }
 }
