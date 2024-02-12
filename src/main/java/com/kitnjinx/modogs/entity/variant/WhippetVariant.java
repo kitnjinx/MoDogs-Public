@@ -4,13 +4,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public enum WhippetVariant {
-    WHITE_RED(0),
-    WHITE_BLUE(1),
-    WHITE_BLACK(2),
-    WHITE(3),
-    RED(4),
-    BLUE(5),
-    BLACK(6);
+    RED(0),
+    BLUE(1),
+    BLACK(2);
 
     private static final WhippetVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(WhippetVariant::getId)).toArray(WhippetVariant[]::new);

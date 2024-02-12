@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.entity.variant.WhippetVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.ThreeWhiteVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -39,6 +41,8 @@ public class WhippetEntity extends AbstractDog {
     // handles coat variant
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WHITE_VARIANT =
+            SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> CARRIES_RED =
             SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_RED =
@@ -48,6 +52,8 @@ public class WhippetEntity extends AbstractDog {
     private static final EntityDataAccessor<Boolean> IS_BLUE =
             SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_WHITE =
+            SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> PURE_WHITE =
             SynchedEntityData.defineId(WhippetEntity.class, EntityDataSerializers.BOOLEAN);
 
     // this method controls what animals a dog will hunt
@@ -163,7 +169,7 @@ public class WhippetEntity extends AbstractDog {
         if (item == ModItems.GENE_TESTER.get()) {
             if (this.level.isClientSide) {
                 Component message;
-                if (this.getVariant() == WhippetVariant.WHITE) {
+                if (this.isPureWhite()) {
                     if (this.isRed() && this.isBlue()) {
                         message = Component.literal("This Whippet demonstrates a fully white coat. They also have the alleles for diluted red fur.");
                     } else if (this.isRed() && this.isBlueCarrier()) {
@@ -247,33 +253,39 @@ public class WhippetEntity extends AbstractDog {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.entityData.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
+        this.entityData.set(WHITE_VARIANT, tag.getInt("WhiteVariant"));
         this.entityData.set(CARRIES_RED, tag.getBoolean("RedCarrier"));
         this.entityData.set(IS_RED, tag.getBoolean("IsRed"));
         this.entityData.set(CARRIES_BLUE, tag.getBoolean("BlueCarrier"));
         this.entityData.set(IS_BLUE, tag.getBoolean("IsBlue"));
         this.entityData.set(HAS_WHITE, tag.getBoolean("HasWhite"));
+        this.entityData.set(PURE_WHITE, tag.getBoolean("PureWhite"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", this.getTypeVariant());
+        tag.putInt("WhiteVariant", this.getWhiteValue());
         tag.putBoolean("RedCarrier", this.isRedCarrier());
         tag.putBoolean("IsRed", this.isRed());
         tag.putBoolean("BlueCarrier", this.isBlueCarrier());
         tag.putBoolean("IsBlue", this.isBlue());
         tag.putBoolean("HasWhite", this.hasWhite());
+        tag.putBoolean("PureWhite", this.isPureWhite());
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
+        this.entityData.define(WHITE_VARIANT, 0);
         this.entityData.define(CARRIES_RED, true);
         this.entityData.define(IS_RED, true);
         this.entityData.define(CARRIES_BLUE, false);
         this.entityData.define(IS_BLUE, false);
         this.entityData.define(HAS_WHITE, false);
+        this.entityData.define(PURE_WHITE, false);
     }
 
     @Override
@@ -303,51 +315,26 @@ public class WhippetEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (r.nextBoolean()) {
-            setWhite(true);
-            if (determine < 6) {
-                var = 0; // WHITE & RED
-                setRedStatus(true, true);
-                setBlueStatus(carrier == 1, false);
-            } else if (determine < 9) {
-                var = 1; // WHITE & BLUE
-                spawnBlueWhippet(carrier);
-            } else if (r.nextBoolean()) {
-                var = 2; // WHITE & BLACK
-                setRedStatus(carrier == 1, false);
-                setBlueStatus(carrier == 2, false);
-            } else {
-                var = 3; // WHITE
-                int status = r.nextInt(9) + 1;
-                if (status < 6) {
-                    setRedStatus(true, true);
-                    setBlueStatus(carrier == 1, false);
-                } else if (status < 9) {
-                    spawnBlueWhippet(carrier);
-                } else {
-                    setRedStatus(carrier == 1, false);
-                    setBlueStatus(carrier == 2, false);
-                }
-            }
+        if (determine < 6) {
+            var = 0; // RED
+            setRedStatus(true, true);
+            setBlueStatus(carrier == 1, false);
+        } else if (determine < 9) {
+            var = 1; // BLUE
+            spawnBlueWhippet(carrier);
         } else {
-            setWhite(false);
-            if (determine < 6) {
-                var = 4; // RED
-                setRedStatus(true, true);
-                setBlueStatus(carrier == 1, false);
-            } else if (determine < 9) {
-                var = 5; // BLUE
-                spawnBlueWhippet(carrier);
-            } else {
-                var = 6; // BLACK
-                setRedStatus(carrier == 1, false);
-                setBlueStatus(carrier == 2, false);
-            }
+            var = 2; // BLACK
+            setRedStatus(carrier == 1, false);
+            setBlueStatus(carrier == 2, false);
         }
 
+        // determine white status
+        boolean has = r.nextBoolean();
+        setWhiteStatus(has, has && r.nextInt(9) + 1 == 9);
+
         // assign chosen variant and finish the method
-        WhippetVariant variant = WhippetVariant.byId(var);
-        setVariant(variant);
+        setVariant(WhippetVariant.byId(var));
+        setWhiteVariant(Util.getRandom(ThreeWhiteVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -373,6 +360,18 @@ public class WhippetEntity extends AbstractDog {
 
     private void setVariant(WhippetVariant variant) {
         this.entityData.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public ThreeWhiteVariant getWhiteVariant() {
+        return ThreeWhiteVariant.byId(this.getWhiteValue() & 255);
+    }
+
+    private int getWhiteValue() {
+        return this.entityData.get(WHITE_VARIANT);
+    }
+
+    private void setWhiteVariant(ThreeWhiteVariant variant) {
+        this.entityData.set(WHITE_VARIANT, variant.getId() & 255);
     }
 
     public boolean isRedCarrier() {
@@ -404,9 +403,14 @@ public class WhippetEntity extends AbstractDog {
     public boolean hasWhite() {
         return this.entityData.get(HAS_WHITE);
     }
+    
+    public boolean isPureWhite() {
+        return this.entityData.get(PURE_WHITE);
+    }
 
-    private void setWhite(boolean has) {
+    private void setWhiteStatus(boolean has, boolean is) {
         this.entityData.set(HAS_WHITE, has);
+        this.entityData.set(PURE_WHITE, is);
     }
 
     private void determineBabyVariant(WhippetEntity baby, WhippetEntity otherParent) {
@@ -468,57 +472,63 @@ public class WhippetEntity extends AbstractDog {
         }
 
         // determine if baby is white, has white markings, or is solid colored
-        boolean isWhite;
-        if (this.getVariant() == WhippetVariant.WHITE && otherParent.getVariant() == WhippetVariant.WHITE) {
+        if (this.isPureWhite() && otherParent.isPureWhite()) {
             // if both parents are white, baby will be white
-            isWhite = true;
-            baby.setWhite(true);
-        } else if ((this.getVariant() == WhippetVariant.WHITE && otherParent.hasWhite()) ||
-                (this.hasWhite() && otherParent.getVariant() == WhippetVariant.WHITE)) {
+            baby.setWhiteStatus(true, true);
+        } else if ((this.isPureWhite() && otherParent.hasWhite()) ||
+                (this.hasWhite() && otherParent.isPureWhite())) {
             // if one parent is white and one parent has white markings, baby has 50% chance to be white and
             // 50% chance to have white markings
-            isWhite = this.random.nextBoolean();
-            baby.setWhite(true);
-        } else if (this.getVariant() == WhippetVariant.WHITE || otherParent.getVariant() == WhippetVariant.WHITE) {
+            baby.setWhiteStatus(true, this.random.nextBoolean());
+        } else if (this.isPureWhite() || otherParent.isPureWhite()) {
             // if one parent is white and the other has no white markings, baby will have white markings
-            isWhite = false;
-            baby.setWhite(true);
+            baby.setWhiteStatus(true, false);
         } else if (this.hasWhite() && otherParent.hasWhite()) {
             // if both parents have white markings, baby has 25% chance to have no white, 50% chance to have
             // white markings, and 25% chance to be white
             int determine = this.random.nextInt(4) + 1;
-            if (determine == 1) {
-                isWhite = false;
-                baby.setWhite(false);
-            } else {
-                isWhite = determine == 4;
-                baby.setWhite(true);
-            }
+            baby.setWhiteStatus(determine > 1, determine == 4);
         } else if (this.hasWhite() || otherParent.hasWhite()) {
             // if only one parent has white markings, baby has 50/50 chance to have white markings
-            isWhite = false;
-            baby.setWhite(this.random.nextBoolean());
+            baby.setWhiteStatus(this.random.nextBoolean(), false);
         } else {
             // if neither parent has white markings, baby will not have white markings
-            isWhite = false;
-            baby.setWhite(false);
+            baby.setWhiteStatus(false, false);
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (isWhite) {
-            baby.setVariant(WhippetVariant.WHITE);
-        } else if (baby.hasWhite() && baby.isBlue()) {
-            baby.setVariant(WhippetVariant.WHITE_BLUE);
-        } else if (baby.hasWhite() && baby.isRed()) {
-            baby.setVariant(WhippetVariant.WHITE_RED);
-        } else if (baby.hasWhite()) {
-            baby.setVariant(WhippetVariant.WHITE_BLACK);
-        } else if (baby.isBlue()) {
+        if (baby.isBlue()) {
             baby.setVariant(WhippetVariant.BLUE);
         } else if (baby.isRed()) {
             baby.setVariant(WhippetVariant.RED);
         } else {
             baby.setVariant(WhippetVariant.BLACK);
+        }
+
+        // determine baby's white pattern
+        if ((this.hasWhite() && !this.isPureWhite()) && (otherParent.hasWhite() && !otherParent.isPureWhite())) {
+            if (this.getWhiteVariant() == ThreeWhiteVariant.WHITE2 &&
+                    otherParent.getWhiteVariant() == ThreeWhiteVariant.WHITE2) {
+                int determine = this.random.nextInt(4) + 1;
+                if (determine < 3) {
+                    baby.setWhiteVariant(ThreeWhiteVariant.WHITE2);
+                } else if (determine < 4) {
+                    baby.setWhiteVariant(ThreeWhiteVariant.WHITE1);
+                } else {
+                    baby.setWhiteVariant(ThreeWhiteVariant.WHITE3);
+                }
+            } else if (this.getWhiteVariant() == otherParent.getWhiteVariant()) {
+                baby.setWhiteVariant(this.getWhiteVariant());
+            } else if ((this.getWhiteVariant() == ThreeWhiteVariant.WHITE2 ||
+                    otherParent.getWhiteVariant() == ThreeWhiteVariant.WHITE2)) {
+                if (this.random.nextBoolean()) {
+                    baby.setWhiteVariant(this.getWhiteVariant());
+                } else {
+                    baby.setWhiteVariant(otherParent.getWhiteVariant());
+                }
+            } else {
+                baby.setWhiteVariant(ThreeWhiteVariant.WHITE2);
+            }
         }
     }
 }

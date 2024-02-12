@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.WhippetModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.WhippetWhiteLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.WhippetCollarLayer;
 import com.kitnjinx.modogs.entity.custom.WhippetEntity;
 import com.kitnjinx.modogs.entity.variant.WhippetVariant;
@@ -23,14 +24,6 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
 
     public static final Map<WhippetVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(WhippetVariant.class), (var) -> {
-                var.put(WhippetVariant.WHITE_RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_red.png"));
-                var.put(WhippetVariant.WHITE_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_blue.png"));
-                var.put(WhippetVariant.WHITE_BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white_black.png"));
-                var.put(WhippetVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_white.png"));
                 var.put(WhippetVariant.RED,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_red.png"));
                 var.put(WhippetVariant.BLUE,
@@ -42,6 +35,7 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
     public WhippetRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new WhippetModel());
 
+        addRenderLayer(new WhippetWhiteLayer(this));
         addRenderLayer(new WhippetCollarLayer(this));
 
         this.shadowRadius = 0.45f;
