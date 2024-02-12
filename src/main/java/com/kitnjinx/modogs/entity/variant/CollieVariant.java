@@ -5,9 +5,7 @@ import java.util.Comparator;
 
 public enum CollieVariant {
     SABLE(0),
-    BLACK_TAN(1),
-    SABLE_MERLE(2),
-    BLUE_TAN_MERLE(3);
+    BLACK_TAN(1);
 
     private static final CollieVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(CollieVariant::getId)).toArray(CollieVariant[]::new);

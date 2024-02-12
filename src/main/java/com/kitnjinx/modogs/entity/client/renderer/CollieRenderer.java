@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.CollieModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.CollieMerleLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.CollieCollarLayer;
 import com.kitnjinx.modogs.entity.custom.CollieEntity;
 import com.kitnjinx.modogs.entity.variant.CollieVariant;
@@ -27,15 +28,12 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_sable.png"));
                 var.put(CollieVariant.BLACK_TAN,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_black_tan.png"));
-                var.put(CollieVariant.SABLE_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_sable_merle.png"));
-                var.put(CollieVariant.BLUE_TAN_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_blue_tan_merle.png"));
             });
 
     public CollieRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new CollieModel());
 
+        addRenderLayer(new CollieMerleLayer(this));
         addRenderLayer(new CollieCollarLayer(this));
 
         this.shadowRadius = 0.525f;

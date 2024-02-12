@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollieVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoMerleVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -45,6 +47,8 @@ public class CollieEntity extends AbstractDog {
             SynchedEntityData.defineId(CollieEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_MERLE =
             SynchedEntityData.defineId(CollieEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> MERLE_PATTERN =
+            SynchedEntityData.defineId(CollieEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -191,6 +195,7 @@ public class CollieEntity extends AbstractDog {
         this.entityData.set(IS_BLACK, tag.getBoolean("IsBlack"));
         this.entityData.set(CARRIES_BLACK, tag.getBoolean("CarriesBlack"));
         this.entityData.set(IS_MERLE, tag.getBoolean("IsMerle"));
+        this.entityData.set(MERLE_PATTERN, tag.getInt("MerlePattern"));
     }
 
     @Override
@@ -200,6 +205,7 @@ public class CollieEntity extends AbstractDog {
         tag.putBoolean("IsBlack", this.isBlack());
         tag.putBoolean("CarriesBlack", this.carriesBlack());
         tag.putBoolean("IsMerle", this.isMerle());
+        tag.putInt("MerlePattern", this.getMerleVariant());
     }
 
     @Override
@@ -209,6 +215,7 @@ public class CollieEntity extends AbstractDog {
         this.entityData.define(IS_BLACK, false);
         this.entityData.define(CARRIES_BLACK, false);
         this.entityData.define(IS_MERLE, false);
+        this.entityData.define(MERLE_PATTERN, 0);
     }
 
     @Override
@@ -239,29 +246,19 @@ public class CollieEntity extends AbstractDog {
         int var;
 
         // if statement gives weighted chances to different variants
-        if (merle < 5) {
-            setMerle(false);
-            if (determine < 6) {
-                var = 0; // SABLE
-                setBlackStatus(carrier == 4, false);
-            } else {
-                var = 1; // BLACK_TAN
-                setBlackStatus(true, true);
-            }
+        if (determine < 6) {
+            var = 0; // SABLE
+            setBlackStatus(carrier == 4, false);
         } else {
-            setMerle(true);
-            if (determine < 6) {
-                var = 2; // SABLE_MERLE
-                setBlackStatus(carrier == 4, false);
-            } else {
-                var = 3; // BLUE_TAN_MERLE
-                setBlackStatus(true, true);
-            }
+            var = 1; // BLACK_TAN
+            setBlackStatus(true, true);
         }
 
+        setMerle(merle == 5);
+
         // assign chosen variant and finish the method
-        CollieVariant variant = CollieVariant.byId(var);
-        setVariant(variant);
+        setVariant(CollieVariant.byId(var));
+        setMerlePattern(Util.getRandom(TwoMerleVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -298,6 +295,18 @@ public class CollieEntity extends AbstractDog {
 
     private void setMerle(boolean status) {
         this.entityData.set(IS_MERLE, status);
+    }
+
+    public TwoMerleVariant getMerlePattern() {
+        return TwoMerleVariant.byId(this.getMerleVariant() & 255);
+    }
+
+    private int getMerleVariant() {
+        return this.entityData.get(MERLE_PATTERN);
+    }
+
+    private void setMerlePattern(TwoMerleVariant variant) {
+        this.entityData.set(MERLE_PATTERN, variant.getId() & 255);
     }
 
     private void determineBabyVariant(CollieEntity baby, CollieEntity otherParent) {
@@ -338,14 +347,17 @@ public class CollieEntity extends AbstractDog {
         }
 
         // determine baby's phenotype (TYPE_VARIANT)
-        if (baby.isMerle() && baby.isBlack()) {
-            baby.setVariant(CollieVariant.BLUE_TAN_MERLE);
-        } else if (baby.isMerle()) {
-            baby.setVariant(CollieVariant.SABLE_MERLE);
-        } else if (baby.isBlack()) {
+        if (baby.isBlack()) {
             baby.setVariant(CollieVariant.BLACK_TAN);
         } else {
             baby.setVariant(CollieVariant.SABLE);
+        }
+
+        // determine baby's merle variant
+        if (this.isMerle() && otherParent.isMerle() && this.getMerlePattern() == otherParent.getMerlePattern()) {
+            baby.setMerlePattern(this.getMerlePattern());
+        } else {
+            baby.setMerlePattern(Util.getRandom(TwoMerleVariant.values(), this.random));
         }
     }
 }
