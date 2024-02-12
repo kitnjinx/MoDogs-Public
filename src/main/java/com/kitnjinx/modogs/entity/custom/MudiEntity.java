@@ -4,7 +4,9 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.MudiVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
+import com.kitnjinx.modogs.entity.variant.pattern_variation.TwoMerleVariant;
 import com.kitnjinx.modogs.item.ModItems;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -47,6 +49,8 @@ public class MudiEntity extends AbstractDog {
             SynchedEntityData.defineId(MudiEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_MERLE =
             SynchedEntityData.defineId(MudiEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> MERLE_PATTERN =
+            SynchedEntityData.defineId(MudiEntity.class, EntityDataSerializers.INT);
 
     // this method controls what animals a dog will hunt
     public static final Predicate<LivingEntity> PREY_SELECTOR = prey -> {
@@ -229,6 +233,7 @@ public class MudiEntity extends AbstractDog {
         this.entityData.set(CARRIES_BROWN, tag.getBoolean("CarriesBrown"));
         this.entityData.set(CARRIES_WHITE, tag.getBoolean("CarriesWhite"));
         this.entityData.set(HAS_MERLE, tag.getBoolean("HasMerle"));
+        this.entityData.set(MERLE_PATTERN, tag.getInt("MerlePattern"));
     }
 
     @Override
@@ -239,6 +244,7 @@ public class MudiEntity extends AbstractDog {
         tag.putBoolean("CarriesBrown", this.carriesBrown());
         tag.putBoolean("CarriesWhite", this.carriesWhite());
         tag.putBoolean("HasMerle", this.hasMerle());
+        tag.putInt("MerlePattern", this.getMerleVariant());
     }
 
     @Override
@@ -249,6 +255,7 @@ public class MudiEntity extends AbstractDog {
         this.entityData.define(CARRIES_BROWN, false);
         this.entityData.define(CARRIES_WHITE, false);
         this.entityData.define(HAS_MERLE, false);
+        this.entityData.define(MERLE_PATTERN, 0);
     }
 
     @Override
@@ -277,27 +284,17 @@ public class MudiEntity extends AbstractDog {
 
         // if statement gives weighted chances to different variants
         if (determine < 8) {
+            var = 0; // BLACK
+            setMerle(r.nextBoolean());
             setBrownStatus(carrier == 1, false);
             setWhite(carrier == 2);
-            if (r.nextBoolean()) {
-                var = 0; // BLACK
-                setMerle(false);
-            } else {
-                var = 1; // BLACK_MERLE
-                setMerle(true);
-            }
         } else if (determine < 10) {
+            var = 1; // BROWN
+            setMerle(r.nextInt(5) + 1 == 5);
             setBrownStatus(true, true);
             setWhite(carrier == 1);
-            if (r.nextInt(5) + 1 < 5) {
-                var = 2; // BROWN
-                setMerle(false);
-            } else {
-                var = 3; // BROWN_MERLE
-                setMerle(true);
-            }
         } else {
-            var = 4; // WHITE
+            var = 2; // WHITE
             setWhite(true);
             if (r.nextInt(5) + 1 < 5) {
                 setBrownStatus(carrier == 1, false);
@@ -309,8 +306,8 @@ public class MudiEntity extends AbstractDog {
         }
 
         // assign chosen variant and finish the method
-        MudiVariant variant = MudiVariant.byId(var);
-        setVariant(variant);
+        setVariant(MudiVariant.byId(var));
+        setMerlePattern(Util.getRandom(TwoMerleVariant.values(), this.random));
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
         return super.finalizeSpawn(level, difficulty, spawn, group, tag);
@@ -355,6 +352,18 @@ public class MudiEntity extends AbstractDog {
 
     private void setMerle(boolean has) {
         this.entityData.set(HAS_MERLE, has);
+    }
+
+    public TwoMerleVariant getMerlePattern() {
+        return TwoMerleVariant.byId(this.getMerleVariant() & 255);
+    }
+
+    private int getMerleVariant() {
+        return this.entityData.get(MERLE_PATTERN);
+    }
+
+    private void setMerlePattern(TwoMerleVariant variant) {
+        this.entityData.set(MERLE_PATTERN, variant.getId() & 255);
     }
 
     private void determineBabyVariant(MudiEntity baby, MudiEntity otherParent) {
@@ -429,14 +438,18 @@ public class MudiEntity extends AbstractDog {
         // determine baby's phenotype (TYPE_VARIANT)
         if (isWhite) {
             baby.setVariant(MudiVariant.WHITE);
-        } else if (baby.hasMerle() && baby.isBrown()) {
-            baby.setVariant(MudiVariant.BROWN_MERLE);
-        } else if (baby.hasMerle()) {
-            baby.setVariant(MudiVariant.BLACK_MERLE);
         } else if (baby.isBrown()) {
             baby.setVariant(MudiVariant.BROWN);
         } else {
             baby.setVariant(MudiVariant.BLACK);
+        }
+
+        // determine baby's merle pattern
+        if (this.hasMerle() && otherParent.hasMerle() && baby.hasMerle() &&
+                this.getMerlePattern() == otherParent.getMerlePattern()) {
+            baby.setMerlePattern(this.getMerlePattern());
+        } else {
+            baby.setMerlePattern(Util.getRandom(TwoMerleVariant.values(), baby.random));
         }
     }
 }

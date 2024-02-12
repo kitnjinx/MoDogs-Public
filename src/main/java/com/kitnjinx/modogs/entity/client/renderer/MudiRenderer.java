@@ -3,6 +3,7 @@ package com.kitnjinx.modogs.entity.client.renderer;
 import com.google.common.collect.Maps;
 import com.kitnjinx.modogs.MoDogs;
 import com.kitnjinx.modogs.entity.client.model.MudiModel;
+import com.kitnjinx.modogs.entity.client.renderer.layer.MudiMerleLayer;
 import com.kitnjinx.modogs.entity.client.renderer.layer.collar.MudiCollarLayer;
 import com.kitnjinx.modogs.entity.custom.MudiEntity;
 import com.kitnjinx.modogs.entity.variant.MudiVariant;
@@ -25,12 +26,8 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
             Util.make(Maps.newEnumMap(MudiVariant.class), (var) -> {
                 var.put(MudiVariant.BLACK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_black.png"));
-                var.put(MudiVariant.BLACK_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_black_merle.png"));
                 var.put(MudiVariant.BROWN,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_brown.png"));
-                var.put(MudiVariant.BROWN_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_brown_merle.png"));
                 var.put(MudiVariant.WHITE,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_white.png"));
             });
@@ -38,6 +35,7 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
     public MudiRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new MudiModel());
 
+        addRenderLayer(new MudiMerleLayer(this));
         addRenderLayer(new MudiCollarLayer(this));
 
         this.shadowRadius = 0.4f;

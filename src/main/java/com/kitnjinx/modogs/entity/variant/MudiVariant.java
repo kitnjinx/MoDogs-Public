@@ -5,10 +5,8 @@ import java.util.Comparator;
 
 public enum MudiVariant {
     BLACK(0),
-    BLACK_MERLE(1),
-    BROWN(2),
-    BROWN_MERLE(3),
-    WHITE(4);
+    BROWN(1),
+    WHITE(2);
 
     private static final MudiVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(MudiVariant::getId)).toArray(MudiVariant[]::new);
