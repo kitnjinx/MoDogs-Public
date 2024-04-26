@@ -26,7 +26,6 @@ public class VillageAddition {
     /**
      * Adds the building to the targeted pool.
      * We will call this in addNewVillageBuilding method further down to add to every village.
-     *
      * Note: This is an additive operation which means multiple mods can do this and they stack with each other safely.
      */
     private static void addBuildingToPool(Registry<StructureTemplatePool> templatePoolRegistry,
@@ -70,29 +69,31 @@ public class VillageAddition {
      */
     @SubscribeEvent
     public static void addNewVillageBuilding(final ServerAboutToStartEvent event) {
-            Registry<StructureTemplatePool> templatePoolRegistry = event.getServer().registryAccess().registry(Registries.TEMPLATE_POOL).orElseThrow();
+        Registry<StructureTemplatePool> templatePoolRegistry = event.getServer().registryAccess().registry(Registries.TEMPLATE_POOL).orElseThrow();
         Registry<StructureProcessorList> processorListRegistry = event.getServer().registryAccess().registry(Registries.PROCESSOR_LIST).orElseThrow();
 
         // Adds our piece to all village houses pool
         // Note, the resourcelocation is getting the pool files from the data folder. Not assets folder.
+
+        // below commands add dog shelters
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/plains/houses"),
-                "modogs:plains_dog_shelter", 500);
+                "modogs:plains_dog_shelter", 100);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/snowy/houses"),
-                "modogs:snowy_dog_shelter", 250);
+                "modogs:snowy_dog_shelter", 300);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/savanna/houses"),
-                "modogs:savanna_dog_shelter", 500);
+                "modogs:savanna_dog_shelter", 100);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/taiga/houses"),
-                "modogs:taiga_dog_shelter", 250);
+                "modogs:taiga_dog_shelter", 50);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/desert/houses"),
-                "modogs:desert_dog_shelter", 500);
+                "modogs:desert_dog_shelter", 250);
     }
 }
