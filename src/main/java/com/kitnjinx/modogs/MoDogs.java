@@ -61,6 +61,7 @@ public class MoDogs {
 
             event.accept(ModItems.GENE_TESTER);
             event.accept(ModItems.GENO_READER);
+            event.accept(ModItems.PAPER_STRIP);
 
             event.accept(ModItems.WHITE_COLLAR);
             event.accept(ModItems.LIGHT_GRAY_COLLAR);

@@ -12,6 +12,7 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> DOG_TREAT = tag("dog_treat");
         public static final TagKey<Item> HEALING_TREAT_INGREDIENT = tag("healing_treat_ingredient");
+        public static final TagKey<Item> PAPER_STRIPS = tag("paper_strips");
         public static final TagKey<Item> COLLAR = tag("collar");
         public static final TagKey<Item> REINFORCED_COLLAR = tag("reinforced_collar");
         public static final TagKey<Item> GOLD_PLATED_COLLAR = tag("gold_plated_collar");

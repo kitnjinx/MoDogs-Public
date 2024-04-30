@@ -36,11 +36,15 @@ public class ModItems {
     public static final RegistryObject<Item> HEALING_TREAT = ITEMS.register("healing_treat",
             () -> new Item(new Item.Properties()));
 
-    /* GENE TESTING */
+    /* GENE TESTING AND RELATED */
     public static final RegistryObject<Item> GENE_TESTER = ITEMS.register("gene_tester",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GENO_READER = ITEMS.register("geno_reader",
             () -> new GenoReaderItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> PAPER_STRIP = ITEMS.register("paper_strip",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> USED_PAPER_STRIP = ITEMS.register("used_paper_strip",
+            () -> new Item(new Item.Properties()));
 
     /* DOG COLLARS */
     public static final RegistryObject<Item> WHITE_COLLAR = ITEMS.register("white_collar",
