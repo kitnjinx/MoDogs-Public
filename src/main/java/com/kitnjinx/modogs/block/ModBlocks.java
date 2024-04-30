@@ -1,6 +1,7 @@
 package com.kitnjinx.modogs.block;
 
 import com.kitnjinx.modogs.MoDogs;
+import com.kitnjinx.modogs.item.ModCreativeModeTab;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -20,6 +21,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CARE_STATION = registerBlock("care_station",
             () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2)));
+    public static final RegistryObject<Block> GENO_PRINTER = registerBlock("geno_printer",
+            () -> new GenoPrinterBlock(BlockBehaviour.Properties.of(Material.METAL).strength(5)
+                    .requiresCorrectToolForDrops().noOcclusion()));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

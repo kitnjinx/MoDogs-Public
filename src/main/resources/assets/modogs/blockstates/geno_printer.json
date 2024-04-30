@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "modogs:block/geno_printer"
+    },
+    "facing=south": {
+      "model": "modogs:block/geno_printer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "modogs:block/geno_printer",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "modogs:block/geno_printer",
+      "y": 90
+    }
+  }
+}
