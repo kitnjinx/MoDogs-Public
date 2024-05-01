@@ -166,6 +166,7 @@ public class MoDogs {
             event.accept(ModItems.PINK_NETHERITE_LACED_COLLAR);
 
             event.accept(ModBlocks.CARE_STATION);
+            event.accept(ModBlocks.GENO_PRINTER);
         }
 
         if (event.getTab() == ModCreativeModeTab.MODOGS_SPAWNER_TAB) {
