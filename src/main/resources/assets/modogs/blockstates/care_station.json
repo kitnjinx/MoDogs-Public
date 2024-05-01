@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "modogs:block/care_station" }
+    "facing=north": {
+      "model": "modogs:block/care_station",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "modogs:block/care_station"
+    },
+    "facing=west": {
+      "model": "modogs:block/care_station",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "modogs:block/care_station",
+      "y": 270
+    }
   }
 }

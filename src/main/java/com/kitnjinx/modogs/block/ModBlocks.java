@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MoDogs.MOD_ID);
 
     public static final RegistryObject<Block> CARE_STATION = registerBlock("care_station",
-            () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2)));
+            () -> new CareStationBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2)));
     public static final RegistryObject<Block> GENO_PRINTER = registerBlock("geno_printer",
             () -> new GenoPrinterBlock(BlockBehaviour.Properties.of(Material.METAL).strength(5)
                     .requiresCorrectToolForDrops().noOcclusion()));

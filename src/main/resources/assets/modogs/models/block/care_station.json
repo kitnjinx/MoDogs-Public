@@ -8,5 +8,11 @@
     "west": "modogs:block/care_station_side",
     "up": "modogs:block/care_station_top",
     "down": "modogs:block/care_station_bottom"
+  },
+  "display": {
+    "gui": {
+      "rotation": [30, 29, 0],
+      "scale": [0.6, 0.6, 0.6]
+    }
   }
 }
