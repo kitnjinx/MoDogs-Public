@@ -151,6 +151,10 @@ public class GenoReaderItem extends Item {
         }
         return InteractionResultHolder.pass(player.getItemInHand(hand));
     }
+
+    public String getLastGeno() {
+        return LAST_GENO;
+    }
     
     /* METHODS FOR READING A DOG'S GENO */
     private String airedaleTerrierGeno(AiredaleTerrierEntity dog) {
