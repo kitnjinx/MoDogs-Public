@@ -79,8 +79,8 @@ public class GenoPrinterBlock extends HorizontalDirectionalBlock {
 
     @Nullable
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-        return new SimpleMenuProvider((p_48785_, p_48786_, p_48787_) ->
-                new GenoPrinterMenu(p_48785_, p_48786_,
+        return new SimpleMenuProvider((num, inventory, player) ->
+                new GenoPrinterMenu(num, inventory,
                         ContainerLevelAccess.create(level, pos)), Component.literal("Geno Printer"));
     }
 }
