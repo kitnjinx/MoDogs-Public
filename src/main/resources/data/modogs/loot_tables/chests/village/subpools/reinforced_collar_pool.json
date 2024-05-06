@@ -1,0 +1,78 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modogs:white_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_gray_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:gray_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:black_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:brown_reinforced_collar",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:red_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:orange_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:yellow_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:lime_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:green_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:cyan_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_blue_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:blue_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:purple_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:magenta_reinforced_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:pink_reinforced_collar"
+        }
+      ]
+    }
+  ]
+}

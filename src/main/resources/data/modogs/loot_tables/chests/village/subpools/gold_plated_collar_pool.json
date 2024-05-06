@@ -1,0 +1,78 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modogs:white_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_gray_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:gray_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:black_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:brown_gold_plated_collar",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:red_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:orange_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:yellow_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:lime_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:green_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:cyan_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_blue_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:blue_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:purple_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:magenta_gold_plated_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:pink_gold_plated_collar"
+        }
+      ]
+    }
+  ]
+}

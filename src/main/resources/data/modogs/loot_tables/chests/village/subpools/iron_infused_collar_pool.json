@@ -1,0 +1,74 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modogs:white_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_gray_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:gray_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:black_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:brown_iron_infused_collar",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:red_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:orange_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:yellow_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:lime_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:green_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:cyan_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_blue_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:blue_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:purple_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:magenta_iron_infused_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:pink_iron_infused_collar"
+        }
+      ]
+    }
+  ]
+}

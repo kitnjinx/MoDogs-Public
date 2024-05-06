@@ -1,0 +1,74 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modogs:white_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_gray_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:gray_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:black_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:brown_diamond_crusted_collar",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:red_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:orange_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:yellow_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:lime_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:green_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:cyan_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:light_blue_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:blue_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:purple_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:magenta_diamond_crusted_collar"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modogs:pink_diamond_crusted_collar"
+        }
+      ]
+    }
+  ]
+}
