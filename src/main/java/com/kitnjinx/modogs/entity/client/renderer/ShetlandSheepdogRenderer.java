@@ -30,7 +30,7 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
                 var.put(ShetlandSheepdogVariant.BLACK,
                         new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
                 var.put(ShetlandSheepdogVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
+                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png"));
             });
 
     public ShetlandSheepdogRenderer(EntityRendererProvider.Context renderManager) {
