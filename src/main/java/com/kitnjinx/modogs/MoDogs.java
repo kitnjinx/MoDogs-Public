@@ -5,6 +5,7 @@ import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.client.renderer.*;
 import com.kitnjinx.modogs.item.ModCreativeModeTab;
 import com.kitnjinx.modogs.item.ModItems;
+import com.kitnjinx.modogs.loot.ModLootModifiers;
 import com.kitnjinx.modogs.screens.GenoPrinterScreen;
 import com.kitnjinx.modogs.screens.ModMenuTypes;
 import com.kitnjinx.modogs.villager.ModVillagers;
@@ -37,6 +38,8 @@ public class MoDogs {
         ModVillagers.register(modEventBus);
 
         ModEntityTypes.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
 
         GeckoLib.initialize();
 
