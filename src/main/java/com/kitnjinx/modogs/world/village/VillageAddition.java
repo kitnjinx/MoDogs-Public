@@ -86,11 +86,11 @@ public class VillageAddition {
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/savanna/houses"),
-                "modogs:savanna_dog_shelter", 100);
+                "modogs:savanna_dog_shelter", 15);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/taiga/houses"),
-                "modogs:taiga_dog_shelter", 50);
+                "modogs:taiga_dog_shelter", 15);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/desert/houses"),
