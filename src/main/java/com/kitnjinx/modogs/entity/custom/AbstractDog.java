@@ -47,7 +47,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.UUID;
 
 public abstract class AbstractDog extends TamableAnimal implements GeoEntity, NeutralMob {
-    // animations
+    // animations & level access
     private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     // handles if the animal is sitting
@@ -129,7 +129,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if (item == ModItems.HEALING_TREAT.get()  && player.getUUID() != this.getPersistentAngerTarget() &&
                 this.getHealth() != this.getMaxHealth()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -144,7 +144,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -159,7 +159,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.REINFORCED_COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -174,7 +174,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.GOLD_PLATED_COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -189,7 +189,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.IRON_INFUSED_COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -204,7 +204,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.DIAMOND_CRUSTED_COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -219,7 +219,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(itemstack.is(ModTags.Items.NETHERITE_LACED_COLLAR) && this.getCollar() == CollarVariant.NONE
                 && this.isTame() && this.isOwnedBy(player)) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -234,7 +234,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
         if(this.getCollar() != CollarVariant.NONE && item == Items.SHEARS
                 && this.isTame() && this.isOwnedBy(player)) {
-            this.level.playSound(null, this, SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
+            this.level().playSound(null, this, SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1.0F, 1.0F);
 
             if (this.getArmor() == ArmorVariant.NONE) {
                 removeCollar();
@@ -261,7 +261,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
             return InteractionResult.PASS;
         }
 
-        if(isTame() && !this.level.isClientSide && hand == InteractionHand.MAIN_HAND && this.isOwnedBy(player)) {
+        if(isTame() && !this.level().isClientSide && hand == InteractionHand.MAIN_HAND && this.isOwnedBy(player)) {
             setSitting(!isSitting());
             return InteractionResult.SUCCESS;
 

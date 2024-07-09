@@ -1,13 +1,12 @@
 package com.kitnjinx.modogs.block;
 
 import com.kitnjinx.modogs.MoDogs;
-import com.kitnjinx.modogs.item.ModCreativeModeTab;
 import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -20,9 +19,10 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MoDogs.MOD_ID);
 
     public static final RegistryObject<Block> CARE_STATION = registerBlock("care_station",
-            () -> new CareStationBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2)));
+            () -> new CareStationBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)
+                    .strength(2)));
     public static final RegistryObject<Block> GENO_PRINTER = registerBlock("geno_printer",
-            () -> new GenoPrinterBlock(BlockBehaviour.Properties.of(Material.METAL).strength(5)
+            () -> new GenoPrinterBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL).strength(5)
                     .requiresCorrectToolForDrops().noOcclusion()));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {

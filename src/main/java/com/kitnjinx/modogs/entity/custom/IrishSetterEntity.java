@@ -5,7 +5,6 @@ import com.kitnjinx.modogs.entity.variant.ShadeVariant;
 import com.kitnjinx.modogs.entity.variant.ArmorVariant;
 import com.kitnjinx.modogs.entity.variant.CollarVariant;
 import com.kitnjinx.modogs.item.ModItems;
-import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,7 +19,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NonTameRandomTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -130,7 +128,7 @@ public class IrishSetterEntity extends AbstractDog {
         Item itemForTaming = ModItems.CHICKEN_TREAT.get();
 
         if (item == itemForTaming && !isTame()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -138,11 +136,11 @@ public class IrishSetterEntity extends AbstractDog {
                 }
 
                 if (this.random.nextInt(3) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
-                    if (!this.level.isClientSide) {
+                    if (!this.level().isClientSide) {
                         super.tame(player);
                         this.navigation.recomputePath();
                         this.setTarget(null);
-                        this.level.broadcastEntityEvent(this, (byte)7);
+                        this.level().broadcastEntityEvent(this, (byte)7);
                         setSitting(true);
                         this.setHealth(this.getMaxHealth());
                     }
@@ -153,7 +151,7 @@ public class IrishSetterEntity extends AbstractDog {
         }
 
         if (item == ModItems.GENE_TESTER.get()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 Component message;
                 if (this.getVariant() == ShadeVariant.LIGHT) {
                     message = Component.literal("This Irish Setter has the alleles for light fur.");

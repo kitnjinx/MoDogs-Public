@@ -1,6 +1,7 @@
 package com.kitnjinx.modogs.event;
 
 import com.kitnjinx.modogs.MoDogs;
+import com.kitnjinx.modogs.entity.custom.AbstractDog;
 import com.kitnjinx.modogs.entity.ModEntityTypes;
 import com.kitnjinx.modogs.entity.custom.*;
 import com.kitnjinx.modogs.item.ModItems;
@@ -8,7 +9,6 @@ import com.kitnjinx.modogs.villager.ModVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

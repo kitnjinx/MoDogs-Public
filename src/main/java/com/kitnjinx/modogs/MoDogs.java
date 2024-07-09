@@ -13,7 +13,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +31,7 @@ public class MoDogs {
     public MoDogs() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModeTab.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -56,8 +57,8 @@ public class MoDogs {
         });*/
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == ModCreativeModeTab.MODOGS_ITEMS_TAB) {
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTab() == ModCreativeModeTab.MODOGS_ITEMS_TAB.get()) {
             event.accept(ModItems.BACON_TREAT);
             event.accept(ModItems.BEEF_TREAT);
             event.accept(ModItems.CHICKEN_TREAT);
@@ -176,7 +177,7 @@ public class MoDogs {
             event.accept(ModBlocks.GENO_PRINTER);
         }
 
-        if (event.getTab() == ModCreativeModeTab.MODOGS_SPAWNER_TAB) {
+        if (event.getTab() == ModCreativeModeTab.MODOGS_SPAWNER_TAB.get()) {
             event.accept(ModItems.GERMAN_SHEPHERD_SPAWN_EGG);
             event.accept(ModItems.BORDER_COLLIE_SPAWN_EGG);
             event.accept(ModItems.GOLDEN_RETRIEVER_SPAWN_EGG);
