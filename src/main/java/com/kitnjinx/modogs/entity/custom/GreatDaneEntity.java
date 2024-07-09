@@ -32,7 +32,6 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 
-import java.awt.*;
 import java.util.Random;
 import java.util.function.Predicate;
 
@@ -137,7 +136,7 @@ public class GreatDaneEntity extends AbstractDog {
         Item itemForTaming = ModItems.BACON_TREAT.get();
 
         if (item == itemForTaming && !isTame()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -145,11 +144,11 @@ public class GreatDaneEntity extends AbstractDog {
                 }
 
                 if (this.random.nextInt(3) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
-                    if (!this.level.isClientSide) {
+                    if (!this.level().isClientSide) {
                         super.tame(player);
                         this.navigation.recomputePath();
                         this.setTarget(null);
-                        this.level.broadcastEntityEvent(this, (byte)7);
+                        this.level().broadcastEntityEvent(this, (byte)7);
                         setSitting(true);
                         this.setHealth(this.getMaxHealth());
                     }
@@ -160,7 +159,7 @@ public class GreatDaneEntity extends AbstractDog {
         }
 
         if (item == ModItems.GENE_TESTER.get()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 Component message;
                 if (this.getVariant() == GreatDaneVariant.FAWN) {
                     if (this.isBlue()) {

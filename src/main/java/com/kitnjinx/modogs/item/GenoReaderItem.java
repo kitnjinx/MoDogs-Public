@@ -1,5 +1,6 @@
 package com.kitnjinx.modogs.item;
 
+import com.kitnjinx.modogs.entity.custom.AbstractDog;
 import com.kitnjinx.modogs.entity.custom.*;
 import com.kitnjinx.modogs.entity.variant.*;
 import net.minecraft.network.chat.Component;
@@ -21,7 +22,7 @@ public class GenoReaderItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
-        if (player.level.isClientSide && target instanceof AbstractDog) {
+        if (player.level().isClientSide && target instanceof AbstractDog) {
             String testResult;
             if (target instanceof AiredaleTerrierEntity) {
                 testResult = airedaleTerrierGeno((AiredaleTerrierEntity) target);

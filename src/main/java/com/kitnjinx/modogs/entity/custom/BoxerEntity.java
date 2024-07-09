@@ -132,7 +132,7 @@ public class BoxerEntity extends AbstractDog {
         Item itemForTaming = ModItems.BEEF_TREAT.get();
 
         if (item == itemForTaming && !isTame()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 return InteractionResult.CONSUME;
             } else {
                 if (!player.getAbilities().instabuild) {
@@ -140,11 +140,11 @@ public class BoxerEntity extends AbstractDog {
                 }
 
                 if (this.random.nextInt(3) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
-                    if (!this.level.isClientSide) {
+                    if (!this.level().isClientSide) {
                         super.tame(player);
                         this.navigation.recomputePath();
                         this.setTarget(null);
-                        this.level.broadcastEntityEvent(this, (byte)7);
+                        this.level().broadcastEntityEvent(this, (byte)7);
                         setSitting(true);
                         this.setHealth(this.getMaxHealth());
                     }
@@ -155,7 +155,7 @@ public class BoxerEntity extends AbstractDog {
         }
 
         if (item == ModItems.GENE_TESTER.get()) {
-            if (this.level.isClientSide) {
+            if (this.level().isClientSide) {
                 Component message;
                 if (this.getVariant() == BoxerVariant.BLACK) {
                     if (this.getShade() == 0) {

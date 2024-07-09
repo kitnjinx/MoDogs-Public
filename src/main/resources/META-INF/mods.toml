@@ -61,6 +61,6 @@ Ever want a loyal companion to join you on your adventures? Say no more! Mo'Dogs
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.19,1.20)"
+    versionRange="[1.20,1.20.1)"
     ordering="NONE"
     side="BOTH"

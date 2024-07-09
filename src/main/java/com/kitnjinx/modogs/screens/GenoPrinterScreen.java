@@ -2,6 +2,7 @@ package com.kitnjinx.modogs.screens;
 
 import com.kitnjinx.modogs.MoDogs;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,30 +19,25 @@ public class GenoPrinterScreen extends ItemCombinerScreen<GenoPrinterMenu> {
     }
 
     @Override
-    protected void init() {
-        super.init();
-    }
-
-    @Override
-    protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pX, int pY) {
-        super.renderBg(pPoseStack, pPartialTick, pX, pY);
-        blit(pPoseStack, this.leftPos + 59, this.topPos + 20, 0,
+    protected void renderBg(GuiGraphics graphics, float pPartialTick, int pX, int pY) {
+        super.renderBg(graphics, pPartialTick, pX, pY);
+        graphics.blit(TEXTURE, this.leftPos + 59, this.topPos + 20, 0,
                 this.imageHeight + (this.menu.getSlot(0).hasItem() ? 0 : 16),
                 110, 16);
     }
 
     @Override
-    protected void renderErrorIcon(PoseStack pPoseStack, int pX, int pY) {
+    protected void renderErrorIcon(GuiGraphics graphics, int pX, int pY) {
         if ((this.menu.getSlot(0).hasItem() && this.menu.getSlot(1).hasItem()) &&
                 !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
-            blit(pPoseStack, pX + 99, pY + 45, this.imageWidth, 0, 28, 21);
+            graphics.blit(TEXTURE, pX + 99, pY + 45, this.imageWidth, 0, 28, 21);
         }
     }
 
     @Override
-    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
-        renderBackground(poseStack);
-        super.render(poseStack, mouseX, mouseY, partialTick);
-        renderTooltip(poseStack, mouseX, mouseY);
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        renderBackground(graphics);
+        super.render(graphics, mouseX, mouseY, partialTick);
+        renderTooltip(graphics, mouseX, mouseY);
     }
 }
