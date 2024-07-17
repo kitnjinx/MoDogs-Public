@@ -1,7 +1,6 @@
 package com.kitnjinx.modogs.screens;
 
 import com.kitnjinx.modogs.MoDogs;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.network.chat.Component;

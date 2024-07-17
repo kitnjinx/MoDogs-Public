@@ -37,7 +37,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraft.world.scores.Team;
+import net.minecraft.world.scores.PlayerTeam;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -307,7 +307,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
     }
 
     @Override
-    public Team getTeam() {
+    public PlayerTeam getTeam() {
         return super.getTeam();
     }
 

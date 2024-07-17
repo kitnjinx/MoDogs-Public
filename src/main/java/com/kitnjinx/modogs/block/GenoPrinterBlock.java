@@ -1,6 +1,7 @@
 package com.kitnjinx.modogs.block;
 
 import com.kitnjinx.modogs.screens.GenoPrinterMenu;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -30,9 +31,15 @@ import javax.annotation.Nullable;
 
 public class GenoPrinterBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final MapCodec<GenoPrinterBlock> CODEC = simpleCodec(GenoPrinterBlock::new);
 
     public GenoPrinterBlock(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 
     private static final VoxelShape BASE = Block.box(0, 0, 0, 16, 15, 16);

@@ -5,8 +5,10 @@ import com.kitnjinx.modogs.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,11 +21,13 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, MoDogs.MOD_ID);
 
     public static final RegistryObject<Block> CARE_STATION = registerBlock("care_station",
-            () -> new CareStationBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)
-                    .strength(2)));
+            () -> new CareStationBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+                    .instrument(NoteBlockInstrument.BASS).strength(2F).sound(SoundType.WOOD).
+                    ignitedByLava()));
     public static final RegistryObject<Block> GENO_PRINTER = registerBlock("geno_printer",
-            () -> new GenoPrinterBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL).strength(5)
-                    .requiresCorrectToolForDrops().noOcclusion()));
+            () -> new GenoPrinterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .requiresCorrectToolForDrops().strength(5F, 1200.0F)
+                    .sound(SoundType.METAL).noOcclusion()));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
