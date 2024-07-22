@@ -24,12 +24,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -79,7 +78,7 @@ public class BloodhoundEntity extends AbstractDog {
         // Determines if the baby is tamed based on parent
         if (this.isTame()) {
             baby.setOwnerUUID(this.getOwnerUUID());
-            baby.setTame(true);
+            baby.setTame(true, true);
         }
 
         baby.setCollar(CollarVariant.NONE);
@@ -88,34 +87,21 @@ public class BloodhoundEntity extends AbstractDog {
         return baby;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        if (this.isSitting()) {
-            state.getController().setAnimation(RawAnimation.begin().then("animation.bloodhound.sitting", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        if (this.isAngry() || this.isAggressive() && state.isMoving()) {
-            state.getController().setAnimation(RawAnimation.begin().then("animation.bloodhound.angrywalk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        if (state.isMoving()) {
-            state.getController().setAnimation(RawAnimation.begin().then("animation.bloodhound.walk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        if (this.isAngry() || this.isAggressive()) {
-            state.getController().setAnimation(RawAnimation.begin().then("animation.bloodhound.angryidle", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        state.getController().setAnimation(RawAnimation.begin().then("animation.bloodhound.idle", Animation.LoopType.LOOP));
-        return PlayState.CONTINUE;
-    }
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<GeoAnimatable>(this, "controller",
-                0, this::predicate));
+        RawAnimation sitting = RawAnimation.begin().thenLoop("animation.bloodhound.sitting");
+        RawAnimation angryWalk = RawAnimation.begin().thenLoop("animation.bloodhound.angrywalk");
+        RawAnimation walk = RawAnimation.begin().thenLoop("animation.bloodhound.walk");
+        RawAnimation angryIdle = RawAnimation.begin().thenLoop("animation.bloodhound.angryidle");
+        RawAnimation idle = RawAnimation.begin().thenLoop("animation.bloodhound.idle");
+
+        controllers.add(
+                new AnimationController<>(this, 10, state ->
+                        state.setAndContinue(this.isSitting() ? sitting :
+                                (this.isAngry() || this.isAggressive() && state.isMoving()) ? angryWalk :
+                                        state.isMoving() ? walk :(this.isAngry() || this.isAggressive()) ?
+                                                angryIdle : idle))
+        );
     }
 
     protected float getSoundVolume(){
@@ -138,7 +124,7 @@ public class BloodhoundEntity extends AbstractDog {
                     itemstack.shrink(1);
                 }
 
-                if (this.random.nextInt(3) == 0 && !ForgeEventFactory.onAnimalTame(this, player)) {
+                if (this.random.nextInt(3) == 0 && !EventHooks.onAnimalTame(this, player)) {
                     if (!this.level().isClientSide) {
                         super.tame(player);
                         this.navigation.recomputePath();
@@ -200,32 +186,32 @@ public class BloodhoundEntity extends AbstractDog {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_ID_TYPE_VARIANT, 0);
-        this.entityData.define(CARRIER, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ID_TYPE_VARIANT, 0);
+        builder.define(CARRIER, 0);
     }
 
     @Override
-    public void setTame (boolean tamed) {
-        super.setTame(tamed);
-        if (tamed) {
-            getAttribute(Attributes.MAX_HEALTH).setBaseValue(22.0);
-            getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(3D);
-            getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.45f);
-            getAttribute(Attributes.ATTACK_SPEED).setBaseValue(3.0);
-        } else {
-            getAttribute(Attributes.MAX_HEALTH).setBaseValue(20.0);
-            getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4D);
-            getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3f);
-            getAttribute(Attributes.ATTACK_SPEED).setBaseValue(2.0);
+    public void setTame (boolean tamed, boolean applyTamingSideEffects) {
+        super.setTame(tamed, applyTamingSideEffects);
+        if (applyTamingSideEffects) {
+            this.applyTamingSideEffects();
         }
     }
 
+    @Override
+    protected void applyTamingSideEffects() {
+        getAttribute(Attributes.MAX_HEALTH).setBaseValue(22.0);
+        getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(3D);
+        getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.45f);
+        getAttribute(Attributes.ATTACK_SPEED).setBaseValue(3.0);
+    }
+
     /* VARIANTS */
+    @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
-                                        MobSpawnType spawn, @Nullable SpawnGroupData group,
-                                        @Nullable CompoundTag tag) {
+                                        MobSpawnType spawn, @Nullable SpawnGroupData group) {
         // Variables for determining the variant
         Random r = new Random();
         int determine = r.nextInt(9) + 1;
@@ -259,7 +245,7 @@ public class BloodhoundEntity extends AbstractDog {
         setVariant(variant);
         setCollar(CollarVariant.NONE);
         setArmor(ArmorVariant.NONE);
-        return super.finalizeSpawn(level, difficulty, spawn, group, tag);
+        return super.finalizeSpawn(level, difficulty, spawn, group);
     }
 
     public BloodhoundVariant getVariant() {

@@ -1,19 +1,18 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:chicken_treat"
+      "id": "modogs:chicken_treat"
     },
     "title": "Dogs: A",
     "description": "Train dogs whose names begin with A",
+    "background": "minecraft:textures/block/barrel_side.png",
     "frame": "task",
     "show_toast": false,
-    "announce_to_chat": false,
-    "background": "minecraft:textures/block/barrel_side.png"
+    "announce_to_chat": false
   },
   "criteria": {
-    "consumed_item": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {}
+    "requirement": {
+      "trigger": "minecraft:consume_item"
     }
   }
 }

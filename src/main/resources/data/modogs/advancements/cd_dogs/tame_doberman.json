@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:doberman_spawn_egg"
+      "id": "modogs:doberman_spawn_egg"
     },
     "title": "Doberman Trainer",
     "description": "Tame a Doberman",

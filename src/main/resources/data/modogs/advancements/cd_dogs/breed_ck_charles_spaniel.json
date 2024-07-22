@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:ck_charles_spaniel_spawn_egg"
+      "id": "modogs:ck_charles_spaniel_spawn_egg"
     },
     "title": "Cavalier KC Spaniel Breeder",
     "description": "Breed a Cavalier King Charles Spaniel",

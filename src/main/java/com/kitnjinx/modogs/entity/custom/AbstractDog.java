@@ -10,7 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -24,6 +24,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
@@ -36,19 +37,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.scores.PlayerTeam;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.UUID;
 
 public abstract class AbstractDog extends TamableAnimal implements GeoEntity, NeutralMob {
     // animations & level access
-    private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
+    private AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
     // handles if the animal is sitting
     private static final EntityDataAccessor<Boolean> SITTING =
@@ -68,8 +71,8 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
     public AbstractDog(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
+        this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
+        this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, -1.0F);
     }
 
     protected void registerGoals() {
@@ -289,12 +292,12 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SITTING, false);
-        this.entityData.define(DATA_ID_COLLAR_VARIANT, 0);
-        this.entityData.define(DATA_ID_ARMOR_VARIANT, 0);
-        this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SITTING, false);
+        builder.define(DATA_ID_COLLAR_VARIANT, 0);
+        builder.define(DATA_ID_ARMOR_VARIANT, 0);
+        builder.define(DATA_REMAINING_ANGER_TIME, 0);
     }
 
     public void setSitting(boolean sitting) {
@@ -861,7 +864,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
 
     /* LOOT TABLES */
     @Override
-    public ResourceLocation getDefaultLootTable() {
+    public ResourceKey<LootTable> getDefaultLootTable() {
         if (this.getCollar() == CollarVariant.NONE) {
             return this.getType().getDefaultLootTable();
         } else if (this.getArmor() == ArmorVariant.NONE) {
@@ -984,8 +987,10 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
     }
 
     /* SPAWN PLACEMENTS */
-    public static boolean checkDogSpawnRules(EntityType<? extends AbstractDog> dog, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
-        return pPos.getY() > pLevel.getSeaLevel() && isBrightEnoughToSpawn(pLevel, pPos) && !isWater(pLevel, pPos);
+    public static boolean checkDogSpawnRules(EntityType<? extends AbstractDog> dog, LevelAccessor pLevel,
+                                             MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        return pPos.getY() > pLevel.getSeaLevel() && isBrightEnoughToSpawn(pLevel, pPos) &&
+                !isWater(pLevel, pPos);
     }
 
     private static boolean isWater(BlockGetter getter, BlockPos pos) {

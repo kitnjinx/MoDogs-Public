@@ -1,0 +1,16 @@
+{
+  "name": "Geno Printer",
+  "icon": "modogs:geno_printer",
+  "category": "modogs:getting_started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This block is particularly handy for being able to permanently note down a dog's geno on a piece of paper. Once you have a printer, all you need to do is insert your geno reader and a paper strip and print!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:geno_printer",
+      "title": "Geno Printer"
+    }
+  ]
+}

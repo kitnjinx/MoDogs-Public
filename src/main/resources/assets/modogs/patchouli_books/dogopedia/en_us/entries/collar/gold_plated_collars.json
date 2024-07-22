@@ -1,0 +1,30 @@
+{
+  "name": "Gold-Plated Collars",
+  "icon": "modogs:green_gold_plated_collar",
+  "category": "modogs:collar_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Golden collars might not look much different from normal collars, but they provide 9 Armor and 2 Armor Toughness for your dog!$(br2)To put one on a dog, simply interact with them with the collar in hand. To remove a collar, you'll need a pair of shears and to interact with the dog with the shears in hand."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:brown_gold_plated_collar",
+      "recipe2": "modogs:green_gold_plated_collar",
+      "title": "Crafting",
+      "text": "Any color of collar may be used."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In addition to being crafted in any color by using a regular collar of the desired color, any gold-plated collar may be dyed to another color with another dye!",
+      "title": "Dying"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:dye_gold_plated_collar_purple",
+      "recipe2": "modogs:dye_gold_plated_collar_blue",
+      "title": "Dying"
+    }
+  ],
+  "sortnum": 2
+}

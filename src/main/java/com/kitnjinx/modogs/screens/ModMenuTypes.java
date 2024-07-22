@@ -1,27 +1,23 @@
 package com.kitnjinx.modogs.screens;
 
 import com.kitnjinx.modogs.MoDogs;
-import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.network.IContainerFactory;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.MENU_TYPES, MoDogs.MOD_ID);
+            DeferredRegister.create(Registries.MENU, MoDogs.MOD_ID);
 
-    public static final RegistryObject<MenuType<GenoPrinterMenu>> GENO_PRINTER_MENU =
-            registerMenuType(GenoPrinterMenu::new, "geno_printer_menu");
+    public static final Supplier<MenuType<GenoPrinterMenu>> GENO_PRINTER_MENU = MENUS.register(
+            "geno_printer_menu", () -> new MenuType<>(GenoPrinterMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
-    private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType
-            (IContainerFactory<T> factory, String name) {
-        return MENUS.register(name, () -> IForgeMenuType.create(factory));
-    }
-
+    @SubscribeEvent
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);
     }

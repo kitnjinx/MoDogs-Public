@@ -7,25 +7,34 @@ import com.kitnjinx.modogs.entity.custom.*;
 import com.kitnjinx.modogs.item.ModItems;
 import com.kitnjinx.modogs.villager.ModVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 
 import java.util.List;
 
 public class ModEvents {
 
-    @Mod.EventBusSubscriber(modid = MoDogs.MOD_ID)
-    public static class ForgeEvents {
+    //@Mod(MoDogs.MOD_ID)
+    @EventBusSubscriber(modid = MoDogs.MOD_ID)
+    public class NeoForgeEvents {
         @SubscribeEvent
         public static void addCustomTrades(VillagerTradesEvent event) {
             /* LEVEL 1 (NOVICE) TRADES */
@@ -35,7 +44,7 @@ public class ModEvents {
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.MUTTON_TREAT.get(), 15),
+                        new ItemCost(ModItems.MUTTON_TREAT.get(), 15),
                         stack, 10, 2, 0.02f));
             }
 
@@ -45,7 +54,7 @@ public class ModEvents {
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.RABBIT_TREAT.get(), 15),
+                        new ItemCost(ModItems.RABBIT_TREAT.get(), 15),
                         stack, 10, 2, 0.02f));
             }
 
@@ -55,7 +64,7 @@ public class ModEvents {
                 int villagerLevel = 1;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.CHICKEN_TREAT.get(), 15),
+                        new ItemCost(ModItems.CHICKEN_TREAT.get(), 15),
                         stack, 10, 2, 0.02f));
             }
 
@@ -66,7 +75,7 @@ public class ModEvents {
                 int villagerLevel = 2;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.BEEF_TREAT.get(), 15),
+                        new ItemCost(ModItems.BEEF_TREAT.get(), 15),
                         stack, 10, 5, 0.02f));
             }
 
@@ -76,7 +85,7 @@ public class ModEvents {
                 int villagerLevel = 2;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 3),
+                        new ItemCost(Items.EMERALD, 3),
                         stack, 5, 10, 0.1f));
             }
 
@@ -87,7 +96,7 @@ public class ModEvents {
                 int villagerLevel = 3;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.SALMON_TREAT.get(), 15),
+                        new ItemCost(ModItems.SALMON_TREAT.get(), 15),
                         stack, 10, 10, 0.02f));
             }
 
@@ -97,7 +106,7 @@ public class ModEvents {
                 int villagerLevel = 3;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 6),
+                        new ItemCost(Items.EMERALD, 6),
                         stack, 5, 15, 0.1f));
             }
 
@@ -108,7 +117,7 @@ public class ModEvents {
                 int villagerLevel = 4;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(ModItems.BACON_TREAT.get(), 15),
+                        new ItemCost(ModItems.BACON_TREAT.get(), 15),
                         stack, 10, 15, 0.02f));
             }
 
@@ -118,7 +127,7 @@ public class ModEvents {
                 int villagerLevel = 4;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 12),
+                        new ItemCost(Items.EMERALD, 12),
                         stack, 5, 20, 0.1f));
             }
 
@@ -128,7 +137,7 @@ public class ModEvents {
                 int villagerLevel = 4;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 10),
+                        new ItemCost(Items.EMERALD, 10),
                         stack, 5, 20, 0.1f));
             }
 
@@ -139,7 +148,7 @@ public class ModEvents {
                 int villagerLevel = 5;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 18),
+                        new ItemCost(Items.EMERALD, 18),
                         stack, 5, 20, 0.2f));
             }
 
@@ -149,14 +158,15 @@ public class ModEvents {
                 int villagerLevel = 5;
 
                 trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
-                        new ItemStack(Items.EMERALD, 32),
+                        new ItemCost(Items.EMERALD, 32),
                         stack, 5, 20, 0.2f));
             }
         }
     }
 
-    @Mod.EventBusSubscriber(modid = MoDogs.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ModEventBusEvents {
+    //@Mod(MoDogs.MOD_ID)
+    @EventBusSubscriber(modid = MoDogs.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    public class ModEventBusEvents {
         @SubscribeEvent
         public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
             event.put(ModEntityTypes.GERMAN_SHEPHERD.get(), GermanShepherdEntity.setAttributes());
@@ -213,255 +223,305 @@ public class ModEvents {
 
         @SubscribeEvent
         public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
-            SpawnPlacements.register(ModEntityTypes.GERMAN_SHEPHERD.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.GERMAN_SHEPHERD.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BORDER_COLLIE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BORDER_COLLIE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.GOLDEN_RETRIEVER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.GOLDEN_RETRIEVER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.LAB_RETRIEVER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.LAB_RETRIEVER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.DACHSHUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.DACHSHUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.DALMATIAN.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.DALMATIAN.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.CARDIGAN_CORGI.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.CARDIGAN_CORGI.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.PEMBROKE_CORGI.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.PEMBROKE_CORGI.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.RUSSELL_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.RUSSELL_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.ALASKAN_MALAMUTE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.ALASKAN_MALAMUTE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BERNESE_MOUNTAIN_DOG.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BERNESE_MOUNTAIN_DOG.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.SAINT_BERNARD.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.SAINT_BERNARD.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BLOODHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BLOODHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BOXER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BOXER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.GREYHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.GREYHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.PIT_BULL.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.PIT_BULL.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.GREAT_DANE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.GREAT_DANE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.MASTIFF.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.MASTIFF.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.SHIBA_INU.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.SHIBA_INU.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.SHETLAND_SHEEPDOG.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.SHETLAND_SHEEPDOG.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BOSTON_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BOSTON_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.SCOTTISH_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.SCOTTISH_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.CK_CHARLES_SPANIEL.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.CK_CHARLES_SPANIEL.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.ITALIAN_GREYHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.ITALIAN_GREYHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.AUSTRALIAN_SHEPHERD.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BASENJI.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BASENJI.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.PUG.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.PUG.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.COCKER_SPANIEL.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.COCKER_SPANIEL.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BULL_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BULL_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.MINI_BULL_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.MINI_BULL_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.SCHNAUZER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.SCHNAUZER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.MINI_SCHNAUZER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.MINI_SCHNAUZER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.POODLE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.POODLE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.TOY_POODLE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.TOY_POODLE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.DOBERMAN.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.DOBERMAN.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.MINI_PINSCHER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.MINI_PINSCHER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.HUSKY.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.HUSKY.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.REDBONE_COONHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.REDBONE_COONHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.TREE_WALK_HOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.TREE_WALK_HOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.AIREDALE_TERRIER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.AIREDALE_TERRIER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.AMERICAN_FOXHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.AMERICAN_FOXHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BULLDOG.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BULLDOG.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.COLLIE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.COLLIE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    Animal::checkAnimalSpawnRules);
+                    Animal::checkAnimalSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.MUDI.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.MUDI.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.NORWEGIAN_ELKHOUND.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.BEAGLE.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.BEAGLE.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.ROTTWEILER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.ROTTWEILER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.IRISH_SETTER.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.IRISH_SETTER.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.GERMAN_SPITZ.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.GERMAN_SPITZ.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
 
-            SpawnPlacements.register(ModEntityTypes.WHIPPET.get(),
-                    SpawnPlacements.Type.ON_GROUND,
+            event.register(ModEntityTypes.WHIPPET.get(),
+                    SpawnPlacementTypes.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    AbstractDog::checkDogSpawnRules);
+                    AbstractDog::checkDogSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.AND);
         }
     }
 }

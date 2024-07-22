@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:italian_greyhound_spawn_egg"
+      "id": "modogs:italian_greyhound_spawn_egg"
     },
     "title": "Italian Greyhound Trainer",
     "description": "Tame an Italian Greyhound",

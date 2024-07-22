@@ -1,0 +1,30 @@
+{
+  "name": "Shiba Inu",
+  "icon": "modogs:shiba_inu_spawn_egg",
+  "category": "modogs:s_to_w_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Shiba Inus were originally bred for hunting small game.$(br2)Standing at just over half a block tall, these feisty dogs come in four different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/shiba_inu_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Shiba Inu"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found most commonly in jungles. They can also be found in old growth taigas, and more rarely in normal taigas.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:chicken_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Chicken or Rabbit Treat."
+    }
+  ]
+}

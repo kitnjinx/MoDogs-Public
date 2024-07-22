@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:mastiff_spawn_egg"
+      "id": "modogs:mastiff_spawn_egg"
     },
     "title": "Mastiff Trainer",
     "description": "Tame a Mastiff",

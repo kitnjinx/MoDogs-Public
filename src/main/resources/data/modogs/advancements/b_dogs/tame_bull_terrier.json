@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:bull_terrier_spawn_egg"
+      "id": "modogs:bull_terrier_spawn_egg"
     },
     "title": "Bull Terrier Trainer",
     "description": "Tame a Bull Terrier",

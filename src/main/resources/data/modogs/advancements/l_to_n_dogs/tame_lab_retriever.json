@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:lab_retriever_spawn_egg"
+      "id": "modogs:lab_retriever_spawn_egg"
     },
     "title": "Labrador Trainer",
     "description": "Tame a Labrador Retriever",

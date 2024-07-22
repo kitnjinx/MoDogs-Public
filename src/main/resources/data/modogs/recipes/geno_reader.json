@@ -17,7 +17,7 @@
     }
   },
   "result": {
-    "item": "modogs:geno_reader",
+    "id": "modogs:geno_reader",
     "count": 1
   }
 }

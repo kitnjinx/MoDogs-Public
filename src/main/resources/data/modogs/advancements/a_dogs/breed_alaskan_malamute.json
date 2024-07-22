@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:alaskan_malamute_spawn_egg"
+      "id": "modogs:alaskan_malamute_spawn_egg"
     },
     "title": "Alaskan Malamute Breeder",
     "description": "Breed a Alaskan Malamute",

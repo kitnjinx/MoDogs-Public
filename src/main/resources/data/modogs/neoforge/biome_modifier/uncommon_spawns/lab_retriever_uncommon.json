@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:frozen_river",
+    "minecraft:snowy_beach"
+  ],
+  "spawners": {
+    "type": "modogs:lab_retriever",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

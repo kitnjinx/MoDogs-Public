@@ -1,14 +1,14 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:rabbit_treat"
+      "id": "modogs:rabbit_treat"
     },
     "title": "Dog Trainer",
     "description": "Your dog training journey",
+    "background": "minecraft:textures/block/barrel_side.png",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
-    "background": "minecraft:textures/block/barrel_side.png"
+    "announce_to_chat": true
   },
   "criteria": {
     "bacon_treat": {
@@ -16,9 +16,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:bacon_treat"
-            ]
+            "items": "modogs:bacon_treat"
           }
         ]
       }
@@ -28,9 +26,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:beef_treat"
-            ]
+            "items": "modogs:beef_treat"
           }
         ]
       }
@@ -40,9 +36,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:chicken_treat"
-            ]
+            "items": "modogs:chicken_treat"
           }
         ]
       }
@@ -52,9 +46,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:mutton_treat"
-            ]
+            "items": "modogs:mutton_treat"
           }
         ]
       }
@@ -64,9 +56,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:rabbit_treat"
-            ]
+            "items": "modogs:rabbit_treat"
           }
         ]
       }
@@ -76,9 +66,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:salmon_treat"
-            ]
+            "items": "modogs:salmon_treat"
           }
         ]
       }

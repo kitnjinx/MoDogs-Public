@@ -1,0 +1,30 @@
+{
+  "name": "Pug",
+  "icon": "modogs:pug_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Pugs were originally bred to serve as companion dogs.$(br2)Standing at only about half a block tall, these loving dog come in two different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/pug_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Pug"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are found most commonly in birch forests. They can also be found in various taigas, and more rarely in flower forests.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:bacon_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Bacon Treat."
+    }
+  ]
+}

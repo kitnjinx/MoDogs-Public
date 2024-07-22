@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:mini_bull_terrier_spawn_egg"
+      "id": "modogs:mini_bull_terrier_spawn_egg"
     },
     "title": "Miniature Bull Terrier Breeder",
     "description": "Breed a Miniature Bull Terrier",

@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "modogs:healing_treat",
+    "id": "modogs:healing_treat",
     "count": 1
   }
 }

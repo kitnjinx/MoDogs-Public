@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:wooded_badlands",
+    "minecraft:eroded_badlands"
+  ],
+  "spawners": {
+    "type": "modogs:great_dane",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

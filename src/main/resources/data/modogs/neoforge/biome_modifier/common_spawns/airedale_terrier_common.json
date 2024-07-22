@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:meadow"
+  ],
+  "spawners": {
+    "type": "modogs:airedale_terrier",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

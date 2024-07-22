@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:australian_shepherd_spawn_egg"
+      "id": "modogs:australian_shepherd_spawn_egg"
     },
     "title": "Australian Shepherd Breeder",
     "description": "Breed a Australian Shepherd",

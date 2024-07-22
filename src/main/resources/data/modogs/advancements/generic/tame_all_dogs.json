@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:mutton_treat"
+      "id": "modogs:mutton_treat"
     },
     "title": "Ultimate Trainer",
     "description": "Tame all dogs",

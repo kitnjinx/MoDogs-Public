@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:flower_forest",
+    "minecraft:sparse_jungle"
+  ],
+  "spawners": {
+    "type": "modogs:bulldog",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

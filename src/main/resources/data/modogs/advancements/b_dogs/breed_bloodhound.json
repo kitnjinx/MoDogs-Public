@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:bloodhound_spawn_egg"
+      "id": "modogs:bloodhound_spawn_egg"
     },
     "title": "Bloodhound Breeder",
     "description": "Breed a Bloodhound",

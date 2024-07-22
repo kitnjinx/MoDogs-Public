@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:beef_treat"
+      "id": "modogs:beef_treat"
     },
     "title": "Ultimate Dog Breeder",
     "description": "Breed all dog breeds",

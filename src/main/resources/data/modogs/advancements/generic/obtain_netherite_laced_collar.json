@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:black_netherite_laced_collar"
+      "id": "modogs:black_netherite_laced_collar"
     },
     "title": "Ultimate Armor",
     "description": "The best armor available for your dog",
@@ -16,9 +16,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:white_netherite_laced_collar"
-            ]
+            "items": "modogs:white_netherite_laced_collar"
           }
         ]
       }
@@ -28,9 +26,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_gray_netherite_laced_collar"
-            ]
+            "items": "modogs:light_gray_netherite_laced_collar"
           }
         ]
       }
@@ -40,9 +36,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:gray_netherite_laced_collar"
-            ]
+            "items": "modogs:gray_netherite_laced_collar"
           }
         ]
       }
@@ -52,9 +46,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:black_netherite_laced_collar"
-            ]
+            "items": "modogs:black_netherite_laced_collar"
           }
         ]
       }
@@ -64,9 +56,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:brown_netherite_laced_collar"
-            ]
+            "items": "modogs:brown_netherite_laced_collar"
           }
         ]
       }
@@ -76,9 +66,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:red_netherite_laced_collar"
-            ]
+            "items": "modogs:red_netherite_laced_collar"
           }
         ]
       }
@@ -88,9 +76,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:orange_netherite_laced_collar"
-            ]
+            "items": "modogs:orange_netherite_laced_collar"
           }
         ]
       }
@@ -100,9 +86,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:yellow_netherite_laced_collar"
-            ]
+            "items": "modogs:yellow_netherite_laced_collar"
           }
         ]
       }
@@ -112,9 +96,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:lime_netherite_laced_collar"
-            ]
+            "items": "modogs:lime_netherite_laced_collar"
           }
         ]
       }
@@ -124,9 +106,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:green_netherite_laced_collar"
-            ]
+            "items": "modogs:green_netherite_laced_collar"
           }
         ]
       }
@@ -136,9 +116,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:cyan_netherite_laced_collar"
-            ]
+            "items": "modogs:cyan_netherite_laced_collar"
           }
         ]
       }
@@ -148,9 +126,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_blue_netherite_laced_collar"
-            ]
+            "items": "modogs:light_blue_netherite_laced_collar"
           }
         ]
       }
@@ -160,9 +136,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:blue_netherite_laced_collar"
-            ]
+            "items": "modogs:blue_netherite_laced_collar"
           }
         ]
       }
@@ -172,9 +146,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:purple_netherite_laced_collar"
-            ]
+            "items": "modogs:purple_netherite_laced_collar"
           }
         ]
       }
@@ -184,9 +156,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:magenta_netherite_laced_collar"
-            ]
+            "items": "modogs:magenta_netherite_laced_collar"
           }
         ]
       }
@@ -196,9 +166,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:pink_netherite_laced_collar"
-            ]
+            "items": "modogs:pink_netherite_laced_collar"
           }
         ]
       }

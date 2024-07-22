@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:husky_spawn_egg"
+      "id": "modogs:husky_spawn_egg"
     },
     "title": "Husky Trainer",
     "description": "Tame a Husky",

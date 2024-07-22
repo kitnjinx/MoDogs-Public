@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:mini_pinscher_spawn_egg"
+      "id": "modogs:mini_pinscher_spawn_egg"
     },
     "title": "Miniature Pinscher Trainer",
     "description": "Tame a Miniature Pinscher",

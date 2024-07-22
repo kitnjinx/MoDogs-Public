@@ -1,0 +1,30 @@
+{
+  "name": "Doberman",
+  "icon": "modogs:doberman_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Dobermans were originally bred as guard dogs, and still retain their protective natures today.$(br2)Standing just over a block tall, these loyal dogs come in five different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/doberman_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Doberman"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in open spaces such as plains, savannas, and meadows. They can also be found in taigas and deserts, and more rarely in snowy plains.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:beef_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Beef Treat."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:basenji_spawn_egg"
+      "id": "modogs:basenji_spawn_egg"
     },
     "title": "Basenji Breeder",
     "description": "Breed a Basenji",

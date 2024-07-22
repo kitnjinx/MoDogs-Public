@@ -1,0 +1,16 @@
+{
+  "name": "Paper Strip",
+  "icon": "modogs:used_paper_strip",
+  "category": "modogs:getting_started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These strips of paper are great for holding information about a dog's genetics!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:paper_strip",
+      "title": "Paper Strip"
+    }
+  ]
+}

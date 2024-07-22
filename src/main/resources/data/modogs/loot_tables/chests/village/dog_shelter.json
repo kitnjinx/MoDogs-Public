@@ -1,5 +1,11 @@
 {
   "type": "minecraft:chest",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "modogs"
+    }
+  ],
   "pools": [
     {
       "rolls": {
@@ -7,7 +13,6 @@
         "min": 3,
         "max": 7
       },
-      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -19,8 +24,7 @@
               "count": {
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -34,8 +38,7 @@
               "count": {
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -50,8 +53,7 @@
                 "type": "minecraft:uniform",
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -66,8 +68,7 @@
                 "type": "minecraft:uniform",
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -82,8 +83,7 @@
                 "type": "minecraft:uniform",
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -97,8 +97,7 @@
               "count": {
                 "min": 3,
                 "max": 6
-              },
-              "add": false
+              }
             }
           ]
         },
@@ -113,8 +112,7 @@
                 "type": "minecraft:uniform",
                 "min": 1,
                 "max": 3
-              },
-              "add": false
+              }
             }
           ]
         }
@@ -125,32 +123,32 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/collar_pool",
+          "value": "modogs:chests/village/subpools/collar_pool",
           "weight": 12
         },
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/reinforced_collar_pool",
+          "value": "modogs:chests/village/subpools/reinforced_collar_pool",
           "weight": 10
         },
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/gold_plated_collar_pool",
+          "value": "modogs:chests/village/subpools/gold_plated_collar_pool",
           "weight": 8
         },
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/iron_infused_collar_pool",
+          "value": "modogs:chests/village/subpools/iron_infused_collar_pool",
           "weight": 6
         },
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/diamond_crusted_collar_pool",
+          "value": "modogs:chests/village/subpools/diamond_crusted_collar_pool",
           "weight": 3
         },
         {
           "type": "minecraft:loot_table",
-          "name": "modogs:chests/village/subpools/netherite_laced_collar_pool",
+          "value": "modogs:chests/village/subpools/netherite_laced_collar_pool",
           "weight": 1
         }
       ]

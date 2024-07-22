@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:brown_collar"
+      "id": "modogs:brown_collar"
     },
     "title": "Dog Accessories",
     "description": "A nice collar for your dog",
@@ -16,9 +16,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:white_collar"
-            ]
+            "items": "modogs:white_collar"
           }
         ]
       }
@@ -28,9 +26,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_gray_collar"
-            ]
+            "items": "modogs:light_gray_collar"
           }
         ]
       }
@@ -40,9 +36,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:gray_collar"
-            ]
+            "items": "modogs:gray_collar"
           }
         ]
       }
@@ -52,9 +46,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:black_collar"
-            ]
+            "items": "modogs:black_collar"
           }
         ]
       }
@@ -64,9 +56,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:brown_collar"
-            ]
+            "items": "modogs:brown_collar"
           }
         ]
       }
@@ -76,9 +66,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:red_collar"
-            ]
+            "items": "modogs:red_collar"
           }
         ]
       }
@@ -88,9 +76,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:orange_collar"
-            ]
+            "items": "modogs:orange_collar"
           }
         ]
       }
@@ -100,9 +86,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:yellow_collar"
-            ]
+            "items": "modogs:yellow_collar"
           }
         ]
       }
@@ -112,9 +96,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:lime_collar"
-            ]
+            "items": "modogs:lime_collar"
           }
         ]
       }
@@ -124,9 +106,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:green_collar"
-            ]
+            "items": "modogs:green_collar"
           }
         ]
       }
@@ -136,9 +116,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:cyan_collar"
-            ]
+            "items": "modogs:cyan_collar"
           }
         ]
       }
@@ -148,9 +126,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_blue_collar"
-            ]
+            "items": "modogs:light_blue_collar"
           }
         ]
       }
@@ -160,9 +136,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:blue_collar"
-            ]
+            "items": "modogs:blue_collar"
           }
         ]
       }
@@ -172,9 +146,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:purple_collar"
-            ]
+            "items": "modogs:purple_collar"
           }
         ]
       }
@@ -184,9 +156,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:magenta_collar"
-            ]
+            "items": "modogs:magenta_collar"
           }
         ]
       }
@@ -196,9 +166,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:pink_collar"
-            ]
+            "items": "modogs:pink_collar"
           }
         ]
       }

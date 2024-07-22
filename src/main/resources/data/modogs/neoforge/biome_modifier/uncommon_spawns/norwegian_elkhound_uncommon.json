@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:snowy_taiga",
+    "minecraft:grove"
+  ],
+  "spawners": {
+    "type": "modogs:norwegian_elkhound",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

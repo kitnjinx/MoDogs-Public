@@ -1,0 +1,21 @@
+{
+  "name": "Collie",
+  "icon": "modogs:collie_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Collies have two genes that affect how they look, the B Locus and Merle gene. The B Locus determines whether they have sable or black fur with tan points, while the merle gene can create the merle pattern on dogs."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates sable coloration, while the 'b' allele creates primarily black coloration, leaving only tan points. Dogs with one copy of 'b' will carry the black gene and may pass it on to pups, providing the potential for black pups depending on the other parent. Dogs with two copies of 'b' will always create either black carriers or black puppies.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Understanding of merle is limited, but from our understanding dogs will either be merle or they won't. Dogs that have the merle trait have a distinctive patchy look. Two merle parents will always produce a merle pup, while merle bred to a non-merle can produce a pup with or without the merle trait.",
+      "title": "Merle"
+    }
+  ]
+}

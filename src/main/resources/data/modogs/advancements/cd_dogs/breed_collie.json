@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:collie_spawn_egg"
+      "id": "modogs:collie_spawn_egg"
     },
     "title": "Collie Breeder",
     "description": "Breed a Collie",

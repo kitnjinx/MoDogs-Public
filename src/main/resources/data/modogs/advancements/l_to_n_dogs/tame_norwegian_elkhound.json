@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:norwegian_elkhound_spawn_egg"
+      "id": "modogs:norwegian_elkhound_spawn_egg"
     },
     "title": "Norwegian Elkhound Trainer",
     "description": "Tame a Norwegian Elkhound",

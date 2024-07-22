@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:schnauzer_spawn_egg"
+      "id": "modogs:schnauzer_spawn_egg"
     },
     "title": "Schnauzer Breeder",
     "description": "Breed a Schnauzer",

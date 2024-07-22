@@ -13,7 +13,7 @@
     }
   },
   "result": {
-    "item": "modogs:gene_tester",
+    "id": "modogs:gene_tester",
     "count": 1
   }
 }

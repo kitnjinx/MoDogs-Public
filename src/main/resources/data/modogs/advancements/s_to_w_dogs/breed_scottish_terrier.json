@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:scottish_terrier_spawn_egg"
+      "id": "modogs:scottish_terrier_spawn_egg"
     },
     "title": "Scottish Terrier Breeder",
     "description": "Breed a Scottish Terrier",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:cardigan_corgi_spawn_egg"
+      "id": "modogs:cardigan_corgi_spawn_egg"
     },
     "title": "Cardigan Corgi Breeder",
     "description": "Breed a Cardigan Corgi",

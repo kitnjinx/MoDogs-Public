@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:pembroke_corgi_spawn_egg"
+      "id": "modogs:pembroke_corgi_spawn_egg"
     },
     "title": "Pembroke Corgi Trainer",
     "description": "Tame a Pembroke Corgi",

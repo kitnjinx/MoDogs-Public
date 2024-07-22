@@ -4,5 +4,6 @@
   "version": 0,
   "subtitle": "The Dog Encyclopedia",
   "creative_tab": "modogs:modogs_items_tab",
-  "model": "modogs:dogopedia"
+  "model": "modogs:dogopedia",
+  "use_resource_pack": true
 }

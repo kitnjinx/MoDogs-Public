@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:dachshund_spawn_egg"
+      "id": "modogs:dachshund_spawn_egg"
     },
     "title": "Dachshund Trainer",
     "description": "Tame a Dachshund",

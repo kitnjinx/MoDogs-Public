@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ],
+  "spawners": {
+    "type": "modogs:boston_terrier",
+    "weight": 15,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Irish Setter",
+  "icon": "modogs:irish_setter_spawn_egg",
+  "category": "modogs:g_to_i_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Irish Setters were originally bred for hunting, specifically gamebirds.$(br2)Standing just over a block tall, these graceful dogs come in three different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/irish_setter_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Irish Setter"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in swamps and along ocean shores. They can also be found in some jungles, and more rarely along rivers.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:chicken_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Chicken Treat."
+    }
+  ]
+}

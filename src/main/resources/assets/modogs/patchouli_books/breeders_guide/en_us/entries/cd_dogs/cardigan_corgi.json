@@ -1,0 +1,21 @@
+{
+  "name": "Cardigan Corgi",
+  "icon": "modogs:cardigan_corgi_spawn_egg",
+  "category": "modogs:cd_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cardigan Corgis have two genes that affect how they look, the B Locus and Merle gene. The B Locus determines whether they have black or tan fur, while the merle gene can create blue merle dogs."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the incompletely dominant 'B' and 'b'. The 'B' allele creates black fur, while the 'b' allele creates tan, or sable, fur. Dogs with two copies of 'B' will have black fur, while dogs with two copies of 'b' will have sable fur. Dogs with one copy of each will have red fur and can pass the black or sable trait.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Understanding of merle is limited, but from our understanding dogs will either be merle or they won't. Dogs that have the merle trait have a distinctive patchy look, though in this breed it only shows on black fur and other colors will carry the gene, though it will always show on a genetics test. Two merle parents will always produce a merle pup, while merle bred to a non-merle can produce a pup with or without the merle trait.",
+      "title": "Merle"
+    }
+  ]
+}

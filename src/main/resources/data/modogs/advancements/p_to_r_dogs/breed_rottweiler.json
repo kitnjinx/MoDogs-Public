@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:rottweiler_spawn_egg"
+      "id": "modogs:rottweiler_spawn_egg"
     },
     "title": "Rottweiler Breeder",
     "description": "Breed a Rottweiler",

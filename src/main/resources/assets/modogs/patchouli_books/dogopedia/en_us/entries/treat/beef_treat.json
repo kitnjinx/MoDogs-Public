@@ -1,0 +1,15 @@
+{
+  "name": "Beef Treat",
+  "icon": "modogs:beef_treat",
+  "category": "modogs:treat_category",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Beef treats are made from wheat and beef. All dogs enjoy them, and some might just be your lifelong friend if you give them one!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "modogs:beef_treat"
+    }
+  ]
+}

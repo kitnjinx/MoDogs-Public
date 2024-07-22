@@ -1,3 +1,9 @@
 {
-  "type": "minecraft:entity"
+  "type": "minecraft:entity",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "modogs"
+    }
+  ]
 }

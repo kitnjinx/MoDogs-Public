@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:tree_walk_hound_spawn_egg"
+      "id": "modogs:tree_walk_hound_spawn_egg"
     },
     "title": "Treeing Walker Coonhound Breeder",
     "description": "Breed a Treeing Walker Coonhound",

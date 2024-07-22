@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:american_foxhound_spawn_egg"
+      "id": "modogs:american_foxhound_spawn_egg"
     },
     "title": "American Foxhound Breeder",
     "description": "Breed an American Foxhound",

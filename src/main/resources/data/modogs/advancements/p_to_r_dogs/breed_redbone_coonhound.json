@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:redbone_coonhound_spawn_egg"
+      "id": "modogs:redbone_coonhound_spawn_egg"
     },
     "title": "Redbone Coonhound Breeder",
     "description": "Breed a Redbone Coonhound",

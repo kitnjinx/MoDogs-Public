@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:shetland_sheepdog_spawn_egg"
+      "id": "modogs:shetland_sheepdog_spawn_egg"
     },
     "title": "Shetland Sheepdog Breeder",
     "description": "Breed a Shetland Sheepdog",

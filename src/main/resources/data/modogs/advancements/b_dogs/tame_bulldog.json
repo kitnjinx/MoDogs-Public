@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:bulldog_spawn_egg"
+      "id": "modogs:bulldog_spawn_egg"
     },
     "title": "Bulldog Trainer",
     "description": "Tame a Bulldog",

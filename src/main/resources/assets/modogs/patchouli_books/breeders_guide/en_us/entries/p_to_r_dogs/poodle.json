@@ -1,0 +1,31 @@
+{
+  "name": "Poodle",
+  "icon": "modogs:poodle_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Poodles have three genes that affect how they look. These are the B Locus, D Locus, and W Locus. The B Locus determines whether a dog is black or brown, while the D Locus can dilute black dogs to silver and brown dogs to cream. The W Locus can create white fur that covers the B and D Locus."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates black fur, while the 'b' allele creates brown fur. Dogs with one copy of 'b' will carry the brown trait and may pass it on to pups, providing the potential for brown pups depending on the other parent. Dogs with two copies of 'b' will always create either brown carriers or brown puppies.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The D Locus has two potential alleles, the dominant 'D' and the recessive 'd'. The 'D' allele does not affect the coat's color, while the 'd' allele is a dilute that creates silver fur on black dogs and light cream fur on brown dogs.",
+      "title": "D Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dogs with one copy of 'd' will carry the dilution trait and may pass it on to pups, providing the potential for diluted pups depending on the other parent. Dogs with two copies of 'd' will always create either dilute carriers or diluted puppies.",
+      "title": "D Locus Cont."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The W Locus has two potential alleles, the dominant 'W' and recessive 'w'. The 'W' allele does not affect the coat's color, while the 'w' allele creates white fur. Dogs with one copy of 'w' will carry the white trait and may pass it on to pups, providing the potential for white pups depending on the other parent. Dogs with two copies of 'b' will always create either white carriers or white puppies.",
+      "title": "W Locus"
+    }
+  ]
+}

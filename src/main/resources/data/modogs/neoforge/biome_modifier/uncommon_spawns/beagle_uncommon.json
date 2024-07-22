@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:flower_forest",
+    "minecraft:meadow"
+  ],
+  "spawners": {
+    "type": "modogs:beagle",
+    "weight": 7,
+    "minCount": 2,
+    "maxCount": 3
+  }
+}

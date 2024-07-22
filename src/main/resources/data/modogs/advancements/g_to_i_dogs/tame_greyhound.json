@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:greyhound_spawn_egg"
+      "id": "modogs:greyhound_spawn_egg"
     },
     "title": "Greyhound Trainer",
     "description": "Tame a Greyhound",

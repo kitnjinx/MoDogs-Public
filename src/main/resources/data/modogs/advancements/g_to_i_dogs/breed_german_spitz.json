@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:german_spitz_spawn_egg"
+      "id": "modogs:german_spitz_spawn_egg"
     },
     "title": "German Spitz Breeder",
     "description": "Breed a German Spitz",

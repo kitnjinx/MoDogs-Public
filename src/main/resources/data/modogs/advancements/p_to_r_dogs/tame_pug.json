@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:pug_spawn_egg"
+      "id": "modogs:pug_spawn_egg"
     },
     "title": "Pug Trainer",
     "description": "Tame a Pug",

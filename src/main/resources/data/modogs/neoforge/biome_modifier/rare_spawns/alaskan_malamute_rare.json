@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:ice_spikes"
+  ],
+  "spawners": {
+    "type": "modogs:alaskan_malamute",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

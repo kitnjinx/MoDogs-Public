@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:irish_setter_spawn_egg"
+      "id": "modogs:irish_setter_spawn_egg"
     },
     "title": "Irish Setter Trainer",
     "description": "Tame a Irish Setter",

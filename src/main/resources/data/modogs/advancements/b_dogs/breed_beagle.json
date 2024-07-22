@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:beagle_spawn_egg"
+      "id": "modogs:beagle_spawn_egg"
     },
     "title": "Beagle Breeder",
     "description": "Breed a Beagle",

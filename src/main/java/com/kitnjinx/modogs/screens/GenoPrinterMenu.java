@@ -5,6 +5,7 @@ import com.kitnjinx.modogs.item.GenoReaderItem;
 import com.kitnjinx.modogs.item.ModItems;
 import com.kitnjinx.modogs.util.ModTags;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -78,7 +79,8 @@ public class GenoPrinterMenu extends ItemCombinerMenu {
 
             if (!itemstack2.isEmpty()) {
                 ItemStack filledStrip = new ItemStack(ModItems.USED_PAPER_STRIP.get());
-                filledStrip.setHoverName(Component.literal(((GenoReaderItem) itemstack.getItem()).getLastGeno()));
+                filledStrip.set(DataComponents.CUSTOM_NAME,
+                        Component.literal(((GenoReaderItem) itemstack.getItem()).getLastGeno()));
                 this.resultSlots.setItem(0, filledStrip);
             } else {
                 this.resultSlots.setItem(0, ItemStack.EMPTY);

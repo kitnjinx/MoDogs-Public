@@ -1,0 +1,21 @@
+{
+  "name": "Boxer",
+  "icon": "modogs:boxer_spawn_egg",
+  "category": "modogs:b_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Boxers have two genes that affect how they look, the B Locus and the S Locus. The B Locus determines whether the dog has brown or black fur, while the S Locus determines what shade of brown the dog has."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The B Locus has two potential alleles, the dominant 'B' and the recessive 'b'. The 'B' allele creates brown fur, while the 'b' allele creates black fur. Dogs with one copy of 'b' will carry the black trait and may pass it on to pups, providing the potential for black pups depending on the other parent. Dogs with two copies of 'b' will always create either black carriers or black puppies.",
+      "title": "B Locus"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The S Locus has two potential alleles, the incompletely dominant 'S' and 's' alleles. The 'S' allele creates lighter fur, while the 's' allele creates darker fur. Dogs with two copies of the 'S' allele have light fur, while dogs with two copies of the 's' allele have dark fur. Dogs with one copy of each have a more medium coloration to their fur. The S Locus is only visible on brown dogs.",
+      "title": "S Locus"
+    }
+  ]
+}

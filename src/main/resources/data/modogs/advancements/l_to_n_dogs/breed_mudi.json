@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:mudi_spawn_egg"
+      "id": "modogs:mudi_spawn_egg"
     },
     "title": "Mudi Breeder",
     "description": "Breed a Mudi",

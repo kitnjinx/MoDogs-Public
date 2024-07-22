@@ -11,14 +11,15 @@ import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraftforge.event.server.ServerAboutToStartEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = MoDogs.MOD_ID)
+@EventBusSubscriber(modid = MoDogs.MOD_ID)
 public class VillageAddition {
     private static final ResourceKey<StructureProcessorList> EMPTY_PROCESSOR_LIST_KEY = ResourceKey.create(
             Registries.PROCESSOR_LIST, new ResourceLocation("minecraft", "empty"));
@@ -78,19 +79,19 @@ public class VillageAddition {
         // below commands add dog shelters
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/plains/houses"),
-                "modogs:plains_dog_shelter", 100);
+                "modogs:village/plains_dog_shelter", 30000);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/snowy/houses"),
-                "modogs:village/snowy_dog_shelter", 300);
+                "modogs:village/snowy_dog_shelter", 30000);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/savanna/houses"),
-                "modogs:village/savanna_dog_shelter", 15);
+                "modogs:village/savanna_dog_shelter", 10);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/taiga/houses"),
-                "modogs:village/taiga_dog_shelter", 15);
+                "modogs:village/taiga_dog_shelter", 5);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/desert/houses"),

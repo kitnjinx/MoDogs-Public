@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:toy_poodle_spawn_egg"
+      "id": "modogs:toy_poodle_spawn_egg"
     },
     "title": "Toy Poodle Trainer",
     "description": "Tame a Toy Poodle",

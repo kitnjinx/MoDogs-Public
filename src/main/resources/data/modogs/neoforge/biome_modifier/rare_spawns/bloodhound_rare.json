@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:forest"
+  ],
+  "spawners": {
+    "type": "modogs:bloodhound",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

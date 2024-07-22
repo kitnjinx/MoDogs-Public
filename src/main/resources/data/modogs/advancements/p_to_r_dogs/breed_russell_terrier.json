@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:russell_terrier_spawn_egg"
+      "id": "modogs:russell_terrier_spawn_egg"
     },
     "title": "Russell Terrier Breeder",
     "description": "Breed a Russell Terrier",

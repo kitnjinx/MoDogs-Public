@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:basenji_spawn_egg"
+      "id": "modogs:basenji_spawn_egg"
     },
     "title": "Basenji Trainer",
     "description": "Tame a Basenji",

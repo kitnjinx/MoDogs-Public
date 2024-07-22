@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:red_iron_infused_collar"
+      "id": "modogs:red_iron_infused_collar"
     },
     "title": "Armor Up!",
     "description": "An iron-armored collar for your dog",
@@ -16,9 +16,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:white_iron_infused_collar"
-            ]
+            "items": "modogs:white_iron_infused_collar"
           }
         ]
       }
@@ -28,9 +26,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_gray_iron_infused_collar"
-            ]
+            "items": "modogs:light_gray_iron_infused_collar"
           }
         ]
       }
@@ -40,9 +36,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:gray_iron_infused_collar"
-            ]
+            "items": "modogs:gray_iron_infused_collar"
           }
         ]
       }
@@ -52,9 +46,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:black_iron_infused_collar"
-            ]
+            "items": "modogs:black_iron_infused_collar"
           }
         ]
       }
@@ -64,9 +56,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:brown_iron_infused_collar"
-            ]
+            "items": "modogs:brown_iron_infused_collar"
           }
         ]
       }
@@ -76,9 +66,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:red_iron_infused_collar"
-            ]
+            "items": "modogs:red_iron_infused_collar"
           }
         ]
       }
@@ -88,9 +76,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:orange_iron_infused_collar"
-            ]
+            "items": "modogs:orange_iron_infused_collar"
           }
         ]
       }
@@ -100,9 +86,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:yellow_iron_infused_collar"
-            ]
+            "items": "modogs:yellow_iron_infused_collar"
           }
         ]
       }
@@ -112,9 +96,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:lime_iron_infused_collar"
-            ]
+            "items": "modogs:lime_iron_infused_collar"
           }
         ]
       }
@@ -124,9 +106,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:green_iron_infused_collar"
-            ]
+            "items": "modogs:green_iron_infused_collar"
           }
         ]
       }
@@ -136,9 +116,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:cyan_iron_infused_collar"
-            ]
+            "items": "modogs:cyan_iron_infused_collar"
           }
         ]
       }
@@ -148,9 +126,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:light_blue_iron_infused_collar"
-            ]
+            "items": "modogs:light_blue_iron_infused_collar"
           }
         ]
       }
@@ -160,9 +136,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:blue_iron_infused_collar"
-            ]
+            "items": "modogs:blue_iron_infused_collar"
           }
         ]
       }
@@ -172,9 +146,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:purple_iron_infused_collar"
-            ]
+            "items": "modogs:purple_iron_infused_collar"
           }
         ]
       }
@@ -184,9 +156,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:magenta_iron_infused_collar"
-            ]
+            "items": "modogs:magenta_iron_infused_collar"
           }
         ]
       }
@@ -196,9 +166,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "modogs:pink_iron_infused_collar"
-            ]
+            "items": "modogs:pink_iron_infused_collar"
           }
         ]
       }

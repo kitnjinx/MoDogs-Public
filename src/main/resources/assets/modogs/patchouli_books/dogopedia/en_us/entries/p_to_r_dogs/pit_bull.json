@@ -1,0 +1,30 @@
+{
+  "name": "Pit Bull",
+  "icon": "modogs:pit_bull_spawn_egg",
+  "category": "modogs:p_to_r_dogs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Originally bred for bull baiting, these dogs have earned a bad reputation after being used for dog fighting. Despite this, they can prove to be loyal and trustable companions.$(br2)Standing just under a block tall, these fierce dogs come in seven different coats."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "modogs:textures/gui/entries/pit_bull_book.png"
+      ],
+      "border": true,
+      "text": "Example of a Pit Bull"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These dogs are most commonly found in dark forests, jungles, and taigas. They can also be found in old growth taigas, and more rarely savanna plateaus.",
+      "title": "Location"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "modogs:beef_treat",
+      "title": "Taming",
+      "text": "These dogs can be tamed with a Beef Treat."
+    }
+  ]
+}

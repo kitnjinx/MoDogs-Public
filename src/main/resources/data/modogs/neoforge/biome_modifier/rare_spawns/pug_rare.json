@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:flower_forest"
+  ],
+  "spawners": {
+    "type": "modogs:pug",
+    "weight": 3,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

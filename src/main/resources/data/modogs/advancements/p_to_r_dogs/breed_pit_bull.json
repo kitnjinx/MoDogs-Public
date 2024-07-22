@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:pit_bull_spawn_egg"
+      "id": "modogs:pit_bull_spawn_egg"
     },
     "title": "Pit Bull Breeder",
     "description": "Breed a Pit Bull",

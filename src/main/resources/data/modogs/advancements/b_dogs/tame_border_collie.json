@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:border_collie_spawn_egg"
+      "id": "modogs:border_collie_spawn_egg"
     },
     "title": "Border Coliie Trainer",
     "description": "Tame a Border Coliie",

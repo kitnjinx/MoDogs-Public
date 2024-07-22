@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:airedale_terrier_spawn_egg"
+      "id": "modogs:airedale_terrier_spawn_egg"
     },
     "title": "Airedale Terrier Breeder",
     "description": "Breed a Airedale Terrier",

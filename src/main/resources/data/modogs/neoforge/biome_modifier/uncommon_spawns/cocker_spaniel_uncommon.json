@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains"
+  ],
+  "spawners": {
+    "type": "modogs:cocker_spaniel",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:golden_retriever_spawn_egg"
+      "id": "modogs:golden_retriever_spawn_egg"
     },
     "title": "Golden Retriever Trainer",
     "description": "Tame a Golden Retriever",

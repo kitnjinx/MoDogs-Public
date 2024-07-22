@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:tree_walk_hound_spawn_egg"
+      "id": "modogs:tree_walk_hound_spawn_egg"
     },
     "title": "Treing Walker Coonhound Trainer",
     "description": "Tame a Treeing Walker Coonhound",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:whippet_spawn_egg"
+      "id": "modogs:whippet_spawn_egg"
     },
     "title": "Whippet Trainer",
     "description": "Tame a Whippet",

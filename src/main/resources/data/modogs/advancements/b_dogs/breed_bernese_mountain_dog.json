@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:bernese_mountain_dog_spawn_egg"
+      "id": "modogs:bernese_mountain_dog_spawn_egg"
     },
     "title": "Bernese Mountain Dog Breeder",
     "description": "Breed a Bernese Mountain Dog",

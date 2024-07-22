@@ -1,10 +1,19 @@
 {
-  "type": "modogs:add_item",
+  "type": "neoforge:add_table",
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:chests/village/village_armorer"
+      "condition": "minecraft:all_of",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/shipwreck_treasure"
+        },
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.15
+        }
+      ]
     }
   ],
-  "item": "modogs:brown_diamond_crusted_collar"
+  "table": "modogs:chests/village/subpools/diamond_crusted_collar_pool"
 }

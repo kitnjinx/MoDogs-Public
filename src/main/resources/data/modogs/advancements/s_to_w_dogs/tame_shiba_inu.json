@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "modogs:shiba_inu_spawn_egg"
+      "id": "modogs:shiba_inu_spawn_egg"
     },
     "title": "Shiba Inu Trainer",
     "description": "Tame a Shiba Inu",
