@@ -45,7 +45,11 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
 
     @Override
     public ResourceLocation getTextureLocation(ShetlandSheepdogEntity instance) {
-        return LOCATION_BY_VARIANT.get(instance.getVariant());
+        if (instance.getVariant() == ShetlandSheepdogVariant.BLACK_TAN) {
+            return LOCATION_BY_VARIANT.get(ShetlandSheepdogVariant.BLACK);
+        } else {
+            return LOCATION_BY_VARIANT.get(instance.getVariant());
+        }
     }
 
     @Override
