@@ -24,11 +24,11 @@ public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
     public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
                 var.put(ShadeVariant.LIGHT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_light.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_light.png"));
                 var.put(ShadeVariant.MEDIUM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_medium.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_medium.png"));
                 var.put(ShadeVariant.DARK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_dark.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/irish_setter/irish_setter_dark.png"));
             });
 
     public IrishSetterRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, IrishSetterEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, IrishSetterEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~26 in
         if(animatable.isBaby()) {
             withScale(0.6f, 0.6f);
@@ -54,7 +54,7 @@ public class IrishSetterRenderer extends GeoEntityRenderer<IrishSetterEntity> {
             withScale(1.2f, 1.2f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

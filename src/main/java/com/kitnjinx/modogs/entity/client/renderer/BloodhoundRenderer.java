@@ -24,11 +24,11 @@ public class BloodhoundRenderer extends GeoEntityRenderer<BloodhoundEntity> {
     public static final Map<BloodhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BloodhoundVariant.class), (var) -> {
                 var.put(BloodhoundVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_black_tan.png"));
                 var.put(BloodhoundVariant.LIVER_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_liver_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_liver_tan.png"));
                 var.put(BloodhoundVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bloodhound/bloodhound_red.png"));
             });
 
     public BloodhoundRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class BloodhoundRenderer extends GeoEntityRenderer<BloodhoundEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, BloodhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, BloodhoundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~25 inches
         if(animatable.isBaby()) {
             withScale(0.575f, 0.575f);
@@ -54,7 +54,7 @@ public class BloodhoundRenderer extends GeoEntityRenderer<BloodhoundEntity> {
             withScale(1.15f, 1.15f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

@@ -9,6 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 public class JEIMoDogsPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(MoDogs.MOD_ID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "jei_plugin");
     }
 }

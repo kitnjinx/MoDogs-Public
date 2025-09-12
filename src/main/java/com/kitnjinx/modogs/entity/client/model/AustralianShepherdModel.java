@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class AustralianShepherdModel extends GeoModel<AustralianShepherdEntity> {
     @Override
     public ResourceLocation getModelResource(AustralianShepherdEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/australian_shepherd.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/australian_shepherd.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class AustralianShepherdModel extends GeoModel<AustralianShepherdEntity> 
 
     @Override
     public ResourceLocation getAnimationResource(AustralianShepherdEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/australian_shepherd.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/australian_shepherd.animation.json");
     }
 }

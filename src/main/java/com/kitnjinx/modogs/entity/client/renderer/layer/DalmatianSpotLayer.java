@@ -21,25 +21,25 @@ public class DalmatianSpotLayer extends GeoRenderLayer<DalmatianEntity> {
     public static final Map<DalmatianVariant, ResourceLocation> BLACK_SPOTS =
             Util.make(Maps.newEnumMap(DalmatianVariant.class), (pat) -> {
                 pat.put(DalmatianVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black1.png"));
                 pat.put(DalmatianVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black2.png"));
                 pat.put(DalmatianVariant.PATTERN3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black3.png"));
                 pat.put(DalmatianVariant.PATTERN4,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black4.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_black4.png"));
             });
 
     public static final Map<DalmatianVariant, ResourceLocation> BROWN_SPOTS =
             Util.make(Maps.newEnumMap(DalmatianVariant.class), (pat) -> {
                 pat.put(DalmatianVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown1.png"));
                 pat.put(DalmatianVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown2.png"));
                 pat.put(DalmatianVariant.PATTERN3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown3.png"));
                 pat.put(DalmatianVariant.PATTERN4,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown4.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_brown4.png"));
             });
 
     public DalmatianSpotLayer(GeoRenderer<DalmatianEntity> entityRendererIn) {
@@ -59,6 +59,6 @@ public class DalmatianSpotLayer extends GeoRenderLayer<DalmatianEntity> {
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

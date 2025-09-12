@@ -21,17 +21,17 @@ public class WhippetWhiteLayer extends GeoRenderLayer<WhippetEntity> {
     public static final Map<ThreeWhiteVariant, ResourceLocation> WHITE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeWhiteVariant.class), (pat) -> {
                 pat.put(ThreeWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white1.png"));
                 pat.put(ThreeWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white2.png"));
                 pat.put(ThreeWhiteVariant.WHITE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/white/whippet_white3.png"));
             });
 
-    public static final ResourceLocation PURE_WHITE_LOCATION = new ResourceLocation(MoDogs.MOD_ID,
+    public static final ResourceLocation PURE_WHITE_LOCATION = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID,
             "textures/entity/whippet/white/whippet_white.png");
 
-    public static final ResourceLocation NO_WHITE_LOCATION = new ResourceLocation(MoDogs.MOD_ID,
+    public static final ResourceLocation NO_WHITE_LOCATION = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID,
             "textures/entity/collar/58x31/collar_none.png");
 
     public WhippetWhiteLayer(GeoRenderer<WhippetEntity> entityRendererIn) {
@@ -53,6 +53,6 @@ public class WhippetWhiteLayer extends GeoRenderLayer<WhippetEntity> {
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

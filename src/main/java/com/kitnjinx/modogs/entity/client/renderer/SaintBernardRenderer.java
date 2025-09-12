@@ -25,15 +25,15 @@ public class SaintBernardRenderer extends GeoEntityRenderer<SaintBernardEntity> 
     public static final Map<SaintBernardVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(SaintBernardVariant.class), (var) -> {
                 var.put(SaintBernardVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_brown.png"));
                 var.put(SaintBernardVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_red.png"));
                 var.put(SaintBernardVariant.ORANGE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_orange.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_orange.png"));
                 var.put(SaintBernardVariant.YELLOW_BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_yellow_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_yellow_brown.png"));
                 var.put(SaintBernardVariant.MAHOGANY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_mahogany.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/saint_bernard_mahogany.png"));
             });
 
     public SaintBernardRenderer(EntityRendererProvider.Context renderManager) {
@@ -51,8 +51,8 @@ public class SaintBernardRenderer extends GeoEntityRenderer<SaintBernardEntity> 
     }
 
     @Override
-    public void preRender(PoseStack stack, SaintBernardEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, SaintBernardEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~28 in
         if(animatable.isBaby()) {
             withScale(0.65f, 0.65f);
@@ -60,7 +60,7 @@ public class SaintBernardRenderer extends GeoEntityRenderer<SaintBernardEntity> 
             withScale(1.3f, 1.3f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

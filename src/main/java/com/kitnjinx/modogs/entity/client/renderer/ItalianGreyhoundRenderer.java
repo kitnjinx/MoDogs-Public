@@ -25,11 +25,11 @@ public class ItalianGreyhoundRenderer extends GeoEntityRenderer<ItalianGreyhound
     public static final Map<ItalianGreyhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ItalianGreyhoundVariant.class), (var) -> {
                 var.put(ItalianGreyhoundVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_blue.png"));
                 var.put(ItalianGreyhoundVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_fawn.png"));
                 var.put(ItalianGreyhoundVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/italian_greyhound_black.png"));
             });
 
     public ItalianGreyhoundRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class ItalianGreyhoundRenderer extends GeoEntityRenderer<ItalianGreyhound
     }
 
     @Override
-    public void preRender(PoseStack stack, ItalianGreyhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, ItalianGreyhoundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~14 in
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -56,7 +56,7 @@ public class ItalianGreyhoundRenderer extends GeoEntityRenderer<ItalianGreyhound
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

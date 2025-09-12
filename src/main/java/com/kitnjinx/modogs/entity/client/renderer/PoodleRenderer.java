@@ -24,15 +24,15 @@ public class PoodleRenderer extends GeoEntityRenderer<PoodleEntity> {
     public static final Map<PoodleVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(PoodleVariant.class), (var) -> {
                 var.put(PoodleVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/poodle/poodle_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/poodle/poodle_black.png"));
                 var.put(PoodleVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/poodle/poodle_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/poodle/poodle_brown.png"));
                 var.put(PoodleVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/poodle/poodle_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/poodle/poodle_white.png"));
                 var.put(PoodleVariant.SILVER,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/poodle/poodle_silver.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/poodle/poodle_silver.png"));
                 var.put(PoodleVariant.CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/poodle/poodle_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/poodle/poodle_cream.png"));
             });
 
     public PoodleRenderer(EntityRendererProvider.Context renderManager) {
@@ -49,8 +49,8 @@ public class PoodleRenderer extends GeoEntityRenderer<PoodleEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, PoodleEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, PoodleEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~18 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -58,7 +58,7 @@ public class PoodleRenderer extends GeoEntityRenderer<PoodleEntity> {
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

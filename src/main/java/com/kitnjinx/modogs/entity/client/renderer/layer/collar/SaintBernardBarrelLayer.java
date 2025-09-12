@@ -13,8 +13,8 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 public class SaintBernardBarrelLayer extends GeoRenderLayer<SaintBernardEntity> {
-    public static final ResourceLocation NO_BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png");
-    public static final ResourceLocation BARREL = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/saint_bernard/barrel.png");
+    public static final ResourceLocation NO_BARREL = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png");
+    public static final ResourceLocation BARREL = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/saint_bernard/barrel.png");
 
     public SaintBernardBarrelLayer(GeoRenderer<SaintBernardEntity> entityRendererIn) {
         super(entityRendererIn);
@@ -33,6 +33,6 @@ public class SaintBernardBarrelLayer extends GeoRenderLayer<SaintBernardEntity> 
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

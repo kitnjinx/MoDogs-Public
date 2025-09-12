@@ -24,13 +24,13 @@ public class ShibaInuRenderer extends GeoEntityRenderer<ShibaInuEntity> {
     public static final Map<ShibaInuVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShibaInuVariant.class), (var) -> {
                 var.put(ShibaInuVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_red.png"));
                 var.put(ShibaInuVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_black_tan.png"));
                 var.put(ShibaInuVariant.CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_cream.png"));
                 var.put(ShibaInuVariant.DARK_CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_dark_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shiba_inu/shiba_inu_dark_cream.png"));
             });
 
     public ShibaInuRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class ShibaInuRenderer extends GeoEntityRenderer<ShibaInuEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, ShibaInuEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, ShibaInuEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~15 inches
         if(animatable.isBaby()) {
             withScale(0.375f, 0.375f);
@@ -56,7 +56,7 @@ public class ShibaInuRenderer extends GeoEntityRenderer<ShibaInuEntity> {
             withScale(0.75f, 0.75f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

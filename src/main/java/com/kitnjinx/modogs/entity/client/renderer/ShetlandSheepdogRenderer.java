@@ -26,11 +26,11 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
     public static final Map<ShetlandSheepdogVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShetlandSheepdogVariant.class), (var) -> {
                 var.put(ShetlandSheepdogVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_sable.png"));
                 var.put(ShetlandSheepdogVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black.png"));
                 var.put(ShetlandSheepdogVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png"));
             });
 
     public ShetlandSheepdogRenderer(EntityRendererProvider.Context renderManager) {
@@ -53,8 +53,8 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
     }
 
     @Override
-    public void preRender(PoseStack stack, ShetlandSheepdogEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, ShetlandSheepdogEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~14 in
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -62,7 +62,7 @@ public class ShetlandSheepdogRenderer extends GeoEntityRenderer<ShetlandSheepdog
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

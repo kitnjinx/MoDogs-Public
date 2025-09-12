@@ -24,15 +24,15 @@ public class CockerSpanielRenderer extends GeoEntityRenderer<CockerSpanielEntity
     public static final Map<CockerSpanielVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(CockerSpanielVariant.class), (var) -> {
                 var.put(CockerSpanielVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_red.png"));
                 var.put(CockerSpanielVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_brown.png"));
                 var.put(CockerSpanielVariant.BUFF,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_buff.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_buff.png"));
                 var.put(CockerSpanielVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_black.png"));
                 var.put(CockerSpanielVariant.SILVER,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_silver.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cocker_spaniel/cocker_spaniel_silver.png"));
             });
 
     public CockerSpanielRenderer(EntityRendererProvider.Context renderManager) {
@@ -49,8 +49,8 @@ public class CockerSpanielRenderer extends GeoEntityRenderer<CockerSpanielEntity
     }
 
     @Override
-    public void preRender(PoseStack stack, CockerSpanielEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, CockerSpanielEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~14 in
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -58,7 +58,7 @@ public class CockerSpanielRenderer extends GeoEntityRenderer<CockerSpanielEntity
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

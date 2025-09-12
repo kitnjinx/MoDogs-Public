@@ -21,20 +21,20 @@ public class AustralianShepherdMerleLayer extends GeoRenderLayer<AustralianSheph
     public static final Map<TwoMerleVariant, ResourceLocation> BLUE_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_blue_merle2.png"));
             });
 
     public static final Map<TwoMerleVariant, ResourceLocation> RED_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/merle/australian_shepherd_red_merle2.png"));
             });
 
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/60x40/collar_none.png");
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/60x40/collar_none.png");
 
     public AustralianShepherdMerleLayer(GeoRenderer<AustralianShepherdEntity> entityRendererIn) {
         super(entityRendererIn);
@@ -57,6 +57,6 @@ public class AustralianShepherdMerleLayer extends GeoRenderLayer<AustralianSheph
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

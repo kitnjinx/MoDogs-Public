@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 public class ModTags {
     public static final ResourceKey<PoiType> SHELTER_WORKER =
             ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE,
-                    new ResourceLocation(MoDogs.MOD_ID, "shelter_worker"));
+                    ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "shelter_worker"));
     public static class Items {
         public static final TagKey<Item> DOG_TREAT = tag("dog_treat");
         public static final TagKey<Item> HEALING_TREAT_INGREDIENT = tag("healing_treat_ingredient");
@@ -25,7 +25,7 @@ public class ModTags {
         public static final TagKey<Item> NETHERITE_LACED_COLLAR = tag("netherite_laced_collar");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(MoDogs.MOD_ID, name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, name));
         }
     }
 }

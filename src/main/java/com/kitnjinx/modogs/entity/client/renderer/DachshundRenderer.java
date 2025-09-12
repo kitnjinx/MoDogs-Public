@@ -24,17 +24,17 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
     public static final Map<DachshundVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(DachshundVariant.class), (var) -> {
                 var.put(DachshundVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_black_tan.png"));
                 var.put(DachshundVariant.CHOCOLATE_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_chocolate_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_chocolate_tan.png"));
                 var.put(DachshundVariant.FAWN_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_fawn_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_fawn_tan.png"));
                 var.put(DachshundVariant.BLACK_CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_black_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_black_cream.png"));
                 var.put(DachshundVariant.CHOCOLATE_CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_chocolate_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_chocolate_cream.png"));
                 var.put(DachshundVariant.FAWN_CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_fawn_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dachshund/dachshund_fawn_cream.png"));
             });
 
     public DachshundRenderer(EntityRendererProvider.Context renderManager) {
@@ -51,8 +51,8 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, DachshundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, DachshundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~10 inches
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -60,7 +60,7 @@ public class DachshundRenderer extends GeoEntityRenderer<DachshundEntity> {
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

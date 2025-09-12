@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class AlaskanMalamuteModel extends GeoModel<AlaskanMalamuteEntity> {
     @Override
     public ResourceLocation getModelResource(AlaskanMalamuteEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/alaskan_malamute.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/alaskan_malamute.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class AlaskanMalamuteModel extends GeoModel<AlaskanMalamuteEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(AlaskanMalamuteEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/alaskan_malamute.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/alaskan_malamute.animation.json");
     }
 }

@@ -25,11 +25,11 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
     public static final Map<MudiVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MudiVariant.class), (var) -> {
                 var.put(MudiVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/mudi_black.png"));
                 var.put(MudiVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/mudi_brown.png"));
                 var.put(MudiVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/mudi_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/mudi_white.png"));
             });
 
     public MudiRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, MudiEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, MudiEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~18 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -56,7 +56,7 @@ public class MudiRenderer extends GeoEntityRenderer<MudiEntity> {
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

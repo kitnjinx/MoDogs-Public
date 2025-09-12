@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class BoxerModel extends GeoModel<BoxerEntity> {
     @Override
     public ResourceLocation getModelResource(BoxerEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/boxer.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/boxer.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class BoxerModel extends GeoModel<BoxerEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(BoxerEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/boxer.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/boxer.animation.json");
     }
 }

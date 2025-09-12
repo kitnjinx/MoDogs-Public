@@ -24,9 +24,9 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
     public static final Map<MastiffVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MastiffVariant.class), (var) -> {
                 var.put(MastiffVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mastiff/mastiff_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mastiff/mastiff_fawn.png"));
                 var.put(MastiffVariant.APRICOT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mastiff/mastiff_apricot.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mastiff/mastiff_apricot.png"));
             });
 
     public MastiffRenderer(EntityRendererProvider.Context renderManager) {
@@ -43,8 +43,8 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, MastiffEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, MastiffEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~30 in
         if(animatable.isBaby()) {
             withScale(0.7f, 0.7f);
@@ -52,7 +52,7 @@ public class MastiffRenderer extends GeoEntityRenderer<MastiffEntity> {
             withScale(1.4f, 1.4f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

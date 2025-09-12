@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ShibaInuModel extends GeoModel<ShibaInuEntity> {
     @Override
     public ResourceLocation getModelResource(ShibaInuEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/shiba_inu.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/shiba_inu.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class ShibaInuModel extends GeoModel<ShibaInuEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(ShibaInuEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/shiba_inu.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/shiba_inu.animation.json");
     }
 }

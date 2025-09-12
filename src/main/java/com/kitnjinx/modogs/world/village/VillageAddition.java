@@ -22,7 +22,7 @@ import java.util.List;
 @EventBusSubscriber(modid = MoDogs.MOD_ID)
 public class VillageAddition {
     private static final ResourceKey<StructureProcessorList> EMPTY_PROCESSOR_LIST_KEY = ResourceKey.create(
-            Registries.PROCESSOR_LIST, new ResourceLocation("minecraft", "empty"));
+            Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath("minecraft", "empty"));
 
     /**
      * Adds the building to the targeted pool.
@@ -78,23 +78,23 @@ public class VillageAddition {
 
         // below commands add dog shelters
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
-                new ResourceLocation("minecraft:village/plains/houses"),
+                ResourceLocation.parse("minecraft:village/plains/houses"),
                 "modogs:village/plains_dog_shelter", 30000);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
-                new ResourceLocation("minecraft:village/snowy/houses"),
+                ResourceLocation.parse("minecraft:village/snowy/houses"),
                 "modogs:village/snowy_dog_shelter", 30000);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
-                new ResourceLocation("minecraft:village/savanna/houses"),
+                ResourceLocation.parse("minecraft:village/savanna/houses"),
                 "modogs:village/savanna_dog_shelter", 10);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
-                new ResourceLocation("minecraft:village/taiga/houses"),
+                ResourceLocation.parse("minecraft:village/taiga/houses"),
                 "modogs:village/taiga_dog_shelter", 5);
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
-                new ResourceLocation("minecraft:village/desert/houses"),
+                ResourceLocation.parse("minecraft:village/desert/houses"),
                 "modogs:village/desert_dog_shelter", 250);
     }
 }

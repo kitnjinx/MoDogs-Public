@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class GermanShepherdModel extends GeoModel<GermanShepherdEntity> {
     @Override
     public ResourceLocation getModelResource(GermanShepherdEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/german_shepherd.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/german_shepherd.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class GermanShepherdModel extends GeoModel<GermanShepherdEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(GermanShepherdEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/german_shepherd.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/german_shepherd.animation.json");
     }
 }

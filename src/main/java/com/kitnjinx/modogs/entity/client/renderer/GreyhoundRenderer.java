@@ -25,13 +25,13 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
     public static final Map<GreyhoundVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GreyhoundVariant.class), (var) -> {
                 var.put(GreyhoundVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_white.png"));
                 var.put(GreyhoundVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_black.png"));
                 var.put(GreyhoundVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_red.png"));
                 var.put(GreyhoundVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/greyhound_blue.png"));
 
             });
 
@@ -50,8 +50,8 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, GreyhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, GreyhoundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~28 in
         if(animatable.isBaby()) {
             withScale(0.65f, 0.65f);
@@ -59,7 +59,7 @@ public class GreyhoundRenderer extends GeoEntityRenderer<GreyhoundEntity> {
             withScale(1.3f, 1.3f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

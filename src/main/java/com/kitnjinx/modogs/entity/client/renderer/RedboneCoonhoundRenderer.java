@@ -24,11 +24,11 @@ public class RedboneCoonhoundRenderer extends GeoEntityRenderer<RedboneCoonhound
     public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
                 var.put(ShadeVariant.LIGHT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_brown.png"));
                 var.put(ShadeVariant.MEDIUM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_red.png"));
                 var.put(ShadeVariant.DARK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_dark_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/redbone_coonhound/redbone_coonhound_dark_red.png"));
             });
 
     public RedboneCoonhoundRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class RedboneCoonhoundRenderer extends GeoEntityRenderer<RedboneCoonhound
     }
 
     @Override
-    public void preRender(PoseStack stack, RedboneCoonhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, RedboneCoonhoundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~24 inches
         if(animatable.isBaby()) {
             withScale(0.55f, 0.55f);
@@ -54,7 +54,7 @@ public class RedboneCoonhoundRenderer extends GeoEntityRenderer<RedboneCoonhound
             withScale(1.1f, 1.1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

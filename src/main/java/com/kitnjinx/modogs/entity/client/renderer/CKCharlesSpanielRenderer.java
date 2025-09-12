@@ -24,13 +24,13 @@ public class CKCharlesSpanielRenderer extends GeoEntityRenderer<CKCharlesSpaniel
     public static final Map<CKCharlesSpanielVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(CKCharlesSpanielVariant.class), (var) -> {
                 var.put(CKCharlesSpanielVariant.BLENHEIM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_blenheim.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_blenheim.png"));
                 var.put(CKCharlesSpanielVariant.TRICOLOR,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_tricolor.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_tricolor.png"));
                 var.put(CKCharlesSpanielVariant.RUBY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_ruby.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_ruby.png"));
                 var.put(CKCharlesSpanielVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/ck_charles_spaniel/ck_charles_spaniel_black_tan.png"));
             });
 
     public CKCharlesSpanielRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,16 +47,16 @@ public class CKCharlesSpanielRenderer extends GeoEntityRenderer<CKCharlesSpaniel
     }
 
     @Override
-    public void preRender(PoseStack stack, CKCharlesSpanielEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, CKCharlesSpanielEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
-           withScale(0.4f, 0.4f);
+            withScale(0.4f, 0.4f);
         } else {
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

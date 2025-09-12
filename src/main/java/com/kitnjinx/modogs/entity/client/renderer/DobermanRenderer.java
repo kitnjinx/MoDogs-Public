@@ -24,13 +24,13 @@ public class DobermanRenderer extends GeoEntityRenderer<DobermanEntity> {
     public static final Map<DobermanVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(DobermanVariant.class), (var) -> {
                 var.put(DobermanVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/doberman/doberman_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/doberman/doberman_black.png"));
                 var.put(DobermanVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/doberman/doberman_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/doberman/doberman_red.png"));
                 var.put(DobermanVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/doberman/doberman_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/doberman/doberman_blue.png"));
                 var.put(DobermanVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/doberman/doberman_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/doberman/doberman_fawn.png"));
             });
 
     public DobermanRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class DobermanRenderer extends GeoEntityRenderer<DobermanEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, DobermanEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, DobermanEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~26 in
         if(animatable.isBaby()) {
             withScale(0.6f, 0.6f);
@@ -56,7 +56,7 @@ public class DobermanRenderer extends GeoEntityRenderer<DobermanEntity> {
             withScale(1.2f, 1.2f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

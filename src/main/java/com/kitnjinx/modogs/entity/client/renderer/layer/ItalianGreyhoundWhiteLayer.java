@@ -21,14 +21,14 @@ public class ItalianGreyhoundWhiteLayer extends GeoRenderLayer<ItalianGreyhoundE
     public static final Map<ThreeWhiteVariant, ResourceLocation> WHITE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeWhiteVariant.class), (pat) -> {
                 pat.put(ThreeWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white1.png"));
                 pat.put(ThreeWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white2.png"));
                 pat.put(ThreeWhiteVariant.WHITE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/italian_greyhound/white/italian_greyhound_white3.png"));
             });
 
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/58x31/collar_none.png");
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/58x31/collar_none.png");
 
     public ItalianGreyhoundWhiteLayer(GeoRenderer<ItalianGreyhoundEntity> entityRendererIn) {
         super(entityRendererIn);
@@ -47,6 +47,6 @@ public class ItalianGreyhoundWhiteLayer extends GeoRenderLayer<ItalianGreyhoundE
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

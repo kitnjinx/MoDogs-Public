@@ -25,9 +25,9 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
     public static final Map<BulldogVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BulldogVariant.class), (var) -> {
                 var.put(BulldogVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_red.png"));
                 var.put(BulldogVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bulldog/bulldog_fawn.png"));
             });
 
     public BulldogRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, BulldogEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, BulldogEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~15 inches
         if(animatable.isBaby()) {
             withScale(0.375f, 0.375f);
@@ -54,7 +54,7 @@ public class BulldogRenderer extends GeoEntityRenderer<BulldogEntity> {
             withScale(0.75f, 0.75f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

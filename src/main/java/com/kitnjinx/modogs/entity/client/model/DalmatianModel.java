@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class DalmatianModel extends GeoModel<DalmatianEntity> {
     @Override
     public ResourceLocation getModelResource(DalmatianEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/dalmatian.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/dalmatian.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class DalmatianModel extends GeoModel<DalmatianEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(DalmatianEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/dalmatian.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/dalmatian.animation.json");
     }
 }

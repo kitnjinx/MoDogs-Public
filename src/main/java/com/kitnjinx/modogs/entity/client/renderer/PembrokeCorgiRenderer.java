@@ -24,13 +24,13 @@ public class PembrokeCorgiRenderer extends GeoEntityRenderer<PembrokeCorgiEntity
     public static final Map<PembrokeCorgiVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(PembrokeCorgiVariant.class), (var) -> {
                 var.put(PembrokeCorgiVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_red.png"));
                 var.put(PembrokeCorgiVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_black_tan.png"));
                 var.put(PembrokeCorgiVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_fawn.png"));
                 var.put(PembrokeCorgiVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pembroke_corgi/pembroke_corgi_sable.png"));
             });
 
     public PembrokeCorgiRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class PembrokeCorgiRenderer extends GeoEntityRenderer<PembrokeCorgiEntity
     }
 
     @Override
-    public void preRender(PoseStack stack, PembrokeCorgiEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, PembrokeCorgiEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -56,7 +56,7 @@ public class PembrokeCorgiRenderer extends GeoEntityRenderer<PembrokeCorgiEntity
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

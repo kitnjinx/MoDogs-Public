@@ -24,17 +24,17 @@ public class AlaskanMalamuteRenderer extends GeoEntityRenderer<AlaskanMalamuteEn
     public static final Map<AlaskanMalamuteVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(AlaskanMalamuteVariant.class), (var) -> {
                 var.put(AlaskanMalamuteVariant.GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_gray.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_gray.png"));
                 var.put(AlaskanMalamuteVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_sable.png"));
                 var.put(AlaskanMalamuteVariant.SEAL,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_seal.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_seal.png"));
                 var.put(AlaskanMalamuteVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_black.png"));
                 var.put(AlaskanMalamuteVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_red.png"));
                 var.put(AlaskanMalamuteVariant.SILVER,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_silver.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/alaskan_malamute/alaskan_malamute_silver.png"));
             });
 
     public AlaskanMalamuteRenderer(EntityRendererProvider.Context renderManager) {
@@ -51,8 +51,8 @@ public class AlaskanMalamuteRenderer extends GeoEntityRenderer<AlaskanMalamuteEn
     }
 
     @Override
-    public void preRender(PoseStack stack, AlaskanMalamuteEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, AlaskanMalamuteEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~24 in
         if(animatable.isBaby()) {
             withScale(0.55f, 0.55f);
@@ -60,7 +60,7 @@ public class AlaskanMalamuteRenderer extends GeoEntityRenderer<AlaskanMalamuteEn
             withScale(1.1f, 1.1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

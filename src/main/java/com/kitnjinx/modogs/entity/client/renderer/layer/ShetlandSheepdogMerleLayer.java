@@ -22,35 +22,35 @@ public class ShetlandSheepdogMerleLayer extends GeoRenderLayer<ShetlandSheepdogE
     public static final Map<ThreeMerleVariant, ResourceLocation> SABLE_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
                 pat.put(ThreeMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle1.png"));
                 pat.put(ThreeMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle2.png"));
                 pat.put(ThreeMerleVariant.PATTERN3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_sable_merle3.png"));
             });
     
     public static final Map<ThreeMerleVariant, ResourceLocation> BLUE_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
                 pat.put(ThreeMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle1.png"));
                 pat.put(ThreeMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle2.png"));
                 pat.put(ThreeMerleVariant.PATTERN3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_blue_merle3.png"));
             });
 
     public static final Map<ThreeMerleVariant, ResourceLocation> BLACK_TAN_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeMerleVariant.class), (pat) -> {
                 pat.put(ThreeMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle1.png"));
                 pat.put(ThreeMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle2.png"));
                 pat.put(ThreeMerleVariant.PATTERN3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/merle/shetland_sheepdog_black_tan_merle3.png"));
             });
 
-    public static final ResourceLocation BLACK_TAN_NO_MERLE = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png");
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/collar/collar_none.png");
+    public static final ResourceLocation BLACK_TAN_NO_MERLE = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/shetland_sheepdog_black_tan.png");
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/collar/collar_none.png");
 
     public ShetlandSheepdogMerleLayer(GeoRenderer<ShetlandSheepdogEntity> entityRendererIn) {
         super(entityRendererIn);
@@ -77,6 +77,6 @@ public class ShetlandSheepdogMerleLayer extends GeoRenderLayer<ShetlandSheepdogE
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

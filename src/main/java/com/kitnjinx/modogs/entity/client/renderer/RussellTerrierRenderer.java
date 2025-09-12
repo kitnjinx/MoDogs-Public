@@ -25,17 +25,17 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
     public static final Map<RussellTerrierVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(RussellTerrierVariant.class), (var) -> {
                 var.put(RussellTerrierVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_brown.png"));
                 var.put(RussellTerrierVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_black.png"));
                 var.put(RussellTerrierVariant.TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tan.png"));
                 var.put(RussellTerrierVariant.CREAM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_cream.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_cream.png"));
                 var.put(RussellTerrierVariant.TRI_BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tri_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tri_brown.png"));
                 var.put(RussellTerrierVariant.TRI_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tri_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/russell_terrier/russell_terrier_tri_tan.png"));
             });
 
     public RussellTerrierRenderer(EntityRendererProvider.Context renderManager) {
@@ -53,8 +53,8 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
     }
 
     @Override
-    public void preRender(PoseStack stack, RussellTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, RussellTerrierEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.3f, 0.3f);
@@ -62,7 +62,7 @@ public class RussellTerrierRenderer extends GeoEntityRenderer<RussellTerrierEnti
             withScale(0.6f, 0.6f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

@@ -25,13 +25,13 @@ public class PitBullRenderer extends GeoEntityRenderer<PitBullEntity> {
     public static final Map<PitBullVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(PitBullVariant.class), (var) -> {
                 var.put(PitBullVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_brown.png"));
                 var.put(PitBullVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_black.png"));
                 var.put(PitBullVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_blue.png"));
                 var.put(PitBullVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pit_bull/pit_bull_white.png"));
             });
 
     public PitBullRenderer(EntityRendererProvider.Context renderManager) {
@@ -49,8 +49,8 @@ public class PitBullRenderer extends GeoEntityRenderer<PitBullEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, PitBullEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, PitBullEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~20 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -58,7 +58,7 @@ public class PitBullRenderer extends GeoEntityRenderer<PitBullEntity> {
             withScale(0.9f, 0.9f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

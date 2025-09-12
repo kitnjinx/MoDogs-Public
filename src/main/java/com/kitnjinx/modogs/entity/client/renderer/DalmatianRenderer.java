@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 public class DalmatianRenderer extends GeoEntityRenderer<DalmatianEntity> {
 
-    public static final ResourceLocation WHITE_BASE_LOCATION = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_white.png");
+    public static final ResourceLocation WHITE_BASE_LOCATION = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/dalmatian/dalmatian_white.png");
 
     public DalmatianRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DalmatianModel());
@@ -36,8 +36,8 @@ public class DalmatianRenderer extends GeoEntityRenderer<DalmatianEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, DalmatianEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, DalmatianEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~22 inches
         if(animatable.isBaby()) {
             withScale(0.5f, 0.5f);
@@ -45,7 +45,7 @@ public class DalmatianRenderer extends GeoEntityRenderer<DalmatianEntity> {
             withScale(1f, 1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

@@ -21,20 +21,20 @@ public class CollieMerleLayer extends GeoRenderLayer<CollieEntity> {
     public static final Map<TwoMerleVariant, ResourceLocation> BLUE_TAN_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_blue_tan_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_blue_tan_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_blue_tan_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_blue_tan_merle2.png"));
             });
 
     public static final Map<TwoMerleVariant, ResourceLocation> SABLE_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_sable_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_sable_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_sable_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/merle/collie_sable_merle2.png"));
             });
 
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID, 
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID,
             "textures/entity/collie/collar/collar_none.png");
 
 
@@ -57,6 +57,6 @@ public class CollieMerleLayer extends GeoRenderLayer<CollieEntity> {
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class GenoPrinterScreen extends ItemCombinerScreen<GenoPrinterMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(MoDogs.MOD_ID, "textures/gui/geno_printer_screen.png");
+            ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/gui/geno_printer_screen.png");
 
     public GenoPrinterScreen(GenoPrinterMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, TEXTURE);

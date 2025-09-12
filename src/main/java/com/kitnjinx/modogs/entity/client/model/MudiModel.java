@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class MudiModel extends GeoModel<MudiEntity> {
     @Override
     public ResourceLocation getModelResource(MudiEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/mudi.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/mudi.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class MudiModel extends GeoModel<MudiEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(MudiEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/mudi.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/mudi.animation.json");
     }
 }

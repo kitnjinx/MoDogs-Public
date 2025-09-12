@@ -24,9 +24,9 @@ public class PugRenderer extends GeoEntityRenderer<PugEntity> {
     public static final Map<PugVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(PugVariant.class), (var) -> {
                 var.put(PugVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pug/pug_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pug/pug_fawn.png"));
                 var.put(PugVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/pug/pug_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/pug/pug_black.png"));
             });
 
     public PugRenderer(EntityRendererProvider.Context renderManager) {
@@ -43,8 +43,8 @@ public class PugRenderer extends GeoEntityRenderer<PugEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, PugEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, PugEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.3f, 0.3f);
@@ -52,7 +52,7 @@ public class PugRenderer extends GeoEntityRenderer<PugEntity> {
             withScale(0.6f, 0.6f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override
