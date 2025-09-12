@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class MastiffModel extends GeoModel<MastiffEntity> {
     @Override
     public ResourceLocation getModelResource(MastiffEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/mastiff.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/mastiff.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class MastiffModel extends GeoModel<MastiffEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(MastiffEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/mastiff.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/mastiff.animation.json");
     }
 }

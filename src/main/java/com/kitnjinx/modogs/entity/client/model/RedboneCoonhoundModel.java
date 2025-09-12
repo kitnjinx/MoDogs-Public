@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class RedboneCoonhoundModel extends GeoModel<RedboneCoonhoundEntity> {
     @Override
     public ResourceLocation getModelResource(RedboneCoonhoundEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/redbone_coonhound.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/redbone_coonhound.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class RedboneCoonhoundModel extends GeoModel<RedboneCoonhoundEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(RedboneCoonhoundEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/redbone_coonhound.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/redbone_coonhound.animation.json");
     }
 }

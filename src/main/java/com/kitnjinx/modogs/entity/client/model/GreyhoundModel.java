@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class GreyhoundModel extends GeoModel<GreyhoundEntity> {
     @Override
     public ResourceLocation getModelResource(GreyhoundEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/greyhound.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/greyhound.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class GreyhoundModel extends GeoModel<GreyhoundEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(GreyhoundEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/greyhound.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/greyhound.animation.json");
     }
 }

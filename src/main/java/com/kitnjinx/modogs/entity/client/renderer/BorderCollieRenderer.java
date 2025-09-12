@@ -26,11 +26,11 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
     public static final Map<BorderCollieVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BorderCollieVariant.class), (var) -> {
                 var.put(BorderCollieVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_black.png"));
                 var.put(BorderCollieVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_red.png"));
                 var.put(BorderCollieVariant.LILAC,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_lilac.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/border_collie_lilac.png"));
             });
 
     public BorderCollieRenderer(EntityRendererProvider.Context renderManager) {
@@ -49,8 +49,8 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
     }
 
     @Override
-    public void preRender(PoseStack stack, BorderCollieEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, BorderCollieEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~20 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -58,7 +58,7 @@ public class BorderCollieRenderer extends GeoEntityRenderer<BorderCollieEntity> 
             withScale(0.9f, 0.9f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

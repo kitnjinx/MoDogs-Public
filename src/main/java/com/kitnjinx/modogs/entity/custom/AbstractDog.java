@@ -81,7 +81,7 @@ public abstract class AbstractDog extends TamableAnimal implements GeoEntity, Ne
         this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
         this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.1D, true));
         this.goalSelector.addGoal(5, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0, 10.0F, 1.0F, false));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0, 10.0F, 1.0F));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0F));
         this.goalSelector.addGoal(7, new FollowParentGoal(this, 1.0));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));

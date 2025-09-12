@@ -21,39 +21,39 @@ public class BulldogCollarLayer extends GeoRenderLayer<BulldogEntity> {
     public static final Map<CollarVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(CollarVariant.class), (col) -> {
                 col.put(CollarVariant.NONE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_none.png"));
                 col.put(CollarVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_white.png"));
                 col.put(CollarVariant.LIGHT_GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_light_gray.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_light_gray.png"));
                 col.put(CollarVariant.GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_gray.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_gray.png"));
                 col.put(CollarVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_black.png"));
                 col.put(CollarVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_brown.png"));
                 col.put(CollarVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_red.png"));
                 col.put(CollarVariant.ORANGE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_orange.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_orange.png"));
                 col.put(CollarVariant.YELLOW,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_yellow.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_yellow.png"));
                 col.put(CollarVariant.LIME,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_lime.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_lime.png"));
                 col.put(CollarVariant.GREEN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_green.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_green.png"));
                 col.put(CollarVariant.CYAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_cyan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_cyan.png"));
                 col.put(CollarVariant.LIGHT_BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_light_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_light_blue.png"));
                 col.put(CollarVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_blue.png"));
                 col.put(CollarVariant.PURPLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_purple.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_purple.png"));
                 col.put(CollarVariant.MAGENTA,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_magenta.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_magenta.png"));
                 col.put(CollarVariant.PINK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_pink.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/53x36/collar_pink.png"));
             });
 
     public BulldogCollarLayer(GeoRenderer<BulldogEntity> entityRendererIn) {

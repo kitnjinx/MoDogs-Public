@@ -24,11 +24,11 @@ public class LabRetrieverRenderer extends GeoEntityRenderer<LabRetrieverEntity> 
     public static final Map<LabRetrieverVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(LabRetrieverVariant.class), (var) -> {
                 var.put(LabRetrieverVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_black.png"));
                 var.put(LabRetrieverVariant.CHOCOLATE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_chocolate.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_chocolate.png"));
                 var.put(LabRetrieverVariant.YELLOW,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_yellow.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/lab_retriever/lab_retriever_yellow.png"));
             });
 
     public LabRetrieverRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class LabRetrieverRenderer extends GeoEntityRenderer<LabRetrieverEntity> 
     }
 
     @Override
-    public void preRender(PoseStack stack, LabRetrieverEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, LabRetrieverEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~23 inches
         if(animatable.isBaby()) {
             withScale(0.525f, 0.525f);
@@ -54,7 +54,7 @@ public class LabRetrieverRenderer extends GeoEntityRenderer<LabRetrieverEntity> 
             withScale(1.05f, 1.05f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

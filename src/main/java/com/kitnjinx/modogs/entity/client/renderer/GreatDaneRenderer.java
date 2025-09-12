@@ -24,11 +24,11 @@ public class GreatDaneRenderer extends GeoEntityRenderer<GreatDaneEntity> {
     public static final Map<GreatDaneVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GreatDaneVariant.class), (var) -> {
                 var.put(GreatDaneVariant.FAWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_fawn.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_fawn.png"));
                 var.put(GreatDaneVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_black.png"));
                 var.put(GreatDaneVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/great_dane/great_dane_blue.png"));
             });
 
     public GreatDaneRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class GreatDaneRenderer extends GeoEntityRenderer<GreatDaneEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, GreatDaneEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, GreatDaneEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~30 in
         if(animatable.isBaby()) {
             withScale(0.7f, 0.7f);
@@ -54,7 +54,7 @@ public class GreatDaneRenderer extends GeoEntityRenderer<GreatDaneEntity> {
             withScale(1.4f, 1.4f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

@@ -24,11 +24,11 @@ public class MiniPinscherRenderer extends GeoEntityRenderer<MiniPinscherEntity> 
     public static final Map<MiniPinscherVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MiniPinscherVariant.class), (var) -> {
                 var.put(MiniPinscherVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_black_tan.png"));
                 var.put(MiniPinscherVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_red.png"));
                 var.put(MiniPinscherVariant.CHOCOLATE_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_chocolate_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mini_pinscher/mini_pinscher_chocolate_tan.png"));
             });
 
     public MiniPinscherRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class MiniPinscherRenderer extends GeoEntityRenderer<MiniPinscherEntity> 
     }
 
     @Override
-    public void preRender(PoseStack stack, MiniPinscherEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, MiniPinscherEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.3f, 0.3f);
@@ -54,7 +54,7 @@ public class MiniPinscherRenderer extends GeoEntityRenderer<MiniPinscherEntity> 
             withScale(0.6f, 0.6f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

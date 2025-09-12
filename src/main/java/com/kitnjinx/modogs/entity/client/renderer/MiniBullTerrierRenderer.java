@@ -25,9 +25,9 @@ public class MiniBullTerrierRenderer extends GeoEntityRenderer<MiniBullTerrierEn
     public static final Map<BullTerrierVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BullTerrierVariant.class), (var) -> {
                 var.put(BullTerrierVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/bull_terrier_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/bull_terrier_black.png"));
                 var.put(BullTerrierVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/mini_bull_terrier_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/mini_bull_terrier_red.png"));
             });
 
     public MiniBullTerrierRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class MiniBullTerrierRenderer extends GeoEntityRenderer<MiniBullTerrierEn
     }
 
     @Override
-    public void preRender(PoseStack stack, MiniBullTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, MiniBullTerrierEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.3f, 0.3f);
@@ -54,7 +54,7 @@ public class MiniBullTerrierRenderer extends GeoEntityRenderer<MiniBullTerrierEn
             withScale(0.6f, 0.6f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

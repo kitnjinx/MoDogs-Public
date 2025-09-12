@@ -22,20 +22,20 @@ public class MudiMerleLayer extends GeoRenderLayer<MudiEntity> {
     public static final Map<TwoMerleVariant, ResourceLocation> BLACK_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_black_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_black_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_black_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_black_merle2.png"));
             });
 
     public static final Map<TwoMerleVariant, ResourceLocation> BROWN_MERLE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoMerleVariant.class), (pat) -> {
                 pat.put(TwoMerleVariant.PATTERN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_brown_merle1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_brown_merle1.png"));
                 pat.put(TwoMerleVariant.PATTERN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_brown_merle2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/mudi/merle/mudi_brown_merle2.png"));
             });
 
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID,
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID,
             "textures/entity/collar/53x38/collar_none.png");
 
     public MudiMerleLayer(GeoRenderer<MudiEntity> entityRendererIn) {

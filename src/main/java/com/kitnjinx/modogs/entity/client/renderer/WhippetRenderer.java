@@ -25,11 +25,11 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
     public static final Map<WhippetVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(WhippetVariant.class), (var) -> {
                 var.put(WhippetVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/whippet_red.png"));
                 var.put(WhippetVariant.BLUE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_blue.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/whippet_blue.png"));
                 var.put(WhippetVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/whippet/whippet_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/whippet/whippet_black.png"));
             });
 
     public WhippetRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, WhippetEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, WhippetEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~20 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -56,7 +56,8 @@ public class WhippetRenderer extends GeoEntityRenderer<WhippetEntity> {
             withScale(0.9f, 0.9f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

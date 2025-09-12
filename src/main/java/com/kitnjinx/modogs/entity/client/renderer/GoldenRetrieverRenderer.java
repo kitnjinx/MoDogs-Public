@@ -24,11 +24,11 @@ public class GoldenRetrieverRenderer extends GeoEntityRenderer<GoldenRetrieverEn
     public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
                 var.put(ShadeVariant.LIGHT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_light.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_light.png"));
                 var.put(ShadeVariant.MEDIUM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_medium.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_medium.png"));
                 var.put(ShadeVariant.DARK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_dark.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/golden_retriever/golden_retriever_dark.png"));
             });
 
     public GoldenRetrieverRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class GoldenRetrieverRenderer extends GeoEntityRenderer<GoldenRetrieverEn
     }
 
     @Override
-    public void preRender(PoseStack stack, GoldenRetrieverEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, GoldenRetrieverEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~23 inches
         if(animatable.isBaby()) {
             withScale(0.525f, 0.525f);
@@ -54,7 +54,7 @@ public class GoldenRetrieverRenderer extends GeoEntityRenderer<GoldenRetrieverEn
             withScale(1.05f, 1.05f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

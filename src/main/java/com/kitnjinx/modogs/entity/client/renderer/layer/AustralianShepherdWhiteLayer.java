@@ -21,13 +21,13 @@ public class AustralianShepherdWhiteLayer extends GeoRenderLayer<AustralianSheph
     public static final Map<AustralianShepherdWhiteVariant, ResourceLocation> LOCATION_BY_WHITE =
             Util.make(Maps.newEnumMap(AustralianShepherdWhiteVariant.class), (whi) -> {
                 whi.put(AustralianShepherdWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white1.png"));
                 whi.put(AustralianShepherdWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white2.png"));
                 whi.put(AustralianShepherdWhiteVariant.WHITE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white3.png"));
                 whi.put(AustralianShepherdWhiteVariant.WHITE4,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white4.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/australian_shepherd/white/australian_shepherd_white4.png"));
             });
 
     public AustralianShepherdWhiteLayer(GeoRenderer<AustralianShepherdEntity> entityRendererIn) {

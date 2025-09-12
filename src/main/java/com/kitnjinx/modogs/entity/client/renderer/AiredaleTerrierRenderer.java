@@ -24,11 +24,11 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
     public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
                 var.put(ShadeVariant.LIGHT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_light.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_light.png"));
                 var.put(ShadeVariant.MEDIUM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_medium.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_medium.png"));
                 var.put(ShadeVariant.DARK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_dark.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/airedale_terrier/airedale_terrier_dark.png"));
             });
 
     public AiredaleTerrierRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
     }
 
     @Override
-    public void preRender(PoseStack stack, AiredaleTerrierEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, AiredaleTerrierEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~23 inches
         if(animatable.isBaby()) {
             withScale(0.525f, 0.525f);
@@ -54,7 +54,7 @@ public class AiredaleTerrierRenderer extends GeoEntityRenderer<AiredaleTerrierEn
             withScale(1.05f, 1.05f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

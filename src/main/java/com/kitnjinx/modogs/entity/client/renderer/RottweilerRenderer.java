@@ -24,11 +24,11 @@ public class RottweilerRenderer extends GeoEntityRenderer<RottweilerEntity> {
     public static final Map<RottweilerVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(RottweilerVariant.class), (var) -> {
                 var.put(RottweilerVariant.TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_tan.png"));
                 var.put(RottweilerVariant.RUST,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_rust.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_rust.png"));
                 var.put(RottweilerVariant.MAHOGANY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_mahogany.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/rottweiler/rottweiler_mahogany.png"));
             });
 
     public RottweilerRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class RottweilerRenderer extends GeoEntityRenderer<RottweilerEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, RottweilerEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, RottweilerEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~24 in
         if(animatable.isBaby()) {
             withScale(0.55f, 0.55f);
@@ -54,7 +54,7 @@ public class RottweilerRenderer extends GeoEntityRenderer<RottweilerEntity> {
             withScale(1.1f, 1.1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

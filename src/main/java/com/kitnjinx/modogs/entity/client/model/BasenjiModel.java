@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class BasenjiModel extends GeoModel<BasenjiEntity> {
     @Override
     public ResourceLocation getModelResource(BasenjiEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/basenji.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/basenji.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class BasenjiModel extends GeoModel<BasenjiEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(BasenjiEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/basenji.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/basenji.animation.json");
     }
 }

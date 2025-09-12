@@ -24,11 +24,11 @@ public class BasenjiRenderer extends GeoEntityRenderer<BasenjiEntity> {
     public static final Map<BasenjiVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BasenjiVariant.class), (var) -> {
                 var.put(BasenjiVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/basenji/basenji_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/basenji/basenji_red.png"));
                 var.put(BasenjiVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/basenji/basenji_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/basenji/basenji_black.png"));
                 var.put(BasenjiVariant.TRICOLOR,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/basenji/basenji_tricolor.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/basenji/basenji_tricolor.png"));
             });
 
     public BasenjiRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class BasenjiRenderer extends GeoEntityRenderer<BasenjiEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, BasenjiEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, BasenjiEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~16 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -54,7 +54,7 @@ public class BasenjiRenderer extends GeoEntityRenderer<BasenjiEntity> {
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

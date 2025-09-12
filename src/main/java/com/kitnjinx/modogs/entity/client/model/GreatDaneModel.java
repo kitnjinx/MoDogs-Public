@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class GreatDaneModel extends GeoModel<GreatDaneEntity> {
     @Override
     public ResourceLocation getModelResource(GreatDaneEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/great_dane.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/great_dane.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class GreatDaneModel extends GeoModel<GreatDaneEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(GreatDaneEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/great_dane.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/great_dane.animation.json");
     }
 }

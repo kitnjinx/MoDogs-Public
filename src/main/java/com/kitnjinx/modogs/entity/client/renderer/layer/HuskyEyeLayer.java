@@ -21,17 +21,17 @@ public class HuskyEyeLayer extends GeoRenderLayer<HuskyEntity> {
     public static final Map<HuskyEyeVariant, ResourceLocation> LOCATION_BY_COLOR =
             Util.make(Maps.newEnumMap(HuskyEyeVariant.class), (col) -> {
                 col.put(HuskyEyeVariant.BLUE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_blue_eyes1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_blue_eyes1.png"));
                 col.put(HuskyEyeVariant.BLUE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_blue_eyes2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_blue_eyes2.png"));
                 col.put(HuskyEyeVariant.BROWN1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_brown_eyes1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_brown_eyes1.png"));
                 col.put(HuskyEyeVariant.BROWN2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_brown_eyes2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_brown_eyes2.png"));
                 col.put(HuskyEyeVariant.HETERO1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_hetero_eyes1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_hetero_eyes1.png"));
                 col.put(HuskyEyeVariant.HETERO2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_hetero_eyes2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/eyes/husky_hetero_eyes2.png"));
                 });
 
     public HuskyEyeLayer(GeoRenderer<HuskyEntity> entityRendererIn) {

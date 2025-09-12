@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class MiniPinscherModel extends GeoModel<MiniPinscherEntity> {
     @Override
     public ResourceLocation getModelResource(MiniPinscherEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/mini_pinscher.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/mini_pinscher.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class MiniPinscherModel extends GeoModel<MiniPinscherEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(MiniPinscherEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/mini_pinscher.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/mini_pinscher.animation.json");
     }
 }

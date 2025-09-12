@@ -24,13 +24,13 @@ public class CardiganCorgiRenderer extends GeoEntityRenderer<CardiganCorgiEntity
     public static final Map<CardiganCorgiVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(CardiganCorgiVariant.class), (var) -> {
                 var.put(CardiganCorgiVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_red.png"));
                 var.put(CardiganCorgiVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_black.png"));
                 var.put(CardiganCorgiVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_sable.png"));
                 var.put(CardiganCorgiVariant.BLUE_MERLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_blue_merle.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/cardigan_corgi/cardigan_corgi_blue_merle.png"));
             });
 
     public CardiganCorgiRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class CardiganCorgiRenderer extends GeoEntityRenderer<CardiganCorgiEntity
     }
 
     @Override
-    public void preRender(PoseStack stack, CardiganCorgiEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, CardiganCorgiEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~12 inches
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -56,7 +56,7 @@ public class CardiganCorgiRenderer extends GeoEntityRenderer<CardiganCorgiEntity
             withScale(0.8f, 0.8f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

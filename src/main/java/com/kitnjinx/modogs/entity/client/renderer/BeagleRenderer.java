@@ -24,11 +24,11 @@ public class BeagleRenderer extends GeoEntityRenderer<BeagleEntity> {
     public static final Map<BeagleVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(BeagleVariant.class), (var) -> {
                 var.put(BeagleVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/beagle/beagle_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/beagle/beagle_black_tan.png"));
                 var.put(BeagleVariant.TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/beagle/beagle_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/beagle/beagle_tan.png"));
                 var.put(BeagleVariant.DARK_EARS,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/beagle/beagle_dark_ears.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/beagle/beagle_dark_ears.png"));
             });
 
     public BeagleRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class BeagleRenderer extends GeoEntityRenderer<BeagleEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, BeagleEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, BeagleEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~14 in
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -54,7 +54,7 @@ public class BeagleRenderer extends GeoEntityRenderer<BeagleEntity> {
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

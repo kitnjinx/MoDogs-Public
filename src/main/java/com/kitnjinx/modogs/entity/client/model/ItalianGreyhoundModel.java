@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ItalianGreyhoundModel extends GeoModel<ItalianGreyhoundEntity> {
     @Override
     public ResourceLocation getModelResource(ItalianGreyhoundEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/italian_greyhound.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/italian_greyhound.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class ItalianGreyhoundModel extends GeoModel<ItalianGreyhoundEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(ItalianGreyhoundEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/italian_greyhound.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/italian_greyhound.animation.json");
     }
 }

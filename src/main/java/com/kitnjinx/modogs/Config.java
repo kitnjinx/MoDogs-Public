@@ -44,7 +44,7 @@ public class Config {
 
     private static boolean validateItemName(final Object obj)
     {
-        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(new ResourceLocation(itemName));
+        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.fromNamespaceAndPath(itemName));
     }
 
     @SubscribeEvent
@@ -56,7 +56,7 @@ public class Config {
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()
-                .map(itemName -> BuiltInRegistries.ITEM.get(new ResourceLocation(itemName)))
+                .map(itemName -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(itemName)))
                 .collect(Collectors.toSet());
     }*/
 }

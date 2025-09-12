@@ -24,13 +24,13 @@ public class GermanSpitzRenderer extends GeoEntityRenderer<GermanSpitzEntity> {
     public static final Map<GermanSpitzVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GermanSpitzVariant.class), (var) -> {
                 var.put(GermanSpitzVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_white.png"));
                 var.put(GermanSpitzVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_red.png"));
                 var.put(GermanSpitzVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_black.png"));
                 var.put(GermanSpitzVariant.BROWN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_brown.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_spitz/german_spitz_brown.png"));
             });
 
     public GermanSpitzRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class GermanSpitzRenderer extends GeoEntityRenderer<GermanSpitzEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, GermanSpitzEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, GermanSpitzEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~14 in
         if(animatable.isBaby()) {
             withScale(0.35f, 0.35f);
@@ -56,7 +56,7 @@ public class GermanSpitzRenderer extends GeoEntityRenderer<GermanSpitzEntity> {
             withScale(0.7f, 0.7f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

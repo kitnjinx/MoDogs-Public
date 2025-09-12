@@ -22,14 +22,14 @@ public class GreyhoundWhiteLayer extends GeoRenderLayer<GreyhoundEntity> {
     public static final Map<ThreeWhiteVariant, ResourceLocation> WHITE_PATTERNS =
             Util.make(Maps.newEnumMap(ThreeWhiteVariant.class), (pat) -> {
                 pat.put(ThreeWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white1.png"));
                 pat.put(ThreeWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white2.png"));
                 pat.put(ThreeWhiteVariant.WHITE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/greyhound/white/greyhound_white3.png"));
             });
 
-    public static final ResourceLocation NO_PATTERN = new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collar/58x31/collar_none.png");
+    public static final ResourceLocation NO_PATTERN = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collar/58x31/collar_none.png");
 
     public GreyhoundWhiteLayer(GeoRenderer<GreyhoundEntity> entityRendererIn) {
         super(entityRendererIn);

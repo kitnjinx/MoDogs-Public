@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class IrishSetterModel extends GeoModel<IrishSetterEntity> {
     @Override
     public ResourceLocation getModelResource(IrishSetterEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/irish_setter.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/irish_setter.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class IrishSetterModel extends GeoModel<IrishSetterEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(IrishSetterEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/irish_setter.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/irish_setter.animation.json");
     }
 }

@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ShetlandSheepdogModel extends GeoModel<ShetlandSheepdogEntity> {
     @Override
     public ResourceLocation getModelResource(ShetlandSheepdogEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/shetland_sheepdog.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/shetland_sheepdog.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class ShetlandSheepdogModel extends GeoModel<ShetlandSheepdogEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(ShetlandSheepdogEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/shetland_sheepdog.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/shetland_sheepdog.animation.json");
     }
 }

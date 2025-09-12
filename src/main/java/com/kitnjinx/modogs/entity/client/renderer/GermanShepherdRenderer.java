@@ -24,13 +24,13 @@ public class GermanShepherdRenderer extends GeoEntityRenderer<GermanShepherdEnti
     public static final Map<GermanShepherdVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GermanShepherdVariant.class), (var) -> {
                 var.put(GermanShepherdVariant.STANDARD,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_standard.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_standard.png"));
                 var.put(GermanShepherdVariant.BROWN_POINTS,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_brown_points.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_brown_points.png"));
                 var.put(GermanShepherdVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_black.png"));
                 var.put(GermanShepherdVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/german_shepherd/german_shepherd_white.png"));
             });
 
     public GermanShepherdRenderer(EntityRendererProvider.Context renderManager) {
@@ -47,8 +47,8 @@ public class GermanShepherdRenderer extends GeoEntityRenderer<GermanShepherdEnti
     }
 
     @Override
-    public void preRender(PoseStack stack, GermanShepherdEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, GermanShepherdEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~24 inches
         if(animatable.isBaby()) {
             withScale(0.55f, 0.55f);
@@ -56,7 +56,7 @@ public class GermanShepherdRenderer extends GeoEntityRenderer<GermanShepherdEnti
             withScale(1.1f, 1.1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

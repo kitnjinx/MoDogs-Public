@@ -24,11 +24,11 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
     public static final Map<ShadeVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(ShadeVariant.class), (var) -> {
                 var.put(ShadeVariant.LIGHT,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_light.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_light.png"));
                 var.put(ShadeVariant.MEDIUM,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_medium.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_medium.png"));
                 var.put(ShadeVariant.DARK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_dark.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/norwegian_elkhound/norwegian_elkhound_dark.png"));
             });
 
     public NorwegianElkhoundRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
     }
 
     @Override
-    public void preRender(PoseStack stack, NorwegianElkhoundEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, NorwegianElkhoundEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~20 in
         if(animatable.isBaby()) {
             withScale(0.4f, 0.4f);
@@ -54,7 +54,7 @@ public class NorwegianElkhoundRenderer extends GeoEntityRenderer<NorwegianElkhou
             withScale(0.9f, 0.9f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

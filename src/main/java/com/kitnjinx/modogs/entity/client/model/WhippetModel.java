@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class WhippetModel extends GeoModel<WhippetEntity> {
     @Override
     public ResourceLocation getModelResource(WhippetEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/whippet.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/whippet.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class WhippetModel extends GeoModel<WhippetEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(WhippetEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/whippet.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/whippet.animation.json");
     }
 }

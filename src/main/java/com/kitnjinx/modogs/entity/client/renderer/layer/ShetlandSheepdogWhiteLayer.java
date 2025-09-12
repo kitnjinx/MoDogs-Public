@@ -21,17 +21,17 @@ public class ShetlandSheepdogWhiteLayer extends GeoRenderLayer<ShetlandSheepdogE
     public static final Map<SixWhiteVariant, ResourceLocation> LOCATION_BY_WHITE =
             Util.make(Maps.newEnumMap(SixWhiteVariant.class), (whi) -> {
                 whi.put(SixWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white1.png"));
                 whi.put(SixWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white2.png"));
                 whi.put(SixWhiteVariant.WHITE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white3.png"));
                 whi.put(SixWhiteVariant.WHITE4,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white4.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white4.png"));
                 whi.put(SixWhiteVariant.WHITE5,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white5.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white5.png"));
                 whi.put(SixWhiteVariant.WHITE6,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white6.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/shetland_sheepdog/white/shetland_sheepdog_white6.png"));
             });
 
     public ShetlandSheepdogWhiteLayer(GeoRenderer<ShetlandSheepdogEntity> entityRendererIn) {

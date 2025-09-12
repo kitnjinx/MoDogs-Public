@@ -21,20 +21,20 @@ public class BullTerrierWhiteLayer extends GeoRenderLayer<BullTerrierEntity> {
     public static final Map<TwoWhiteVariant, ResourceLocation> LOW_WHITE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoWhiteVariant.class), (pat) -> {
                 pat.put(TwoWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white1.png"));
                 pat.put(TwoWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_low_white2.png"));
             });
 
     public static final Map<TwoWhiteVariant, ResourceLocation> HIGH_WHITE_PATTERNS =
             Util.make(Maps.newEnumMap(TwoWhiteVariant.class), (pat) -> {
                 pat.put(TwoWhiteVariant.WHITE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white1.png"));
                 pat.put(TwoWhiteVariant.WHITE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/bull_terrier/white/bull_terrier_high_white2.png"));
             });
 
-    public static final ResourceLocation PURE_WHITE_LOCATION = new ResourceLocation(MoDogs.MOD_ID,
+    public static final ResourceLocation PURE_WHITE_LOCATION = ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID,
             "textures/entity/bull_terrier/white/bull_terrier_white.png");
 
 

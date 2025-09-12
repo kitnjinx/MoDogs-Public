@@ -25,9 +25,9 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
     public static final Map<CollieVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(CollieVariant.class), (var) -> {
                 var.put(CollieVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/collie_sable.png"));
                 var.put(CollieVariant.BLACK_TAN,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/collie/collie_black_tan.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/collie/collie_black_tan.png"));
             });
 
     public CollieRenderer(EntityRendererProvider.Context renderManager) {
@@ -45,8 +45,8 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, CollieEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, CollieEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~24 inches
         if(animatable.isBaby()) {
             withScale(0.55f, 0.55f);
@@ -54,7 +54,7 @@ public class CollieRenderer extends GeoEntityRenderer<CollieEntity> {
             withScale(1.1f, 1.1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

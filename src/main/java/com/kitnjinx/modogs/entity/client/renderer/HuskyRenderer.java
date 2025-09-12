@@ -25,15 +25,15 @@ public class HuskyRenderer extends GeoEntityRenderer<HuskyEntity> {
     public static final Map<HuskyVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(HuskyVariant.class), (var) -> {
                 var.put(HuskyVariant.BLACK,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/husky_black.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/husky_black.png"));
                 var.put(HuskyVariant.GRAY,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/husky_gray.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/husky_gray.png"));
                 var.put(HuskyVariant.RED,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/husky_red.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/husky_red.png"));
                 var.put(HuskyVariant.SABLE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/husky_sable.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/husky_sable.png"));
                 var.put(HuskyVariant.WHITE,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/husky/husky_white.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/husky/husky_white.png"));
             });
 
     public HuskyRenderer(EntityRendererProvider.Context renderManager) {
@@ -51,8 +51,8 @@ public class HuskyRenderer extends GeoEntityRenderer<HuskyEntity> {
     }
 
     @Override
-    public void preRender(PoseStack stack, HuskyEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue,
-                          float alpha) {
+    public void preRender(PoseStack poseStack, HuskyEntity animatable, BakedGeoModel model, @org.jetbrains.annotations.Nullable MultiBufferSource bufferSource, @org.jetbrains.annotations.Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+
         // Height ~22 inches
         if(animatable.isBaby()) {
             withScale(0.5f, 0.5f);
@@ -60,7 +60,7 @@ public class HuskyRenderer extends GeoEntityRenderer<HuskyEntity> {
             withScale(1f, 1f);
         }
 
-        super.preRender(stack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
     }
 
     @Override

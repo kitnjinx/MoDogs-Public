@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ToyPoodleModel extends GeoModel<ToyPoodleEntity> {
     @Override
     public ResourceLocation getModelResource(ToyPoodleEntity object) {
-        return new ResourceLocation(MoDogs.MOD_ID, "geo/poodle.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "geo/poodle.geo.json");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class ToyPoodleModel extends GeoModel<ToyPoodleEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(ToyPoodleEntity animatable) {
-        return new ResourceLocation(MoDogs.MOD_ID, "animations/poodle.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "animations/poodle.animation.json");
     }
 }

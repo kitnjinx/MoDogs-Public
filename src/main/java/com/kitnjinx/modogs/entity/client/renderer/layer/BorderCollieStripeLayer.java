@@ -21,13 +21,13 @@ public class BorderCollieStripeLayer extends GeoRenderLayer<BorderCollieEntity> 
     public static final Map<BorderCollieStripeVariant, ResourceLocation> LOCATION_BY_STRIPE =
             Util.make(Maps.newEnumMap(BorderCollieStripeVariant.class), (pat) -> {
                 pat.put(BorderCollieStripeVariant.STRIPE1,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe1.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe1.png"));
                 pat.put(BorderCollieStripeVariant.STRIPE2,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe2.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe2.png"));
                 pat.put(BorderCollieStripeVariant.STRIPE3,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe3.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe3.png"));
                 pat.put(BorderCollieStripeVariant.STRIPE4,
-                        new ResourceLocation(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe4.png"));
+                        ResourceLocation.fromNamespaceAndPath(MoDogs.MOD_ID, "textures/entity/border_collie/stripe/border_collie_stripe4.png"));
             });
 
     public BorderCollieStripeLayer(GeoRenderer<BorderCollieEntity> entityRendererIn) {

@@ -116,7 +116,7 @@ public class ModBuiltInLootTables {
     public static final ResourceKey<LootTable> PINK_NETHERITE_LACED_COLLAR = register("modogs:entities/netherite_laced_collars/pink");
 
     private static ResourceKey<LootTable> register(String pId) {
-        return register(new ResourceLocation(pId));
+        return register(ResourceLocation.parse(pId));
     }
 
     private static ResourceKey<LootTable> register(ResourceLocation pId) {
