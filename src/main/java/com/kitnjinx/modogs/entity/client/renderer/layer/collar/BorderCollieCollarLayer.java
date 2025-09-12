@@ -69,6 +69,6 @@ public class BorderCollieCollarLayer extends GeoRenderLayer<BorderCollieEntity> 
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, armorRenderType,
                 bufferSource.getBuffer(armorRenderType), partialTick, packedLight, OverlayTexture.NO_OVERLAY,
-                1, 1, 1, 1);
+                0xFFFFFFFF);
     }
 }
